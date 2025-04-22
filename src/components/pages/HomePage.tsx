@@ -29,7 +29,21 @@ export default function HomePage({ navigateTo }: HomePageProps) {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="max-w-xl"
             >
-            <img src="/images/hero.png" alt="" className="absolute top-0 left-0 w-full h-full object-cover z-0"/>
+
+            {/* Desktop image */}
+            <img
+              src="/images/hero.png"
+              alt=""
+              className="hidden sm:block absolute top-0 left-0 w-full h-full object-cover z-0"
+            />
+
+            {/* Mobile image */}
+            <img
+              src="/images/hero-mobile.png"
+              alt=""
+              className="block sm:hidden absolute top-0 left-0 w-full h-full object-cover z-0"
+            />
+            {/* <img src="/images/hero.png" alt="" className="absolute top-0 left-0 w-full h-full object-cover z-0"/> */}
             {/* <img src="https://scontent-bom1-2.xx.fbcdn.net/v/t39.30808-6/487241419_1068177925341171_3328119065753930268_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=umkOalATRpEQ7kNvwFbhyFh&_nc_oc=AdnPerMBaOGPNjTyvbWCZYs1uS97Up3EauQtmhoNDunFUQvSR5gBCBPQb2ubPc94-aULGAbNazu4-Tw36HlrVWvi&_nc_zt=23&_nc_ht=scontent-bom1-2.xx&_nc_gid=F5dypzgkPMaArdGCKPRnVA&oh=00_AfF_sywdr6Pe2oA4_tdy6h6ZjFK_p1c79hJxJR75QsM7yA&oe=680CDA24" alt="" className="absolute top-0 left-0 w-full h-full object-cover z-0"/> */}
               {/* <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
                 #ab tummy bole <span className="text-yellow-300">yummy</span>

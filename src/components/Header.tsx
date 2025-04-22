@@ -44,8 +44,7 @@ export default function Header({ navigateTo, currentPage, isMenuOpen, setIsMenuO
           <div className="flex flex-col h-full">
             <div className="flex items-center justify-between py-4">
               <div className="flex items-center">
-                <img src="/yummfeast-logo.png" alt="Yummfeast Logo" className="h-8 mr-2" />
-                <span className="text-xl font-bold text-red-600">YUMMFEAST</span>
+                <img src="/images/logo.png" alt="Yummfeast Logo" className="h-12 mr-2" />
               </div>
               <Button variant="ghost" size="icon" onClick={() => setIsMenuOpen(false)}>
                 <X className="h-5 w-5" />

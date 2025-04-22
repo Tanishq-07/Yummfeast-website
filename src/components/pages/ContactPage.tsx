@@ -180,9 +180,8 @@ export default function ContactPage() {
             >
               <h3 className="font-semibold text-xl mb-4">Headquarters</h3>
               <address className="not-italic text-muted-foreground space-y-2 mb-6">
-                <p>123 Snack Street</p>
-                <p>Suite 456</p>
-                <p>Mumbai, Maharashtra 400001</p>
+                <p>Ambey Food Products ,Plot no 55 Industrial Area Donar</p>
+                <p>Darbhanga, Bihar</p>
                 <p>India</p>
               </address>
               <div className="space-y-4">

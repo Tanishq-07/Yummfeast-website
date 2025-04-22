@@ -94,10 +94,10 @@ export default function Footer({ navigateTo }: FooterProps) {
           <div>
             <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
             <address className="not-italic text-blue-200">
-              <p className="mb-2">123 Snack Street</p>
-              <p className="mb-2">Mumbai, Maharashtra 400001</p>
-              <p className="mb-2">Email: info@yummfeast.in</p>
-              <p>Phone: (123) 456-7890</p>
+              <p className="mb-2">Ambey Food Products ,Plot no 55 Industrial Area Donar</p>
+              <p className="mb-2">Darbhanga, Bihar, India</p>
+              <p className="mb-2">Email: customercare@yummfeast.in</p>
+              <p>Phone: 93344 69490</p>
             </address>
           </div>
         </div>
