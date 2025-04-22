@@ -48,7 +48,7 @@ export default function AboutPage() {
               viewport={{ once: true }}
               className="aspect-video bg-muted rounded-lg overflow-hidden"
             >
-              <img src="/factory-image.png" alt="Our Story" className="w-full h-full object-cover" />
+              <img src="https://scontent-bom1-2.xx.fbcdn.net/v/t39.30808-6/476606063_1177710887068982_3817646695977720307_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=833d8c&_nc_ohc=ajYboOWLg7cQ7kNvwEdbvxD&_nc_oc=AdklzTY2L384x_1ycB0KBoFXuMdaSIP-A9j_lrv3SfD0uI98zH1Vk_trfgUdjGCgZ5AKLFelnO6sMsn7JiM1ZgJa&_nc_zt=23&_nc_ht=scontent-bom1-2.xx&_nc_gid=nb9pWRsbrpD_JlLBH73DjQ&oh=00_AfFSsMAkgYByrZtyak9eTlmvNr-lJ-BOUVMhNAYux_ySFg&oe=680D4429" alt="Our Story" className="w-full h-full object-cover" />
             </motion.div>
           </div>
         </div>
@@ -110,10 +110,10 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { name: "Rajesh Kumar", role: "CEO & Founder", image: "/team-member1.png" },
-              { name: "Sunita Sharma", role: "Head of Product", image: "/team-member2.png" },
-              { name: "Vikram Singh", role: "Lead Food Technologist", image: "/team-member3.png" },
-              { name: "Priya Patel", role: "Marketing Director", image: "/team-member4.png" },
+              { name: "Rajesh Kumar", role: "CEO & Founder", image: "https://scontent-bom2-4.xx.fbcdn.net/v/t39.30808-6/476119589_1177710600402344_6422702384071220138_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=833d8c&_nc_ohc=5WYxTg2h6t8Q7kNvwHFNm-p&_nc_oc=Adn96Pq_5HT1zCMhtt9yIgSmhEJn6u7WlasLcBTFiqFJ8v7ribrKh8LbOWWxfag1u4RB39790afzcLBy5QoZCisn&_nc_zt=23&_nc_ht=scontent-bom2-4.xx&_nc_gid=CkvgjoNOE4EMVJQbVFr3ww&oh=00_AfH_fTuxrM0HPC65eC9Mhi5vTL0qFYlelDEEpz5UdA0pvg&oe=680D143D" },
+              { name: "Sunita Sharma", role: "Head of Product", image: "https://scontent-bom1-2.xx.fbcdn.net/v/t39.30808-6/476606063_1177710887068982_3817646695977720307_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=833d8c&_nc_ohc=ajYboOWLg7cQ7kNvwEdbvxD&_nc_oc=AdklzTY2L384x_1ycB0KBoFXuMdaSIP-A9j_lrv3SfD0uI98zH1Vk_trfgUdjGCgZ5AKLFelnO6sMsn7JiM1ZgJa&_nc_zt=23&_nc_ht=scontent-bom1-2.xx&_nc_gid=nb9pWRsbrpD_JlLBH73DjQ&oh=00_AfFSsMAkgYByrZtyak9eTlmvNr-lJ-BOUVMhNAYux_ySFg&oe=680D4429" },
+              { name: "Vikram Singh", role: "Lead Food Technologist", image: "https://scontent-bom1-2.xx.fbcdn.net/v/t39.30808-6/476220994_1178332727006798_5662711533049553514_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=833d8c&_nc_ohc=o-iWFFWOtj8Q7kNvwH2fzBz&_nc_oc=AdmNTngOWUnnhk2leJgf1Qj9tcpnL3jWv0Tq7nLq6ZCgng0VTibHMm9JwRrdnY7eqmtzKC-Jgud15JGai4PJWmfj&_nc_zt=23&_nc_ht=scontent-bom1-2.xx&_nc_gid=oqptLsgmZpscRgFLTvI4vA&oh=00_AfF4Vxhksqre_aQEX9JE_DpC20OYsVr34puOfG1kq3eIhQ&oe=680D41D8" },
+              { name: "Priya Patel", role: "Marketing Director", image: "https://scontent-bom1-2.xx.fbcdn.net/v/t39.30808-6/476225073_1177710587069012_3206584660443027825_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=833d8c&_nc_ohc=cvMoGVfiJgoQ7kNvwErbEKO&_nc_oc=Adkk5X8pE6Gdz_hsCEFDbim5Xki7zsC3wgqnLV_4mG8yJKvXrYULHHmPnwcMEBfqbsjrvMhajcSToRADV_b_c-Vn&_nc_zt=23&_nc_ht=scontent-bom1-2.xx&_nc_gid=IW9ZG7zTKJt9bkXHJmihhQ&oh=00_AfEt9hqiBQD4YATJjHVmPzj-OMI0tIGdtkFJLRBLn_yo3Q&oe=680D340A" },
             ].map((member, index) => (
               <motion.div
                 key={index}

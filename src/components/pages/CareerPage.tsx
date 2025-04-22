@@ -93,7 +93,7 @@ export default function CareerPage() {
               viewport={{ once: true }}
               className="aspect-video bg-muted rounded-lg overflow-hidden"
             >
-              <img src="/sales-team.png" alt="Sales Team" className="w-full h-full object-cover" />
+              <img src="https://scontent-bom1-2.xx.fbcdn.net/v/t39.30808-6/476220994_1178332727006798_5662711533049553514_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=833d8c&_nc_ohc=o-iWFFWOtj8Q7kNvwH2fzBz&_nc_oc=AdmNTngOWUnnhk2leJgf1Qj9tcpnL3jWv0Tq7nLq6ZCgng0VTibHMm9JwRrdnY7eqmtzKC-Jgud15JGai4PJWmfj&_nc_zt=23&_nc_ht=scontent-bom1-2.xx&_nc_gid=oqptLsgmZpscRgFLTvI4vA&oh=00_AfF4Vxhksqre_aQEX9JE_DpC20OYsVr34puOfG1kq3eIhQ&oe=680D41D8" alt="Sales Team" className="w-full h-full object-cover" />
             </motion.div>
           </div>
         </div>

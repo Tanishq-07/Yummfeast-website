@@ -49,7 +49,7 @@ export default function InfraPage() {
               viewport={{ once: true }}
               className="aspect-video bg-muted rounded-lg overflow-hidden"
             >
-              <img src="/factory-floor.png" alt="Manufacturing Facility" className="w-full h-full object-cover" />
+              <img src="https://scontent-bom1-2.xx.fbcdn.net/v/t39.30808-6/476225073_1177710587069012_3206584660443027825_n.jpg?stp=c256.0.1536.1536a_dst-jpg_s552x414_tt6&_nc_cat=107&ccb=1-7&_nc_sid=50ad20&_nc_ohc=cvMoGVfiJgoQ7kNvwErbEKO&_nc_oc=Adkk5X8pE6Gdz_hsCEFDbim5Xki7zsC3wgqnLV_4mG8yJKvXrYULHHmPnwcMEBfqbsjrvMhajcSToRADV_b_c-Vn&_nc_zt=23&_nc_ht=scontent-bom1-2.xx&_nc_gid=by2MRSuFbM7YnP2bQPvkEA&oh=00_AfHa_DvfqkgFjCjG3-XCZudlYWEUzxYjxboMKRxnufSNEg&oe=680D340A" alt="Manufacturing Facility" className="w-full h-full object-cover" />
             </motion.div>
           </div>
         </div>
@@ -110,7 +110,7 @@ export default function InfraPage() {
               viewport={{ once: true }}
               className="order-2 md:order-1 aspect-video bg-muted rounded-lg overflow-hidden"
             >
-              <img src="/distribution-network.png" alt="Distribution Network" className="w-full h-full object-cover" />
+              <img src="https://scontent-bom1-2.xx.fbcdn.net/v/t39.30808-6/476606063_1177710887068982_3817646695977720307_n.jpg?stp=c256.0.1536.1536a_dst-jpg_s552x414_tt6&_nc_cat=107&ccb=1-7&_nc_sid=50ad20&_nc_ohc=ajYboOWLg7cQ7kNvwEdbvxD&_nc_oc=AdklzTY2L384x_1ycB0KBoFXuMdaSIP-A9j_lrv3SfD0uI98zH1Vk_trfgUdjGCgZ5AKLFelnO6sMsn7JiM1ZgJa&_nc_zt=23&_nc_ht=scontent-bom1-2.xx&_nc_gid=by2MRSuFbM7YnP2bQPvkEA&oh=00_AfHqgpyeqGq5I83hlthfuqIznuo4GIxnP2GHPE_botIyjQ&oe=680D4429" alt="Distribution Network" className="w-full h-full object-cover" />
             </motion.div>
             <motion.div
               initial={{ opacity: 0, x: -20 }}

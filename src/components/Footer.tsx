@@ -11,12 +11,11 @@ interface FooterProps {
 export default function Footer({ navigateTo }: FooterProps) {
   return (
     <footer className="bg-blue-900 text-white py-12">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <div className="flex items-center mb-4">
-              <img src="/yummfeast-logo.png" alt="Yummfeast Logo" className="h-10 mr-2" />
-              <h3 className="text-xl font-bold text-white">YUMMFEAST</h3>
+              <img src="/images/logo.png" alt="Yummfeast Logo" className="h-16 mr-2" />
             </div>
             <p className="text-blue-200 mb-4">
               Snack with a Smile: Bringing Joy through Delicious Chips, Fryums, and Flavorful Namkeens!

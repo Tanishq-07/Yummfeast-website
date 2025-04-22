@@ -18,14 +18,13 @@ interface HeaderProps {
 export default function Header({ navigateTo, currentPage, isMenuOpen, setIsMenuOpen }: HeaderProps) {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-white">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4">
+      <div className="container mx-auto flex h-16 items-center justify-between px-8">
         <div className="flex items-center">
           <Button variant="ghost" size="icon" className="mr-2 md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
             <Menu className="h-6 w-6" />
           </Button>
           <div className="flex items-center cursor-pointer" onClick={() => navigateTo("home")}>
-            <img src="/yummfeast-logo.png" alt="Yummfeast Logo" className="h-10 mr-2" />
-            <span className="text-xl font-bold text-red-600">YUMMFEAST</span>
+            <img src="/images/logo.png" alt="Yummfeast Logo" className="h-16" />
           </div>
         </div>
 

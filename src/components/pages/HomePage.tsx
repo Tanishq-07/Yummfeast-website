@@ -29,7 +29,9 @@ export default function HomePage({ navigateTo }: HomePageProps) {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="max-w-xl"
             >
-              <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
+            <img src="/images/hero.png" alt="" className="absolute top-0 left-0 w-full h-full object-cover z-0"/>
+            {/* <img src="https://scontent-bom1-2.xx.fbcdn.net/v/t39.30808-6/487241419_1068177925341171_3328119065753930268_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=umkOalATRpEQ7kNvwFbhyFh&_nc_oc=AdnPerMBaOGPNjTyvbWCZYs1uS97Up3EauQtmhoNDunFUQvSR5gBCBPQb2ubPc94-aULGAbNazu4-Tw36HlrVWvi&_nc_zt=23&_nc_ht=scontent-bom1-2.xx&_nc_gid=F5dypzgkPMaArdGCKPRnVA&oh=00_AfF_sywdr6Pe2oA4_tdy6h6ZjFK_p1c79hJxJR75QsM7yA&oe=680CDA24" alt="" className="absolute top-0 left-0 w-full h-full object-cover z-0"/> */}
+              {/* <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
                 #ab tummy bole <span className="text-yellow-300">yummy</span>
               </h1>
               <p className="text-xl text-white/90 mb-8">
@@ -50,8 +52,8 @@ export default function HomePage({ navigateTo }: HomePageProps) {
                   onClick={() => navigateTo("about")}
                 >
                   Learn More
-                </Button>
-              </div>
+                </Button> 
+              </div> */}
             </motion.div>
           </div>
         </div>
@@ -83,32 +85,32 @@ export default function HomePage({ navigateTo }: HomePageProps) {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Our Delicious Snacks</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-2xl text-muted-foreground max-w-2xl mx-auto">
               Discover our most popular snacks that customers love. Quality and
               taste guaranteed in every bite!
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-16">
             {[
               {
                 name: "Yummfeast Rings",
                 description:
                   "Crunchy rings with a burst of tangy masala flavor",
-                image: "/rings-packet.png",
+                image: "https://scontent-bom2-4.xx.fbcdn.net/v/t39.30808-6/468422498_18049262201502000_6926184055011270435_n.jpg?stp=dst-jpg_s1080x2048_tt6&_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_ohc=L5E4D1K_OaIQ7kNvwGcMo4D&_nc_oc=AdltoQKX9sAPK9zYGTq_oCQ2ZIqu9eIjWebgxOigIVdF4pyNrZOxMOoKZSrGv2bn6Twa1A38jaILXnZBurJF7Kr5&_nc_zt=23&_nc_ht=scontent-bom2-4.xx&_nc_gid=QEqWSGsdxIczri-hwjueRQ&oh=00_AfF8JE5x2Iqb6VnPCKc9mmOTytoErRzCvQu7zJWkjvRCHw&oe=680D12DB",
                 price: "₹10",
               },
               {
                 name: "Yummfeast Pasta",
                 description: "Crispy pasta snacks with Italian herbs seasoning",
-                image: "/pasta-packet.png",
+                image: "https://scontent-bom2-4.xx.fbcdn.net/v/t51.75761-15/490510046_18065287943502000_4855848620494398094_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_ohc=iYeL2r3fHwMQ7kNvwEqQ1Gb&_nc_oc=AdlsuKtJP7t3DYXLqjo8-y8POr-UI9yrkOMf2cbhtzjbDD22FxYtmw3mY3r9PQt4IKxebmx5612w56_pT-gWlPzZ&_nc_zt=23&_nc_ht=scontent-bom2-4.xx&_nc_gid=5PsMj8sgbIbnD5jWjHfPYg&oh=00_AfHr8zX1eCj7xQZrK4lwi7Yv_lWzxYYh-B1tXb9cPjuQZA&oe=680D1579",
                 price: "₹15",
               },
               {
                 name: "Yummfeast All-in-One",
                 description:
                   "A delightful mix of various namkeen for the perfect snack time",
-                image: "/allinone-packet.png",
+                image: "https://scontent-bom1-2.xx.fbcdn.net/v/t51.75761-15/491468617_18065125247502000_1149868952402854465_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=kgaL_GKWRoMQ7kNvwFg_GOo&_nc_oc=Adm_Vgu1FK_aJE65mzEE0Jr3iwENkfijb2wCdwYoFzWVANO8FTEjIClX5q2-ZDto3w4p0wUifZz2anY75Hio24iR&_nc_zt=23&_nc_ht=scontent-bom1-2.xx&_nc_gid=riWHqGIbEyfis2eXlW8CAQ&oh=00_AfG5QVx3140ImkLLhDajGX8KKnQG0x9GwdnlAttlx9G4QA&oe=680D2DAB",
                 price: "₹20",
               },
             ].map((product, index) => (
@@ -283,7 +285,7 @@ export default function HomePage({ navigateTo }: HomePageProps) {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-blue-600 relative">
+      {/* <section className="py-16 bg-blue-600 relative">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center text-white">
             <h2 className="text-3xl font-bold mb-6">
@@ -302,7 +304,7 @@ export default function HomePage({ navigateTo }: HomePageProps) {
             </Button>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }

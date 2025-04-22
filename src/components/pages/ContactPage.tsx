@@ -161,7 +161,16 @@ export default function ContactPage() {
               viewport={{ once: true }}
               className="aspect-video bg-muted rounded-lg overflow-hidden"
             >
-              <img src="/office-map.png" alt="Office Location Map" className="w-full h-full object-cover" />
+              {/* <img src="/office-map.png" alt="Office Location Map" className="w-full h-full object-cover" /> */}
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3581.461832121948!2d85.92654807556895!3d26.14908467711062!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39edb97928c5dd6d%3A0xf4d75dd98463a65!2sAmbey%20Food%20Products!5e0!3m2!1sen!2sin!4v1745313914923!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+
             </motion.div>
             <motion.div
               initial={{ opacity: 0, x: 20 }}
