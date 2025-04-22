@@ -26,7 +26,6 @@ export default function HomePage({ navigateTo }: HomePageProps) {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
               className="max-w-xl"
             >
 
@@ -39,7 +38,7 @@ export default function HomePage({ navigateTo }: HomePageProps) {
 
             {/* Mobile image */}
             <img
-              src="/images/hero-mobile.png"
+              src="/images/hero-mobile-1.svg"
               alt=""
               className="block sm:hidden absolute top-0 left-0 w-full h-full object-cover z-0"
             />
