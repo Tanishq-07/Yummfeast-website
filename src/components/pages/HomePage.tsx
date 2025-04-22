@@ -1,19 +1,38 @@
-"use client";
+"use client"
 
-import { motion } from "framer-motion";
-import { Star } from "lucide-react";
-import { Button } from "../ui/button";
-import { Card, CardContent } from "../ui/card";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "../ui/carousel";
+import { motion } from "framer-motion"
+import { Star } from "lucide-react"
+import { Button } from "../ui/button"
+import { Card, CardContent } from "../ui/card"
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../ui/carousel"
+
+// Subtle hovering chip component
+const HoveringChip = ({
+  src,
+  alt,
+  className,
+  delay = 0,
+}: { src: string; alt: string; className: string; delay?: number }) => {
+  return (
+    <motion.div
+      className={`absolute z-10 ${className}`}
+      initial={{ y: 0 }}
+      animate={{ y: [-5, 5, -5] }}
+      transition={{
+        duration: 4,
+        ease: "easeInOut",
+        repeat: Number.POSITIVE_INFINITY,
+        repeatType: "loop",
+        delay,
+      }}
+    >
+      <img src={src || "/placeholder.svg"} alt={alt} className="w-full h-full object-contain drop-shadow-lg" />
+    </motion.div>
+  )
+}
 
 interface HomePageProps {
-  navigateTo: (page: string) => void;
+  navigateTo: (page: string) => void
 }
 
 export default function HomePage({ navigateTo }: HomePageProps) {
@@ -21,6 +40,19 @@ export default function HomePage({ navigateTo }: HomePageProps) {
     <div>
       {/* Hero Section */}
       <section className="relative">
+        {/* Subtle hovering chips */}
+        <HoveringChip
+          src="/images/chip4 (1).png"
+          alt="Pasta Packet"
+          className="w-32 md:w-40 lg:w-48 left-[15%] top-[20%]"
+        />
+        <HoveringChip
+          src="/images/chip3 (1).png"
+          alt="Rings Packet"
+          className="w-32 md:w-40 lg:w-48 right-[15%] top-[25%]"
+          delay={1.5}
+        />
+
         <div className="bg-red-600 h-[70vh] flex items-center">
           <div className="container mx-auto px-4">
             <motion.div
@@ -29,8 +61,8 @@ export default function HomePage({ navigateTo }: HomePageProps) {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="max-w-xl"
             >
-            <img src="/images/hero.png" alt="" className="absolute top-0 left-0 w-full h-full object-cover z-0"/>
-            {/* <img src="https://scontent-bom1-2.xx.fbcdn.net/v/t39.30808-6/487241419_1068177925341171_3328119065753930268_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=umkOalATRpEQ7kNvwFbhyFh&_nc_oc=AdnPerMBaOGPNjTyvbWCZYs1uS97Up3EauQtmhoNDunFUQvSR5gBCBPQb2ubPc94-aULGAbNazu4-Tw36HlrVWvi&_nc_zt=23&_nc_ht=scontent-bom1-2.xx&_nc_gid=F5dypzgkPMaArdGCKPRnVA&oh=00_AfF_sywdr6Pe2oA4_tdy6h6ZjFK_p1c79hJxJR75QsM7yA&oe=680CDA24" alt="" className="absolute top-0 left-0 w-full h-full object-cover z-0"/> */}
+              <img src="/images/hero.png" alt="" className="absolute top-0 left-0 w-full h-full object-cover z-0" />
+              {/* <img src="https://scontent-bom1-2.xx.fbcdn.net/v/t39.30808-6/487241419_1068177925341171_3328119065753930268_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=umkOalATRpEQ7kNvwFbhyFh&_nc_oc=AdnPerMBaOGPNjTyvbWCZYs1uS97Up3EauQtmhoNDunFUQvSR5gBCBPQb2ubPc94-aULGAbNazu4-Tw36HlrVWvi&_nc_zt=23&_nc_ht=scontent-bom1-2.xx&_nc_gid=F5dypzgkPMaArdGCKPRnVA&oh=00_AfF_sywdr6Pe2oA4_tdy6h6ZjFK_p1c79hJxJR75QsM7yA&oe=680CDA24" alt="" className="absolute top-0 left-0 w-full h-full object-cover z-0"/> */}
               {/* <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
                 #ab tummy bole <span className="text-yellow-300">yummy</span>
               </h1>
@@ -58,17 +90,13 @@ export default function HomePage({ navigateTo }: HomePageProps) {
           </div>
         </div>
         <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
-    <svg
-      viewBox="0 0 500 150"
-      preserveAspectRatio="none"
-      className="w-full h-[80px]"
-    >
-      <path
-        d="M0.00,49.98 C150.00,150.00 350.00,-50.00 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
-        className="fill-white"
-      ></path>
-    </svg>
-  </div>
+          <svg viewBox="0 0 500 150" preserveAspectRatio="none" className="w-full h-[80px]">
+            <path
+              d="M0.00,49.98 C150.00,150.00 350.00,-50.00 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
+              className="fill-white"
+            ></path>
+          </svg>
+        </div>
         {/* <div className="absolute bottom-0 left-0 right-0">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
             <path
@@ -86,8 +114,7 @@ export default function HomePage({ navigateTo }: HomePageProps) {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Our Delicious Snacks</h2>
             <p className="text-2xl text-muted-foreground max-w-2xl mx-auto">
-              Discover our most popular snacks that customers love. Quality and
-              taste guaranteed in every bite!
+              Discover our most popular snacks that customers love. Quality and taste guaranteed in every bite!
             </p>
           </div>
 
@@ -95,22 +122,23 @@ export default function HomePage({ navigateTo }: HomePageProps) {
             {[
               {
                 name: "Yummfeast Rings",
-                description:
-                  "Crunchy rings with a burst of tangy masala flavor",
-                image: "https://scontent-bom2-4.xx.fbcdn.net/v/t39.30808-6/468422498_18049262201502000_6926184055011270435_n.jpg?stp=dst-jpg_s1080x2048_tt6&_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_ohc=L5E4D1K_OaIQ7kNvwGcMo4D&_nc_oc=AdltoQKX9sAPK9zYGTq_oCQ2ZIqu9eIjWebgxOigIVdF4pyNrZOxMOoKZSrGv2bn6Twa1A38jaILXnZBurJF7Kr5&_nc_zt=23&_nc_ht=scontent-bom2-4.xx&_nc_gid=QEqWSGsdxIczri-hwjueRQ&oh=00_AfF8JE5x2Iqb6VnPCKc9mmOTytoErRzCvQu7zJWkjvRCHw&oe=680D12DB",
+                description: "Crunchy rings with a burst of tangy masala flavor",
+                image:
+                  "https://scontent-bom2-4.xx.fbcdn.net/v/t39.30808-6/468422498_18049262201502000_6926184055011270435_n.jpg?stp=dst-jpg_s1080x2048_tt6&_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_ohc=L5E4D1K_OaIQ7kNvwGcMo4D&_nc_oc=AdltoQKX9sAPK9zYGTq_oCQ2ZIqu9eIjWebgxOigIVdF4pyNrZOxMOoKZSrGv2bn6Twa1A38jaILXnZBurJF7Kr5&_nc_zt=23&_nc_ht=scontent-bom2-4.xx&_nc_gid=QEqWSGsdxIczri-hwjueRQ&oh=00_AfF8JE5x2Iqb6VnPCKc9mmOTytoErRzCvQu7zJWkjvRCHw&oe=680D12DB",
                 price: "₹10",
               },
               {
                 name: "Yummfeast Pasta",
                 description: "Crispy pasta snacks with Italian herbs seasoning",
-                image: "https://scontent-bom2-4.xx.fbcdn.net/v/t51.75761-15/490510046_18065287943502000_4855848620494398094_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_ohc=iYeL2r3fHwMQ7kNvwEqQ1Gb&_nc_oc=AdlsuKtJP7t3DYXLqjo8-y8POr-UI9yrkOMf2cbhtzjbDD22FxYtmw3mY3r9PQt4IKxebmx5612w56_pT-gWlPzZ&_nc_zt=23&_nc_ht=scontent-bom2-4.xx&_nc_gid=5PsMj8sgbIbnD5jWjHfPYg&oh=00_AfHr8zX1eCj7xQZrK4lwi7Yv_lWzxYYh-B1tXb9cPjuQZA&oe=680D1579",
+                image:
+                  "https://scontent-bom2-4.xx.fbcdn.net/v/t51.75761-15/490510046_18065287943502000_4855848620494398094_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_ohc=iYeL2r3fHwMQ7kNvwEqQ1Gb&_nc_oc=AdlsuKtJP7t3DYXLqjo8-y8POr-UI9yrkOMf2cbhtzjbDD22FxYtmw3mY3r9PQt4IKxebmx5612w56_pT-gWlPzZ&_nc_zt=23&_nc_ht=scontent-bom2-4.xx&_nc_gid=5PsMj8sgbIbnD5jWjHfPYg&oh=00_AfHr8zX1eCj7xQZrK4lwi7Yv_lWzxYYh-B1tXb9cPjuQZA&oe=680D1579",
                 price: "₹15",
               },
               {
                 name: "Yummfeast All-in-One",
-                description:
-                  "A delightful mix of various namkeen for the perfect snack time",
-                image: "https://scontent-bom1-2.xx.fbcdn.net/v/t51.75761-15/491468617_18065125247502000_1149868952402854465_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=kgaL_GKWRoMQ7kNvwFg_GOo&_nc_oc=Adm_Vgu1FK_aJE65mzEE0Jr3iwENkfijb2wCdwYoFzWVANO8FTEjIClX5q2-ZDto3w4p0wUifZz2anY75Hio24iR&_nc_zt=23&_nc_ht=scontent-bom1-2.xx&_nc_gid=riWHqGIbEyfis2eXlW8CAQ&oh=00_AfG5QVx3140ImkLLhDajGX8KKnQG0x9GwdnlAttlx9G4QA&oe=680D2DAB",
+                description: "A delightful mix of various namkeen for the perfect snack time",
+                image:
+                  "https://scontent-bom1-2.xx.fbcdn.net/v/t51.75761-15/491468617_18065125247502000_1149868952402854465_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=kgaL_GKWRoMQ7kNvwFg_GOo&_nc_oc=Adm_Vgu1FK_aJE65mzEE0Jr3iwENkfijb2wCdwYoFzWVANO8FTEjIClX5q2-ZDto3w4p0wUifZz2anY75Hio24iR&_nc_zt=23&_nc_ht=scontent-bom1-2.xx&_nc_gid=riWHqGIbEyfis2eXlW8CAQ&oh=00_AfG5QVx3140ImkLLhDajGX8KKnQG0x9GwdnlAttlx9G4QA&oe=680D2DAB",
                 price: "₹20",
               },
             ].map((product, index) => (
@@ -130,19 +158,11 @@ export default function HomePage({ navigateTo }: HomePageProps) {
                     />
                   </div>
                   <CardContent className="p-6">
-                    <h3 className="font-semibold text-xl mb-2">
-                      {product.name}
-                    </h3>
-                    <p className="text-muted-foreground mb-4">
-                      {product.description}
-                    </p>
+                    <h3 className="font-semibold text-xl mb-2">{product.name}</h3>
+                    <p className="text-muted-foreground mb-4">{product.description}</p>
                     <div className="flex justify-between items-center">
                       <span className="font-bold text-lg">{product.price}</span>
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={() => navigateTo("product")}
-                      >
+                      <Button variant="outline" size="sm" onClick={() => navigateTo("product")}>
                         View Details
                       </Button>
                     </div>
@@ -166,8 +186,7 @@ export default function HomePage({ navigateTo }: HomePageProps) {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Why Choose Yummfeast</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              We pride ourselves on delivering exceptional quality and taste in
-              every pack of our snacks.
+              We pride ourselves on delivering exceptional quality and taste in every pack of our snacks.
             </p>
           </div>
 
@@ -175,8 +194,7 @@ export default function HomePage({ navigateTo }: HomePageProps) {
             {[
               {
                 title: "Premium Quality",
-                description:
-                  "All our snacks are made with the finest ingredients for authentic taste and crunch.",
+                description: "All our snacks are made with the finest ingredients for authentic taste and crunch.",
               },
               {
                 title: "Hygienic Processing",
@@ -185,8 +203,7 @@ export default function HomePage({ navigateTo }: HomePageProps) {
               },
               {
                 title: "Value for Money",
-                description:
-                  "We offer generous portions at affordable prices so you get more joy in every pack.",
+                description: "We offer generous portions at affordable prices so you get more joy in every pack.",
               },
             ].map((feature, index) => (
               <motion.div
@@ -198,9 +215,7 @@ export default function HomePage({ navigateTo }: HomePageProps) {
                 className="bg-white p-8 rounded-lg shadow-sm"
               >
                 <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mb-6">
-                  <span className="text-red-600 font-bold text-xl">
-                    {index + 1}
-                  </span>
+                  <span className="text-red-600 font-bold text-xl">{index + 1}</span>
                 </div>
                 <h3 className="font-semibold text-xl mb-3">{feature.title}</h3>
                 <p className="text-muted-foreground">{feature.description}</p>
@@ -216,8 +231,7 @@ export default function HomePage({ navigateTo }: HomePageProps) {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">What Our Customers Say</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Don't just take our word for it. Here's what our satisfied
-              customers have to say.
+              Don't just take our word for it. Here's what our satisfied customers have to say.
             </p>
           </div>
 
@@ -248,21 +262,14 @@ export default function HomePage({ navigateTo }: HomePageProps) {
                     <div className="flex justify-center mb-4">
                       <div className="flex">
                         {[1, 2, 3, 4, 5].map((star) => (
-                          <Star
-                            key={star}
-                            className="w-5 h-5 fill-red-500 text-red-500"
-                          />
+                          <Star key={star} className="w-5 h-5 fill-red-500 text-red-500" />
                         ))}
                       </div>
                     </div>
-                    <blockquote className="text-xl italic mb-6">
-                      "{testimonial.quote}"
-                    </blockquote>
+                    <blockquote className="text-xl italic mb-6">"{testimonial.quote}"</blockquote>
                     <div>
                       <p className="font-semibold">{testimonial.name}</p>
-                      <p className="text-sm text-muted-foreground">
-                        {testimonial.role}
-                      </p>
+                      <p className="text-sm text-muted-foreground">{testimonial.role}</p>
                     </div>
                   </div>
                 </CarouselItem>
@@ -273,11 +280,7 @@ export default function HomePage({ navigateTo }: HomePageProps) {
           </Carousel>
 
           <div className="text-center mt-12">
-            <Button
-              variant="outline"
-              size="lg"
-              onClick={() => navigateTo("testimonial")}
-            >
+            <Button variant="outline" size="lg" onClick={() => navigateTo("testimonial")}>
               Read More Testimonials
             </Button>
           </div>
@@ -306,5 +309,5 @@ export default function HomePage({ navigateTo }: HomePageProps) {
         </div>
       </section> */}
     </div>
-  );
+  )
 }
