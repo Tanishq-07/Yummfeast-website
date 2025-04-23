@@ -643,7 +643,7 @@ const ScrollNavigator = () => {
 
   return (
     <motion.div
-      className="fixed right-6 top-1/2 transform -translate-y-1/2 z-50 flex flex-col items-center gap-4"
+      className="hidden md:block fixed right-6 top-1/2 transform -translate-y-1/2 z-50 flex flex-col items-center gap-4"
       initial={{ opacity: 0, x: 50 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.5, delay: 1 }}
@@ -841,29 +841,29 @@ export default function HomePage({ navigateTo }: HomePageProps) {
 
         {/* Animated chips */}
         <HoveringChip
-          src="/images/chip4 (1).png"
+          src="/images/chip3 (1).png"
           alt="Pasta Packet"
-          className="w-32 md:w-48 lg:w-56 left-[5%] top-[15%]"
+          className="w-32 md:w-48 left-[5%] top-[10%] md:w-56 left-[5%] top-[15%]"
           rotateAmount={15}
         />
         <HoveringChip
-          src="/images/chip3 (1).png"
+          src="/images/chip4 (1).png"
           alt="Rings Packet"
-          className="w-32 md:w-48 lg:w-56 right-[5%] top-[20%]"
+          className="hidden md:block w-32 md:w-48 md:w-56 right-[5%] top-[20%]"
           delay={1.5}
           rotateAmount={-15}
         />
         <HoveringChip
-          src="/images/chip4 (1).png"
+          src="/images/chip3 (1).png"
           alt="Pasta Packet"
-          className="w-24 md:w-32 lg:w-40 left-[20%] bottom-[15%]"
+          className="hidden md:block w-24 md:w-32 lg:w-40 left-[20%] bottom-[15%]"
           delay={0.8}
           rotateAmount={10}
         />
         <HoveringChip
-          src="/images/chip3 (1).png"
+          src="/images/chip4 (1).png"
           alt="Rings Packet"
-          className="w-24 md:w-32 lg:w-40 right-[20%] bottom-[20%]"
+          className="w-32 md:w-32 right-[5%] bottom-[7%] lg:w-40 right-[20%] bottom-[20%]"
           delay={2.2}
           rotateAmount={-10}
         />
@@ -1378,9 +1378,9 @@ export default function HomePage({ navigateTo }: HomePageProps) {
 
         {/* Animated floating chips */}
         <motion.div
-          className="absolute w-32 h-32 left-[10%] top-[20%]"
+          className="absolute w-24 w-24 top-[0%] md:w-32 h-32 left-[10%] top-[20%]"
           animate={{
-            y: [-20, 20, -20],
+            y: [-5, 5, -5],
             rotate: [0, 10, -10, 0],
           }}
           transition={{
@@ -1390,16 +1390,16 @@ export default function HomePage({ navigateTo }: HomePageProps) {
           }}
         >
           <img
-            src="/images/chip4 (1).png"
+            src="/images/chip3 (1).png"
             alt="Floating chip"
             className="w-full h-full object-contain drop-shadow-lg"
           />
         </motion.div>
 
         <motion.div
-          className="absolute w-24 h-24 right-[15%] bottom-[20%]"
+          className="absolute w-24 h-24 right-[5%] bottom-[10%] md:right-[15%] bottom-[20%]"
           animate={{
-            y: [20, -20, 20],
+            y: [5, -5, 5],
             rotate: [0, -15, 15, 0],
           }}
           transition={{
@@ -1410,13 +1410,13 @@ export default function HomePage({ navigateTo }: HomePageProps) {
           }}
         >
           <img
-            src="/images/chip3 (1).png"
+            src="/images/chip4 (1).png"
             alt="Floating chip"
             className="w-full h-full object-contain drop-shadow-lg"
           />
         </motion.div>
 
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="container mx-auto px-4 mt-8 relative z-10">
           <motion.div
             className="max-w-3xl mx-auto text-center text-white"
             initial={{ opacity: 0, y: 30 }}
