@@ -863,7 +863,7 @@ export default function HomePage({ navigateTo }: HomePageProps) {
         <HoveringChip
           src="/images/chip4 (1).png"
           alt="Rings Packet"
-          className="w-32 md:w-32 right-[5%] bottom-[7%] lg:w-40 right-[20%] bottom-[20%]"
+          className="w-32 right-[5%] bottom-[7%] md:w-40 md:right-[15%] md:bottom-[20%]"
           delay={2.2}
           rotateAmount={-10}
         />
