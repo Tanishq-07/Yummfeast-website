@@ -12,7 +12,7 @@ export default function TestimonialPage() {
       id: 1,
       name: "Rahul Sharma",
       role: "Verified Customer",
-      image: "/customer1.png",
+      image: "https://media.istockphoto.com/id/1501770003/photo/happy-handsome-young-indian-man-head-shot-front-portrait.jpg?s=612x612&w=0&k=20&c=P2toTbaknymA7vf28IQNa-3xrlUjPXLFqvN2Zra8_nw=",
       quote:
         "Yummfeast Rings are my kids' favorite snack. The quality is outstanding and the taste is unmatched. We've been loyal customers for years and have never been disappointed. The crunchiness and flavor are perfect!",
     },
@@ -20,7 +20,7 @@ export default function TestimonialPage() {
       id: 2,
       name: "Priya Patel",
       role: "Verified Customer",
-      image: "/customer2.png",
+      image: "https://media.istockphoto.com/id/2149706485/photo/indian-or-latin-confident-middle-age-male-entrepreneur-businessman-holding-mobile-cell-phone.jpg?s=612x612&w=0&k=20&c=SZNcl4wlrMF9GPwyPOxI3H-pMUDYGsiJ5FCNco3MHMk=",
       quote:
         "I love the Pasta snacks from Yummfeast. They're perfectly seasoned and always fresh. My go-to evening snack with chai! The packaging keeps them fresh for a long time, and the price is very reasonable for the quality.",
     },
@@ -28,7 +28,7 @@ export default function TestimonialPage() {
       id: 3,
       name: "Amit Verma",
       role: "Verified Customer",
-      image: "/customer3.png",
+      image: "https://media.istockphoto.com/id/1408199912/photo/close-up-image-of-indian-man-outdoors-on-apartment-balcony-posing-in-front-of-pest-control.jpg?s=612x612&w=0&k=20&c=UDoZDF-F6V9wSljTp0ur3eQFBnXI4F7GW4xR5167N60=",
       quote:
         "The All-in-One mix is perfect for parties. Everyone loves the variety and the authentic flavors. Will definitely keep ordering! It's become a staple at all our family gatherings and everyone always asks where we got it from.",
     },
@@ -36,7 +36,7 @@ export default function TestimonialPage() {
       id: 4,
       name: "Neha Gupta",
       role: "Verified Customer",
-      image: "/customer4.png",
+      image: "https://media.istockphoto.com/id/1309955330/photo/businessman-talking-on-mobile-phone.jpg?s=612x612&w=0&k=20&c=lKAuvJFF1wN8jUM2STmrnLvQzcYFUpZeHXBBQsFyq3E=",
       quote:
         "Yummfeast snacks have made a significant difference in my snacking habits. They're tasty, well-packaged, and satisfy my cravings without feeling too heavy. I've recommended them to all my friends and family.",
     },
@@ -44,7 +44,7 @@ export default function TestimonialPage() {
       id: 5,
       name: "Vikram Singh",
       role: "Verified Customer",
-      image: "/customer5.png",
+      image: "https://media.istockphoto.com/id/1406197730/photo/portrait-of-a-young-handsome-indian-man.jpg?s=612x612&w=0&k=20&c=CncNUTbw6mzGsbojks2Vt0kV85N_pQaI3zaSkBQJFTc=",
       quote:
         "The customer service is as impressive as the products themselves. When I had an issue with my bulk order, the team went above and beyond to make it right. That kind of service is rare these days.",
     },
@@ -52,7 +52,7 @@ export default function TestimonialPage() {
       id: 6,
       name: "Ananya Desai",
       role: "Verified Customer",
-      image: "/customer6.png",
+      image: "https://media.istockphoto.com/id/1473470359/photo/senior-man-on-wheelchair-at-park-and-shownig-thumb-up.jpg?s=612x612&w=0&k=20&c=W6JlOuCAQE5rS2AMs7yWc3yKzUWJNx4_Rv0GWme2rn4=",
       quote:
         "I've tried many similar snacks from other brands, but none compare to the quality and taste I get from Yummfeast. Their Aloo Bhujia is the best I've ever had - perfectly spiced and always fresh.",
     },

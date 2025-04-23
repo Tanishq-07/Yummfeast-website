@@ -13,7 +13,7 @@ export default function BlogsPage() {
       excerpt: "Discover the journey of innovation and craftsmanship that goes into creating your favorite snacks.",
       date: "April 15, 2023",
       author: "Rajesh Kumar",
-      image: "/blog-image1.png",
+      image: "https://scontent-bom2-2.xx.fbcdn.net/v/t39.30808-6/481055033_1045649254260705_9117953247510428793_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_ohc=pryiB5BnUQcQ7kNvwFb5dH7&_nc_oc=AdmkXdabI2L_Ksrx5ciYWqmYBzakHB5GBqV9kUkN_aIXaiGUuQds1tpQsfd-VpA2q0TAyq1QpwWXEDATfs0IFzEY&_nc_zt=23&_nc_ht=scontent-bom2-2.xx&_nc_gid=iPh2e94TX5mH55XYhZciaQ&oh=00_AfHSdSOswxRGnewZD1gutRUZtpyf4rDeIzBzcri9wIrfUQ&oe=680DAD40",
       category: "Product",
     },
     {
@@ -22,7 +22,7 @@ export default function BlogsPage() {
       excerpt: "Learn about our initiatives to reduce environmental impact and create sustainable snacks.",
       date: "March 22, 2023",
       author: "Sunita Sharma",
-      image: "/blog-image2.png",
+      image: "https://scontent-bom2-4.xx.fbcdn.net/v/t39.30808-6/480712951_1039552761537021_4915098758221941784_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_ohc=XIC2QC4NJLYQ7kNvwHNdwNy&_nc_oc=AdlGPLtux-kjKcKzXNTzuCeinrrH0aAo8Sv7EuwrdnZ4Gn_h74H-T2UEmpUa3Kv5FDYArvpsBgjJXaDl3kreYS3d&_nc_zt=23&_nc_ht=scontent-bom2-4.xx&_nc_gid=GFXBsppUHbQybU5VR_6zPw&oh=00_AfHfunKUKekDKaxEQMhMxoBYu7XP1JWjsh0QGk4r5x-NbA&oe=680DA083",
       category: "Company",
     },
     {
@@ -31,7 +31,7 @@ export default function BlogsPage() {
       excerpt: "Read the inspiring story of how our products helped a small retailer grow their business.",
       date: "February 10, 2023",
       author: "Vikram Singh",
-      image: "/blog-image3.png",
+      image: "https://scontent-bom2-1.xx.fbcdn.net/v/t39.30808-6/356712378_830736701766404_8592203015337844435_n.png?_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_ohc=ANmzWSTYHW8Q7kNvwHC_ERv&_nc_oc=Adk6YITZWgkJM4HszF3SlqU_uWbojC2GaH_jDNEu-kkj80vUGYa9eangCJqAG47aOTSbY08LBPnzjdcrZU5WuryQ&_nc_zt=23&_nc_ht=scontent-bom2-1.xx&_nc_gid=cJWHen5MlUxYnlENKPOLWA&oh=00_AfEPHMod-OPavk4Dyohz9HMNwP_m-4Uwtkhj3b6OMEEHgA&oe=680D7E90",
       category: "Case Study",
     },
     {
@@ -40,7 +40,7 @@ export default function BlogsPage() {
       excerpt: "Our experts analyze the emerging trends that will shape the snack industry in the coming year.",
       date: "January 5, 2023",
       author: "Priya Patel",
-      image: "/blog-image4.png",
+      image: "https://scontent-bom2-2.xx.fbcdn.net/v/t39.30808-6/476346615_1178343710339033_8404242125842909397_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=833d8c&_nc_ohc=KFbEuaqe2q8Q7kNvwGYf9YD&_nc_oc=Adn4q6QiLqexCb6ikH45u84OkgtajoEvOJmAPvonPDhDBrewsWCImjjrHATEi9gW4_5rPDOoWVXyJziKXEeVhrwN&_nc_zt=23&_nc_ht=scontent-bom2-2.xx&_nc_gid=oWI6vZFRJ0ijMlVzlSoaYg&oh=00_AfGBJx6ShAIILIf8Mo38Tx9bDA6Dg4FJKMe9CiJCF-WArg&oe=680D8368",
       category: "Industry",
     },
     {
@@ -49,7 +49,7 @@ export default function BlogsPage() {
       excerpt: "Get an exclusive look at the development process of our newest product innovation.",
       date: "December 12, 2022",
       author: "Amit Verma",
-      image: "/blog-image5.png",
+      image: "https://scontent-bom2-4.xx.fbcdn.net/v/t39.30808-6/476153232_1178343723672365_1646294851847929293_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=833d8c&_nc_ohc=dNiavRo919oQ7kNvwHko90r&_nc_oc=AdkMMH7_NgGqO4aYDHVX2mD-nAgM3TfFzbbRCgNT3FEB0PZ6tIy5KHpYcmesvgfGLW9l_wiUwYOBjJ1S2N44og-4&_nc_zt=23&_nc_ht=scontent-bom2-4.xx&_nc_gid=w4-c_ddCy-kdOztEbsftVw&oh=00_AfFJ_mYJbz5UOM5kIhPnDbFPtM-KPNy4tkfVxbiU11_jYw&oe=680D88FF",
       category: "Product",
     },
     {
@@ -58,7 +58,7 @@ export default function BlogsPage() {
       excerpt: "Learn about the dedicated individuals who ensure every Yummfeast product meets our high standards.",
       date: "November 28, 2022",
       author: "Neha Gupta",
-      image: "/blog-image6.png",
+      image: "https://scontent-bom2-4.xx.fbcdn.net/v/t39.30808-6/476608050_1178327493673988_8025226139070768140_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_ohc=1Cv7v1DLJr8Q7kNvwEK946Y&_nc_oc=Adn91CX0Qwe1PAZTxN8a5AJxHA0WvxUyArTMWlRMrIuCtLV-Mm3Yafx5P-SrQmESfaYjpYJ74PYR83FcgoLFS6Y2&_nc_zt=23&_nc_ht=scontent-bom2-4.xx&_nc_gid=2pAN856TGKsjBXvI_7fAEg&oh=00_AfEX1_SpQ-19ZFz4xj1GW3w48pIlwjd0W3i_jjW2vnKBpg&oe=680D9215",
       category: "Company",
     },
   ]
