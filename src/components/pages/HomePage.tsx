@@ -1378,7 +1378,7 @@ export default function HomePage({ navigateTo }: HomePageProps) {
 
         {/* Animated floating chips */}
         <motion.div
-          className="absolute w-24 w-24 top-[0%] md:w-32 h-32 left-[10%] top-[20%]"
+          className="absolute w-24 top-[0%] left-[5%] md:w-32 h-32 md:left-[10%] md:top-[20%]"
           animate={{
             y: [-5, 5, -5],
             rotate: [0, 10, -10, 0],
