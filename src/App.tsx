@@ -17,11 +17,13 @@ import QueryPage from "./components/pages/QueryPage"
 import BlogsPage from "./components/pages/BlogsPage"
 import CareerPage from "./components/pages/CareerPage"
 import ContactPage from "./components/pages/ContactPage"
+import { AccessRestriction } from "./components/access-restriction"
 
 // Main App Component
 export default function App() {
   const [currentPage, setCurrentPage] = useState("home")
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [accessRestricted, setAccessRestricted] = useState(true)
 
   // Function to handle page navigation
   const navigateTo = (page: string) => {
@@ -78,6 +80,13 @@ export default function App() {
       </AnimatePresence>
 
       <Footer navigateTo={navigateTo} />
+
+      {accessRestricted && (
+        <AccessRestriction 
+          message="Ask the developers to increase to Grant Access"
+          contactEmail="payments@yourcompany.com"
+        />
+      )}
     </div>
   )
 }
