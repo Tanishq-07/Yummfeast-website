@@ -81,12 +81,12 @@ export default function App() {
 
       <Footer navigateTo={navigateTo} />
 
-      {accessRestricted && (
+      {/* {accessRestricted && (
         <AccessRestriction 
           message="Ask the developers to increase to Grant Access"
           contactEmail="payments@yourcompany.com"
         />
-      )}
+      )} */}
     </div>
   )
 }
