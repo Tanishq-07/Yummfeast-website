@@ -800,143 +800,97 @@ export default function HomePage({ navigateTo }: HomePageProps) {
       </div>
 
       {/* Hero Section */}
-      <section ref={heroRef} className="relative min-h-[90vh] flex items-center overflow-hidden">
-        <FloatingParticles />
+      <section ref={heroRef} className="relative min-h-[90vh] bg-red-600 flex place-items-center justify-center overflow-hidden">
 
-        {/* Parallax background */}
-        <motion.div
-          className="absolute inset-0 z-0"
-          style={{
-            scale: heroScale,
-            opacity: heroOpacity,
-          }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-b from-red-600 to-red-700" />
+        {/* Background circles */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div className="absolute w-[1600px] h-[1600px] rounded-full border-[88px] border-red-400 opacity-40"></div>
+          <div className="absolute w-[1100px] h-[1100px] rounded-full border-[80px] border-red-400 opacity-40"></div>
+          <div className="absolute w-[600px] h-[600px] rounded-full border-[56px] border-red-400 opacity-40"></div>
+        </div>
 
-          {/* Desktop image */}
-          <img
-            src="/images/hero.png"
-            alt=""
-            className="hidden sm:block absolute top-0 left-0 w-full h-full object-cover z-0 mix-blend-overlay opacity-60"
-          />
+        {/* Hero content container */}
+        <div className="container mx-auto px-4 relative z-10 flex flex-col md:flex-row items-center">
 
-          {/* Mobile image */}
-          <img
-            src="/images/hero-mobile-1.svg"
-            alt=""
-            className="block sm:hidden absolute top-0 left-0 w-full h-full object-cover z-0 mix-blend-overlay opacity-60"
-          />
-        </motion.div>
-
-        {/* Animated background shapes */}
-        <motion.div
-          className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-gradient-to-r from-yellow-500/10 to-red-500/10 blur-[100px]"
-          style={{ y: bgParallax1 }}
-        />
-
-        <motion.div
-          className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-gradient-to-r from-red-500/10 to-yellow-500/10 blur-[80px]"
-          style={{ y: bgParallax2 }}
-        />
-
-        {/* Animated chips */}
-        <HoveringChip
-          src="/images/chip3 (1).png"
-          alt="Pasta Packet"
-          className="w-32 md:w-48 left-[5%] top-[10%] md:w-56 left-[5%] top-[15%]"
-          rotateAmount={15}
-        />
-        <HoveringChip
-          src="/images/chip4 (1).png"
-          alt="Rings Packet"
-          className="hidden md:block w-32 md:w-48 md:w-56 right-[5%] top-[20%]"
-          delay={1.5}
-          rotateAmount={-15}
-        />
-        <HoveringChip
-          src="/images/chip3 (1).png"
-          alt="Pasta Packet"
-          className="hidden md:block w-24 md:w-32 lg:w-40 left-[20%] bottom-[15%]"
-          delay={0.8}
-          rotateAmount={10}
-        />
-        <HoveringChip
-          src="/images/chip4 (1).png"
-          alt="Rings Packet"
-          className="w-32 right-[5%] bottom-[7%] md:w-40 md:right-[15%] md:bottom-[20%]"
-          delay={2.2}
-          rotateAmount={-10}
-        />
-
-        <div className="container mx-auto px-4 relative z-10">
-          <motion.div className="max-w-xl mx-auto text-center text-white" style={{ y: heroTextY }}>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="mb-4"
-            >
-              <Sparkles className="inline-block w-8 h-8 text-yellow-300 mb-2" />
-            </motion.div>
-
-            <AnimatedText delay={0.4} type="scale">
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4 drop-shadow-lg">
-                #ab tummy bole <span className="text-yellow-300">yummy</span>
+          {/* Left side - Text content */}
+          <div className="text-white md:w-1/3 mb-10 md:mb-0">
+            <AnimatedText delay={0.1} type="slide" className="mb-4">
+              <h1 className="text-4xl font-bold leading-tight">
+                EAT OUR GRILLED
+                <br />
+                POTATO CHIPS
               </h1>
             </AnimatedText>
-
-            <AnimatedText delay={0.6} type="slide">
-              <p className="text-xl text-white/90 mb-8 drop-shadow-md">
-                Snack with a Smile: Bringing Joy through Delicious Chips, Fryums, and Flavorful Namkeens!
+            <AnimatedText delay={0.3} type="fade" className="mb-8">
+              <p className="text-md text-white/90 max-w-md">
+                Share a bite of #Pizzaheart with your friends to strengthen your friendship bond.
               </p>
             </AnimatedText>
-
-            <AnimatedText delay={0.8}>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button
-                  size="lg"
-                  className="bg-white text-red-600 hover:bg-white/90 font-bold shadow-lg border-2 border-white group relative overflow-hidden"
-                  onClick={() => navigateTo("product")}
-                >
-                  <span className="relative z-10">Explore Products</span>
-                  <motion.span
-                    className="absolute inset-0 bg-yellow-300"
-                    initial={{ y: "100%" }}
-                    whileHover={{ y: 0 }}
-                    transition={{ duration: 0.3 }}
-                  />
+            <AnimatedText delay={0.5} type="fade" className="flex items-center gap-12">
+              <div className="flex items-center bg-white/20 backdrop-blur-sm rounded-full px-6 py-1">
+                <Button variant="ghost" size="icon" className="text-white hover:bg-white/10 h-8 w-8">
+                  <span className="sr-only">Decrease</span>
+                  <span className="text-xl">-</span>
                 </Button>
-                <Button
-                  size="lg"
-                  className="bg-transparent text-white hover:bg-white/10 font-bold shadow-lg border-2 border-white relative overflow-hidden group"
-                  onClick={() => navigateTo("about")}
-                >
-                  <span className="relative z-10">Learn More</span>
-                  <motion.span
-                    className="absolute inset-0 bg-red-700"
-                    initial={{ scale: 0, opacity: 0 }}
-                    whileHover={{ scale: 1, opacity: 1 }}
-                    transition={{ duration: 0.4 }}
-                  />
+                <span className="mx-2 text-white font-medium">10</span>
+                <Button variant="ghost" size="icon" className="text-white hover:bg-white/10 h-8 w-8">
+                  <span className="sr-only">Increase</span>
+                  <span className="text-xl">+</span>
                 </Button>
               </div>
+              <Button className="bg-white rounded-full text-red-600 hover:bg-white/90 px-12" onClick={() => navigateTo("product")}>
+                Buy Now
+              </Button>
             </AnimatedText>
-          </motion.div>
+          </div>
+
+          {/* Center - Selected chip packet */}
+          <div className="md:w-1/3 flex justify-center items-center relative">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              className="w-[280px] md:w-[350px] relative z-20"
+            >
+              <img
+                src="/images/chips1.png"
+                alt="Pizza Heart Chips"
+                className="w-full h-auto drop-shadow-2xl"
+              />
+            </motion.div>
+          </div>
+
+          {/* Right side - Chips slider */}
+          <div className="absolute right-4 md:right-10 top-1/2 transform -translate-y-1/2 flex flex-col gap-6 z-30">
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="chips-slider flex flex-col gap-6"
+            >
+              {[1, 2, 3, 4].map((index) => (
+                <motion.div
+                  key={index}
+                  whileHover={{ scale: 1.1 }}
+                  className={`w-16 h-16 md:w-20 md:h-20 rounded-md overflow-hidden cursor-pointer ${index === 1 ? "ring-2 ring-yellow-300" : ""}`}
+                  onClick={() => console.log(`Selected chip ${index}`)}
+                >
+                  <img
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pizza-chips-8gJNsdJ0hVZZal0mW0OWTEkXTdZSbC.png"
+                    alt={`Chip variant ${index}`}
+                    className="w-full h-full object-cover"
+                  />
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
         </div>
 
-        <ScrollIndicator />
+        {/* Floating particles for visual effect */}
+        <FloatingParticles />
 
-        <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
-          <svg viewBox="0 0 500 150" preserveAspectRatio="none" className="w-full h-[80px]">
-            <motion.path
-              d="M0.00,49.98 C150.00,150.00 350.00,-50.00 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
-              className="fill-white"
-              initial={{ pathLength: 0 }}
-              animate={{ pathLength: 1 }}
-              transition={{ duration: 1.5, delay: 0.5 }}
-            />
-          </svg>
-        </div>
+        {/* Scroll indicator */}
+        <ScrollIndicator />s
       </section>
 
       {/* Featured Products */}
