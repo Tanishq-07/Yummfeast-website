@@ -1,9 +1,16 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useEffect, useRef, useState } from "react"
-import { motion, useScroll, useTransform, AnimatePresence, useMotionValue, useSpring } from "framer-motion"
+import { useEffect, useRef, useState } from "react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  AnimatePresence,
+  useMotionValue,
+  useSpring,
+} from "framer-motion";
 import {
   ChevronDown,
   Sparkles,
@@ -16,51 +23,57 @@ import {
   Flame,
   PartyPopper,
   Utensils,
-} from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
-import { Badge } from "@/components/ui/badge"
-import { cn } from "@/lib/utils"
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils"; // Adjust this import to your button component
 
 // Define types for our components
 interface Product {
-  name: string
-  description: string
-  image: string
-  price: string
+  name: string;
+  description: string;
+  image: string;
+  price: string;
 }
 
 interface Feature {
-  title: string
-  description: string
+  title: string;
+  description: string;
 }
 
 interface Testimonial {
-  name: string
-  role: string
-  quote: string
-  avatar: string
+  name: string;
+  role: string;
+  quote: string;
+  avatar: string;
 }
 
 // Animated cursor glow effect
 const CursorGlow = () => {
-  const cursorX = useMotionValue(0)
-  const cursorY = useMotionValue(0)
+  const cursorX = useMotionValue(0);
+  const cursorY = useMotionValue(0);
 
-  const springConfig = { damping: 25, stiffness: 700 }
-  const cursorXSpring = useSpring(cursorX, springConfig)
-  const cursorYSpring = useSpring(cursorY, springConfig)
+  const springConfig = { damping: 25, stiffness: 700 };
+  const cursorXSpring = useSpring(cursorX, springConfig);
+  const cursorYSpring = useSpring(cursorY, springConfig);
 
   useEffect(() => {
     const moveCursor = (e: MouseEvent) => {
-      cursorX.set(e.clientX)
-      cursorY.set(e.clientY)
-    }
+      cursorX.set(e.clientX);
+      cursorY.set(e.clientY);
+    };
 
-    window.addEventListener("mousemove", moveCursor)
-    return () => window.removeEventListener("mousemove", moveCursor)
-  }, [cursorX, cursorY])
+    window.addEventListener("mousemove", moveCursor);
+    return () => window.removeEventListener("mousemove", moveCursor);
+  }, [cursorX, cursorY]);
 
   return (
     <motion.div
@@ -72,8 +85,8 @@ const CursorGlow = () => {
         translateY: "-50%",
       }}
     />
-  )
-}
+  );
+};
 
 // Floating particles component with more variety
 const FloatingParticles = () => {
@@ -86,7 +99,7 @@ const FloatingParticles = () => {
     delay: Math.random() * 5,
     opacity: Math.random() * 0.5 + 0.2,
     color: i % 3 === 0 ? "yellow" : i % 3 === 1 ? "red" : "white",
-  }))
+  }));
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -103,8 +116,8 @@ const FloatingParticles = () => {
               particle.color === "yellow"
                 ? "rgba(253, 224, 71, 0.3)"
                 : particle.color === "red"
-                  ? "rgba(239, 68, 68, 0.3)"
-                  : "rgba(255, 255, 255, 0.3)",
+                ? "rgba(239, 68, 68, 0.3)"
+                : "rgba(255, 255, 255, 0.3)",
           }}
           animate={{
             y: [0, -100, 0],
@@ -121,8 +134,8 @@ const FloatingParticles = () => {
         />
       ))}
     </div>
-  )
-}
+  );
+};
 
 // Enhanced hovering chip component with 3D effect and interactive elements
 const HoveringChip = ({
@@ -132,13 +145,13 @@ const HoveringChip = ({
   delay = 0,
   rotateAmount = 10,
 }: {
-  src: string
-  alt: string
-  className: string
-  delay?: number
-  rotateAmount?: number
+  src: string;
+  alt: string;
+  className: string;
+  delay?: number;
+  rotateAmount?: number;
 }) => {
-  const [isHovered, setIsHovered] = useState(false)
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
     <motion.div
@@ -180,7 +193,11 @@ const HoveringChip = ({
         },
       }}
     >
-      <img src={src || "/placeholder.svg"} alt={alt} className="w-full h-full object-contain drop-shadow-lg" />
+      <img
+        src={src || "/placeholder.svg"}
+        alt={alt}
+        className="w-full h-full object-contain drop-shadow-lg"
+      />
 
       {/* Sparkle effect on hover */}
       <AnimatePresence>
@@ -212,8 +229,8 @@ const HoveringChip = ({
         )}
       </AnimatePresence>
     </motion.div>
-  )
-}
+  );
+};
 
 // Animated text reveal component with proper typing
 const AnimatedText = ({
@@ -222,10 +239,10 @@ const AnimatedText = ({
   className = "",
   type = "fade",
 }: {
-  children: React.ReactNode
-  delay?: number
-  className?: string
-  type?: "fade" | "slide" | "scale"
+  children: React.ReactNode;
+  delay?: number;
+  className?: string;
+  type?: "fade" | "slide" | "scale";
 }) => {
   const variants = {
     fade: {
@@ -240,7 +257,7 @@ const AnimatedText = ({
       initial: { opacity: 0, scale: 0.8 },
       animate: { opacity: 1, scale: 1 },
     },
-  }
+  };
 
   return (
     <motion.div
@@ -251,8 +268,8 @@ const AnimatedText = ({
     >
       {children}
     </motion.div>
-  )
-}
+  );
+};
 
 // Scroll indicator component with enhanced animation
 const ScrollIndicator = () => {
@@ -263,7 +280,9 @@ const ScrollIndicator = () => {
       animate={{ opacity: 1 }}
       transition={{ delay: 1.5, duration: 0.5 }}
     >
-      <span className="text-sm mb-2 font-medium tracking-wider">Scroll to explore</span>
+      <span className="text-sm mb-2 font-medium tracking-wider">
+        Scroll to explore
+      </span>
       <motion.div
         animate={{
           y: [0, 10, 0],
@@ -278,8 +297,8 @@ const ScrollIndicator = () => {
         <ChevronDown className="w-6 h-6" />
       </motion.div>
     </motion.div>
-  )
-}
+  );
+};
 
 // Product card with enhanced hover effects and proper typing
 const ProductCard = ({
@@ -287,14 +306,14 @@ const ProductCard = ({
   index,
   navigateTo,
 }: {
-  product: Product
-  index: number
-  navigateTo: (page: string) => void
+  product: Product;
+  index: number;
+  navigateTo: (page: string) => void;
 }) => {
-  const [isHovered, setIsHovered] = useState(false)
+  const [isHovered, setIsHovered] = useState(false);
 
   // Random rotation for the wobble effect
-  const randomRotation = Math.random() * 10 - 5
+  const randomRotation = Math.random() * 10 - 5;
 
   return (
     <motion.div
@@ -310,7 +329,9 @@ const ProductCard = ({
       <Card
         className={cn(
           "overflow-hidden group h-full border-2 transition-all duration-300",
-          isHovered ? "border-red-400 shadow-xl shadow-red-100" : "border-transparent",
+          isHovered
+            ? "border-red-400 shadow-xl shadow-red-100"
+            : "border-transparent"
         )}
       >
         <div className="aspect-square bg-gradient-to-br from-orange-50 to-blue-50 relative overflow-hidden">
@@ -352,7 +373,10 @@ const ProductCard = ({
                 exit={{ opacity: 0, y: 20 }}
                 transition={{ duration: 0.2 }}
               >
-                <motion.div whileHover={{ scale: 1.2, rotate: [0, -5, 5, 0] }} transition={{ duration: 0.3 }}>
+                <motion.div
+                  whileHover={{ scale: 1.2, rotate: [0, -5, 5, 0] }}
+                  transition={{ duration: 0.3 }}
+                >
                   <Button
                     size="icon"
                     variant="secondary"
@@ -362,7 +386,10 @@ const ProductCard = ({
                     <ShoppingBag className="w-4 h-4 text-red-600" />
                   </Button>
                 </motion.div>
-                <motion.div whileHover={{ scale: 1.2, rotate: [0, -5, 5, 0] }} transition={{ duration: 0.3 }}>
+                <motion.div
+                  whileHover={{ scale: 1.2, rotate: [0, -5, 5, 0] }}
+                  transition={{ duration: 0.3 }}
+                >
                   <Button
                     size="icon"
                     variant="secondary"
@@ -414,7 +441,10 @@ const ProductCard = ({
             <div className="flex items-center">
               <div className="flex">
                 {[1, 2, 3, 4, 5].map((star) => (
-                  <Star key={star} className="w-3 h-3 fill-yellow-500 text-yellow-500" />
+                  <Star
+                    key={star}
+                    className="w-3 h-3 fill-yellow-500 text-yellow-500"
+                  />
                 ))}
               </div>
               <span className="text-xs ml-1 text-muted-foreground">(24)</span>
@@ -437,23 +467,23 @@ const ProductCard = ({
         </CardContent>
       </Card>
     </motion.div>
-  )
-}
+  );
+};
 
 // Feature card with enhanced hover effects and proper typing
 const FeatureCard = ({
   feature,
   index,
 }: {
-  feature: Feature
-  index: number
+  feature: Feature;
+  index: number;
 }) => {
-  const [isHovered, setIsHovered] = useState(false)
-  const icons = [Shield, Award, Zap]
-  const IconComponent = icons[index % icons.length]
+  const [isHovered, setIsHovered] = useState(false);
+  const icons = [Shield, Award, Zap];
+  const IconComponent = icons[index % icons.length];
 
   // Random rotation for the wobble effect
-  const randomRotation = Math.random() * 10 - 5
+  const randomRotation = Math.random() * 10 - 5;
 
   return (
     <motion.div
@@ -466,7 +496,9 @@ const FeatureCard = ({
       onHoverEnd={() => setIsHovered(false)}
       className={cn(
         "bg-white p-8 rounded-lg shadow-sm border-2 transition-all duration-300",
-        isHovered ? "border-red-200 shadow-xl shadow-red-50" : "border-transparent",
+        isHovered
+          ? "border-red-200 shadow-xl shadow-red-50"
+          : "border-transparent"
       )}
     >
       <motion.div
@@ -523,62 +555,66 @@ const FeatureCard = ({
         )}
       </AnimatePresence>
     </motion.div>
-  )
-}
+  );
+};
 
 // Animated counter component
 const AnimatedCounter = ({
   value,
   duration = 2,
 }: {
-  value: number
-  duration?: number
+  value: number;
+  duration?: number;
 }) => {
-  const [count, setCount] = useState(0)
-  const countRef = useRef<HTMLSpanElement>(null)
+  const [count, setCount] = useState(0);
+  const countRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    let startTime: number
-    let animationFrame: number
+    let startTime: number;
+    let animationFrame: number;
 
     const updateCount = (timestamp: number) => {
-      if (!startTime) startTime = timestamp
-      const progress = Math.min((timestamp - startTime) / (duration * 1000), 1)
-      const currentCount = Math.floor(progress * value)
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / (duration * 1000), 1);
+      const currentCount = Math.floor(progress * value);
 
-      setCount(currentCount)
+      setCount(currentCount);
 
       if (progress < 1) {
-        animationFrame = requestAnimationFrame(updateCount)
+        animationFrame = requestAnimationFrame(updateCount);
       }
-    }
+    };
 
-    animationFrame = requestAnimationFrame(updateCount)
+    animationFrame = requestAnimationFrame(updateCount);
 
-    return () => cancelAnimationFrame(animationFrame)
-  }, [value, duration])
+    return () => cancelAnimationFrame(animationFrame);
+  }, [value, duration]);
 
-  return <span ref={countRef}>{count}</span>
-}
+  return <span ref={countRef}>{count}</span>;
+};
 
 // Confetti explosion component
 const ConfettiExplosion = ({
   isExploding = false,
 }: {
-  isExploding: boolean
+  isExploding: boolean;
 }) => {
   return (
     <AnimatePresence>
       {isExploding && (
         <>
           {Array.from({ length: 50 }).map((_, i) => {
-            const randomX = (Math.random() - 0.5) * 500
-            const randomY = (Math.random() - 0.5) * 500
-            const randomRotation = Math.random() * 360
-            const randomScale = Math.random() * 0.6 + 0.4
-            const randomColor = ["bg-red-500", "bg-yellow-500", "bg-blue-500", "bg-green-500", "bg-purple-500"][
-              Math.floor(Math.random() * 5)
-            ]
+            const randomX = (Math.random() - 0.5) * 500;
+            const randomY = (Math.random() - 0.5) * 500;
+            const randomRotation = Math.random() * 360;
+            const randomScale = Math.random() * 0.6 + 0.4;
+            const randomColor = [
+              "bg-red-500",
+              "bg-yellow-500",
+              "bg-blue-500",
+              "bg-green-500",
+              "bg-purple-500",
+            ][Math.floor(Math.random() * 5)];
 
             return (
               <motion.div
@@ -604,42 +640,44 @@ const ConfettiExplosion = ({
                   ease: [0.23, 1, 0.32, 1],
                 }}
               />
-            )
+            );
           })}
         </>
       )}
     </AnimatePresence>
-  )
-}
+  );
+};
 
 // Scroll Navigator component
 const ScrollNavigator = () => {
-  const [scrollProgress, setScrollProgress] = useState(0)
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      const totalHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight
-      const progress = window.scrollY / totalHeight
-      setScrollProgress(progress)
-    }
+      const totalHeight =
+        document.documentElement.scrollHeight -
+        document.documentElement.clientHeight;
+      const progress = window.scrollY / totalHeight;
+      setScrollProgress(progress);
+    };
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
-    })
-  }
+    });
+  };
 
   const scrollToBottom = () => {
     window.scrollTo({
       top: document.documentElement.scrollHeight,
       behavior: "smooth",
-    })
-  }
+    });
+  };
 
   return (
     <motion.div
@@ -685,43 +723,53 @@ const ScrollNavigator = () => {
         <ChevronDown className="w-5 h-5" />
       </Button>
     </motion.div>
-  )
-}
+  );
+};
 
 interface HomePageProps {
-  navigateTo: (page: string) => void
+  navigateTo: (page: string) => void;
 }
 
 export default function HomePage({ navigateTo }: HomePageProps) {
-  const [scrollY, setScrollY] = useState(0)
-  const [confetti, setConfetti] = useState(false)
-  const heroRef = useRef<HTMLElement>(null)
+  const [scrollY, setScrollY] = useState(0);
+  const [confetti, setConfetti] = useState(false);
+  const heroRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ["start start", "end start"],
-  })
+  });
+  const [selectedChip, setSelectedChip] = useState(
+    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pizza-chips-8gJNsdJ0hVZZal0mW0OWTEkXTdZSbC.png"
+  );
 
-  const heroScale = useTransform(scrollYProgress, [0, 1], [1, 1.1])
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0])
-  const heroTextY = useTransform(scrollYProgress, [0, 0.8], [0, 100])
+  const chipVariants = [
+    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pizza-chips-8gJNsdJ0hVZZal0mW0OWTEkXTdZSbC.png",
+    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pizza-chips-2.png",
+    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pizza-chips-3.png",
+    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pizza-chips-4.png",
+  ];
+
+  const heroScale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const heroTextY = useTransform(scrollYProgress, [0, 0.8], [0, 100]);
 
   // Parallax effect for background elements
-  const bgParallax1 = useTransform(scrollYProgress, [0, 1], [0, -100])
-  const bgParallax2 = useTransform(scrollYProgress, [0, 1], [0, -50])
+  const bgParallax1 = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const bgParallax2 = useTransform(scrollYProgress, [0, 1], [0, -50]);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrollY(window.scrollY)
-    }
+      setScrollY(window.scrollY);
+    };
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const triggerConfetti = () => {
-    setConfetti(true)
-    setTimeout(() => setConfetti(false), 2000)
-  }
+    setConfetti(true);
+    setTimeout(() => setConfetti(false), 2000);
+  };
 
   const products: Product[] = [
     {
@@ -740,27 +788,31 @@ export default function HomePage({ navigateTo }: HomePageProps) {
     },
     {
       name: "Yummfeast All-in-One",
-      description: "A delightful mix of various namkeen for the perfect snack time",
+      description:
+        "A delightful mix of various namkeen for the perfect snack time",
       image:
         "https://scontent-bom1-2.xx.fbcdn.net/v/t51.75761-15/491468617_18065125247502000_1149868952402854465_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=kgaL_GKWRoMQ7kNvwFg_GOo&_nc_oc=Adm_Vgu1FK_aJE65mzEE0Jr3iwENkfijb2wCdwYoFzWVANO8FTEjIClX5q2-ZDto3w4p0wUifZz2anY75Hio24iR&_nc_zt=23&_nc_ht=scontent-bom1-2.xx&_nc_gid=riWHqGIbEyfis2eXlW8CAQ&oh=00_AfG5QVx3140ImkLLhDajGX8KKnQG0x9GwdnlAttlx9G4QA&oe=680D2DAB",
       price: "₹20",
     },
-  ]
+  ];
 
   const features: Feature[] = [
     {
       title: "Premium Quality",
-      description: "All our snacks are made with the finest ingredients for authentic taste and crunch.",
+      description:
+        "All our snacks are made with the finest ingredients for authentic taste and crunch.",
     },
     {
       title: "Hygienic Processing",
-      description: "Our state-of-the-art facilities ensure the highest standards of hygiene and quality control.",
+      description:
+        "Our state-of-the-art facilities ensure the highest standards of hygiene and quality control.",
     },
     {
       title: "Value for Money",
-      description: "We offer generous portions at affordable prices so you get more joy in every pack.",
+      description:
+        "We offer generous portions at affordable prices so you get more joy in every pack.",
     },
-  ]
+  ];
 
   const testimonials: Testimonial[] = [
     {
@@ -784,7 +836,7 @@ export default function HomePage({ navigateTo }: HomePageProps) {
         "The All-in-One mix is perfect for parties. Everyone loves the variety and the authentic flavors. Will definitely keep ordering!",
       avatar: "/images/avatar3.png",
     },
-  ]
+  ];
 
   return (
     <div className="overflow-x-hidden">
@@ -792,7 +844,7 @@ export default function HomePage({ navigateTo }: HomePageProps) {
       <CursorGlow />
 
       {/* Scroll Navigator */}
-      <ScrollNavigator />
+      {/* <ScrollNavigator /> */}
 
       {/* Confetti container */}
       <div className="fixed inset-0 pointer-events-none z-50 flex items-center justify-center">
@@ -800,8 +852,10 @@ export default function HomePage({ navigateTo }: HomePageProps) {
       </div>
 
       {/* Hero Section */}
-      <section ref={heroRef} className="relative min-h-[90vh] bg-red-600 flex place-items-center justify-center overflow-hidden">
-
+      <section
+        ref={heroRef}
+        className="relative min-h-[90vh] bg-red-600 flex place-items-center justify-center overflow-hidden"
+      >
         {/* Background circles */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="absolute w-[1600px] h-[1600px] rounded-full border-[88px] border-red-400 opacity-40"></div>
@@ -811,7 +865,6 @@ export default function HomePage({ navigateTo }: HomePageProps) {
 
         {/* Hero content container */}
         <div className="container mx-auto px-4 relative z-10 flex flex-col md:flex-row items-center">
-
           {/* Left side - Text content */}
           <div className="text-white md:w-1/3 mb-10 md:mb-0">
             <AnimatedText delay={0.1} type="slide" className="mb-4">
@@ -823,22 +876,38 @@ export default function HomePage({ navigateTo }: HomePageProps) {
             </AnimatedText>
             <AnimatedText delay={0.3} type="fade" className="mb-8">
               <p className="text-md text-white/90 max-w-md">
-                Share a bite of #Pizzaheart with your friends to strengthen your friendship bond.
+                Share a bite of #Pizzaheart with your friends to strengthen your
+                friendship bond.
               </p>
             </AnimatedText>
-            <AnimatedText delay={0.5} type="fade" className="flex items-center gap-12">
+            <AnimatedText
+              delay={0.5}
+              type="fade"
+              className="flex items-center gap-12"
+            >
               <div className="flex items-center bg-white/20 backdrop-blur-sm rounded-full px-6 py-1">
-                <Button variant="ghost" size="icon" className="text-white hover:bg-white/10 h-8 w-8">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="text-white hover:bg-white/10 h-8 w-8"
+                >
                   <span className="sr-only">Decrease</span>
                   <span className="text-xl">-</span>
                 </Button>
                 <span className="mx-2 text-white font-medium">10</span>
-                <Button variant="ghost" size="icon" className="text-white hover:bg-white/10 h-8 w-8">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="text-white hover:bg-white/10 h-8 w-8"
+                >
                   <span className="sr-only">Increase</span>
                   <span className="text-xl">+</span>
                 </Button>
               </div>
-              <Button className="bg-white rounded-full text-red-600 hover:bg-white/90 px-12" onClick={() => navigateTo("product")}>
+              <Button
+                className="bg-white rounded-full text-red-600 hover:bg-white/90 px-12"
+                onClick={() => navigateTo("product")}
+              >
                 Buy Now
               </Button>
             </AnimatedText>
@@ -847,50 +916,124 @@ export default function HomePage({ navigateTo }: HomePageProps) {
           {/* Center - Selected chip packet */}
           <div className="md:w-1/3 flex justify-center items-center relative">
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
-              className="w-[280px] md:w-[350px] relative z-20"
+              initial={{ opacity: 0, scale: 0.8, y: 40 }}
+              animate={{ opacity: 1, scale: 1.4, y: 0 }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+              style={{
+                filter: "drop-shadow(0 12px 30px rgba(255,255,255,0.4))",
+                animation: "float 4s ease-in-out infinite",
+                zIndex: 20,
+                width: "480px",
+                maxWidth: "90vw",
+              }}
             >
               <img
-                src="/images/chips1.png"
-                alt="Pizza Heart Chips"
-                className="w-full h-auto drop-shadow-2xl"
+                src={selectedChip}
+                alt="Selected Chip"
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  transform: "rotateY(0deg)",
+                }}
               />
             </motion.div>
           </div>
 
           {/* Right side - Chips slider */}
-          <div className="absolute right-4 md:right-10 top-1/2 transform -translate-y-1/2 flex flex-col gap-6 z-30">
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="chips-slider flex flex-col gap-6"
-            >
-              {[1, 2, 3, 4].map((index) => (
+          <div
+            style={{
+              position: "absolute",
+              right: "2%",
+              top: "50%",
+              transform: "translateY(-50%)",
+              display: "flex",
+              flexDirection: "column",
+              gap: "1.5rem",
+              perspective: "1000px",
+              transformStyle: "preserve-3d",
+              zIndex: 30,
+            }}
+          >
+            {chipVariants.map((chip, index) => {
+              const angle = (index - 1.5) * 12; // dial arc angle
+              const isSelected = selectedChip === chip;
+
+              return (
                 <motion.div
                   key={index}
-                  whileHover={{ scale: 1.1 }}
-                  className={`w-16 h-16 md:w-20 md:h-20 rounded-md overflow-hidden cursor-pointer ${index === 1 ? "ring-2 ring-yellow-300" : ""}`}
-                  onClick={() => console.log(`Selected chip ${index}`)}
+                  whileHover={{ scale: 1.15, rotate: 0 }}
+                  transition={{ duration: 0.2, ease: "easeOut" }}
+                  onClick={() => setSelectedChip(chip)}
+                  style={{
+                    transform: `rotate(${angle}deg) translateX(50px) rotate(${-angle}deg)`,
+                    transformOrigin: "left center",
+                    transition: "all 0.3s ease-in-out",
+                    width: "80px",
+                    height: "80px",
+                    borderRadius: "12px",
+                    overflow: "hidden",
+                    cursor: "pointer",
+                    boxShadow: isSelected
+                      ? "0 0 20px 4px rgba(255, 255, 0, 0.5)"
+                      : "0 4px 12px rgba(0, 0, 0, 0.2)",
+                    background: "white",
+                  }}
                 >
                   <img
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pizza-chips-8gJNsdJ0hVZZal0mW0OWTEkXTdZSbC.png"
-                    alt={`Chip variant ${index}`}
-                    className="w-full h-full object-cover"
+                    src={chip}
+                    alt={`Chip ${index + 1}`}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                    }}
                   />
                 </motion.div>
-              ))}
-            </motion.div>
+              );
+            })}
           </div>
         </div>
 
         {/* Floating particles for visual effect */}
         <FloatingParticles />
 
-        {/* Scroll indicator */}
-        <ScrollIndicator />s
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2, duration: 0.6 }}
+          style={{
+            position: "absolute",
+            bottom: "30px",
+            left: "50%",
+            transform: "translateX(-50%)",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            color: "white",
+            zIndex: 40,
+          }}
+        >
+          <span
+            style={{
+              fontSize: "14px",
+              marginBottom: "6px",
+              fontWeight: 500,
+              letterSpacing: "1px",
+            }}
+          >
+            Scroll to explore
+          </span>
+          <motion.div
+            animate={{ y: [0, 10, 0], opacity: [0.4, 1, 0.4] }}
+            transition={{
+              duration: 1.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
+            <ChevronDown style={{ width: "24px", height: "24px" }} />
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* Featured Products */}
@@ -930,7 +1073,10 @@ export default function HomePage({ navigateTo }: HomePageProps) {
               transition={{ duration: 0.5 }}
               viewport={{ once: true, margin: "-100px" }}
             >
-              <Badge variant="outline" className="mb-4 px-4 py-1 text-sm bg-red-50 border-red-200">
+              <Badge
+                variant="outline"
+                className="mb-4 px-4 py-1 text-sm bg-red-50 border-red-200"
+              >
                 <motion.span
                   animate={{ scale: [1, 1.2, 1] }}
                   transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
@@ -943,14 +1089,20 @@ export default function HomePage({ navigateTo }: HomePageProps) {
                 Our Delicious Snacks
               </h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                Discover our most popular snacks that customers love. Quality and taste guaranteed in every bite!
+                Discover our most popular snacks that customers love. Quality
+                and taste guaranteed in every bite!
               </p>
             </motion.div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-4 md:mx-16">
             {products.map((product, index) => (
-              <ProductCard key={index} product={product} index={index} navigateTo={navigateTo} />
+              <ProductCard
+                key={index}
+                product={product}
+                index={index}
+                navigateTo={navigateTo}
+              />
             ))}
           </div>
 
@@ -1016,7 +1168,10 @@ export default function HomePage({ navigateTo }: HomePageProps) {
               transition={{ duration: 0.5 }}
               viewport={{ once: true, margin: "-100px" }}
             >
-              <Badge variant="outline" className="mb-4 px-4 py-1 text-sm bg-red-50 border-red-200">
+              <Badge
+                variant="outline"
+                className="mb-4 px-4 py-1 text-sm bg-red-50 border-red-200"
+              >
                 <motion.span
                   animate={{ rotate: [0, 10, -10, 0] }}
                   transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
@@ -1029,7 +1184,8 @@ export default function HomePage({ navigateTo }: HomePageProps) {
                 Why Choose Yummfeast
               </h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
-                We pride ourselves on delivering exceptional quality and taste in every pack of our snacks.
+                We pride ourselves on delivering exceptional quality and taste
+                in every pack of our snacks.
               </p>
             </motion.div>
           </div>
@@ -1047,7 +1203,11 @@ export default function HomePage({ navigateTo }: HomePageProps) {
         <motion.div
           className="absolute inset-0 bg-[url('/images/pattern.svg')] opacity-10"
           animate={{ x: [0, 100], y: [0, -100] }}
-          transition={{ duration: 60, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse" }}
+          transition={{
+            duration: 60,
+            repeat: Number.POSITIVE_INFINITY,
+            repeatType: "reverse",
+          }}
         />
 
         <div className="container mx-auto px-4 relative z-10">
@@ -1067,8 +1227,13 @@ export default function HomePage({ navigateTo }: HomePageProps) {
                   viewport={{ once: true }}
                 >
                   <PartyPopper className="w-12 h-12 mx-auto mb-4 text-yellow-300" />
-                  <h2 className="text-3xl md:text-4xl font-bold mb-4">Snack Time Fun Fact</h2>
-                  <p className="text-xl">Did you know? Indians consume over 1 billion packets of snacks every month!</p>
+                  <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                    Snack Time Fun Fact
+                  </h2>
+                  <p className="text-xl">
+                    Did you know? Indians consume over 1 billion packets of
+                    snacks every month!
+                  </p>
                 </motion.div>
               </div>
 
@@ -1093,7 +1258,10 @@ export default function HomePage({ navigateTo }: HomePageProps) {
                         "linear-gradient(to right, rgba(239, 68, 68, 0.2), rgba(234, 179, 8, 0.2))",
                       ],
                     }}
-                    transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
+                    transition={{
+                      duration: 3,
+                      repeat: Number.POSITIVE_INFINITY,
+                    }}
                   />
                   <div className="text-4xl font-bold mb-2 relative z-10">
                     <AnimatedCounter value={100} />+
@@ -1115,7 +1283,10 @@ export default function HomePage({ navigateTo }: HomePageProps) {
                         "linear-gradient(to right, rgba(234, 179, 8, 0.2), rgba(239, 68, 68, 0.2))",
                       ],
                     }}
-                    transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
+                    transition={{
+                      duration: 3,
+                      repeat: Number.POSITIVE_INFINITY,
+                    }}
                   />
                   <div className="text-4xl font-bold mb-2 relative z-10">
                     <AnimatedCounter value={50} />
@@ -1138,7 +1309,10 @@ export default function HomePage({ navigateTo }: HomePageProps) {
                         "linear-gradient(to right, rgba(239, 68, 68, 0.2), rgba(234, 179, 8, 0.2))",
                       ],
                     }}
-                    transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
+                    transition={{
+                      duration: 3,
+                      repeat: Number.POSITIVE_INFINITY,
+                    }}
                   />
                   <div className="text-4xl font-bold mb-2 relative z-10">
                     <AnimatedCounter value={10} />+
@@ -1210,7 +1384,10 @@ export default function HomePage({ navigateTo }: HomePageProps) {
               transition={{ duration: 0.5 }}
               viewport={{ once: true, margin: "-100px" }}
             >
-              <Badge variant="outline" className="mb-4 px-4 py-1 text-sm bg-red-50 border-red-200">
+              <Badge
+                variant="outline"
+                className="mb-4 px-4 py-1 text-sm bg-red-50 border-red-200"
+              >
                 <motion.span
                   animate={{ scale: [1, 1.2, 1] }}
                   transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
@@ -1223,7 +1400,8 @@ export default function HomePage({ navigateTo }: HomePageProps) {
                 What Our Customers Say
               </h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
-                Don't just take our word for it. Here's what our satisfied customers have to say.
+                Don't just take our word for it. Here's what our satisfied
+                customers have to say.
               </p>
             </motion.div>
           </div>
@@ -1240,13 +1418,19 @@ export default function HomePage({ navigateTo }: HomePageProps) {
                   >
                     <motion.div
                       className="bg-gradient-to-br from-red-50 to-white p-8 rounded-2xl border border-red-100 relative"
-                      whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}
+                      whileHover={{
+                        y: -5,
+                        boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)",
+                      }}
                     >
                       <motion.div
                         className="absolute -top-6 left-1/2 transform -translate-x-1/2 flex items-center justify-center bg-white rounded-full p-2 border-2 border-red-200"
                         initial={{ y: 0 }}
                         animate={{ y: [0, -5, 0] }}
-                        transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
+                        transition={{
+                          duration: 2,
+                          repeat: Number.POSITIVE_INFINITY,
+                        }}
                       >
                         <img
                           src={testimonial.avatar || "/placeholder.svg"}
@@ -1285,8 +1469,12 @@ export default function HomePage({ navigateTo }: HomePageProps) {
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.5, delay: 0.7 }}
                       >
-                        <p className="font-semibold text-lg">{testimonial.name}</p>
-                        <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                        <p className="font-semibold text-lg">
+                          {testimonial.name}
+                        </p>
+                        <p className="text-sm text-muted-foreground">
+                          {testimonial.role}
+                        </p>
                       </motion.div>
                     </motion.div>
                   </motion.div>
@@ -1327,7 +1515,11 @@ export default function HomePage({ navigateTo }: HomePageProps) {
         <motion.div
           className="absolute inset-0 bg-[url('/images/pattern.svg')] opacity-10"
           animate={{ x: [0, -100], y: [0, 100] }}
-          transition={{ duration: 60, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse" }}
+          transition={{
+            duration: 60,
+            repeat: Number.POSITIVE_INFINITY,
+            repeatType: "reverse",
+          }}
         />
 
         {/* Animated floating chips */}
@@ -1378,19 +1570,24 @@ export default function HomePage({ navigateTo }: HomePageProps) {
             transition={{ duration: 0.7 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">Ready to Experience the Yummfeast Difference?</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6">
+              Ready to Experience the Yummfeast Difference?
+            </h2>
             <p className="text-xl mb-8">
-              Join thousands of satisfied customers who have made Yummfeast their favorite snack brand.
+              Join thousands of satisfied customers who have made Yummfeast
+              their favorite snack brand.
             </p>
             <Button
               size="lg"
               className="bg-white text-red-600 hover:bg-white/90 group relative overflow-hidden"
               onClick={() => {
-                triggerConfetti()
-                navigateTo("product")
+                triggerConfetti();
+                navigateTo("product");
               }}
             >
-              <span className="relative z-10 group-hover:text-red-600">Shop Now</span>
+              <span className="relative z-10 group-hover:text-red-600">
+                Shop Now
+              </span>
               <motion.span
                 className="absolute inset-0 bg-yellow-300 transform origin-left"
                 initial={{ scaleX: 0 }}
@@ -1402,5 +1599,5 @@ export default function HomePage({ navigateTo }: HomePageProps) {
         </div>
       </section>
     </div>
-  )
+  );
 }
