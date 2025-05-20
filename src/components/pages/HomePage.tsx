@@ -13,6 +13,8 @@ import {
 } from "framer-motion";
 import {
   ChevronDown,
+  ChevronRight,
+  ChevronLeft,
   Sparkles,
   Star,
   ShoppingBag,
@@ -23,6 +25,7 @@ import {
   Flame,
   PartyPopper,
   Utensils,
+  Car,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -738,24 +741,26 @@ export default function HomePage({ navigateTo }: HomePageProps) {
     target: heroRef,
     offset: ["start start", "end start"],
   });
+  const [currentChipIndex, setCurrentChipIndex] = useState(0);
   const [selectedChip, setSelectedChip] = useState(
-    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pizza-chips-8gJNsdJ0hVZZal0mW0OWTEkXTdZSbC.png"
+    "images/chips1.png"
   );
 
   const chipVariants = [
-    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pizza-chips-8gJNsdJ0hVZZal0mW0OWTEkXTdZSbC.png",
-    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pizza-chips-2.png",
-    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pizza-chips-3.png",
-    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pizza-chips-4.png",
+    "images/chips1.png",
+    "images/chips2.png",
+    "images/chips3.png",
+    "images/chips4.png",
   ];
 
-  const heroScale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-  const heroTextY = useTransform(scrollYProgress, [0, 0.8], [0, 100]);
+  const chipColorMap = {
+  "images/chips1.png": { bg: "bg-red-600", ring: "border-red-400" },
+  "images/chips2.png": { bg: "bg-blue-600", ring: "border-blue-400" },
+  "images/chips3.png": { bg: "bg-green-600", ring: "border-green-400" },
+  "images/chips4.png": { bg: "bg-purple-600", ring: "border-purple-400" },
+};
 
-  // Parallax effect for background elements
-  const bgParallax1 = useTransform(scrollYProgress, [0, 1], [0, -100]);
-  const bgParallax2 = useTransform(scrollYProgress, [0, 1], [0, -50]);
+const { bg, ring } = chipColorMap[selectedChip] || chipColorMap["images/chips1.png"];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -854,13 +859,13 @@ export default function HomePage({ navigateTo }: HomePageProps) {
       {/* Hero Section */}
       <section
         ref={heroRef}
-        className="relative min-h-[90vh] bg-red-600 flex place-items-center justify-center overflow-hidden"
+        className={`relative min-h-[90vh] ${bg} flex place-items-center justify-center overflow-hidden transition-colors duration-500`}
       >
         {/* Background circles */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="absolute w-[1600px] h-[1600px] rounded-full border-[88px] border-red-400 opacity-40"></div>
-          <div className="absolute w-[1100px] h-[1100px] rounded-full border-[80px] border-red-400 opacity-40"></div>
-          <div className="absolute w-[600px] h-[600px] rounded-full border-[56px] border-red-400 opacity-40"></div>
+          <div className={`absolute w-[1600px] h-[1600px] rounded-full border-[88px] ${ring} opacity-40`}></div>
+          <div className={`absolute w-[1100px] h-[1100px] rounded-full border-[80px] ${ring} opacity-40`}></div>
+          <div className={`absolute w-[600px] h-[600px] rounded-full border-[56px] ${ring} opacity-40`}></div>
         </div>
 
         {/* Hero content container */}
@@ -914,83 +919,88 @@ export default function HomePage({ navigateTo }: HomePageProps) {
           </div>
 
           {/* Center - Selected chip packet */}
-          <div className="md:w-1/3 flex justify-center items-center relative">
+          <div className="hidden md:w-1/3 md:flex justify-center items-center relative">
             <motion.div
-              initial={{ opacity: 0, scale: 0.8, y: 40 }}
-              animate={{ opacity: 1, scale: 1.4, y: 0 }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
-              style={{
-                filter: "drop-shadow(0 12px 30px rgba(255,255,255,0.4))",
-                animation: "float 4s ease-in-out infinite",
-                zIndex: 20,
-                width: "480px",
-                maxWidth: "90vw",
-              }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              className="w-[280px] md:w-[350px] relative z-20"
             >
               <img
                 src={selectedChip}
-                alt="Selected Chip"
-                style={{
-                  width: "100%",
-                  height: "auto",
-                  transform: "rotateY(0deg)",
-                }}
+                alt="Pizza Heart Chips"
+                className="w-full h-auto drop-shadow-2xl"
               />
             </motion.div>
           </div>
 
-          {/* Right side - Chips slider */}
-          <div
-            style={{
-              position: "absolute",
-              right: "2%",
-              top: "50%",
-              transform: "translateY(-50%)",
-              display: "flex",
-              flexDirection: "column",
-              gap: "1.5rem",
-              perspective: "1000px",
-              transformStyle: "preserve-3d",
-              zIndex: 30,
-            }}
-          >
-            {chipVariants.map((chip, index) => {
-              const angle = (index - 1.5) * 12; // dial arc angle
-              const isSelected = selectedChip === chip;
+          {/* Mobile Carousel (Shows only selected chip with arrows) */}
+          <div className="w-full max-w-xs mx-auto md:hidden relative flex items-center justify-center">
+            <button
+              onClick={() => {
+                const newIndex =
+                  currentChipIndex === 0
+                    ? chipVariants.length - 1
+                    : currentChipIndex - 1;
+                setCurrentChipIndex(newIndex);
+                setSelectedChip(chipVariants[newIndex]);
+              }}
+              className="absolute left-0 z-10 bg-white/80 rounded-full p-2 shadow"
+            >
+              ←
+            </button>
 
-              return (
+            <motion.img
+              key={currentChipIndex}
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.4 }}
+              src={chipVariants[currentChipIndex]}
+              alt={`Pizza Heart Chips ${currentChipIndex + 1}`}
+              className="w-[280px] mx-auto drop-shadow-xl"
+            />
+
+            <button
+              onClick={() => {
+                const newIndex =
+                  currentChipIndex === chipVariants.length - 1
+                    ? 0
+                    : currentChipIndex + 1;
+                setCurrentChipIndex(newIndex);
+                setSelectedChip(chipVariants[newIndex]);
+              }}
+              className="absolute right-0 z-10 bg-white/80 rounded-full p-2 shadow"
+            >
+              →
+            </button>
+          </div>
+
+
+          {/* Right side - Chips slider */}
+          <div className="hidden md:flex absolute right-4 md:right-10 top-1/2 transform -translate-y-1/2 flex-col gap-6 z-30">
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="chips-slider flex flex-col gap-6"
+            >
+              {[1, 2, 3, 4].map((index) => (
                 <motion.div
                   key={index}
-                  whileHover={{ scale: 1.15, rotate: 0 }}
-                  transition={{ duration: 0.2, ease: "easeOut" }}
-                  onClick={() => setSelectedChip(chip)}
-                  style={{
-                    transform: `rotate(${angle}deg) translateX(50px) rotate(${-angle}deg)`,
-                    transformOrigin: "left center",
-                    transition: "all 0.3s ease-in-out",
-                    width: "80px",
-                    height: "80px",
-                    borderRadius: "12px",
-                    overflow: "hidden",
-                    cursor: "pointer",
-                    boxShadow: isSelected
-                      ? "0 0 20px 4px rgba(255, 255, 0, 0.5)"
-                      : "0 4px 12px rgba(0, 0, 0, 0.2)",
-                    background: "white",
+                  whileHover={{ scale: 1.1 }}
+                  className={`w-16 h-16 md:w-20 md:h-20 m-2 overflow-hidden cursor-pointer ${index === 1 ? "" : ""}`}
+                  onClick={() => {
+                    setSelectedChip(chipVariants[index-1]);
                   }}
                 >
                   <img
-                    src={chip}
-                    alt={`Chip ${index + 1}`}
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                    }}
+                    src={chipVariants[index-1]}
+                    alt={`Chip variant ${index}`}
+                    className="w-full h-full object-cover"
                   />
                 </motion.div>
-              );
-            })}
+              ))}
+            </motion.div>
           </div>
         </div>
 
