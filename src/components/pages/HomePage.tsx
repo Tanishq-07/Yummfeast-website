@@ -863,15 +863,18 @@ const { bg, ring } = chipColorMap[selectedChip] || chipColorMap["images/chips1.p
       >
         {/* Background circles */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className={`absolute w-[1600px] h-[1600px] rounded-full border-[88px] ${ring} opacity-40`}></div>
+          {/* <div className={`absolute w-[1600px] h-[1600px] rounded-full border-[88px] ${ring} opacity-40`}></div>
           <div className={`absolute w-[1100px] h-[1100px] rounded-full border-[80px] ${ring} opacity-40`}></div>
-          <div className={`absolute w-[600px] h-[600px] rounded-full border-[56px] ${ring} opacity-40`}></div>
+          <div className={`absolute w-[600px] h-[600px] rounded-full border-[56px] ${ring} opacity-40`}></div> */}
+          <div className="absolute w-[1000px] h-[1000px] sm:w-[500px] sm:h-[500px] rounded-full border-[88px] sm:border-[44px] opacity-40 z-0 transition-all duration-300 ease-in-out" />
+          <div className="absolute w-[700px] h-[700px] sm:w-[350px] sm:h-[350px] rounded-full border-[80px] sm:border-[40px] opacity-40 z-0 transition-all duration-300 ease-in-out" />
+          <div className="absolute w-[400px] h-[400px] sm:w-[200px] sm:h-[200px] rounded-full border-[56px] sm:border-[28px] opacity-40 z-0 transition-all duration-300 ease-in-out" />
         </div>
 
         {/* Hero content container */}
         <div className="container mx-auto px-4 relative z-10 flex flex-col md:flex-row items-center">
           {/* Left side - Text content */}
-          <div className="text-white md:w-1/3 mb-10 md:mb-0">
+          <div className="hidden md:block md:w-1/3 mb-10 md:mb-0 order-2 md:order-1 text-white">
             <AnimatedText delay={0.1} type="slide" className="mb-4">
               <h1 className="text-4xl font-bold leading-tight">
                 EAT OUR GRILLED
@@ -919,7 +922,7 @@ const { bg, ring } = chipColorMap[selectedChip] || chipColorMap["images/chips1.p
           </div>
 
           {/* Center - Selected chip packet */}
-          <div className="hidden md:w-1/3 md:flex justify-center items-center relative">
+          <div className="hidden md:w-1/3 md:flex justify-center items-center relative order-1 md:order-2">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -935,7 +938,7 @@ const { bg, ring } = chipColorMap[selectedChip] || chipColorMap["images/chips1.p
           </div>
 
           {/* Mobile Carousel (Shows only selected chip with arrows) */}
-          <div className="w-full max-w-xs mx-auto md:hidden relative flex items-center justify-center">
+          <div className="w-full max-w-xs mx-auto md:hidden relative flex items-center justify-center ">
             <button
               onClick={() => {
                 const newIndex =
@@ -974,6 +977,32 @@ const { bg, ring } = chipColorMap[selectedChip] || chipColorMap["images/chips1.p
               →
             </button>
           </div>
+
+          {/* Mobile Text content (hidden on desktop) */}
+          <div className="block md:hidden text-white text-center mt-6 px-4 order-3">
+            <h1 className="text-3xl font-bold leading-tight mb-2">
+              EAT OUR GRILLED
+              <br />
+              POTATO CHIPS
+            </h1>
+            <p className="text-md text-white/90 max-w-md mx-auto mb-6">
+              Share a bite of #Pizzaheart with your friends to strengthen your friendship bond.
+            </p>
+            <div className="flex flex-col items-center gap-4">
+              <div className="flex items-center bg-white/20 backdrop-blur-sm rounded-full px-6 py-1">
+                <Button variant="ghost" size="icon" className="text-white hover:bg-white/10 h-8 w-8">-</Button>
+                <span className="mx-2 text-white font-medium">10</span>
+                <Button variant="ghost" size="icon" className="text-white hover:bg-white/10 h-8 w-8">+</Button>
+              </div>
+              <Button
+                className="bg-white rounded-full text-red-600 hover:bg-white/90 px-12"
+                onClick={() => navigateTo("product")}
+              >
+                Buy Now
+              </Button>
+            </div>
+          </div>
+
 
 
           {/* Right side - Chips slider */}
