@@ -20,6 +20,8 @@ module.exports = {
     extend: {
       fontFamily: {
         futura: ['FuturaLTPro', 'sans-serif'],
+        sans: ['"Rooney Sans"', 'sans-serif'],
+        // pinup: ['Pinup', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
