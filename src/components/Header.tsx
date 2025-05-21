@@ -34,7 +34,7 @@ export default function Header({ navigateTo, currentPage, isMenuOpen, setIsMenuO
         </nav>
 
         <Button variant="ghost" size="icon" onClick={() => window.alert("Shopping cart coming soon!")}>
-          <ShoppingBag className="h-5 w-5" />
+          <ShoppingBag className="hidden h-5 w-5" />
         </Button>
       </div>
 
@@ -46,9 +46,9 @@ export default function Header({ navigateTo, currentPage, isMenuOpen, setIsMenuO
               <div className="flex items-center">
                 <img src="/images/logo.png" alt="Yummfeast Logo" className="h-12 mr-2" />
               </div>
-              <Button variant="ghost" size="icon" onClick={() => setIsMenuOpen(false)}>
+              {/* <Button variant="ghost" size="icon" onClick={() => setIsMenuOpen(false)}>
                 <X className="h-5 w-5" />
-              </Button>
+              </Button> */}
             </div>
             <Separator />
             <nav className="flex flex-col space-y-4 py-6">
