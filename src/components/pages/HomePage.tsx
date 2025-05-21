@@ -38,6 +38,7 @@ import {
 } from "@/components/ui/carousel";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils"; // Adjust this import to your button component
+import { text } from "stream/consumers";
 
 // Define types for our components
 interface Product {
@@ -754,13 +755,13 @@ export default function HomePage({ navigateTo }: HomePageProps) {
   ];
 
   const chipColorMap = {
-  "images/chips1.png": { bg: "bg-red-600", ring: "border-red-400" },
-  "images/chips2.png": { bg: "bg-blue-600", ring: "border-blue-400" },
-  "images/chips3.png": { bg: "bg-green-600", ring: "border-green-400" },
-  "images/chips4.png": { bg: "bg-purple-600", ring: "border-purple-400" },
+  "images/chips1.png": { bg: "bg-red-600", ring: "border-red-400", text: "text-red-600" },
+  "images/chips2.png": { bg: "bg-blue-600", ring: "border-blue-400", text: "text-blue-600" },
+  "images/chips3.png": { bg: "bg-green-600", ring: "border-green-400", text: "text-green-600" },
+  "images/chips4.png": { bg: "bg-purple-600", ring: "border-purple-400", text: "text-purple-600" },
 };
 
-const { bg, ring } = chipColorMap[selectedChip] || chipColorMap["images/chips1.png"];
+const { bg, ring, text } = chipColorMap[selectedChip] || chipColorMap["images/chips1.png"];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -781,14 +782,14 @@ const { bg, ring } = chipColorMap[selectedChip] || chipColorMap["images/chips1.p
       name: "Yummfeast Rings",
       description: "Crunchy rings with a burst of tangy masala flavor",
       image:
-        "https://scontent-bom2-4.xx.fbcdn.net/v/t39.30808-6/468422498_18049262201502000_6926184055011270435_n.jpg?stp=dst-jpg_s1080x2048_tt6&_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_ohc=L5E4D1K_OaIQ7kNvwGcMo4D&_nc_oc=AdltoQKX9sAPK9zYGTq_oCQ2ZIqu9eIjWebgxOigIVdF4pyNrZOxMOoKZSrGv2bn6Twa1A38jaILXnZBurJF7Kr5&_nc_zt=23&_nc_ht=scontent-bom2-4.xx&_nc_gid=QEqWSGsdxIczri-hwjueRQ&oh=00_AfF8JE5x2Iqb6VnPCKc9mmOTytoErRzCvQu7zJWkjvRCHw&oe=680D12DB",
+        "/images/product1.jpg",
       price: "₹10",
     },
     {
       name: "Yummfeast Pasta",
       description: "Crispy pasta snacks with Italian herbs seasoning",
       image:
-        "https://scontent-bom2-4.xx.fbcdn.net/v/t51.75761-15/490510046_18065287943502000_4855848620494398094_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_ohc=iYeL2r3fHwMQ7kNvwEqQ1Gb&_nc_oc=AdlsuKtJP7t3DYXLqjo8-y8POr-UI9yrkOMf2cbhtzjbDD22FxYtmw3mY3r9PQt4IKxebmx5612w56_pT-gWlPzZ&_nc_zt=23&_nc_ht=scontent-bom2-4.xx&_nc_gid=5PsMj8sgbIbnD5jWjHfPYg&oh=00_AfHr8zX1eCj7xQZrK4lwi7Yv_lWzxYYh-B1tXb9cPjuQZA&oe=680D1579",
+        "/images/product2.jpg",
       price: "₹15",
     },
     {
@@ -796,7 +797,7 @@ const { bg, ring } = chipColorMap[selectedChip] || chipColorMap["images/chips1.p
       description:
         "A delightful mix of various namkeen for the perfect snack time",
       image:
-        "https://scontent-bom1-2.xx.fbcdn.net/v/t51.75761-15/491468617_18065125247502000_1149868952402854465_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=kgaL_GKWRoMQ7kNvwFg_GOo&_nc_oc=Adm_Vgu1FK_aJE65mzEE0Jr3iwENkfijb2wCdwYoFzWVANO8FTEjIClX5q2-ZDto3w4p0wUifZz2anY75Hio24iR&_nc_zt=23&_nc_ht=scontent-bom1-2.xx&_nc_gid=riWHqGIbEyfis2eXlW8CAQ&oh=00_AfG5QVx3140ImkLLhDajGX8KKnQG0x9GwdnlAttlx9G4QA&oe=680D2DAB",
+        "/images/product3.jpg",
       price: "₹20",
     },
   ];
@@ -866,9 +867,9 @@ const { bg, ring } = chipColorMap[selectedChip] || chipColorMap["images/chips1.p
           {/* <div className={`absolute w-[1600px] h-[1600px] rounded-full border-[88px] ${ring} opacity-40`}></div>
           <div className={`absolute w-[1100px] h-[1100px] rounded-full border-[80px] ${ring} opacity-40`}></div>
           <div className={`absolute w-[600px] h-[600px] rounded-full border-[56px] ${ring} opacity-40`}></div> */}
-          <div className="absolute w-[1000px] h-[1000px] sm:w-[500px] sm:h-[500px] rounded-full border-[88px] sm:border-[44px] opacity-40 z-0 transition-all duration-300 ease-in-out" />
-          <div className="absolute w-[700px] h-[700px] sm:w-[350px] sm:h-[350px] rounded-full border-[80px] sm:border-[40px] opacity-40 z-0 transition-all duration-300 ease-in-out" />
-          <div className="absolute w-[400px] h-[400px] sm:w-[200px] sm:h-[200px] rounded-full border-[56px] sm:border-[28px] opacity-40 z-0 transition-all duration-300 ease-in-out" />
+          <div className="absolute md:w-[1600px] md:h-[1600px] w-[800px] h-[800px] rounded-full md:border-[88px] border-[44px] opacity-40 z-0 transition-all duration-300 ease-in-out" />
+          <div className="absolute md:w-[1100px] md:h-[1100px] w-[550px] h-[550px] rounded-full md:border-[80px] border-[40px] opacity-40 z-0 transition-all duration-300 ease-in-out" />
+          <div className="absolute md:w-[560px] md:h-[560px] w-[300px] h-[300px] rounded-full md:border-[56px] border-[28px] opacity-40 z-0 transition-all duration-300 ease-in-out" />
         </div>
 
         {/* Hero content container */}
@@ -913,7 +914,7 @@ const { bg, ring } = chipColorMap[selectedChip] || chipColorMap["images/chips1.p
                 </Button>
               </div>
               <Button
-                className="bg-white rounded-full text-red-600 hover:bg-white/90 px-12"
+                className={`bg-white rounded-full hover:bg-white/90 px-12 ${text}`}
                 onClick={() => navigateTo("product")}
               >
                 Buy Now
