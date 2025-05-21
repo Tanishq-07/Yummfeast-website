@@ -894,7 +894,7 @@ const { bg, ring, text } = chipColorMap[selectedChip] || chipColorMap["images/ch
               type="fade"
               className="flex items-center gap-12"
             >
-              <div className="flex items-center bg-white/20 backdrop-blur-sm rounded-full px-6 py-1">
+              {/* <div className="flex items-center bg-white/20 backdrop-blur-sm rounded-full px-6 py-1">
                 <Button
                   variant="ghost"
                   size="icon"
@@ -912,12 +912,12 @@ const { bg, ring, text } = chipColorMap[selectedChip] || chipColorMap["images/ch
                   <span className="sr-only">Increase</span>
                   <span className="text-xl">+</span>
                 </Button>
-              </div>
+              </div> */}
               <Button
                 className={`bg-white rounded-full hover:bg-white/90 px-12 ${text}`}
                 onClick={() => navigateTo("product")}
               >
-                Buy Now
+                View Product
               </Button>
             </AnimatedText>
           </div>
@@ -990,16 +990,16 @@ const { bg, ring, text } = chipColorMap[selectedChip] || chipColorMap["images/ch
               Share a bite of #Pizzaheart with your friends to strengthen your friendship bond.
             </p>
             <div className="flex flex-col items-center gap-4">
-              <div className="flex items-center bg-white/20 backdrop-blur-sm rounded-full px-6 py-1">
+              {/* <div className="flex items-center bg-white/20 backdrop-blur-sm rounded-full px-6 py-1">
                 <Button variant="ghost" size="icon" className="text-white hover:bg-white/10 h-8 w-8">-</Button>
                 <span className="mx-2 text-white font-medium">10</span>
                 <Button variant="ghost" size="icon" className="text-white hover:bg-white/10 h-8 w-8">+</Button>
-              </div>
+              </div> */}
               <Button
                 className="bg-white rounded-full text-red-600 hover:bg-white/90 px-12"
                 onClick={() => navigateTo("product")}
               >
-                Buy Now
+                View Product
               </Button>
             </div>
           </div>
