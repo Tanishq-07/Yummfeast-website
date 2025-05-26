@@ -448,394 +448,322 @@ export default function ProductPage() {
       <ScrollToTop />
 
       {/* Hero Section with Parallax */}
-      <section ref={heroRef} className="relative min-h-[60vh] flex items-center overflow-hidden">
-        <FloatingParticles />
-
-        {/* Parallax background */}
+      <section className="relative bg-blue-50 py-16 overflow-hidden">
         <motion.div
-          className="absolute inset-0 z-0"
-          style={{
-            scale: heroScale,
-            opacity: heroOpacity,
-          }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-b from-blue-500 to-blue-600" />
-
-          {/* Background pattern */}
-          {/* <motion.div
-            className="absolute inset-0 bg-[url('/placeholder.svg')] bg-repeat opacity-20"
-            animate={{
-              x: [0, 50],
-              y: [0, -30],
-            }}
-            transition={{
-              duration: 40,
-              repeat: Number.POSITIVE_INFINITY,
-              repeatType: "reverse",
-            }}
-          /> */}
-        </motion.div>
-
-        {/* Animated background shapes */}
-        <motion.div
-          className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-gradient-to-r from-yellow-500/10 to-red-500/10 blur-[100px]"
-          style={{ y: bgParallax1 }}
-        />
-
-        <motion.div
-          className="absolute bottom-0 left-0 w-[300px] h-[300px] rounded-full bg-gradient-to-r from-red-500/10 to-yellow-500/10 blur-[80px]"
-          style={{ y: bgParallax2 }}
-        />
-
-        {/* Animated product images */}
-        <motion.div
-          className="absolute w-32 left-[10%] top-[7%] md:w-40 left-[10%] top-[20%]"
-          initial={{ opacity: 1, x: -50 }}
+          className="absolute w-32 h-32 left-[5%] top-[3%] md:left-[10%] top-[20%]"
+          initial={{ opacity: 1 }}
           animate={{
             opacity: 1,
-            x: 0,
-            y: [0, -20, 0],
-            rotate: [0, 5, -5, 0],
+            y: [-5, 5, -5],
+            rotate: [0, 10, -10, 0],
           }}
           transition={{
-            duration: 6,
+            duration: 8,
             repeat: Number.POSITIVE_INFINITY,
             repeatType: "reverse",
-            delay: 0.5,
-          }}
-        >
-          <img
-            src={"/images/chip4 (1).png"}
-            alt={products[0].name}
-            className="w-full h-full object-contain drop-shadow-xl"
-          />
-        </motion.div>
-
-        <motion.div
-          className="absolute w-32 md:w-40 right-[10%] bottom-[20%]"
-          initial={{ opacity: 1, x: 50 }}
-          animate={{
-            opacity: 1,
-            x: 0,
-            y: [0, 20, 0],
-            rotate: [0, -5, 5, 0],
-          }}
-          transition={{
-            duration: 7,
-            repeat: Number.POSITIVE_INFINITY,
-            repeatType: "reverse",
-            delay: 0.8,
           }}
         >
           <img
             src={"/images/chip3 (1).png"}
-            alt={products[2].name}
-            className="w-full h-full object-contain drop-shadow-xl"
+            alt="Floating product"
+            className="w-full h-full object-contain drop-shadow-lg"
           />
         </motion.div>
-
-        <div className="container mx-auto px-4 relative z-10">
-          <motion.div className="max-w-3xl mx-auto text-center text-white" style={{ y: heroTextY }}>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="mb-4"
-            >
-              <Sparkles className="inline-block w-8 h-8 text-yellow-300 mb-2" />
-            </motion.div>
-
-            <motion.h1
-              className="text-4xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg"
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              Our <span className="text-yellow-300">Delicious</span> Products
-            </motion.h1>
-
-            <motion.p
-              className="text-xl text-white/90 mb-8 drop-shadow-md"
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-            >
-              Explore our range of delicious snacks designed to satisfy your cravings.
-            </motion.p>
-          </motion.div>
+        <motion.div
+          className="absolute w-24 h-24 right-[5%] bottom-[5%] md:right-[15%] bottom-[20%]"
+          initial={{ opacity: 1 }}
+          animate={{
+            opacity: 1,
+            y: [20, -20, 20],
+            rotate: [0, -15, 15, 0],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Number.POSITIVE_INFINITY,
+            repeatType: "reverse",
+            delay: 1,
+          }}
+        >
+          <img
+            src={"/images/chip4 (1).png"}
+            alt="Floating product"
+            className="w-full h-full object-contain drop-shadow-lg"
+          />
+        </motion.div>
+        {/* Brush stroke background */}
+        <div className="absolute inset-0 opacity-20">
+          <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <filter id="brushTexture">
+              <feTurbulence type="fractalNoise" baseFrequency="0.01" numOctaves="3" />
+              <feDisplacementMap in="SourceGraphic" scale="5" />
+            </filter>
+            <rect width="100%" height="100%" filter="url(#brushTexture)" fill="#4299E1" />
+          </svg>
         </div>
 
-        <ScrollIndicator />
+        {/* Ink blob decorations */}
+        <div className="absolute top-0 right-0 w-64 h-64 opacity-20">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <path
+              fill="#F29C1F"
+              d="M39.9,-65.7C54.1,-60.5,69.5,-54.1,76.7,-42.5C83.9,-30.9,82.9,-15.5,79.1,-2.2C75.3,11.1,68.6,22.1,61.8,33C54.9,43.9,47.8,54.6,37.7,62.3C27.6,70,13.8,74.7,-0.2,75C-14.2,75.3,-28.3,71.3,-39.9,64C-51.5,56.7,-60.5,46.1,-67.1,33.8C-73.7,21.5,-77.9,7.5,-77.2,-6.4C-76.6,-20.3,-71.1,-34.2,-61.8,-43.9C-52.5,-53.6,-39.4,-59.1,-27.1,-65.5C-14.8,-71.9,-3.7,-79.2,7.1,-79.9C17.9,-80.6,25.7,-70.9,39.9,-65.7Z"
+              transform="translate(100 100)"
+            />
+          </svg>
+        </div>
+        <div className="absolute bottom-0 left-0 w-72 h-72 opacity-20">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <path
+              fill="#FF6B6B"
+              d="M47.7,-73.2C62.1,-66.3,74.5,-53.9,79.8,-39.1C85.2,-24.3,83.5,-7.1,79.9,9C76.3,25.1,70.8,40.2,60.4,50.5C50,60.8,34.7,66.3,19.2,70.1C3.7,73.9,-12,75.9,-26.8,72.1C-41.6,68.3,-55.5,58.6,-65.6,45.6C-75.7,32.6,-82,16.3,-82.9,-0.5C-83.8,-17.3,-79.3,-34.7,-69.1,-47.8C-58.9,-60.9,-43,-69.8,-27.8,-75.8C-12.6,-81.8,1.9,-84.9,16.8,-82.1C31.7,-79.3,33.3,-80.1,47.7,-73.2Z"
+              transform="translate(100 100)"
+            />
+          </svg>
+        </div>
 
-        {/* Wave separator */}
-        <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
-          <svg viewBox="0 0 500 150" preserveAspectRatio="none" className="w-full h-[80px]">
-            <motion.path
-              d="M0.00,49.98 C150.00,150.00 350.00,-50.00 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-3xl mx-auto text-center">
+            <div className="relative inline-block mb-6">
+              {/* Organic blob behind the text */}
+              <svg
+                className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                width="120%"
+                height="140"
+                viewBox="0 0 400 140"
+                preserveAspectRatio="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M10,30 Q30,0 70,10 T140,20 Q180,0 220,15 T300,25 Q350,10 390,30 Q410,50 390,80 T340,110 Q300,130 250,110 T180,100 Q140,120 100,105 T40,90 Q10,110 10,70 Z"
+                  fill="#4299E1"
+                />
+                {/* Grunge brush effect on the blob */}
+                <filter id="grunge" x="-20%" y="-20%" width="140%" height="140%">
+                  <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="3" result="noise" />
+                  <feDisplacementMap
+                    in="SourceGraphic"
+                    in2="noise"
+                    scale="10"
+                    xChannelSelector="R"
+                    yChannelSelector="G"
+                  />
+                </filter>
+                <path
+                  d="M10,30 Q30,0 70,10 T140,20 Q180,0 220,15 T300,25 Q350,10 390,30 Q410,50 390,80 T340,110 Q300,130 250,110 T180,100 Q140,120 100,105 T40,90 Q10,110 10,70 Z"
+                  fill="#4299E1"
+                  filter="url(#grunge)"
+                  opacity="0.4"
+                />
+              </svg>
+
+              <h1 className="text-4xl font-bold px-8 py-4">Our Products</h1>
+            </div>
+            <p className="text-xl text-muted-foreground">
+              Explore our range of delicious snacks designed to satisfy your cravings.
+            </p>
+          </div>
+        </div>
+
+        {/* Paint brush stroke at bottom of hero */}
+        <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-0 transform rotate-180">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1200 120"
+            preserveAspectRatio="none"
+            className="w-full h-16"
+          >
+            <path
+              d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+              fill="#ffffff"
+              opacity=".8"
               className="fill-white"
-              initial={{ pathLength: 0 }}
-              animate={{ pathLength: 1 }}
-              transition={{ duration: 1.5, delay: 0.5 }}
+            />
+            <path
+              d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
+              opacity=".5"
+              className="fill-white"
+            />
+            <path
+              d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
+              className="fill-white"
             />
           </svg>
         </div>
       </section>
 
       {/* Product Filters with animated tabs */}
-      <section className="py-8 border-b relative">
-        <motion.div
-          className="absolute -z-10 top-0 left-0 w-full h-full bg-gradient-to-r from-red-50 to-blue-50 opacity-50"
-          animate={{
-            background: [
-              "linear-gradient(to right, rgba(254, 242, 242, 0.5), rgba(239, 246, 255, 0.5))",
-              "linear-gradient(to right, rgba(239, 246, 255, 0.5), rgba(254, 242, 242, 0.5))",
-              "linear-gradient(to right, rgba(254, 242, 242, 0.5), rgba(239, 246, 255, 0.5))",
-            ],
-          }}
-          transition={{ duration: 10, repeat: Number.POSITIVE_INFINITY }}
-        />
-
+     <section className="py-8 border-b relative">
         <div className="container mx-auto px-4">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+          {/* Handwritten frame around tabs */}
+          <div className="relative max-w-md mx-auto">
+            
             <Tabs defaultValue="all" onValueChange={setCategory}>
-              <TabsList className="grid w-full grid-cols-4 max-w-md mx-auto relative overflow-hidden">
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-blue-100/50 to-red-100/50 -z-10"
-                  animate={{
-                    x: [0, 300, 0],
-                  }}
-                  transition={{
-                    duration: 10,
-                    repeat: Number.POSITIVE_INFINITY,
-                    repeatType: "reverse",
-                  }}
-                />
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <TabsTrigger value="all" className="relative overflow-hidden group">
-                    <span className="relative z-10">All</span>
-                    <motion.span
-                      className="absolute inset-0 bg-gradient-to-r from-blue-200/50 to-red-200/50"
-                      initial={{ y: "100%" }}
-                      whileHover={{ y: 0 }}
-                      transition={{ duration: 0.3 }}
-                    />
-                  </TabsTrigger>
-                </motion.div>
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <TabsTrigger value="chips" className="relative overflow-hidden group">
-                    <span className="relative z-10">Chips</span>
-                    <motion.span
-                      className="absolute inset-0 bg-gradient-to-r from-blue-200/50 to-red-200/50"
-                      initial={{ y: "100%" }}
-                      whileHover={{ y: 0 }}
-                      transition={{ duration: 0.3 }}
-                    />
-                  </TabsTrigger>
-                </motion.div>
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <TabsTrigger value="namkeen" className="relative overflow-hidden group">
-                    <span className="relative z-10">Namkeen</span>
-                    <motion.span
-                      className="absolute inset-0 bg-gradient-to-r from-blue-200/50 to-red-200/50"
-                      initial={{ y: "100%" }}
-                      whileHover={{ y: 0 }}
-                      transition={{ duration: 0.3 }}
-                    />
-                  </TabsTrigger>
-                </motion.div>
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <TabsTrigger value="fryums" className="relative overflow-hidden group">
-                    <span className="relative z-10">Fryums</span>
-                    <motion.span
-                      className="absolute inset-0 bg-gradient-to-r from-blue-200/50 to-red-200/50"
-                      initial={{ y: "100%" }}
-                      whileHover={{ y: 0 }}
-                      transition={{ duration: 0.3 }}
-                    />
-                  </TabsTrigger>
-                </motion.div>
+              <TabsList className="grid w-full grid-cols-4 max-w-md mx-auto">
+                <TabsTrigger value="all" className="relative">
+                  All
+                  <motion.div
+                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-500"
+                    initial={{ width: 0 }}
+                    animate={{ width: category === "all" ? "100%" : 0 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                </TabsTrigger>
+                <TabsTrigger value="chips" className="relative">
+                  Chips
+                  <motion.div
+                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-500"
+                    initial={{ width: 0 }}
+                    animate={{ width: category === "chips" ? "100%" : 0 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                </TabsTrigger>
+                <TabsTrigger value="namkeen" className="relative">
+                  Namkeen
+                  <motion.div
+                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-500"
+                    initial={{ width: 0 }}
+                    animate={{ width: category === "namkeen" ? "100%" : 0 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                </TabsTrigger>
+                <TabsTrigger value="fryums" className="relative">
+                  Fryums
+                  <motion.div
+                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-500"
+                    initial={{ width: 0 }}
+                    animate={{ width: category === "fryums" ? "100%" : 0 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                </TabsTrigger>
               </TabsList>
             </Tabs>
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Products Grid with enhanced animations */}
       <section className="py-16 relative">
-        {/* Animated background elements */}
-        <motion.div
-          className="absolute top-40 right-0 w-64 h-64 rounded-full bg-red-100 opacity-30 blur-3xl -z-10"
-          animate={{
-            x: [0, 50, 0],
-            y: [0, 30, 0],
-          }}
-          transition={{
-            duration: 15,
-            repeat: Number.POSITIVE_INFINITY,
-            repeatType: "reverse",
-          }}
-        />
-
-        <motion.div
-          className="absolute bottom-40 left-0 w-80 h-80 rounded-full bg-blue-100 opacity-30 blur-3xl -z-10"
-          animate={{
-            x: [0, -30, 0],
-            y: [0, 50, 0],
-          }}
-          transition={{
-            duration: 18,
-            repeat: Number.POSITIVE_INFINITY,
-            repeatType: "reverse",
-          }}
-        />
+        {/* Paint splatter background */}
+        <div className="absolute top-1/4 right-1/4 w-64 h-64 opacity-5 z-0">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <path
+              fill="#000000"
+              d="M39.9,-65.7C54.1,-60.5,69.5,-54.1,76.7,-42.5C83.9,-30.9,82.9,-15.5,79.1,-2.2C75.3,11.1,68.6,22.1,61.8,33C54.9,43.9,47.8,54.6,37.7,62.3C27.6,70,13.8,74.7,-0.2,75C-14.2,75.3,-28.3,71.3,-39.9,64C-51.5,56.7,-60.5,46.1,-67.1,33.8C-73.7,21.5,-77.9,7.5,-77.2,-6.4C-76.6,-20.3,-71.1,-34.2,-61.8,-43.9C-52.5,-53.6,-39.4,-59.1,-27.1,-65.5C-14.8,-71.9,-3.7,-79.2,7.1,-79.9C17.9,-80.6,25.7,-70.9,39.9,-65.7Z"
+              transform="translate(100 100)"
+            />
+          </svg>
+        </div>
+        <div className="absolute bottom-1/3 left-1/3 w-48 h-48 opacity-5 z-0 rotate-45">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <path
+              fill="#000000"
+              d="M47.7,-73.2C62.1,-66.3,74.5,-53.9,79.8,-39.1C85.2,-24.3,83.5,-7.1,79.9,9C76.3,25.1,70.8,40.2,60.4,50.5C50,60.8,34.7,66.3,19.2,70.1C3.7,73.9,-12,75.9,-26.8,72.1C-41.6,68.3,-55.5,58.6,-65.6,45.6C-75.7,32.6,-82,16.3,-82.9,-0.5C-83.8,-17.3,-79.3,-34.7,-69.1,-47.8C-58.9,-60.9,-43,-69.8,-27.8,-75.8C-12.6,-81.8,1.9,-84.9,16.8,-82.1C31.7,-79.3,33.3,-80.1,47.7,-73.2Z"
+              transform="translate(100 100)"
+            />
+          </svg>
+        </div>
 
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 m-12 mt-4">
-            <AnimatePresence mode="wait">
-              {filteredProducts.map((product, index) => (
-                <motion.div
-                  key={product.id}
-                  layout
-                  initial={{ opacity: 0, scale: 0.8, y: 50 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.8, y: 50 }}
-                  transition={{
-                    duration: 0.5,
-                    delay: index * 0.1,
-                    layout: { duration: 0.3 },
-                  }}
-                  whileHover={{ y: -10 }}
-                  className="relative"
-                >
-                  <Card className="overflow-hidden group h-full border-2 border-transparent hover:border-blue-300 transition-all duration-300">
-                    <div className="aspect-square bg-gradient-to-br from-blue-50 to-red-50 relative overflow-hidden">
-                      <motion.div
-                        initial={{ scale: 1 }}
-                        whileHover={{
-                          scale: 1.1,
-                          rotate: [0, 5, -5, 0],
-                        }}
-                        transition={{ duration: 0.5 }}
-                        className="w-full h-full flex items-center justify-center p-4"
+            {filteredProducts.map((product, index) => (
+              <motion.div
+                key={product.id}
+                initial={{ opacity: 1, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -10 }}
+              >
+                <Card className="overflow-hidden group relative border-0 shadow-md">
+                  {/* SVG Mask/Clip Path for card */}
+                  <div
+                    className="absolute inset-0 bg-white shadow-md"
+                    style={{
+                      clipPath: "polygon(3% 0%, 97% 0%, 100% 3%, 100% 97%, 97% 100%, 3% 100%, 0% 97%, 0% 3%)",
+                    }}
+                  ></div>
+
+                  {/* Grunge brush texture overlay */}
+                  <div className="absolute inset-0 opacity-5">
+                    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                      <filter id="grunge-texture">
+                        <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="5" />
+                        <feDisplacementMap in="SourceGraphic" scale="10" />
+                      </filter>
+                      <rect width="100%" height="100%" filter="url(#grunge-texture)" fill="#000000" />
+                    </svg>
+                  </div>
+
+                  <div className="relative z-10">
+                    <div className="aspect-square bg-blue-50 relative overflow-hidden">
+                      {/* Ink blob frame for product image */}
+                      <svg
+                        className="absolute top-0 left-0 w-full h-full -z-10"
+                        viewBox="0 0 200 200"
+                        xmlns="http://www.w3.org/2000/svg"
                       >
-                        <img
-                          src={product.image || "/placeholder.svg"}
-                          alt={product.name}
-                          className="object-contain w-full h-full drop-shadow-xl"
+                        <path
+                          fill="#EBF8FF"
+                          d="M47.3,-73.2C60.9,-66.2,71.3,-52.3,77.4,-37.1C83.4,-21.9,85.1,-5.3,81.5,9.4C77.9,24.1,69,36.9,58.1,47.4C47.2,57.9,34.3,66.1,20.1,70.7C5.9,75.3,-9.6,76.3,-23.9,72.5C-38.2,68.7,-51.3,60.1,-62.5,48.5C-73.7,36.9,-83,22.3,-85.2,6.5C-87.4,-9.3,-82.5,-26.3,-72.6,-39.1C-62.7,-51.9,-47.8,-60.5,-33.4,-67C-19,-73.5,-5,-77.9,9.7,-78.1C24.4,-78.3,33.7,-80.2,47.3,-73.2Z"
+                          transform="translate(100 100)"
                         />
-                      </motion.div>
+                      </svg>
 
-                      {/* Animated price tag */}
-                      <motion.div
-                        className="absolute top-4 right-4 bg-blue-600 text-white font-bold rounded-full w-14 h-14 flex items-center justify-center z-10"
-                        initial={{ rotate: 0, scale: 1 }}
-                        whileHover={{
-                          rotate: [0, -10, 10, 0],
-                          scale: [1, 1.2, 1],
-                        }}
-                        transition={{ duration: 0.5 }}
-                      >
-                        {product.price}
-                      </motion.div>
+                      {/* Price tag with paint splatter */}
+                      <div className="absolute top-4 right-4 z-20">
+                        <div className="relative">
+                          <svg
+                            className="absolute top-0 left-0 w-full h-full -z-10"
+                            viewBox="0 0 100 100"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              fill="#F29C1F"
+                              d="M42.8,-65.2C54.9,-56.3,63.7,-43.2,69.2,-29C74.8,-14.8,77.2,0.5,74.1,14.8C71,29.1,62.5,42.4,50.8,51.2C39.1,60,24.2,64.3,9.2,67.1C-5.8,69.9,-21,71.2,-34.9,66.5C-48.8,61.8,-61.5,51.1,-68.1,37.4C-74.7,23.7,-75.2,7,-71.9,-8.1C-68.6,-23.2,-61.4,-36.7,-50.5,-46.5C-39.6,-56.3,-24.9,-62.4,-9.4,-65.1C6.1,-67.8,30.7,-74.1,42.8,-65.2Z"
+                              transform="translate(50 50)"
+                            />
+                          </svg>
+                          <span className="relative z-10 font-bold text-white px-4 py-2 block">{product.price}</span>
+                        </div>
+                      </div>
 
-                      {/* Quick action buttons with enhanced animations */}
-                      <AnimatePresence>
-                        <motion.div
-                          className="absolute bottom-4 left-0 right-0 flex justify-center gap-3"
-                          initial={{ opacity: 0, y: 20 }}
-                          whileHover={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 0.2 }}
-                        >
-                          <motion.div whileHover={{ scale: 1.2, rotate: [0, -5, 5, 0] }} transition={{ duration: 0.3 }}>
-                            <Button
-                              size="icon"
-                              variant="secondary"
-                              className="rounded-full bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg"
-                              onClick={() => {
-                                triggerConfetti()
-                                alert("Added to cart!")
-                              }}
-                            >
-                              <ShoppingBag className="w-4 h-4 text-blue-600" />
-                            </Button>
-                          </motion.div>
-                          <motion.div whileHover={{ scale: 1.2, rotate: [0, -5, 5, 0] }} transition={{ duration: 0.3 }}>
-                            <Button
-                              size="icon"
-                              variant="secondary"
-                              className="rounded-full bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg"
-                              onClick={() => alert("Added to wishlist!")}
-                            >
-                              <Heart className="w-4 h-4 text-blue-600" />
-                            </Button>
-                          </motion.div>
-                        </motion.div>
-                      </AnimatePresence>
-
-                      {/* Animated sparkles on hover */}
-                      <AnimatePresence>
-                        <motion.div
-                          className="absolute inset-0 pointer-events-none"
-                          initial={{ opacity: 0 }}
-                          whileHover={{ opacity: 1 }}
-                        >
-                          {[...Array(3)].map((_, i) => (
-                            <motion.div
-                              key={i}
-                              className="absolute"
-                              initial={{
-                                opacity: 0,
-                                scale: 0,
-                                top: `${Math.random() * 100}%`,
-                                left: `${Math.random() * 100}%`,
-                              }}
-                              animate={{
-                                opacity: [0, 1, 0],
-                                scale: [0, 1, 0],
-                              }}
-                              transition={{
-                                duration: 0.8,
-                                delay: i * 0.2,
-                                repeat: Number.POSITIVE_INFINITY,
-                                repeatDelay: 2,
-                              }}
-                            >
-                              <Sparkles className="text-yellow-400 w-5 h-5" />
-                            </motion.div>
-                          ))}
-                        </motion.div>
-                      </AnimatePresence>
+                      <img
+                        src={product.image || "/placeholder.svg"}
+                        alt={product.name}
+                        className="object-contain w-full h-full transition-transform duration-300 group-hover:scale-105 relative z-10"
+                      />
                     </div>
-                    <CardContent className="p-6">
-                      <Badge variant="outline" className="mb-2 bg-blue-50">
-                        <motion.span
-                          animate={{ scale: [1, 1.2, 1] }}
-                          transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
+                    <CardContent className="p-6 relative z-10">
+                      <h3 className="font-normal text-xl mb-2 relative inline-block">
+                        {product.name}
+                        {/* Handwritten underline effect */}
+                        <svg
+                          className="absolute -bottom-1 left-0 w-full"
+                          height="6"
+                          viewBox="0 0 100 6"
+                          preserveAspectRatio="none"
                         >
-                          <Flame className="w-3 h-3 mr-1 inline text-blue-500" />
-                        </motion.span>
-                        Bestseller
-                      </Badge>
-                      <h3 className="font-semibold text-xl mb-2">{product.name}</h3>
+                          <path
+                            d="M0,3 C20,1 40,5 60,3 S80,1 100,3"
+                            stroke="#F29C1F"
+                            strokeWidth="2"
+                            fill="none"
+                            strokeLinecap="round"
+                          />
+                        </svg>
+                      </h3>
                       <p className="text-muted-foreground mb-4">{product.description}</p>
                       <div className="flex justify-between items-center">
-                        <div className="flex items-center">
-                          <div className="flex">
-                            {[1, 2, 3, 4, 5].map((star) => (
-                              <Star key={star} className="w-3 h-3 fill-yellow-500 text-yellow-500" />
-                            ))}
-                          </div>
-                          <span className="text-xs ml-1 text-muted-foreground">(24)</span>
-                        </div>
+                        <span className="font-bold text-lg">{product.price}</span>
                         <Button
-                          variant="default"
+                          variant="outline"
                           size="sm"
                           onClick={() => window.alert(`${product.name} details coming soon!`)}
-                          className="bg-blue-600 hover:bg-blue-700 relative overflow-hidden group"
+                          className="relative overflow-hidden group"
                         >
                           <span className="relative z-10">View Details</span>
                           <motion.span
-                            className="absolute inset-0 bg-gradient-to-r from-blue-700 to-blue-500"
+                            className="absolute inset-0 bg-blue-100"
                             initial={{ x: "-100%" }}
                             whileHover={{ x: 0 }}
                             transition={{ duration: 0.3 }}
@@ -843,10 +771,10 @@ export default function ProductPage() {
                         </Button>
                       </div>
                     </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </AnimatePresence>
+                  </div>
+                </Card>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>

@@ -439,7 +439,7 @@ const ProductCard = ({
           <Badge variant="outline" className="mb-2 bg-red-50">
             Bestseller
           </Badge>
-          <h3 className="font-semibold text-xl mb-2">{product.name}</h3>
+          <h3 className="font-normal text-xl mb-2">{product.name}</h3>
           <p className="text-muted-foreground mb-4">{product.description}</p>
           <div className="flex justify-between items-center">
             <div className="flex items-center">
@@ -528,7 +528,7 @@ const FeatureCard = ({
           )}
         </AnimatePresence>
       </motion.div>
-      <h3 className="font-semibold text-xl mb-3">{feature.title}</h3>
+      <h3 className="font-normal text-xl mb-3">{feature.title}</h3>
       <p className="text-muted-foreground">{feature.description}</p>
 
       {/* Animated sparkles on hover */}
@@ -848,15 +848,12 @@ const { bg, ring, text } = chipColorMap[selectedChip] || chipColorMap["images/ch
     <div className="overflow-x-hidden">
       {/* Cursor glow effect */}
       <CursorGlow />
-
       {/* Scroll Navigator */}
       {/* <ScrollNavigator /> */}
-
       {/* Confetti container */}
       <div className="fixed inset-0 pointer-events-none z-50 flex items-center justify-center">
         <ConfettiExplosion isExploding={confetti} />
       </div>
-
       {/* Hero Section */}
       <section
         ref={heroRef}
@@ -1034,48 +1031,27 @@ const { bg, ring, text } = chipColorMap[selectedChip] || chipColorMap["images/ch
           </div>
         </div>
 
-        {/* Floating particles for visual effect */}
-        <FloatingParticles />
+      {/* Floating Particles */}
+      <FloatingParticles />
 
+      {/* Scroll Indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2, duration: 0.6 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center text-white z-40"
+      >
+        <span className="text-sm font-medium tracking-widest mb-1">
+          Scroll to explore
+        </span>
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2, duration: 0.6 }}
-          style={{
-            position: "absolute",
-            bottom: "30px",
-            left: "50%",
-            transform: "translateX(-50%)",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            color: "white",
-            zIndex: 40,
-          }}
+          animate={{ y: [0, 10, 0], opacity: [0.4, 1, 0.4] }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
         >
-          <span
-            style={{
-              fontSize: "14px",
-              marginBottom: "6px",
-              fontWeight: 500,
-              letterSpacing: "1px",
-            }}
-          >
-            Scroll to explore
-          </span>
-          <motion.div
-            animate={{ y: [0, 10, 0], opacity: [0.4, 1, 0.4] }}
-            transition={{
-              duration: 1.5,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          >
-            <ChevronDown style={{ width: "24px", height: "24px" }} />
-          </motion.div>
+          <ChevronDown className="w-6 h-6" />
         </motion.div>
-      </section>
-
+      </motion.div>
+    </section>
       {/* Featured Products */}
       <section className="py-24 relative">
         {/* Animated background elements */}
@@ -1171,7 +1147,6 @@ const { bg, ring, text } = chipColorMap[selectedChip] || chipColorMap["images/ch
           </motion.div>
         </div>
       </section>
-
       {/* Features Section with parallax effect */}
       <section className="py-24 bg-gradient-to-b from-blue-50 to-white relative overflow-hidden">
         <motion.div
@@ -1220,7 +1195,7 @@ const { bg, ring, text } = chipColorMap[selectedChip] || chipColorMap["images/ch
                 </motion.span>
                 WHY CHOOSE US
               </Badge>
-              <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-red-500">
+              <h2 className="text-3xl md:text-5xl font-bold mb-4 pb-4 bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-red-500">
                 Why Choose Yummfeast
               </h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -1237,7 +1212,6 @@ const { bg, ring, text } = chipColorMap[selectedChip] || chipColorMap["images/ch
           </div>
         </div>
       </section>
-
       {/* Fun interactive section */}
       <section className="py-24 bg-red-600 text-white relative overflow-hidden">
         <motion.div
@@ -1386,7 +1360,6 @@ const { bg, ring, text } = chipColorMap[selectedChip] || chipColorMap["images/ch
           </div>
         </div>
       </section>
-
       {/* Testimonials with enhanced animations */}
       <section className="py-24 relative">
         {/* Animated background elements */}
@@ -1436,7 +1409,7 @@ const { bg, ring, text } = chipColorMap[selectedChip] || chipColorMap["images/ch
                 </motion.span>
                 TESTIMONIALS
               </Badge>
-              <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-red-500">
+              <h2 className="text-3xl md:text-5xl font-bold mb-4 pb-4 bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-red-500">
                 What Our Customers Say
               </h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -1464,7 +1437,7 @@ const { bg, ring, text } = chipColorMap[selectedChip] || chipColorMap["images/ch
                       }}
                     >
                       <motion.div
-                        className="absolute -top-6 left-1/2 transform -translate-x-1/2 flex items-center justify-center bg-white rounded-full p-2 border-2 border-red-200"
+                        className="absolute-top-6 left-1/2 transform -translate-x-1/2 flex items-center justify-center bg-white rounded-full p-2 border-2 border-red-200"
                         initial={{ y: 0 }}
                         animate={{ y: [0, -5, 0] }}
                         transition={{
@@ -1549,7 +1522,6 @@ const { bg, ring, text } = chipColorMap[selectedChip] || chipColorMap["images/ch
           </motion.div>
         </div>
       </section>
-
       {/* CTA Section with animated background */}
       <section className="py-24 bg-gradient-to-r from-red-600 to-red-700 relative overflow-hidden">
         <motion.div

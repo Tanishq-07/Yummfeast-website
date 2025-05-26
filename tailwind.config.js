@@ -21,6 +21,7 @@ module.exports = {
       fontFamily: {
         futura: ['FuturaLTPro', 'sans-serif'],
         sans: ['"Rooney Sans"', 'sans-serif'],
+        poetsenone: ['PoetsenOne', 'sans-serif'],
         // pinup: ['Pinup', 'sans-serif'],
       },
       colors: {
