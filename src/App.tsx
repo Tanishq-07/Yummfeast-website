@@ -150,12 +150,12 @@ export default function App() {
         <ChevronDown style={{ width: "22px", height: "22px" }} />
       </motion.button>
 
-    {accessRestricted && (
+      {/* {accessRestricted && (
         <AccessRestriction 
           message="Ask the developers to increase to Grant Access"
           contactEmail="payments@yourcompany.com"
         />
-      )}
-    </div>
+      )} */}
+    </div> 
   );
 }
