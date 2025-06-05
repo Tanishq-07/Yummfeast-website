@@ -1,12 +1,10 @@
 "use client";
 
 import type React from "react";
-
 import { useEffect, useRef, useState } from "react";
 import {
   motion,
   useScroll,
-  useTransform,
   AnimatePresence,
   useMotionValue,
   useSpring,
@@ -14,8 +12,6 @@ import {
 } from "framer-motion";
 import {
   ChevronDown,
-  ChevronRight,
-  ChevronLeft,
   Sparkles,
   Star,
   ShoppingBag,
@@ -25,8 +21,7 @@ import {
   Zap,
   Flame,
   PartyPopper,
-  Utensils,
-  Car,
+  Factory
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -48,18 +43,7 @@ interface Product {
   description: string;
   image: string;
   price: string;
-}
-
-interface Feature {
-  title: string;
-  description: string;
-}
-
-interface Testimonial {
-  name: string;
-  role: string;
-  quote: string;
-  avatar: string;
+  category: string;
 }
 
 // Animated cursor glow effect
@@ -476,6 +460,37 @@ const ProductCard = ({
   );
 };
 
+const ProductCircle = ({
+  product,
+  index,
+  navigateTo,
+}: {
+  product: Product;
+  index: number;
+  navigateTo: (page: string) => void;
+}) => {
+  return (
+    <div className="flex flex-col items-center gap-4">
+        <motion.img
+            key={index}
+            initial={{ opacity: 0, scale: 0, rotate: -15}}
+            animate={{ opacity: 1, scale: 1, rotate: -15}}
+            transition={{ duration: 0.6 }}
+            src={product.image}
+            alt={product.name}
+            className="w-48 h-48 object-contain -rotate-12 mb-12"
+          />
+
+      {/* Label/Button */}
+      <div className="bg-orange-500 text-white text-lg font-medium px-6 py-2 rounded-md shadow-md border-2 border-black relative hover:bg-red-600">
+        {product.category}
+        <div className="absolute -bottom-1 left-0 w-full h-full rounded-md bg-black -z-10 translate-y-1 translate-x-1"></div>
+      </div>
+    </div>
+  );
+};
+
+
 // Feature card with enhanced hover effects and proper typing
 const FeatureCard = ({
   feature,
@@ -754,6 +769,13 @@ export default function HomePage({ navigateTo }: HomePageProps) {
     "images/chips4.png",
   ];
 
+  // Compute reordered chips based on currentChipIndex
+  const reorderedChips = [
+    ...chipVariants.slice(currentChipIndex),
+    ...chipVariants.slice(0, currentChipIndex)
+  ];
+
+
   const chipColorMap = {
     "images/chips1.png": {
       bg: "bg-red-600",
@@ -927,6 +949,19 @@ export default function HomePage({ navigateTo }: HomePageProps) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const nextIndex =
+        currentChipIndex === chipVariants.length - 1 ? 0 : currentChipIndex + 1;
+
+      setCurrentChipIndex(nextIndex);
+      setSelectedChip(chipVariants[nextIndex]);
+    }, 2500); // Auto change every 5 seconds
+
+    return () => clearInterval(interval); // Cleanup
+  }, [currentChipIndex, chipVariants]);
+
+
   const triggerConfetti = () => {
     setConfetti(true);
     setTimeout(() => setConfetti(false), 2000);
@@ -936,65 +971,139 @@ export default function HomePage({ navigateTo }: HomePageProps) {
     {
       name: "Yummfeast Rings",
       description: "Crunchy rings with a burst of tangy masala flavor",
-      image: "/images/product1.jpg",
+      image:
+        "/images/chips1.png",
       price: "₹10",
+      category: "Fryums"
     },
     {
       name: "Yummfeast Pasta",
       description: "Crispy pasta snacks with Italian herbs seasoning",
-      image: "/images/product2.jpg",
+      image:
+        "/images/chips2.png",
       price: "₹15",
+      category: "Chips"
     },
     {
       name: "Yummfeast All-in-One",
       description:
         "A delightful mix of various namkeen for the perfect snack time",
-      image: "/images/product3.jpg",
+      image:
+        "/images/chips3.png",
       price: "₹20",
+      category: "Namkeen"
+    },
+    {
+      name: "Yummfeast Rings",
+      description: "Crunchy rings with a burst of tangy masala flavor",
+      image:
+        "/images/chips1.png",
+      price: "₹10",
+      category: "Fryums"
+    },
+    {
+      name: "Yummfeast Pasta",
+      description: "Crispy pasta snacks with Italian herbs seasoning",
+      image:
+        "/images/chips2.png",
+      price: "₹15",
+      category: "Chips"
+    },
+    {
+      name: "Yummfeast All-in-One",
+      description:
+        "A delightful mix of various namkeen for the perfect snack time",
+      image:
+        "/images/chips3.png",
+      price: "₹20",
+      category: "Namkeen"
     },
   ];
 
-  const features: Feature[] = [
-    {
-      title: "Premium Quality",
-      description:
-        "All our snacks are made with the finest ingredients for authentic taste and crunch.",
-    },
-    {
-      title: "Hygienic Processing",
-      description:
-        "Our state-of-the-art facilities ensure the highest standards of hygiene and quality control.",
-    },
-    {
-      title: "Value for Money",
-      description:
-        "We offer generous portions at affordable prices so you get more joy in every pack.",
-    },
-  ];
+  const features = [
+  {
+    icon: Sparkles,
+    title: "Endless Flavors",
+    description:
+      "From classic to exotic, we offer an incredible variety of flavors to satisfy every craving and preference.",
+    image: "/images/flavor-variety.png",
+    color: "from-orange-500 to-red-500",
+    bgColor: "bg-gradient-to-br from-orange-50 to-red-50",
+  },
+  {
+    icon: Heart,
+    title: "Shared Moments",
+    description: "Our snacks bring people together, creating precious moments of joy and connection with loved ones.",
+    image: "/images/sharing-moments.png",
+    color: "from-pink-500 to-purple-500",
+    bgColor: "bg-gradient-to-br from-pink-50 to-purple-50",
+  },
+  {
+    icon: Factory,
+    title: "Quality Production",
+    description:
+      "State-of-the-art facilities and rigorous quality control ensure every pack meets our highest standards.",
+    image: "/images/quality-production.png",
+    color: "from-blue-500 to-indigo-500",
+    bgColor: "bg-gradient-to-br from-blue-50 to-indigo-50",
+  },
+]
 
-  const testimonials: Testimonial[] = [
-    {
-      name: "Rahul Sharma",
-      role: "Verified Customer",
-      quote:
-        "Yummfeast Rings are my kids' favorite snack. The quality is outstanding and the taste is unmatched. We've been loyal customers for years!",
-      avatar: "/images/avatar1.png",
-    },
-    {
-      name: "Priya Patel",
-      role: "Verified Customer",
-      quote:
-        "I love the Pasta snacks from Yummfeast. They're perfectly seasoned and always fresh. My go-to evening snack with chai!",
-      avatar: "/images/avatar2.png",
-    },
-    {
-      name: "Amit Verma",
-      role: "Verified Customer",
-      quote:
-        "The All-in-One mix is perfect for parties. Everyone loves the variety and the authentic flavors. Will definitely keep ordering!",
-      avatar: "/images/avatar3.png",
-    },
-  ];
+// const FeatureCard = ({ feature, index }: { feature: (typeof features)[0]; index: number }) => {
+//   return (
+//     <motion.div
+//       initial={{ opacity: 0, y: 50 }}
+//       whileInView={{ opacity: 1, y: 0 }}
+//       transition={{ duration: 0.6, delay: index * 0.2 }}
+//       viewport={{ once: true, margin: "-50px" }}
+//       whileHover={{ y: -10 }}
+//       className={`relative overflow-hidden rounded-2xl ${feature.bgColor} p-8 shadow-lg hover:shadow-2xl transition-all duration-300 group`}
+//     >
+//       {/* Background Image */}
+//       <div className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity duration-300">
+//         <img src={feature.image || "/placeholder.svg"} alt={feature.title} className="w-full h-full object-cover" />
+//       </div>
+
+//       {/* Content */}
+//       <div className="relative z-10">
+//         {/* Icon */}
+//         <motion.div
+//           whileHover={{ scale: 1.1, rotate: 5 }}
+//           className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-r ${feature.color} text-white mb-6 shadow-lg`}
+//         >
+//           <feature.icon className="w-8 h-8" />
+//         </motion.div>
+
+//         {/* Title */}
+//         <h3 className="text-2xl font-bold text-gray-800 mb-4 group-hover:text-gray-900 transition-colors">
+//           {feature.title}
+//         </h3>
+
+//         {/* Description */}
+//         <p className="text-gray-600 leading-relaxed mb-6 group-hover:text-gray-700 transition-colors">
+//           {feature.description}
+//         </p>
+
+//         {/* Feature Image */}
+//         <motion.div whileHover={{ scale: 1.05 }} className="relative overflow-hidden rounded-xl shadow-md">
+//           <img
+//             src={feature.image || "/placeholder.svg"}
+//             alt={feature.title}
+//             className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+//           />
+//           <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+//         </motion.div>
+
+//         {/* Decorative Elements */}
+//         <motion.div
+//           animate={{ rotate: 360 }}
+//           transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+//           className={`absolute -top-4 -right-4 w-8 h-8 rounded-full bg-gradient-to-r ${feature.color} opacity-20`}
+//         />
+//       </div>
+//     </motion.div>
+//   )
+// }
 
   return (
     <div className="overflow-x-hidden">
@@ -1013,9 +1122,6 @@ export default function HomePage({ navigateTo }: HomePageProps) {
       >
         {/* Background circles */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          {/* <div className={`absolute w-[1600px] h-[1600px] rounded-full border-[88px] ${ring} opacity-40`}></div>
-          <div className={`absolute w-[1100px] h-[1100px] rounded-full border-[80px] ${ring} opacity-40`}></div>
-          <div className={`absolute w-[600px] h-[600px] rounded-full border-[56px] ${ring} opacity-40`}></div> */}
           <div className="absolute md:w-[1600px] md:h-[1600px] w-[800px] h-[800px] rounded-full md:border-[88px] border-[44px] opacity-40 z-0 transition-all duration-300 ease-in-out" />
           <div className="absolute md:w-[1100px] md:h-[1100px] w-[550px] h-[550px] rounded-full md:border-[80px] border-[40px] opacity-40 z-0 transition-all duration-300 ease-in-out" />
           <div className="absolute md:w-[560px] md:h-[560px] w-[300px] h-[300px] rounded-full md:border-[56px] border-[28px] opacity-40 z-0 transition-all duration-300 ease-in-out" />
@@ -1025,6 +1131,7 @@ export default function HomePage({ navigateTo }: HomePageProps) {
         <div className="container mx-auto px-4 relative z-10 flex flex-col md:flex-row items-center">
           {/* Left side - Text content */}
           <div className="hidden md:block md:w-1/3 mb-10 md:mb-0 order-2 md:order-1 text-white">
+          <AnimatePresence key={selectedChip}>
             <AnimatedText delay={0.1} type="slide" className="mb-4">
               <h1 className="text-4xl font-normal leading-tight">
                 EAT OUR GRILLED
@@ -1043,25 +1150,6 @@ export default function HomePage({ navigateTo }: HomePageProps) {
               type="fade"
               className="flex items-center gap-12"
             >
-              {/* <div className="flex items-center bg-white/20 backdrop-blur-sm rounded-full px-6 py-1">
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="text-white hover:bg-white/10 h-8 w-8"
-                >
-                  <span className="sr-only">Decrease</span>
-                  <span className="text-xl">-</span>
-                </Button>
-                <span className="mx-2 text-white font-medium">10</span>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="text-white hover:bg-white/10 h-8 w-8"
-                >
-                  <span className="sr-only">Increase</span>
-                  <span className="text-xl">+</span>
-                </Button>
-              </div> */}
               <Button
                 className={`bg-white rounded-full hover:bg-white/90 px-12 ${text}`}
                 onClick={() => navigateTo("product")}
@@ -1069,23 +1157,21 @@ export default function HomePage({ navigateTo }: HomePageProps) {
                 View Product
               </Button>
             </AnimatedText>
+          </AnimatePresence>
           </div>
 
           {/* Center - Selected chip packet */}
           <div className="hidden md:w-1/3 md:flex justify-center items-center relative order-1 md:order-2">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
-              className="w-[280px] md:w-[350px] relative z-20"
-            >
-              <img
-                src={selectedChip}
-                alt="Pizza Heart Chips"
-                className="w-full h-auto drop-shadow-2xl"
-              />
-            </motion.div>
-          </div>
+            <motion.img
+                key={currentChipIndex}
+                initial={{ opacity: 0, y: 30, scale: 0}}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.6 }}
+                src={chipVariants[currentChipIndex]}
+                alt={`Pizza Heart Chips ${currentChipIndex + 1}`}
+                className="w-[280px] md:w-[350px] relative z-20"
+                />
+            </div>
 
           {/* Mobile Carousel (Shows only selected chip with arrows) */}
           <div className="w-full max-w-xs mx-auto md:hidden relative flex items-center justify-center ">
@@ -1105,9 +1191,9 @@ export default function HomePage({ navigateTo }: HomePageProps) {
 
             <motion.img
               key={currentChipIndex}
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.4 }}
+              initial={{ opacity: 0, scale: 0}}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.7 }}
               src={chipVariants[currentChipIndex]}
               alt={`Pizza Heart Chips ${currentChipIndex + 1}`}
               className="w-[280px] mx-auto drop-shadow-xl"
@@ -1130,28 +1216,33 @@ export default function HomePage({ navigateTo }: HomePageProps) {
 
           {/* Mobile Text content (hidden on desktop) */}
           <div className="block md:hidden text-white text-center mt-6 px-4 order-3">
-            <h1 className="text-3xl font-normal leading-tight mb-2">
+            <AnimatePresence key={selectedChip}>
+            <AnimatedText delay={0.1} type="slide" className="mb-4">
+            <h1 className="text-3xl font-bold leading-tight mb-2">
               EAT OUR GRILLED
               <br />
               POTATO CHIPS
             </h1>
+            </AnimatedText>
+            <AnimatedText delay={0.3} type="fade">
             <p className="text-md text-white/90 max-w-md mx-auto mb-6">
               Share a bite of #Pizzaheart with your friends to strengthen your
               friendship bond.
             </p>
-            <div className="flex flex-col items-center gap-4">
-              {/* <div className="flex items-center bg-white/20 backdrop-blur-sm rounded-full px-6 py-1">
-                <Button variant="ghost" size="icon" className="text-white hover:bg-white/10 h-8 w-8">-</Button>
-                <span className="mx-2 text-white font-medium">10</span>
-                <Button variant="ghost" size="icon" className="text-white hover:bg-white/10 h-8 w-8">+</Button>
-              </div> */}
+            </AnimatedText>
+            <AnimatedText
+              delay={0.5}
+              type="fade"
+              className="flex flex-col items-center gap-4"
+            >
               <Button
                 className="bg-white rounded-full text-red-600 hover:bg-white/90 px-12"
                 onClick={() => navigateTo("product")}
               >
                 View Product
               </Button>
-            </div>
+            </AnimatedText>
+            </AnimatePresence>
           </div>
 
           {/* Right side - Chips slider */}
@@ -1162,20 +1253,26 @@ export default function HomePage({ navigateTo }: HomePageProps) {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="chips-slider flex flex-col gap-6"
             >
-              {[1, 2, 3, 4].map((index) => (
+              {reorderedChips.map((chip, index) => (
                 <motion.div
-                  key={index}
+                  layout
+                  key={chip}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.4 }}
                   whileHover={{ scale: 1.1 }}
-                  className={`w-16 h-16 md:w-20 md:h-20 m-2 overflow-hidden cursor-pointer ${
-                    index === 1 ? "" : ""
-                  }`}
+                  className={`w-16 h-16 md:w-20 md:h-20 m-2 overflow-hidden cursor-pointer`}
                   onClick={() => {
-                    setSelectedChip(chipVariants[index - 1]);
+                    // Convert reordered index back to actual index in chipVariants
+                    const originalIndex = chipVariants.indexOf(chip);
+                    setSelectedChip(chip);
+                    setCurrentChipIndex(originalIndex);
                   }}
                 >
                   <img
-                    src={chipVariants[index - 1]}
-                    alt={`Chip variant ${index}`}
+                    src={chip}
+                    alt={`Chip variant ${index + 1}`}
                     className="w-full h-full object-cover"
                   />
                 </motion.div>
@@ -1183,6 +1280,8 @@ export default function HomePage({ navigateTo }: HomePageProps) {
             </motion.div>
           </div>
         </div>
+          
+          
 
         {/* Floating Particles */}
         <FloatingParticles />
@@ -1206,9 +1305,15 @@ export default function HomePage({ navigateTo }: HomePageProps) {
         </motion.div>
       </section>
       {/* Featured Products */}
-      <section className="py-24 relative">
+      <section className="py-16 relative" style={{
+          backgroundImage: "url('/images/white-bg.jpg')",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          opacity: 1,
+        }}>
         {/* Animated background elements */}
-        <motion.div
+        {/* <motion.div
           className="absolute top-40 right-0 w-64 h-64 rounded-full bg-red-100 opacity-50 blur-3xl"
           animate={{
             x: [0, 50, 0],
@@ -1232,7 +1337,7 @@ export default function HomePage({ navigateTo }: HomePageProps) {
             repeat: Number.POSITIVE_INFINITY,
             repeatType: "reverse",
           }}
-        />
+        /> */}
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
@@ -1264,18 +1369,84 @@ export default function HomePage({ navigateTo }: HomePageProps) {
             </motion.div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-4 md:mx-16">
+          {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-4 md:mx-16">
             {products.map((product, index) => (
-              <ProductCard
+              <ProductCircle
                 key={index}
                 product={product}
                 index={index}
                 navigateTo={navigateTo}
               />
             ))}
-          </div>
+          </div> */}
+          <Carousel
+            className="w-full"
+            opts={{ loop: true }}
+            plugins={[Autoplay({ delay: 3000 })]}
+          >
+            <CarouselContent className="mt-2 mb-2 px-4 md:px-16">
+              {products.map((product, index) => (
+                <CarouselItem key= {index} className="md:basis-1/3 lg:basis-1/4">
+                  <ProductCircle
+                    product={product}
+                    index={index}
+                    navigateTo={navigateTo}
+                  />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
 
-          <motion.div
+            {/* Arrows: Only one set, responsive */}
+            <CarouselPrevious className="ms-16" />
+            <CarouselNext className="me-16" />
+          </Carousel>
+
+
+          {/* Product Display */}
+          {/* <div className="flex justify-center items-center min-h-[400px]">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentCatIndex}
+                initial={{ opacity: 0, x: 100 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -100 }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+                className="w-full flex justify-center"
+              >
+                {products.map((product, index) => (
+                  <ProductCircle
+                    key={index}
+                    product={product}
+                    index={index}
+                    navigateTo={navigateTo}
+                  />
+                ))}
+              </motion.div>
+            </AnimatePresence>
+          </div> */}
+
+          {/* Navigation Arrows */}
+          {/* <Button
+            variant="outline"
+            size="icon"
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white border-2 border-black shadow-lg"
+            onClick={goToPrevious}
+          >
+            <ChevronLeft className="h-4 w-4" />
+          </Button> */}
+
+          {/* <Button
+            variant="outline"
+            size="icon"
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white border-2 border-black shadow-lg"
+            onClick={goToNext}
+          >
+            <ChevronRight className="h-4 w-4" />
+          </Button> */}
+        </div>
+
+
+          {/* <motion.div
             className="text-center mt-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -1297,14 +1468,26 @@ export default function HomePage({ navigateTo }: HomePageProps) {
                 transition={{ duration: 0.4 }}
               />
             </Button>
-          </motion.div>
-        </div>
+          </motion.div> */}
+
+        
       </section>
 
       {/*Recent new and updates*/}
 
       <section className="py-24 bg-red-600 relative overflow-hidden">
         {/* Subtle background elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <motion.div
+            className="w-[120%] h-[120%] bg-[url('/images/pattern.svg')] opacity-10"
+            animate={{ x: [-20, 0], y: [-20, 0] }}
+            transition={{
+              duration: 60,
+              repeat: Number.POSITIVE_INFINITY,
+              repeatType: "reverse",
+            }}
+          />
+        </div>
         <motion.div
           className="absolute top-20 right-0 w-64 h-64 rounded-full bg-white/10 opacity-30 blur-3xl"
           animate={{
@@ -1354,6 +1537,7 @@ export default function HomePage({ navigateTo }: HomePageProps) {
             {/* Right side - News Cards Carousel */}
             <div className="w-full relative">
               <Carousel
+                isOverflow={true}
                 className="w-full"
                 opts={{ loop: true }}
                 plugins={[Autoplay({ delay: 3000 })]}
@@ -1372,7 +1556,7 @@ export default function HomePage({ navigateTo }: HomePageProps) {
                         whileHover={{ y: -5 }}
                         className="bg-white rounded-xl overflow-hidden shadow-lg h-full"
                       >
-                        <div className="h-40  bg-white relative overflow-hidden flex items-center justify-center">
+                        <div className="h-48  bg-white relative overflow-hidden flex items-center justify-center">
                           <img
                             src={item.image || "/placeholder.svg"}
                             alt={item.alt}
@@ -1415,18 +1599,87 @@ export default function HomePage({ navigateTo }: HomePageProps) {
         </div>
       </section>
 
-     
-      {/* Fun interactive section */}
-      <section className="py-24 bg-red-600 text-white relative overflow-hidden">
+
+      
+      {/* Fun Facts Section */}
+      <section className="py-24 bg-gradient-to-b from-blue-50 to-white relative overflow-hidden">
         <motion.div
-          className="absolute inset-0 bg-[url('/images/pattern.svg')] opacity-10"
-          animate={{ x: [0, 100], y: [0, -100] }}
+          className="absolute -right-20 -top-20 w-64 h-64 bg-red-200 rounded-full opacity-20"
+          animate={{
+            x: [0, 50, 0],
+            y: [0, 30, 0],
+          }}
           transition={{
-            duration: 60,
+            duration: 15,
             repeat: Number.POSITIVE_INFINITY,
             repeatType: "reverse",
           }}
         />
+
+        <motion.div
+          className="absolute -left-20 -bottom-20 w-80 h-80 bg-yellow-200 rounded-full opacity-20"
+          animate={{
+            x: [0, -30, 0],
+            y: [0, 50, 0],
+          }}
+          transition={{
+            duration: 18,
+            repeat: Number.POSITIVE_INFINITY,
+            repeatType: "reverse",
+          }}
+        />
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center mb-16">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true, margin: "-100px" }}
+            >
+              <Badge
+                variant="outline"
+                className="mb-4 px-4 py-1 text-sm bg-red-50 border-red-200"
+              >
+                <motion.span
+                  animate={{ rotate: [0, 10, -10, 0] }}
+                  transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
+                >
+                  <Award className="w-4 h-4 mr-1 inline text-red-500" />
+                </motion.span>
+                WHY CHOOSE US
+              </Badge>
+              <h2 className="text-3xl md:text-5xl font-bold mb-4 pb-4 bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-red-500">
+                Why Choose Yummfeast
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                We pride ourselves on delivering exceptional quality and taste
+                in every pack of our snacks.
+              </p>
+            </motion.div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {features.map((feature, index) => (
+              <FeatureCard key={index} feature={feature} index={index} />
+            ))}
+          </div>
+        </div>
+      </section>
+     
+      {/* Fun interactive section */}
+      <section className="py-24 bg-gradient-to-r from-red-600 to-red-700 text-white relative overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden">
+          <motion.div
+            className="w-[120%] h-[120%] bg-[url('/images/pattern.svg')] opacity-10"
+            animate={{ x: [-20, 0], y: [-20, 0] }}
+            transition={{
+              duration: 60,
+              repeat: Number.POSITIVE_INFINITY,
+              repeatType: "reverse",
+            }}
+          />
+        </div>
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto">
@@ -1740,15 +1993,17 @@ export default function HomePage({ navigateTo }: HomePageProps) {
 
       {/* CTA Section with animated background */}
       <section className="py-24 bg-gradient-to-r from-red-600 to-red-700 relative overflow-hidden">
-        <motion.div
-          className="absolute inset-0 bg-[url('/images/pattern.svg')] opacity-10"
-          animate={{ x: [0, -100], y: [0, 100] }}
-          transition={{
-            duration: 60,
-            repeat: Number.POSITIVE_INFINITY,
-            repeatType: "reverse",
-          }}
-        />
+       <div className="absolute inset-0 overflow-hidden">
+          <motion.div
+            className="w-[120%] h-[120%] bg-[url('/images/pattern.svg')] opacity-10"
+            animate={{ x: [-20, 0], y: [-20, 0] }}
+            transition={{
+              duration: 60,
+              repeat: Number.POSITIVE_INFINITY,
+              repeatType: "reverse",
+            }}
+          />
+        </div>
 
         {/* Animated floating chips */}
         <motion.div
