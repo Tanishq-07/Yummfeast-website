@@ -10,6 +10,7 @@ import {
   AnimatePresence,
   useMotionValue,
   useSpring,
+  delay,
 } from "framer-motion";
 import {
   ChevronDown,
@@ -39,6 +40,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils"; // Adjust this import to your button component
 import { text } from "stream/consumers";
+import Autoplay from "embla-carousel-autoplay";
 
 // Define types for our components
 interface Product {
@@ -356,7 +358,7 @@ const ProductCard = ({
 
           {/* Animated price tag */}
           <motion.div
-            className="absolute top-4 right-4 bg-red-600 text-white font-bold rounded-full w-14 h-14 flex items-center justify-center z-10"
+            className="absolute top-4 right-4 bg-red-600 text-white font-normal rounded-full w-14 h-14 flex items-center justify-center z-10"
             initial={{ rotate: 0, scale: 1 }}
             animate={{
               rotate: isHovered ? [0, -10, 10, 0] : 0,
@@ -743,9 +745,7 @@ export default function HomePage({ navigateTo }: HomePageProps) {
     offset: ["start start", "end start"],
   });
   const [currentChipIndex, setCurrentChipIndex] = useState(0);
-  const [selectedChip, setSelectedChip] = useState(
-    "images/chips1.png"
-  );
+  const [selectedChip, setSelectedChip] = useState("images/chips1.png");
 
   const chipVariants = [
     "images/chips1.png",
@@ -755,13 +755,168 @@ export default function HomePage({ navigateTo }: HomePageProps) {
   ];
 
   const chipColorMap = {
-  "images/chips1.png": { bg: "bg-red-600", ring: "border-red-400", text: "text-red-600" },
-  "images/chips2.png": { bg: "bg-blue-600", ring: "border-blue-400", text: "text-blue-600" },
-  "images/chips3.png": { bg: "bg-green-600", ring: "border-green-400", text: "text-green-600" },
-  "images/chips4.png": { bg: "bg-purple-600", ring: "border-purple-400", text: "text-purple-600" },
-};
+    "images/chips1.png": {
+      bg: "bg-red-600",
+      ring: "border-red-400",
+      text: "text-red-600",
+    },
+    "images/chips2.png": {
+      bg: "bg-blue-600",
+      ring: "border-blue-400",
+      text: "text-blue-600",
+    },
+    "images/chips3.png": {
+      bg: "bg-green-600",
+      ring: "border-green-400",
+      text: "text-green-600",
+    },
+    "images/chips4.png": {
+      bg: "bg-purple-600",
+      ring: "border-purple-400",
+      text: "text-purple-600",
+    },
+  };
 
-const { bg, ring, text } = chipColorMap[selectedChip] || chipColorMap["images/chips1.png"];
+  const { bg, ring, text } =
+    chipColorMap[selectedChip] || chipColorMap["images/chips1.png"];
+
+  const instagramPosts = [
+    {
+      id: "1",
+      image: "images/insta1.png",
+      caption:
+        "The victory that made it all worth it in the end!🏆We wholeheartedly congratulate @royalchallengers.bengaluru for bringing home the most amazing and smashing victory!🥳",
+      likes: "13",
+      comments: "0",
+      type: "image",
+      timestamp: "1 days ago",
+      link: "",
+    },
+    {
+      id: "2",
+      image: "images/insta2.png",
+      caption:
+        "Jeet ki taiyyari bhi puri, aur snacking ki bhi!😍Stock up on our mouth-watering snacks before tonight’s epic match begins and cheer for your favourite team louder than ever!🥳🏏",
+      likes: "2.1k",
+      comments: "78",
+      type: "image",
+      timestamp: "3 days ago",
+      link: "https://www.instagram.com/p/DKbtZdSpsoh/",
+    },
+    {
+      id: "3",
+      image: "images/insta3.png",
+      caption:
+        "Drive safe into the weekend and munch happy with our Tangy Rings!🧡🍅🚗.",
+      likes: "3.5k",
+      comments: "156",
+      type: "carousel",
+      timestamp: "5 days ago",
+      link: "https://www.instagram.com/p/DKUeIDFpYNm/",
+    },
+    {
+      id: "4",
+      image: "images/insta4.png",
+      caption:
+        "Craving something chatpata? Yummfeast snacks are loaded with bold desi flavors that hit just right!",
+      likes: "1.8k",
+      comments: "92",
+      type: "video",
+      timestamp: "1 week ago",
+      link: "https://www.instagram.com/p/DKUBsryPHMz/",
+    },
+    {
+      id: "5",
+      image: "images/insta5.png",
+      caption: "he humble potato—making our lives better everyday!😋🥔",
+      likes: "2.7k",
+      comments: "134",
+      type: "image",
+      timestamp: "1 week ago",
+      link: "https://www.instagram.com/p/DKR5c_3JQsg/",
+    },
+    {
+      id: "6",
+      image: "images/insta6.png",
+      caption:
+        "We really experience unmatched happiness when it’s time for some Yummfeast Snacks!😋😍",
+      likes: "1.9k",
+      comments: "67",
+      type: "video",
+      timestamp: "2 weeks ago",
+      link: "https://www.instagram.com/p/DKPW2H3p8tA/",
+    },
+    {
+      id: "7",
+      image: "images/insta7.png",
+      caption:
+        "Treat your taste buds with the most amazing snack-fix while you cheer for your favourite team tonight!🏏😋",
+      likes: "1.4k",
+      comments: "38",
+      type: "image",
+      timestamp: "2 weeks ago",
+      link: "https://www.instagram.com/p/DKJ4S1CtlCm/",
+    },
+    {
+      id: "8",
+      image: "images/insta8.png",
+      caption: "Cravings cured. Hearts full. Taste buds happy!😍💊💚",
+      likes: "2.3k",
+      comments: "89",
+      type: "image",
+      timestamp: "3 weeks ago",
+      link: "https://www.instagram.com/p/DKHwdifN-76/",
+    },
+  ];
+
+  const newsItems = [
+    {
+      title: "Catering to Indian Taste Preferences",
+      image:
+        "https://www.yellowdiamond.in/wp-content/uploads/2024/09/Business-Standard_07.12.16_pg18.jpg",
+      alt: "Indian Consumers",
+      date: "2 days ago",
+      slug: "indian-taste-preferences",
+    },
+    {
+      title: "New Flavors Launch This Month",
+      image:
+        "https://www.yellowdiamond.in/wp-content/uploads/2024/09/ET-Brand-Equity_1st-March2c-Pg-12c4-1.jpg",
+      alt: "New Flavors",
+      date: "2 weeks ago",
+      slug: "new-flavors-launch",
+    },
+    {
+      title: "We Crack the Taste Test",
+      image:
+        "https://www.yellowdiamond.in/wp-content/uploads/2024/08/Business-India-Coverage-July-3-1.jpg",
+      alt: "Taste Test",
+      date: "5 days ago",
+      slug: "taste-test-results",
+    },
+    {
+      title: "New Flavors Launch This Month",
+      image: "https://www.yellowdiamond.in/wp-content/uploads/2024/08/1.png",
+      alt: "New Flavors",
+      date: "2 weeks ago",
+      slug: "new-flavors-launch",
+    },
+    {
+      title: "Small Start, Big Success",
+      image:
+        "https://www.yellowdiamond.in/wp-content/uploads/2024/09/Screenshot_4-1.jpg",
+      alt: "Success Story",
+      date: "1 week ago",
+      slug: "small-start-big-success",
+    },
+    {
+      title: "New Flavors Launch This Month",
+      image: "https://www.yellowdiamond.in/wp-content/uploads/2024/08/1.png",
+      alt: "New Flavors",
+      date: "2 weeks ago",
+      slug: "new-flavors-launch",
+    },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -781,23 +936,20 @@ const { bg, ring, text } = chipColorMap[selectedChip] || chipColorMap["images/ch
     {
       name: "Yummfeast Rings",
       description: "Crunchy rings with a burst of tangy masala flavor",
-      image:
-        "/images/product1.jpg",
+      image: "/images/product1.jpg",
       price: "₹10",
     },
     {
       name: "Yummfeast Pasta",
       description: "Crispy pasta snacks with Italian herbs seasoning",
-      image:
-        "/images/product2.jpg",
+      image: "/images/product2.jpg",
       price: "₹15",
     },
     {
       name: "Yummfeast All-in-One",
       description:
         "A delightful mix of various namkeen for the perfect snack time",
-      image:
-        "/images/product3.jpg",
+      image: "/images/product3.jpg",
       price: "₹20",
     },
   ];
@@ -874,7 +1026,7 @@ const { bg, ring, text } = chipColorMap[selectedChip] || chipColorMap["images/ch
           {/* Left side - Text content */}
           <div className="hidden md:block md:w-1/3 mb-10 md:mb-0 order-2 md:order-1 text-white">
             <AnimatedText delay={0.1} type="slide" className="mb-4">
-              <h1 className="text-4xl font-bold leading-tight">
+              <h1 className="text-4xl font-normal leading-tight">
                 EAT OUR GRILLED
                 <br />
                 POTATO CHIPS
@@ -978,13 +1130,14 @@ const { bg, ring, text } = chipColorMap[selectedChip] || chipColorMap["images/ch
 
           {/* Mobile Text content (hidden on desktop) */}
           <div className="block md:hidden text-white text-center mt-6 px-4 order-3">
-            <h1 className="text-3xl font-bold leading-tight mb-2">
+            <h1 className="text-3xl font-normal leading-tight mb-2">
               EAT OUR GRILLED
               <br />
               POTATO CHIPS
             </h1>
             <p className="text-md text-white/90 max-w-md mx-auto mb-6">
-              Share a bite of #Pizzaheart with your friends to strengthen your friendship bond.
+              Share a bite of #Pizzaheart with your friends to strengthen your
+              friendship bond.
             </p>
             <div className="flex flex-col items-center gap-4">
               {/* <div className="flex items-center bg-white/20 backdrop-blur-sm rounded-full px-6 py-1">
@@ -1001,8 +1154,6 @@ const { bg, ring, text } = chipColorMap[selectedChip] || chipColorMap["images/ch
             </div>
           </div>
 
-
-
           {/* Right side - Chips slider */}
           <div className="hidden md:flex absolute right-4 md:right-10 top-1/2 transform -translate-y-1/2 flex-col gap-6 z-30">
             <motion.div
@@ -1015,13 +1166,15 @@ const { bg, ring, text } = chipColorMap[selectedChip] || chipColorMap["images/ch
                 <motion.div
                   key={index}
                   whileHover={{ scale: 1.1 }}
-                  className={`w-16 h-16 md:w-20 md:h-20 m-2 overflow-hidden cursor-pointer ${index === 1 ? "" : ""}`}
+                  className={`w-16 h-16 md:w-20 md:h-20 m-2 overflow-hidden cursor-pointer ${
+                    index === 1 ? "" : ""
+                  }`}
                   onClick={() => {
-                    setSelectedChip(chipVariants[index-1]);
+                    setSelectedChip(chipVariants[index - 1]);
                   }}
                 >
                   <img
-                    src={chipVariants[index-1]}
+                    src={chipVariants[index - 1]}
                     alt={`Chip variant ${index}`}
                     className="w-full h-full object-cover"
                   />
@@ -1031,27 +1184,27 @@ const { bg, ring, text } = chipColorMap[selectedChip] || chipColorMap["images/ch
           </div>
         </div>
 
-      {/* Floating Particles */}
-      <FloatingParticles />
+        {/* Floating Particles */}
+        <FloatingParticles />
 
-      {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2, duration: 0.6 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center text-white z-40"
-      >
-        <span className="text-sm font-medium tracking-widest mb-1">
-          Scroll to explore
-        </span>
+        {/* Scroll Indicator */}
         <motion.div
-          animate={{ y: [0, 10, 0], opacity: [0.4, 1, 0.4] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2, duration: 0.6 }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center text-white z-40"
         >
-          <ChevronDown className="w-6 h-6" />
+          <span className="text-sm font-medium tracking-widest mb-1">
+            Scroll to explore
+          </span>
+          <motion.div
+            animate={{ y: [0, 10, 0], opacity: [0.4, 1, 0.4] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <ChevronDown className="w-6 h-6" />
+          </motion.div>
         </motion.div>
-      </motion.div>
-    </section>
+      </section>
       {/* Featured Products */}
       <section className="py-24 relative">
         {/* Animated background elements */}
@@ -1101,7 +1254,7 @@ const { bg, ring, text } = chipColorMap[selectedChip] || chipColorMap["images/ch
                 </motion.span>
                 TASTY TREATS
               </Badge>
-              <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-red-500">
+              <h2 className="text-3xl md:text-5xl font-normal mb-4 bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-red-500">
                 Our Delicious Snacks
               </h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -1147,71 +1300,122 @@ const { bg, ring, text } = chipColorMap[selectedChip] || chipColorMap["images/ch
           </motion.div>
         </div>
       </section>
-      {/* Features Section with parallax effect */}
-      <section className="py-24 bg-gradient-to-b from-blue-50 to-white relative overflow-hidden">
+
+      {/*Recent new and updates*/}
+
+      <section className="py-24 bg-red-600 relative overflow-hidden">
+        {/* Subtle background elements */}
         <motion.div
-          className="absolute -right-20 -top-20 w-64 h-64 bg-red-200 rounded-full opacity-20"
+          className="absolute top-20 right-0 w-64 h-64 rounded-full bg-white/10 opacity-30 blur-3xl"
           animate={{
-            x: [0, 50, 0],
-            y: [0, 30, 0],
+            x: [0, 30, 0],
+            y: [0, 20, 0],
           }}
           transition={{
-            duration: 15,
+            duration: 20,
             repeat: Number.POSITIVE_INFINITY,
             repeatType: "reverse",
           }}
         />
 
         <motion.div
-          className="absolute -left-20 -bottom-20 w-80 h-80 bg-yellow-200 rounded-full opacity-20"
+          className="absolute bottom-20 left-0 w-80 h-80 rounded-full bg-white/10 opacity-30 blur-3xl"
           animate={{
-            x: [0, -30, 0],
-            y: [0, 50, 0],
+            x: [0, -20, 0],
+            y: [0, 30, 0],
           }}
           transition={{
-            duration: 18,
+            duration: 25,
             repeat: Number.POSITIVE_INFINITY,
             repeatType: "reverse",
           }}
         />
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-16">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true, margin: "-100px" }}
-            >
-              <Badge
-                variant="outline"
-                className="mb-4 px-4 py-1 text-sm bg-red-50 border-red-200"
+          <div className="flex flex-col lg:flex-row items-start gap-8">
+            {/* Left side - Title */}
+            <div className="lg:w-1/4 mb-8 lg:mb-0">
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
               >
-                <motion.span
-                  animate={{ rotate: [0, 10, -10, 0] }}
-                  transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
-                >
-                  <Award className="w-4 h-4 mr-1 inline text-red-500" />
-                </motion.span>
-                WHY CHOOSE US
-              </Badge>
-              <h2 className="text-3xl md:text-5xl font-bold mb-4 pb-4 bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-red-500">
-                Why Choose Yummfeast
-              </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                We pride ourselves on delivering exceptional quality and taste
-                in every pack of our snacks.
-              </p>
-            </motion.div>
-          </div>
+                <h2 className="text-4xl lg:text-5xl font-normal text-white mb-4">
+                  Recent
+                </h2>
+                <p className="text-2xl lg:text-3xl text-white/90 font-medium">
+                  News and updates
+                </p>
+                <div className="w-16 h-1 bg-white mt-4"></div>
+              </motion.div>
+            </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <FeatureCard key={index} feature={feature} index={index} />
-            ))}
+            {/* Right side - News Cards Carousel */}
+            <div className="w-full relative">
+              <Carousel
+                className="w-full"
+                opts={{ loop: true }}
+                plugins={[Autoplay({ delay: 3000 })]}
+              >
+                <CarouselContent className="-ml-4 mt-2 mb-2">
+                  {newsItems.map((item, index) => (
+                    <CarouselItem
+                      key={index}
+                      className="pl-4 md:basis-1/2 lg:basis-1/3 mt-4 md:mt-0"
+                    >
+                      <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                        viewport={{ once: true }}
+                        whileHover={{ y: -5 }}
+                        className="bg-white rounded-xl overflow-hidden shadow-lg h-full"
+                      >
+                        <div className="h-40  bg-white relative overflow-hidden flex items-center justify-center">
+                          <img
+                            src={item.image || "/placeholder.svg"}
+                            alt={item.alt}
+                            className="w-full h-full object-contain"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                        </div>
+                        <div className="p-4 bg-red-600 opacity-90">
+                          <p className=" font-normal text-md line-clamp-2 text-white">
+                            {item.title}
+                          </p>
+                          {/* <div className="flex items-center justify-between">
+                            <span className="text-xs text-gray-500">
+                              {item.date}
+                            </span>
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              className="text-red-600 hover:text-red-700 p-0"
+                              onClick={() => navigateTo(`news/${item.slug}`)}
+                            >
+                              Read More
+                            </Button>
+                          </div> */}
+                        </div>
+                      </motion.div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                {/* Mobile arrows */}
+                <CarouselPrevious className="left-2 sm:hidden" />
+                <CarouselNext className="right-2 sm:hidden" />
+
+                {/* Desktop arrows */}
+                <CarouselPrevious className="-left-12" />
+                <CarouselNext className="-right-12" />
+              </Carousel>
+            </div>
           </div>
         </div>
       </section>
+
+     
       {/* Fun interactive section */}
       <section className="py-24 bg-red-600 text-white relative overflow-hidden">
         <motion.div
@@ -1241,7 +1445,7 @@ const { bg, ring, text } = chipColorMap[selectedChip] || chipColorMap["images/ch
                   viewport={{ once: true }}
                 >
                   <PartyPopper className="w-12 h-12 mx-auto mb-4 text-yellow-300" />
-                  <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                  <h2 className="text-3xl md:text-4xl font-normal mb-4">
                     Snack Time Fun Fact
                   </h2>
                   <p className="text-xl">
@@ -1277,7 +1481,7 @@ const { bg, ring, text } = chipColorMap[selectedChip] || chipColorMap["images/ch
                       repeat: Number.POSITIVE_INFINITY,
                     }}
                   />
-                  <div className="text-4xl font-bold mb-2 relative z-10">
+                  <div className="text-4xl font-normal mb-2 relative z-10">
                     <AnimatedCounter value={100} />+
                   </div>
                   <p className="relative z-10">Flavor Combinations</p>
@@ -1302,7 +1506,7 @@ const { bg, ring, text } = chipColorMap[selectedChip] || chipColorMap["images/ch
                       repeat: Number.POSITIVE_INFINITY,
                     }}
                   />
-                  <div className="text-4xl font-bold mb-2 relative z-10">
+                  <div className="text-4xl font-normal mb-2 relative z-10">
                     <AnimatedCounter value={50} />
                     K+
                   </div>
@@ -1328,7 +1532,7 @@ const { bg, ring, text } = chipColorMap[selectedChip] || chipColorMap["images/ch
                       repeat: Number.POSITIVE_INFINITY,
                     }}
                   />
-                  <div className="text-4xl font-bold mb-2 relative z-10">
+                  <div className="text-4xl font-normal mb-2 relative z-10">
                     <AnimatedCounter value={10} />+
                   </div>
                   <p className="relative z-10">Years of Excellence</p>
@@ -1360,35 +1564,20 @@ const { bg, ring, text } = chipColorMap[selectedChip] || chipColorMap["images/ch
           </div>
         </div>
       </section>
-      {/* Testimonials with enhanced animations */}
-      <section className="py-24 relative">
-        {/* Animated background elements */}
-        <motion.div
-          className="absolute top-40 left-0 w-64 h-64 rounded-full bg-red-100 opacity-50 blur-3xl"
-          animate={{
-            x: [0, 30, 0],
-            y: [0, 50, 0],
-          }}
-          transition={{
-            duration: 15,
-            repeat: Number.POSITIVE_INFINITY,
-            repeatType: "reverse",
-          }}
-        />
 
-        <motion.div
-          className="absolute bottom-40 right-0 w-80 h-80 rounded-full bg-yellow-100 opacity-50 blur-3xl"
-          animate={{
-            x: [0, -50, 0],
-            y: [0, 30, 0],
-          }}
-          transition={{
-            duration: 18,
-            repeat: Number.POSITIVE_INFINITY,
-            repeatType: "reverse",
-          }}
-        />
+      {/*Social media section*/}
 
+      <section
+        className="py-24 bg-no-repeat bg-cover relative overflow-hidden pointer-events-none z-0"
+        style={{
+          backgroundImage: "url('/images/white-bg.jpg')",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundPosition: "top",
+          minHeight: "100vh",
+          opacity: 1,
+        }}
+      >
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
             <motion.div
@@ -1399,129 +1588,156 @@ const { bg, ring, text } = chipColorMap[selectedChip] || chipColorMap["images/ch
             >
               <Badge
                 variant="outline"
-                className="mb-4 px-4 py-1 text-sm bg-red-50 border-red-200"
+                className="mb-4 px-4 py-1 text-sm bg-orange-100"
               >
                 <motion.span
                   animate={{ scale: [1, 1.2, 1] }}
                   transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
                 >
-                  <Utensils className="w-4 h-4 mr-1 inline text-red-500" />
+                  <Heart className="w-4 h-4 mr-1 inline text-orange-500" />
                 </motion.span>
-                TESTIMONIALS
+                FOLLOW US
               </Badge>
-              <h2 className="text-3xl md:text-5xl font-bold mb-4 pb-4 bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-red-500">
-                What Our Customers Say
+              <h2 className="text-3xl md:text-5xl pb-2 mb-4 bg-clip-text text-transparent bg-orange-500">
+                @yummfeast.in
               </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Don't just take our word for it. Here's what our satisfied
-                customers have to say.
+              <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
+                Stay connected with us on Instagram for the latest updates,
+                behind-the-scenes content, and delicious snack inspiration!
               </p>
             </motion.div>
           </div>
 
-          <Carousel className="w-full max-w-4xl mx-auto">
-            <CarouselContent>
-              {testimonials.map((testimonial, index) => (
-                <CarouselItem key={index}>
-                  <motion.div
-                    className="p-6 md:p-10"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <motion.div
-                      className="bg-gradient-to-br from-red-50 to-white p-8 rounded-2xl border border-red-100 relative"
-                      whileHover={{
-                        y: -5,
-                        boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)",
-                      }}
-                    >
-                      <motion.div
-                        className="absolute-top-6 left-1/2 transform -translate-x-1/2 flex items-center justify-center bg-white rounded-full p-2 border-2 border-red-200"
-                        initial={{ y: 0 }}
-                        animate={{ y: [0, -5, 0] }}
-                        transition={{
-                          duration: 2,
-                          repeat: Number.POSITIVE_INFINITY,
-                        }}
-                      >
-                        <img
-                          src={testimonial.avatar || "/placeholder.svg"}
-                          alt={testimonial.name}
-                          className="w-16 h-16 rounded-full object-cover"
-                        />
-                      </motion.div>
+          {/* Instagram Feed Grid */}
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+              {instagramPosts.map((post, index) => (
+                <motion.div
+                  key={post.id}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  className="relative group cursor-pointer overflow-hidden rounded-lg shadow-lg"
+                  onClick={() => window.open(post.link, "_blank")}
+                >
+                  <div className="aspect-square bg-gradient-to-br from-pink-100 to-purple-100 relative overflow-hidden">
+                    <img
+                      src={post.image || "/placeholder.svg"}
+                      alt={post.caption}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                    />
 
-                      <div className="flex justify-center mt-8 mb-4">
-                        <div className="flex">
-                          {[1, 2, 3, 4, 5].map((star, i) => (
-                            <motion.div
-                              key={star}
-                              initial={{ opacity: 0, scale: 0 }}
-                              animate={{ opacity: 1, scale: 1 }}
-                              transition={{ duration: 0.3, delay: i * 0.1 }}
+                    {/* Overlay on hover */}
+                    <motion.div
+                      className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      initial={{ opacity: 0 }}
+                      whileHover={{ opacity: 1 }}
+                    >
+                      <div className="text-white text-center">
+                        <div className="flex items-center justify-center gap-4 mb-2">
+                          <div className="flex items-center gap-1">
+                            <Heart className="w-5 h-5" />
+                            <span className="text-sm font-medium">
+                              {post.likes}
+                            </span>
+                          </div>
+                          <div className="flex items-center gap-1">
+                            <svg
+                              className="w-5 h-5"
+                              fill="currentColor"
+                              viewBox="0 0 24 24"
                             >
-                              <Star className="w-5 h-5 fill-yellow-500 text-yellow-500" />
-                            </motion.div>
-                          ))}
+                              <path d="M8.5 12c0 1.38 1.12 2.5 2.5 2.5s2.5-1.12 2.5-2.5-1.12-2.5-2.5-2.5-2.5 1.12-2.5 2.5zm7-7h-1.59l-.55-.55c-.29-.29-.68-.45-1.09-.45H9.73c-.41 0-.8.16-1.09.45L8.09 5H6.5C5.12 5 4 6.12 4 7.5v9C4 17.88 5.12 19 6.5 19h11c1.38 0 2.5-1.12 2.5-2.5v-9C20 6.12 18.88 5 17.5 5z" />
+                            </svg>
+                            <span className="text-sm font-medium">
+                              {post.comments}
+                            </span>
+                          </div>
+                        </div>
+                        <p className="text-xs line-clamp-2 px-2">
+                          {post.caption}
+                        </p>
+                      </div>
+                    </motion.div>
+
+                    {/* Post type indicator */}
+                    {post.type === "video" && (
+                      <div className="absolute top-2 right-2">
+                        <div className="bg-black/70 rounded-full p-1">
+                          <svg
+                            className="w-4 h-4 text-white"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M8 5v14l11-7z" />
+                          </svg>
                         </div>
                       </div>
+                    )}
 
-                      <motion.blockquote
-                        className="text-xl italic mb-6 text-center"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.5, delay: 0.5 }}
-                      >
-                        "{testimonial.quote}"
-                      </motion.blockquote>
-
-                      <motion.div
-                        className="text-center"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.5, delay: 0.7 }}
-                      >
-                        <p className="font-semibold text-lg">
-                          {testimonial.name}
-                        </p>
-                        <p className="text-sm text-muted-foreground">
-                          {testimonial.role}
-                        </p>
-                      </motion.div>
-                    </motion.div>
-                  </motion.div>
-                </CarouselItem>
+                    {post.type === "carousel" && (
+                      <div className="absolute top-2 right-2">
+                        <div className="bg-black/70 rounded-full p-1">
+                          <svg
+                            className="w-4 h-4 text-white"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M22 16V4c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2zm-11.5 0L8 13.5l2.5 3.01L14 12.5l4 5.5H8.5z" />
+                          </svg>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </motion.div>
               ))}
-            </CarouselContent>
-            <CarouselPrevious className="left-0 bg-white/80 backdrop-blur-sm hover:bg-white" />
-            <CarouselNext className="right-0 bg-white/80 backdrop-blur-sm hover:bg-white" />
-          </Carousel>
+            </div>
 
-          <motion.div
-            className="text-center mt-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-          >
-            <Button
-              variant="outline"
-              size="lg"
-              onClick={() => navigateTo("testimonial")}
-              className="border-red-200 hover:bg-red-50 relative overflow-hidden group"
+            {/* Action buttons */}
+            <motion.div
+              className="text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              viewport={{ once: true }}
             >
-              <span className="relative z-10">Read More Testimonials</span>
-              <motion.span
-                className="absolute inset-0 bg-red-100"
-                initial={{ x: "-100%" }}
-                whileHover={{ x: 0 }}
-                transition={{ duration: 0.3 }}
-              />
-            </Button>
-          </motion.div>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-gray-300 hover:bg-gray-50 relative overflow-hidden group"
+                  onClick={() =>
+                    window.open(
+                      "https://www.instagram.com/yummfeast.in/",
+                      "_blank"
+                    )
+                  }
+                >
+                  <span className="relative z-10 flex items-center gap-2">
+                    <svg
+                      className="w-5 h-5"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                    </svg>
+                    View more & Follow on Instagram
+                  </span>
+                  <motion.span
+                    className="absolute inset-0 bg-gradient-to-r from-pink-100 to-purple-100"
+                    initial={{ x: "-100%" }}
+                    whileHover={{ x: 0 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                </Button>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
+
       {/* CTA Section with animated background */}
       <section className="py-24 bg-gradient-to-r from-red-600 to-red-700 relative overflow-hidden">
         <motion.div
@@ -1582,7 +1798,7 @@ const { bg, ring, text } = chipColorMap[selectedChip] || chipColorMap["images/ch
             transition={{ duration: 0.7 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">
+            <h2 className="text-3xl md:text-5xl font-normal mb-6">
               Ready to Experience the Yummfeast Difference?
             </h2>
             <p className="text-xl mb-8">
