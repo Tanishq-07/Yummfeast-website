@@ -777,30 +777,13 @@ export default function HomePage({ navigateTo }: HomePageProps) {
 
 
   const chipColorMap = {
-    "images/chips1.png": {
-      bg: "bg-red-600",
-      ring: "border-red-400",
-      text: "text-red-600",
-    },
-    "images/chips2.png": {
-      bg: "bg-blue-600",
-      ring: "border-blue-400",
-      text: "text-blue-600",
-    },
-    "images/chips3.png": {
-      bg: "bg-green-600",
-      ring: "border-green-400",
-      text: "text-green-600",
-    },
-    "images/chips4.png": {
-      bg: "bg-purple-600",
-      ring: "border-purple-400",
-      text: "text-purple-600",
-    },
-  };
+  "images/chips1.png": { bg: "bg-red-600", ring: "border-red-400", text: "text-red-600", shadow: "red" },
+  "images/chips2.png": { bg: "bg-blue-600", ring: "border-blue-400", text: "text-blue-600", shadow: "blue" },
+  "images/chips3.png": { bg: "bg-green-600", ring: "border-green-400", text: "text-green-600", shadow: "green" },
+  "images/chips4.png": { bg: "bg-purple-600", ring: "border-purple-400", text: "text-purple-600", shadow: "purple" },
+};
 
-  const { bg, ring, text } =
-    chipColorMap[selectedChip] || chipColorMap["images/chips1.png"];
+const { bg, ring, text, shadow } = chipColorMap[selectedChip] || chipColorMap["images/chips1.png"];
 
   const instagramPosts = [
     {
@@ -1133,14 +1116,18 @@ export default function HomePage({ navigateTo }: HomePageProps) {
           <div className="hidden md:block md:w-1/3 mb-10 md:mb-0 order-2 md:order-1 text-white">
           <AnimatePresence key={selectedChip}>
             <AnimatedText delay={0.1} type="slide" className="mb-4">
-              <h1 className="text-4xl font-normal leading-tight">
+              <h1 className="text-4xl font-bold leading-tight titan-shadow" style={{
+                fontFamily: "'Titan One', cursive",
+                color: "white",
+                textShadow: `2px 2px 0 ${shadow}, 3px 3px 2px ${shadow}`,
+              }}>
                 EAT OUR GRILLED
                 <br />
                 POTATO CHIPS
               </h1>
             </AnimatedText>
             <AnimatedText delay={0.3} type="fade" className="mb-8">
-              <p className="text-md text-white/90 max-w-md">
+              <p className="text-md text-white/90 max-w-md" style={{textShadow: `1px 1px 0px ${shadow}`}}>
                 Share a bite of #Pizzaheart with your friends to strengthen your
                 friendship bond.
               </p>
@@ -1359,7 +1346,7 @@ export default function HomePage({ navigateTo }: HomePageProps) {
                 </motion.span>
                 TASTY TREATS
               </Badge>
-              <h2 className="text-3xl md:text-5xl font-normal mb-4 bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-red-500">
+              <h2 className="text-3xl md:text-4xl font-normal mb-4 bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-red-500">
                 Our Delicious Snacks
               </h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -1382,7 +1369,7 @@ export default function HomePage({ navigateTo }: HomePageProps) {
           <Carousel
             className="w-full"
             opts={{ loop: true }}
-            plugins={[Autoplay({ delay: 3000 })]}
+            plugins={[Autoplay({ delay: 2500 })]}
           >
             <CarouselContent className="mt-2 mb-2 px-4 md:px-16">
               {products.map((product, index) => (
@@ -1540,7 +1527,7 @@ export default function HomePage({ navigateTo }: HomePageProps) {
                 isOverflow={true}
                 className="w-full"
                 opts={{ loop: true }}
-                plugins={[Autoplay({ delay: 3000 })]}
+                plugins={[Autoplay({ delay: 4000 })]}
               >
                 <CarouselContent className="-ml-4 mt-2 mb-2">
                   {newsItems.map((item, index) => (
@@ -1649,7 +1636,7 @@ export default function HomePage({ navigateTo }: HomePageProps) {
                 </motion.span>
                 WHY CHOOSE US
               </Badge>
-              <h2 className="text-3xl md:text-5xl font-bold mb-4 pb-4 bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-red-500">
+              <h2 className="text-3xl md:text-4xl mb-4 pb-4 bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-red-500">
                 Why Choose Yummfeast
               </h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -1851,7 +1838,7 @@ export default function HomePage({ navigateTo }: HomePageProps) {
                 </motion.span>
                 FOLLOW US
               </Badge>
-              <h2 className="text-3xl md:text-5xl pb-2 mb-4 bg-clip-text text-transparent bg-orange-500">
+              <h2 className="text-3xl md:text-4xl pb-2 mb-4 bg-clip-text text-transparent bg-orange-500">
                 @yummfeast.in
               </h2>
               <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
@@ -2053,7 +2040,7 @@ export default function HomePage({ navigateTo }: HomePageProps) {
             transition={{ duration: 0.7 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-5xl font-normal mb-6">
+            <h2 className="text-3xl md:text-4xl font-normal mb-8">
               Ready to Experience the Yummfeast Difference?
             </h2>
             <p className="text-xl mb-8">
