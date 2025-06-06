@@ -36,6 +36,7 @@ import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils"; // Adjust this import to your button component
 import { text } from "stream/consumers";
 import Autoplay from "embla-carousel-autoplay";
+import CustomButton from "../ui/custom-button";
 
 // Define types for our components
 interface Product {
@@ -261,205 +262,6 @@ const AnimatedText = ({
   );
 };
 
-// Scroll indicator component with enhanced animation
-const ScrollIndicator = () => {
-  return (
-    <motion.div
-      className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-white z-20"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay: 1.5, duration: 0.5 }}
-    >
-      <span className="text-sm mb-2 font-medium tracking-wider">
-        Scroll to explore
-      </span>
-      <motion.div
-        animate={{
-          y: [0, 10, 0],
-          opacity: [0.5, 1, 0.5],
-        }}
-        transition={{
-          duration: 1.5,
-          repeat: Number.POSITIVE_INFINITY,
-          ease: "easeInOut",
-        }}
-      >
-        <ChevronDown className="w-6 h-6" />
-      </motion.div>
-    </motion.div>
-  );
-};
-
-// Product card with enhanced hover effects and proper typing
-const ProductCard = ({
-  product,
-  index,
-  navigateTo,
-}: {
-  product: Product;
-  index: number;
-  navigateTo: (page: string) => void;
-}) => {
-  const [isHovered, setIsHovered] = useState(false);
-
-  // Random rotation for the wobble effect
-  const randomRotation = Math.random() * 10 - 5;
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: index * 0.15 }}
-      viewport={{ once: true, margin: "-100px" }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      whileHover={{ y: -10 }}
-      className="relative"
-    >
-      <Card
-        className={cn(
-          "overflow-hidden group h-full border-2 transition-all duration-300",
-          isHovered
-            ? "border-red-400 shadow-xl shadow-red-100"
-            : "border-transparent"
-        )}
-      >
-        <div className="aspect-square bg-gradient-to-br from-orange-50 to-blue-50 relative overflow-hidden">
-          <motion.div
-            animate={{
-              rotateZ: isHovered ? [0, randomRotation, -randomRotation, 0] : 0,
-              scale: isHovered ? 1.1 : 1,
-            }}
-            transition={{ duration: 0.5 }}
-            className="w-full h-full flex items-center justify-center p-4"
-          >
-            <img
-              src={product.image || "/placeholder.svg"}
-              alt={product.name}
-              className="object-contain w-full h-full drop-shadow-xl"
-            />
-          </motion.div>
-
-          {/* Animated price tag */}
-          <motion.div
-            className="absolute top-4 right-4 bg-red-600 text-white font-normal rounded-full w-14 h-14 flex items-center justify-center z-10"
-            initial={{ rotate: 0, scale: 1 }}
-            animate={{
-              rotate: isHovered ? [0, -10, 10, 0] : 0,
-              scale: isHovered ? [1, 1.2, 1] : 1,
-            }}
-            transition={{ duration: 0.5 }}
-          >
-            {product.price}
-          </motion.div>
-
-          {/* Quick action buttons with enhanced animations */}
-          <AnimatePresence>
-            {isHovered && (
-              <motion.div
-                className="absolute bottom-4 left-0 right-0 flex justify-center gap-3"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 20 }}
-                transition={{ duration: 0.2 }}
-              >
-                <motion.div
-                  whileHover={{ scale: 1.2, rotate: [0, -5, 5, 0] }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <Button
-                    size="icon"
-                    variant="secondary"
-                    className="rounded-full bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg"
-                    onClick={() => alert("Added to cart!")}
-                  >
-                    <ShoppingBag className="w-4 h-4 text-red-600" />
-                  </Button>
-                </motion.div>
-                <motion.div
-                  whileHover={{ scale: 1.2, rotate: [0, -5, 5, 0] }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <Button
-                    size="icon"
-                    variant="secondary"
-                    className="rounded-full bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg"
-                    onClick={() => alert("Added to wishlist!")}
-                  >
-                    <Heart className="w-4 h-4 text-red-600" />
-                  </Button>
-                </motion.div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-
-          {/* Animated sparkles on hover */}
-          <AnimatePresence>
-            {isHovered && (
-              <>
-                {[...Array(3)].map((_, i) => (
-                  <motion.div
-                    key={i}
-                    className="absolute"
-                    initial={{
-                      opacity: 0,
-                      scale: 0,
-                      top: `${Math.random() * 100}%`,
-                      left: `${Math.random() * 100}%`,
-                    }}
-                    animate={{
-                      opacity: [0, 1, 0],
-                      scale: [0, 1, 0],
-                    }}
-                    exit={{ opacity: 0, scale: 0 }}
-                    transition={{ duration: 0.8, delay: i * 0.2 }}
-                  >
-                    <Sparkles className="text-yellow-400 w-5 h-5" />
-                  </motion.div>
-                ))}
-              </>
-            )}
-          </AnimatePresence>
-        </div>
-        <CardContent className="p-6">
-          <Badge variant="outline" className="mb-2 bg-red-50">
-            Bestseller
-          </Badge>
-          <h3 className="font-normal text-xl mb-2">{product.name}</h3>
-          <p className="text-muted-foreground mb-4">{product.description}</p>
-          <div className="flex justify-between items-center">
-            <div className="flex items-center">
-              <div className="flex">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <Star
-                    key={star}
-                    className="w-3 h-3 fill-yellow-500 text-yellow-500"
-                  />
-                ))}
-              </div>
-              <span className="text-xs ml-1 text-muted-foreground">(24)</span>
-            </div>
-            <Button
-              variant="default"
-              size="sm"
-              onClick={() => navigateTo("product")}
-              className="bg-red-600 hover:bg-red-700 relative overflow-hidden group"
-            >
-              <span className="relative z-10">View Details</span>
-              <motion.span
-                className="absolute inset-0 bg-gradient-to-r from-red-700 to-red-500"
-                initial={{ x: "-100%" }}
-                whileHover={{ x: 0 }}
-                transition={{ duration: 0.3 }}
-              />
-            </Button>
-          </div>
-        </CardContent>
-      </Card>
-    </motion.div>
-  );
-};
-
 const ProductCircle = ({
   product,
   index,
@@ -471,21 +273,32 @@ const ProductCircle = ({
 }) => {
   return (
     <div className="flex flex-col items-center gap-4">
-        <motion.img
-            key={index}
-            initial={{ opacity: 0, scale: 0, rotate: -15}}
-            animate={{ opacity: 1, scale: 1, rotate: -15}}
-            transition={{ duration: 0.6 }}
-            src={product.image}
-            alt={product.name}
-            className="w-48 h-48 object-contain -rotate-12 mb-12"
-          />
+      <motion.img
+        src="/images/patch.png"
+        alt=""
+        className="absolute top-6 h-52 w-52"
+        animate={{ rotate: 360 }}
+        transition={{
+          repeat: Infinity,
+          duration: 3,
+          ease: "linear",
+        }}
+        style={{ transformOrigin: "center center" }}
+      />
+
+      <motion.img
+        key={index}
+        initial={{ opacity: 0, scale: 0, rotate: -15 }}
+        animate={{ opacity: 1, scale: 1, rotate: -15 }}
+        transition={{ duration: 0.4 }}
+        whileHover={{ scale: 1.2 }}
+        src={product.image}
+        alt={product.name}
+        className="w-48 h-48 object-contain -rotate-12 mb-12"
+      />
 
       {/* Label/Button */}
-      <div className="bg-orange-500 text-white text-lg font-medium px-6 py-2 rounded-md shadow-md border-2 border-black relative hover:bg-red-600">
-        {product.category}
-        <div className="absolute -bottom-1 left-0 w-full h-full rounded-md bg-black -z-10 translate-y-1 translate-x-1"></div>
-      </div>
+      <CustomButton className="bg-orange-500" value={product.category}/>
     </div>
   );
 };
@@ -669,84 +482,6 @@ const ConfettiExplosion = ({
   );
 };
 
-// Scroll Navigator component
-const ScrollNavigator = () => {
-  const [scrollProgress, setScrollProgress] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const totalHeight =
-        document.documentElement.scrollHeight -
-        document.documentElement.clientHeight;
-      const progress = window.scrollY / totalHeight;
-      setScrollProgress(progress);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
-
-  const scrollToBottom = () => {
-    window.scrollTo({
-      top: document.documentElement.scrollHeight,
-      behavior: "smooth",
-    });
-  };
-
-  return (
-    <motion.div
-      className="hidden md:block fixed right-6 top-1/2 transform -translate-y-1/2 z-50 flex flex-col items-center gap-4"
-      initial={{ opacity: 0, x: 50 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.5, delay: 1 }}
-    >
-      <Button
-        size="icon"
-        variant="secondary"
-        onClick={scrollToTop}
-        className="rounded-full shadow-lg bg-white/80 backdrop-blur-sm hover:bg-white hover:scale-110 transition-all duration-300"
-      >
-        <ChevronDown className="w-5 h-5 transform rotate-180" />
-      </Button>
-
-      <div className="h-40 w-1 bg-gray-200 rounded-full relative">
-        <motion.div
-          className="absolute w-3 h-3 bg-red-500 rounded-full left-1/2 transform -translate-x-1/2"
-          style={{ top: `${scrollProgress * 100}%` }}
-          animate={{
-            boxShadow: [
-              "0 0 0 0 rgba(239, 68, 68, 0.4)",
-              "0 0 0 8px rgba(239, 68, 68, 0)",
-              "0 0 0 0 rgba(239, 68, 68, 0.4)",
-            ],
-          }}
-          transition={{
-            duration: 2,
-            repeat: Number.POSITIVE_INFINITY,
-            repeatType: "loop",
-          }}
-        />
-      </div>
-
-      <Button
-        size="icon"
-        variant="secondary"
-        onClick={scrollToBottom}
-        className="rounded-full shadow-lg bg-white/80 backdrop-blur-sm hover:bg-white hover:scale-110 transition-all duration-300"
-      >
-        <ChevronDown className="w-5 h-5" />
-      </Button>
-    </motion.div>
-  );
-};
-
 interface HomePageProps {
   navigateTo: (page: string) => void;
 }
@@ -755,10 +490,6 @@ export default function HomePage({ navigateTo }: HomePageProps) {
   const [scrollY, setScrollY] = useState(0);
   const [confetti, setConfetti] = useState(false);
   const heroRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  });
   const [currentChipIndex, setCurrentChipIndex] = useState(0);
   const [selectedChip, setSelectedChip] = useState("images/chips1.png");
 
@@ -1137,12 +868,16 @@ const { bg, ring, text, shadow } = chipColorMap[selectedChip] || chipColorMap["i
               type="fade"
               className="flex items-center gap-12"
             >
-              <Button
-                className={`bg-white rounded-full hover:bg-white/90 px-12 ${text}`}
-                onClick={() => navigateTo("product")}
+              <CustomButton
+                className={`${bg} rounded-full px-12`}
+                value="View Product"
               >
-                View Product
-              </Button>
+              </CustomButton>
+              {/* <CustomButton
+                colour={bg}
+                value="View Product"
+              >
+              </CustomButton> */}
             </AnimatedText>
           </AnimatePresence>
           </div>
@@ -1220,14 +955,19 @@ const { bg, ring, text, shadow } = chipColorMap[selectedChip] || chipColorMap["i
             <AnimatedText
               delay={0.5}
               type="fade"
-              className="flex flex-col items-center gap-4"
+              className="flex flex-col items-center gap-4 mt-12"
             >
-              <Button
+              {/* <Button
                 className="bg-white rounded-full text-red-600 hover:bg-white/90 px-12"
                 onClick={() => navigateTo("product")}
               >
                 View Product
-              </Button>
+              </Button> */}
+              <CustomButton
+                className={`${bg} rounded-full px-12`}
+                value="View Product"
+              >
+              </CustomButton>
             </AnimatedText>
             </AnimatePresence>
           </div>
@@ -1280,7 +1020,7 @@ const { bg, ring, text, shadow } = chipColorMap[selectedChip] || chipColorMap["i
           transition={{ delay: 2, duration: 0.6 }}
           className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center text-white z-40"
         >
-          <span className="text-sm font-medium tracking-widest mb-1">
+          <span className="hidden md:block text-sm font-medium tracking-widest mb-1">
             Scroll to explore
           </span>
           <motion.div
@@ -1668,8 +1408,9 @@ const { bg, ring, text, shadow } = chipColorMap[selectedChip] || chipColorMap["i
           />
         </div>
 
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="container mx-auto mt-16 px-4 relative z-10">
           <div className="max-w-4xl mx-auto">
+          <img src="/images/rollerCoaster4.png" alt="Roller Coaster Image" className="hidden md:block absolute -top-32 right-16 h-80 w-80 z-20"/>
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -1685,10 +1426,10 @@ const { bg, ring, text, shadow } = chipColorMap[selectedChip] || chipColorMap["i
                   viewport={{ once: true }}
                 >
                   <PartyPopper className="w-12 h-12 mx-auto mb-4 text-yellow-300" />
-                  <h2 className="text-3xl md:text-4xl font-normal mb-4">
+                  <h2 className="text-3xl md:text-4xl font-normal mb-4 z-30">
                     Snack Time Fun Fact
                   </h2>
-                  <p className="text-xl">
+                  <p className="text-xl z-30">
                     Did you know? Indians consume over 1 billion packets of
                     snacks every month!
                   </p>
@@ -1780,13 +1521,13 @@ const { bg, ring, text, shadow } = chipColorMap[selectedChip] || chipColorMap["i
               </motion.div>
 
               <motion.div
-                className="mt-8 text-center"
+                className="mt-12 text-center"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 1 }}
                 viewport={{ once: true }}
               >
-                <Button
+                {/* <Button
                   size="lg"
                   className="bg-white text-red-600 hover:bg-white/90 relative overflow-hidden group"
                   onClick={() => navigateTo("about")}
@@ -1798,7 +1539,11 @@ const { bg, ring, text, shadow } = chipColorMap[selectedChip] || chipColorMap["i
                     whileHover={{ scale: 1.5, borderRadius: "0%" }}
                     transition={{ duration: 0.4 }}
                   />
-                </Button>
+                </Button> */}
+                <div className="bg-red-500 text-white text-lg font-medium w-56 mx-auto px-6 py-2 rounded-md shadow-md border-2 border-black relative hover:bg-orange-600">
+                  Learn Our Story
+                  <div className="absolute -bottom-1 left-0 w-56 h-full mx-auto rounded-md bg-black -z-10 translate-y-1 translate-x-1"></div>
+                </div>
               </motion.div>
             </motion.div>
           </div>
@@ -2047,7 +1792,7 @@ const { bg, ring, text, shadow } = chipColorMap[selectedChip] || chipColorMap["i
               Join thousands of satisfied customers who have made Yummfeast
               their favorite snack brand.
             </p>
-            <Button
+            {/* <Button
               size="lg"
               className="bg-white text-red-600 hover:bg-white/90 group relative overflow-hidden"
               onClick={() => {
@@ -2064,7 +1809,11 @@ const { bg, ring, text, shadow } = chipColorMap[selectedChip] || chipColorMap["i
                 whileHover={{ scaleX: 1 }}
                 transition={{ duration: 0.3 }}
               />
-            </Button>
+            </Button> */}
+            <div className="bg-red-500 text-white text-lg font-medium w-40 mx-auto px-6 py-2 rounded-md shadow-md border-2 border-black relative hover:bg-orange-600">
+              Shop Now
+              <div className="absolute -bottom-1 left-0 w-40 h-full mx-auto rounded-md bg-black -z-10 translate-y-1 translate-x-1"></div>
+            </div>
           </motion.div>
         </div>
       </section>
