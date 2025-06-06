@@ -777,13 +777,13 @@ export default function HomePage({ navigateTo }: HomePageProps) {
 
 
   const chipColorMap = {
-  "images/chips1.png": { bg: "bg-red-600", ring: "border-red-400", text: "text-red-600" },
-  "images/chips2.png": { bg: "bg-blue-600", ring: "border-blue-400", text: "text-blue-600" },
-  "images/chips3.png": { bg: "bg-green-600", ring: "border-green-400", text: "text-green-600" },
-  "images/chips4.png": { bg: "bg-purple-600", ring: "border-purple-400", text: "text-purple-600" },
+  "images/chips1.png": { bg: "bg-red-600", ring: "border-red-400", text: "text-red-600", shadow: "red" },
+  "images/chips2.png": { bg: "bg-blue-600", ring: "border-blue-400", text: "text-blue-600", shadow: "blue" },
+  "images/chips3.png": { bg: "bg-green-600", ring: "border-green-400", text: "text-green-600", shadow: "green" },
+  "images/chips4.png": { bg: "bg-purple-600", ring: "border-purple-400", text: "text-purple-600", shadow: "purple" },
 };
 
-const { bg, ring, text } = chipColorMap[selectedChip] || chipColorMap["images/chips1.png"];
+const { bg, ring, text, shadow } = chipColorMap[selectedChip] || chipColorMap["images/chips1.png"];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -978,14 +978,18 @@ const { bg, ring, text } = chipColorMap[selectedChip] || chipColorMap["images/ch
           <div className="hidden md:block md:w-1/3 mb-10 md:mb-0 order-2 md:order-1 text-white">
           <AnimatePresence key={selectedChip}>
             <AnimatedText delay={0.1} type="slide" className="mb-4">
-              <h1 className="text-4xl font-bold leading-tight">
+              <h1 className="text-4xl font-bold leading-tight titan-shadow" style={{
+                fontFamily: "'Titan One', cursive",
+                color: "white",
+                textShadow: `2px 2px 0 ${shadow}, 3px 3px 2px ${shadow}`,
+              }}>
                 EAT OUR GRILLED
                 <br />
                 POTATO CHIPS
               </h1>
             </AnimatedText>
             <AnimatedText delay={0.3} type="fade" className="mb-8">
-              <p className="text-md text-white/90 max-w-md">
+              <p className="text-md text-white/90 max-w-md" style={{textShadow: `1px 1px 0px ${shadow}`}}>
                 Share a bite of #Pizzaheart with your friends to strengthen your
                 friendship bond.
               </p>
@@ -1197,7 +1201,7 @@ const { bg, ring, text } = chipColorMap[selectedChip] || chipColorMap["images/ch
                 </motion.span>
                 TASTY TREATS
               </Badge>
-              <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-red-500">
+              <h2 className="text-3xl md:text-4xl mb-4 bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-red-500">
                 Our Delicious Snacks
               </h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -1310,7 +1314,7 @@ const { bg, ring, text } = chipColorMap[selectedChip] || chipColorMap["images/ch
 
         
       </section>
-      {/* Fun Facts Section */}
+      {/* Why Choose Us */}
       <section className="py-24 bg-gradient-to-b from-blue-50 to-white relative overflow-hidden">
         <motion.div
           className="absolute -right-20 -top-20 w-64 h-64 bg-red-200 rounded-full opacity-20"
@@ -1358,7 +1362,7 @@ const { bg, ring, text } = chipColorMap[selectedChip] || chipColorMap["images/ch
                 </motion.span>
                 WHY CHOOSE US
               </Badge>
-              <h2 className="text-3xl md:text-5xl font-bold mb-4 pb-4 bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-red-500">
+              <h2 className="text-3xl md:text-4xl mb-4 pb-4 bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-red-500">
                 Why Choose Yummfeast
               </h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -1407,7 +1411,7 @@ const { bg, ring, text } = chipColorMap[selectedChip] || chipColorMap["images/ch
                   viewport={{ once: true }}
                 >
                   <PartyPopper className="w-12 h-12 mx-auto mb-4 text-yellow-300" />
-                  <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                  <h2 className="text-3xl md:text-4xl mb-4">
                     Snack Time Fun Fact
                   </h2>
                   <p className="text-xl">
@@ -1589,7 +1593,7 @@ const { bg, ring, text } = chipColorMap[selectedChip] || chipColorMap["images/ch
             transition={{ duration: 0.7 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">
+            <h2 className="text-3xl md:text-4xl mb-8">
               Ready to Experience the Yummfeast Difference?
             </h2>
             <p className="text-xl mb-8">

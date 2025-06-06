@@ -33,9 +33,8 @@ export default function Header({ navigateTo, currentPage, isMenuOpen, setIsMenuO
           <NavLinks navigateTo={navigateTo} currentPage={currentPage} />
         </nav>
 
-        <Button variant="ghost" size="icon" onClick={() => window.alert("Shopping cart coming soon!")}>
-          <ShoppingBag className="hidden h-5 w-5" />
-        </Button>
+        {/* Spacer to match logo width */}
+  <div className="h-16 w-[132px] hidden md:block" aria-hidden="true"></div>
       </div>
 
       {/* Mobile Navigation Sheet */}
