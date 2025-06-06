@@ -872,7 +872,6 @@ const { bg, ring, text, shadow } = chipColorMap[selectedChip] || chipColorMap["i
                 className={`${bg} rounded-full px-12`}
                 value="View Product"
               >
-                
               </CustomButton>
               {/* <CustomButton
                 colour={bg}
@@ -956,7 +955,7 @@ const { bg, ring, text, shadow } = chipColorMap[selectedChip] || chipColorMap["i
             <AnimatedText
               delay={0.5}
               type="fade"
-              className="flex flex-col items-center gap-4"
+              className="flex flex-col items-center gap-4 mt-12"
             >
               {/* <Button
                 className="bg-white rounded-full text-red-600 hover:bg-white/90 px-12"
@@ -965,7 +964,7 @@ const { bg, ring, text, shadow } = chipColorMap[selectedChip] || chipColorMap["i
                 View Product
               </Button> */}
               <CustomButton
-                colour={bg}
+                className={`${bg} rounded-full px-12`}
                 value="View Product"
               >
               </CustomButton>
@@ -1021,7 +1020,7 @@ const { bg, ring, text, shadow } = chipColorMap[selectedChip] || chipColorMap["i
           transition={{ delay: 2, duration: 0.6 }}
           className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center text-white z-40"
         >
-          <span className="text-sm font-medium tracking-widest mb-1">
+          <span className="hidden md:block text-sm font-medium tracking-widest mb-1">
             Scroll to explore
           </span>
           <motion.div
