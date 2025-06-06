@@ -19,7 +19,7 @@ import CareerPage from "./components/pages/CareerPage";
 import ContactPage from "./components/pages/ContactPage";
 import { AccessRestriction } from "./components/access-restriction";
 import { useScroll, useSpring } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 
 // Main App Component
 export default function App() {
@@ -86,7 +86,7 @@ export default function App() {
       />
     );
   };
-
+  
   return (
     <div className="min-h-screen bg-white">
       <Header
@@ -114,6 +114,45 @@ export default function App() {
       <motion.button
         onClick={() =>
           window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          })
+        }
+        initial={{ opacity: 0, x: 30 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 2.2, duration: 0.5 }}
+        whileHover={{
+          scale: 1.1,
+          boxShadow: "0 0 12px rgba(255, 255, 255, 0.8)",
+          transition: { duration: 0.3 },
+        }}
+        style={{
+          position: "fixed",
+          right: "24px",
+          bottom: "88px", // Placed above the down button
+          background: "linear-gradient(145deg, #ffffff, #f1f1f1)",
+          color: "#e11d48",
+          border: "none",
+          borderRadius: "50%",
+          width: "40px",
+          height: "40px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          boxShadow:
+            "0 8px 20px rgba(0, 0, 0, 0.15), inset 0 1px 4px rgba(255, 255, 255, 0.6)",
+          backdropFilter: "blur(8px)",
+          cursor: "pointer",
+          zIndex: 100,
+          transition: "all 0.3s ease-in-out",
+        }}
+      >
+        <ChevronUp style={{ width: "22px", height: "22px" }} />
+      </motion.button>
+
+      <motion.button
+        onClick={() =>
+          window.scrollTo({
             top: document.documentElement.scrollHeight,
             behavior: "smooth",
           })
@@ -134,8 +173,8 @@ export default function App() {
           color: "#e11d48", // Tailwind red-600
           border: "none",
           borderRadius: "50%",
-          width: "56px",
-          height: "56px",
+          width: "40px",
+          height: "40px",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
