@@ -804,7 +804,7 @@ const prevBanner = () => {
       {/* Hero Section */}
       <section
         ref={heroRef}
-        className="relative min-h-[70vh] flex place-items-center justify-space-between px-60 overflow-hidden bg-red-600"
+        className="relative min-h-[45vh] md:min-h-[70vh] flex place-items-center justify-space-between px-8 md:px-60 overflow-hidden bg-red-600"
       >
         <div className="absolute inset-0 overflow-hidden">
           <motion.div
@@ -821,14 +821,14 @@ const prevBanner = () => {
         {/* Navigation Buttons */}
         <button
           onClick={prevBanner}
-          className="absolute left-8 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-3 transition-all duration-300 group z-20"
+          className="hidden md:block absolute left-8 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-3 transition-all duration-300 group z-20"
         >
           <ChevronLeft className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
         </button>
 
         <button
           onClick={nextBanner}
-          className="absolute right-8 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-3 transition-all duration-300 group z-20"
+          className="hidden md:block absolute right-8 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-3 transition-all duration-300 group z-20"
         >
           <ChevronRight className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
         </button>
@@ -844,7 +844,7 @@ const prevBanner = () => {
             {/* Left image - Slide in from left */}
             <motion.img
               src={banners[currentBanner].image1}
-              className="h-96 w-96 mx-16 mt-10 drop-shadow-2xl"
+              className="h-44 w-44 md:h-96 md:w-96 md:mx-16 md:mt-10 drop-shadow-2xl"
               alt="Left Banner Image"
               initial={{ x: -200, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
@@ -855,7 +855,7 @@ const prevBanner = () => {
             {/* Right image - Drop in from top */}
             <motion.img
               src={banners[currentBanner].image2}
-              className="h-96 w-96 mx-20 mt-10 drop-shadow-2xl"
+              className="h-44 w-44 md:h-96 md:w-96 md:mx-20 md:mt-10 drop-shadow-2xl"
               alt="Right Banner Image"
               initial={{ y: -200, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -869,22 +869,22 @@ const prevBanner = () => {
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 1200 120"
             preserveAspectRatio="none"
-            className="w-full h-16"
+            className="w-full h-12 md:-16"
           >
             <path
               d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
               fill="#ffffff"
               opacity=".8"
-              className="fill-red-700 hidden md:block"
+              className="fill-red-700"
             />
             <path
               d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
               opacity=".5"
-              className="fill-red-600 hidden md:block"
+              className="fill-red-600"
             />
             <path
               d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
-              className="fill-white hidden md:block"
+              className="fill-white"
             />
           </svg>
         </div>
