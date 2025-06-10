@@ -11,7 +11,8 @@ import {
   delay,
 } from "framer-motion";
 import {
-  ChevronDown,
+  ChevronLeft,
+  ChevronRight,
   Sparkles,
   Star,
   ShoppingBag,
@@ -274,7 +275,7 @@ const ProductCircle = ({
   return (
     <div className="flex flex-col items-center gap-4">
       <motion.img
-        src="/images/patch.png"
+        src="/images/patch3.png"
         alt=""
         className="absolute top-6 h-52 w-52"
         animate={{ rotate: 360 }}
@@ -763,274 +764,133 @@ const { bg, ring, text, shadow } = chipColorMap[selectedChip] || chipColorMap["i
   },
 ]
 
-// const FeatureCard = ({ feature, index }: { feature: (typeof features)[0]; index: number }) => {
-//   return (
-//     <motion.div
-//       initial={{ opacity: 0, y: 50 }}
-//       whileInView={{ opacity: 1, y: 0 }}
-//       transition={{ duration: 0.6, delay: index * 0.2 }}
-//       viewport={{ once: true, margin: "-50px" }}
-//       whileHover={{ y: -10 }}
-//       className={`relative overflow-hidden rounded-2xl ${feature.bgColor} p-8 shadow-lg hover:shadow-2xl transition-all duration-300 group`}
-//     >
-//       {/* Background Image */}
-//       <div className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity duration-300">
-//         <img src={feature.image || "/placeholder.svg"} alt={feature.title} className="w-full h-full object-cover" />
-//       </div>
+const banners = [
+  {
+    id: 1,
+    image1: "/images/b1l.png",
+    image2: "/images/b1r.png",
+  },
+  {
+    id: 2,
+    image1: "/images/b2l.png",
+    image2: "/images/b2r.png",
+  },
+];
 
-//       {/* Content */}
-//       <div className="relative z-10">
-//         {/* Icon */}
-//         <motion.div
-//           whileHover={{ scale: 1.1, rotate: 5 }}
-//           className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-r ${feature.color} text-white mb-6 shadow-lg`}
-//         >
-//           <feature.icon className="w-8 h-8" />
-//         </motion.div>
+const [currentBanner, setCurrentBanner] = useState(0)
 
-//         {/* Title */}
-//         <h3 className="text-2xl font-bold text-gray-800 mb-4 group-hover:text-gray-900 transition-colors">
-//           {feature.title}
-//         </h3>
+useEffect(() => {
+  const interval = setInterval(() => {
+    setCurrentBanner((prev) => (prev + 1) % banners.length)
+  }, 4500)
 
-//         {/* Description */}
-//         <p className="text-gray-600 leading-relaxed mb-6 group-hover:text-gray-700 transition-colors">
-//           {feature.description}
-//         </p>
+  return () => clearInterval(interval)
+}, [])
 
-//         {/* Feature Image */}
-//         <motion.div whileHover={{ scale: 1.05 }} className="relative overflow-hidden rounded-xl shadow-md">
-//           <img
-//             src={feature.image || "/placeholder.svg"}
-//             alt={feature.title}
-//             className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
-//           />
-//           <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-//         </motion.div>
+const nextBanner = () => {
+  setCurrentBanner((prev) => (prev + 1) % banners.length)
+}
 
-//         {/* Decorative Elements */}
-//         <motion.div
-//           animate={{ rotate: 360 }}
-//           transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-//           className={`absolute -top-4 -right-4 w-8 h-8 rounded-full bg-gradient-to-r ${feature.color} opacity-20`}
-//         />
-//       </div>
-//     </motion.div>
-//   )
-// }
+const prevBanner = () => {
+  setCurrentBanner((prev) => (prev - 1 + banners.length) % banners.length)
+}
 
   return (
     <div className="overflow-x-hidden">
+
       {/* Cursor glow effect */}
       <CursorGlow />
-      {/* Scroll Navigator */}
-      {/* <ScrollNavigator /> */}
-      {/* Confetti container */}
-      <div className="fixed inset-0 pointer-events-none z-50 flex items-center justify-center">
-        <ConfettiExplosion isExploding={confetti} />
-      </div>
+
       {/* Hero Section */}
       <section
         ref={heroRef}
-        className={`relative min-h-[90vh] ${bg} flex place-items-center justify-center overflow-hidden transition-colors duration-500`}
+        className="relative min-h-[70vh] flex place-items-center justify-space-between px-60 overflow-hidden bg-red-600"
       >
-        {/* Background circles */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="absolute md:w-[1600px] md:h-[1600px] w-[800px] h-[800px] rounded-full md:border-[88px] border-[44px] opacity-40 z-0 transition-all duration-300 ease-in-out" />
-          <div className="absolute md:w-[1100px] md:h-[1100px] w-[550px] h-[550px] rounded-full md:border-[80px] border-[40px] opacity-40 z-0 transition-all duration-300 ease-in-out" />
-          <div className="absolute md:w-[560px] md:h-[560px] w-[300px] h-[300px] rounded-full md:border-[56px] border-[28px] opacity-40 z-0 transition-all duration-300 ease-in-out" />
+        <div className="absolute inset-0 overflow-hidden">
+          <motion.div
+            className="w-[120%] h-[120%] bg-[url('/images/pattern.svg')] opacity-10"
+            animate={{ x: [-20, 0], y: [-20, 0] }}
+            transition={{
+              duration: 60,
+              repeat: Number.POSITIVE_INFINITY,
+              repeatType: "reverse",
+            }}
+          />
         </div>
 
-        {/* Hero content container */}
-        <div className="container mx-auto px-4 relative z-10 flex flex-col md:flex-row items-center">
-          {/* Left side - Text content */}
-          <div className="hidden md:block md:w-1/3 mb-10 md:mb-0 order-2 md:order-1 text-white">
-          <AnimatePresence key={selectedChip}>
-            <AnimatedText delay={0.1} type="slide" className="mb-4">
-              <h1 className="text-4xl font-bold leading-tight titan-shadow" style={{
-                fontFamily: "'Titan One', cursive",
-                color: "white",
-                textShadow: `2px 2px 0 ${shadow}, 3px 3px 2px ${shadow}`,
-              }}>
-                EAT OUR GRILLED
-                <br />
-                POTATO CHIPS
-              </h1>
-            </AnimatedText>
-            <AnimatedText delay={0.3} type="fade" className="mb-8">
-              <p className="text-md text-white/90 max-w-md" style={{textShadow: `1px 1px 0px ${shadow}`}}>
-                Share a bite of #Pizzaheart with your friends to strengthen your
-                friendship bond.
-              </p>
-            </AnimatedText>
-            <AnimatedText
-              delay={0.5}
-              type="fade"
-              className="flex items-center gap-12"
-            >
-              <CustomButton
-                className={`${bg} rounded-full px-12`}
-                value="View Product"
-              >
-              </CustomButton>
-              {/* <CustomButton
-                colour={bg}
-                value="View Product"
-              >
-              </CustomButton> */}
-            </AnimatedText>
-          </AnimatePresence>
-          </div>
+        {/* Navigation Buttons */}
+        <button
+          onClick={prevBanner}
+          className="absolute left-8 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-3 transition-all duration-300 group z-20"
+        >
+          <ChevronLeft className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
+        </button>
 
-          {/* Center - Selected chip packet */}
-          <div className="hidden md:w-1/3 md:flex justify-center items-center relative order-1 md:order-2">
+        <button
+          onClick={nextBanner}
+          className="absolute right-8 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-3 transition-all duration-300 group z-20"
+        >
+          <ChevronRight className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
+        </button>
+
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentBanner}
+            className="flex place-items-center justify-between w-full"
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+          >
+            {/* Left image - Slide in from left */}
             <motion.img
-                key={currentChipIndex}
-                initial={{ opacity: 0, y: 30, scale: 0}}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.6 }}
-                src={chipVariants[currentChipIndex]}
-                alt={`Pizza Heart Chips ${currentChipIndex + 1}`}
-                className="w-[280px] md:w-[350px] relative z-20"
-                />
-            </div>
-
-          {/* Mobile Carousel (Shows only selected chip with arrows) */}
-          <div className="w-full max-w-xs mx-auto md:hidden relative flex items-center justify-center ">
-            <button
-              onClick={() => {
-                const newIndex =
-                  currentChipIndex === 0
-                    ? chipVariants.length - 1
-                    : currentChipIndex - 1;
-                setCurrentChipIndex(newIndex);
-                setSelectedChip(chipVariants[newIndex]);
-              }}
-              className="absolute left-0 z-10 bg-white/80 rounded-full p-2 shadow"
-            >
-              ←
-            </button>
-
-            <motion.img
-              key={currentChipIndex}
-              initial={{ opacity: 0, scale: 0}}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.7 }}
-              src={chipVariants[currentChipIndex]}
-              alt={`Pizza Heart Chips ${currentChipIndex + 1}`}
-              className="w-[280px] mx-auto drop-shadow-xl"
+              src={banners[currentBanner].image1}
+              className="h-96 w-96 mx-16 mt-10 drop-shadow-2xl"
+              alt="Left Banner Image"
+              initial={{ x: -200, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: -200, opacity: 0 }}
+              transition={{ duration: 0.8, ease: "easeInOut" }}
             />
 
-            <button
-              onClick={() => {
-                const newIndex =
-                  currentChipIndex === chipVariants.length - 1
-                    ? 0
-                    : currentChipIndex + 1;
-                setCurrentChipIndex(newIndex);
-                setSelectedChip(chipVariants[newIndex]);
-              }}
-              className="absolute right-0 z-10 bg-white/80 rounded-full p-2 shadow"
-            >
-              →
-            </button>
-          </div>
-
-          {/* Mobile Text content (hidden on desktop) */}
-          <div className="block md:hidden text-white text-center mt-6 px-4 order-3">
-            <AnimatePresence key={selectedChip}>
-            <AnimatedText delay={0.1} type="slide" className="mb-4">
-            <h1 className="text-3xl font-bold leading-tight mb-2">
-              EAT OUR GRILLED
-              <br />
-              POTATO CHIPS
-            </h1>
-            </AnimatedText>
-            <AnimatedText delay={0.3} type="fade">
-            <p className="text-md text-white/90 max-w-md mx-auto mb-6">
-              Share a bite of #Pizzaheart with your friends to strengthen your
-              friendship bond.
-            </p>
-            </AnimatedText>
-            <AnimatedText
-              delay={0.5}
-              type="fade"
-              className="flex flex-col items-center gap-4 mt-12"
-            >
-              {/* <Button
-                className="bg-white rounded-full text-red-600 hover:bg-white/90 px-12"
-                onClick={() => navigateTo("product")}
-              >
-                View Product
-              </Button> */}
-              <CustomButton
-                className={`${bg} rounded-full px-12`}
-                value="View Product"
-              >
-              </CustomButton>
-            </AnimatedText>
-            </AnimatePresence>
-          </div>
-
-          {/* Right side - Chips slider */}
-          <div className="hidden md:flex absolute right-4 md:right-10 top-1/2 transform -translate-y-1/2 flex-col gap-6 z-30">
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="chips-slider flex flex-col gap-6"
-            >
-              {reorderedChips.map((chip, index) => (
-                <motion.div
-                  layout
-                  key={chip}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.4 }}
-                  whileHover={{ scale: 1.1 }}
-                  className={`w-16 h-16 md:w-20 md:h-20 m-2 overflow-hidden cursor-pointer`}
-                  onClick={() => {
-                    // Convert reordered index back to actual index in chipVariants
-                    const originalIndex = chipVariants.indexOf(chip);
-                    setSelectedChip(chip);
-                    setCurrentChipIndex(originalIndex);
-                  }}
-                >
-                  <img
-                    src={chip}
-                    alt={`Chip variant ${index + 1}`}
-                    className="w-full h-full object-cover"
-                  />
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-        </div>
-          
-          
-
-        {/* Floating Particles */}
-        <FloatingParticles />
-
-        {/* Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2, duration: 0.6 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center text-white z-40"
-        >
-          <span className="hidden md:block text-sm font-medium tracking-widest mb-1">
-            Scroll to explore
-          </span>
-          <motion.div
-            animate={{ y: [0, 10, 0], opacity: [0.4, 1, 0.4] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <ChevronDown className="w-6 h-6" />
+            {/* Right image - Drop in from top */}
+            <motion.img
+              src={banners[currentBanner].image2}
+              className="h-96 w-96 mx-20 mt-10 drop-shadow-2xl"
+              alt="Right Banner Image"
+              initial={{ y: -200, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: 200, opacity: 0 }}
+              transition={{ duration: 0.8, ease: "easeInOut", delay: 0.1 }}
+            />
           </motion.div>
-        </motion.div>
+        </AnimatePresence>
+        <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-0 transform rotate-180">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1200 120"
+            preserveAspectRatio="none"
+            className="w-full h-16"
+          >
+            <path
+              d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+              fill="#ffffff"
+              opacity=".8"
+              className="fill-red-700 hidden md:block"
+            />
+            <path
+              d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
+              opacity=".5"
+              className="fill-red-600 hidden md:block"
+            />
+            <path
+              d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
+              className="fill-white hidden md:block"
+            />
+          </svg>
+        </div>
       </section>
+
+
       {/* Featured Products */}
       <section className="py-16 relative" style={{
           backgroundImage: "url('/images/white-bg.jpg')",
