@@ -18,13 +18,15 @@ import BlogsPage from "./components/pages/BlogsPage";
 import CareerPage from "./components/pages/CareerPage";
 import ContactPage from "./components/pages/ContactPage";
 import { AccessRestriction } from "./components/access-restriction";
-import { useScroll, useSpring } from "framer-motion";
+import { useScroll, useMotionValueEvent } from "framer-motion";
 import { ChevronDown, ChevronUp } from "lucide-react";
 
 // Main App Component
 export default function App() {
   const [currentPage, setCurrentPage] = useState("home");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showScrollUp, setShowScrollUp] = useState(false);
+  const [showScrollDown, setShowScrollDown] = useState(true);
   const [accessRestricted, setAccessRestricted] = useState(true);
 
   // Function to handle page navigation
@@ -66,6 +68,15 @@ export default function App() {
 
   const ScrollProgressBar = () => {
     const { scrollYProgress } = useScroll();
+
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    const scrollTop = window.scrollY;
+    const windowHeight = window.innerHeight;
+    const fullHeight = document.documentElement.scrollHeight;
+
+    setShowScrollUp(scrollTop > 100); // Show up button after scrolling 100px
+    setShowScrollDown(scrollTop + windowHeight < fullHeight - 100); // Hide down button near bottom
+  });
 
     return (
       <motion.div
@@ -111,6 +122,8 @@ export default function App() {
       </AnimatePresence>
 
       <Footer navigateTo={navigateTo} />
+
+      {showScrollUp && (
       <motion.button
         onClick={() =>
           window.scrollTo({
@@ -149,7 +162,9 @@ export default function App() {
       >
         <ChevronUp style={{ width: "22px", height: "22px" }} />
       </motion.button>
+      )}
 
+      {showScrollDown && (
       <motion.button
         onClick={() =>
           window.scrollTo({
@@ -188,6 +203,7 @@ export default function App() {
       >
         <ChevronDown style={{ width: "22px", height: "22px" }} />
       </motion.button>
+      )}
 
       {/* {accessRestricted && (
         <AccessRestriction 
