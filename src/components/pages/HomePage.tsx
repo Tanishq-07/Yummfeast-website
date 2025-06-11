@@ -534,20 +534,8 @@ const prevBanner = () => {
       {/* Hero Section */}
       <section
         ref={heroRef}
-        className="relative min-h-[45vh] md:min-h-[67vh] flex place-items-center justify-between px-6 md:px-60 overflow-hidden bg-gradient-to-br from-red-700 via-red-600 to-orange-500"
-        
+        className="relative min-h-[45vh] md:min-h-[67vh] flex place-items-center justify-between px-6 md:px-60 overflow-hidden bg-[url('/images/bg.png')]"
       >
-        <div className="absolute inset-0 overflow-hidden">
-          <motion.div
-            className="w-[120%] h-[120%] bg-[url('/images/pattern.svg')] opacity-10"
-            animate={{ x: [-20, 0], y: [-20, 0] }}
-            transition={{
-              duration: 60,
-              repeat: Number.POSITIVE_INFINITY,
-              repeatType: "reverse",
-            }}
-          />
-        </div>
 
         {/* Navigation Buttons */}
         <button
