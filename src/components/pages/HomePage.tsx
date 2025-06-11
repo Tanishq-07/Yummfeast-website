@@ -502,13 +502,13 @@ const { bg, ring, text, shadow } = chipColorMap[selectedChip] || chipColorMap["i
 const banners = [
   {
     id: 1,
-    image1: "/images/b1l.png",
-    image2: "/images/b1r.png",
+    image1: "/images/b2l.png",
+    image2: "/images/b2r.png",
   },
   {
     id: 2,
-    image1: "/images/b2l.png",
-    image2: "/images/b2r.png",
+    image1: "/images/b1l.png",
+    image2: "/images/b1r.png",
   },
 ];
 
