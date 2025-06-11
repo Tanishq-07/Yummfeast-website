@@ -12,12 +12,8 @@ import {
   ChevronLeft,
   ChevronRight,
   Sparkles,
-  Users,
-  Star,
   Heart,
   Award,
-  Shield,
-  Zap,
   Flame,
   PartyPopper,
   Factory
@@ -31,7 +27,6 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Badge } from "@/components/ui/badge";
-import { cn } from "@/lib/utils"; // Adjust this import to your button component
 import Autoplay from "embla-carousel-autoplay";
 import CustomButton from "../ui/custom-button";
 
@@ -669,7 +664,10 @@ const prevBanner = () => {
           </div> */}
           <Carousel
             className="w-full"
-            opts={{ loop: true }}
+            opts={{ 
+              loop: true,
+              dragFree: true
+            }}
             plugins={[Autoplay({ delay: 2500 })]}
           >
             <CarouselContent className="mt-2 mb-2 px-4 md:px-16">
