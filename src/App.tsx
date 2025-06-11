@@ -74,8 +74,8 @@ export default function App() {
     const windowHeight = window.innerHeight;
     const fullHeight = document.documentElement.scrollHeight;
 
-    setShowScrollUp(scrollTop > 100); // Show up button after scrolling 100px
-    setShowScrollDown(scrollTop + windowHeight < fullHeight - 100); // Hide down button near bottom
+    setShowScrollUp(scrollTop > fullHeight/2-windowHeight); // Show up button after scrolling 100px
+    setShowScrollDown(scrollTop + windowHeight < fullHeight/2); // Hide down button near bottom
   });
 
     return (
@@ -133,7 +133,7 @@ export default function App() {
         }
         initial={{ opacity: 0, x: 30 }}
         animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 2.2, duration: 0.5 }}
+        transition={{ delay: 0, duration: 0.2 }}
         whileHover={{
           scale: 1.1,
           boxShadow: "0 0 12px rgba(255, 255, 255, 0.8)",
@@ -157,7 +157,7 @@ export default function App() {
           backdropFilter: "blur(8px)",
           cursor: "pointer",
           zIndex: 100,
-          transition: "all 0.3s ease-in-out",
+          transition: "all 0.2s ease-in-out",
         }}
       >
         <ChevronUp style={{ width: "22px", height: "22px" }} />
@@ -174,7 +174,7 @@ export default function App() {
         }
         initial={{ opacity: 0, x: 30 }}
         animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 2.2, duration: 0.5 }}
+        transition={{ delay: 0, duration: 0.2 }}
         whileHover={{
           scale: 1.1,
           boxShadow: "0 0 12px rgba(255, 255, 255, 0.8)",
@@ -198,7 +198,7 @@ export default function App() {
           backdropFilter: "blur(8px)",
           cursor: "pointer",
           zIndex: 100,
-          transition: "all 0.3s ease-in-out",
+          transition: "all 0.2s ease-in-out",
         }}
       >
         <ChevronDown style={{ width: "22px", height: "22px" }} />
