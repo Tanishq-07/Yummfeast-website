@@ -577,11 +577,11 @@ const prevBanner = () => {
             animate="visible"
             exit="exit"
           >
-            
+
             {/* Left image - Slide in from left */}
             <motion.img
               src={banners[currentBanner].image1}
-              className="w-44 md:w-96 md:ms-0 md:me-16 md:mt-10 drop-shadow-2xl"
+              className="w-44 ms-0 md:w-96 md:me-16 md:mt-10 drop-shadow-2xl"
               alt="Left Banner Image"
               initial={{ x: -200, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
