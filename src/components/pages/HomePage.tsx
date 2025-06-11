@@ -581,7 +581,7 @@ const prevBanner = () => {
             {/* Left image - Slide in from left */}
             <motion.img
               src={banners[currentBanner].image1}
-              className="w-48 ms-0 md:w-96 md:me-16 md:mt-10 drop-shadow-2xl"
+              className="w-1/2 ms-0 md:w-2/5 md:me-16 md:mt-10 drop-shadow-2xl"
               alt="Left Banner Image"
               initial={{ x: -200, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
@@ -592,7 +592,7 @@ const prevBanner = () => {
             {/* Right image - Drop in from top */}
             <motion.img
               src={banners[currentBanner].image2}
-              className="w-48 md:w-96 me-8 md:mx-16 md:mt-10 drop-shadow-2xl"
+              className="w-1/2 md:w-2/5 me-8 md:mx-16 md:mt-10 drop-shadow-2xl"
               alt="Right Banner Image"
               initial={{ y: -200, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
