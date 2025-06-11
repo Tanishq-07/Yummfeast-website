@@ -539,7 +539,8 @@ const prevBanner = () => {
       {/* Hero Section */}
       <section
         ref={heroRef}
-        className="relative min-h-[45vh] md:min-h-[67vh] flex place-items-center justify-space-between px-8 md:px-60 overflow-hidden bg-red-600"
+        className="relative min-h-[45vh] md:min-h-[67vh] flex place-items-center justify-between px-8 md:px-60 overflow-hidden bg-gradient-to-br from-red-700 via-red-600 to-orange-500"
+        
       >
         <div className="absolute inset-0 overflow-hidden">
           <motion.div
@@ -576,10 +577,11 @@ const prevBanner = () => {
             animate="visible"
             exit="exit"
           >
+            
             {/* Left image - Slide in from left */}
             <motion.img
               src={banners[currentBanner].image1}
-              className="h-44 w-44 md:h-96 md:w-96 md:ms-0 md:me-16 md:mt-10 drop-shadow-2xl"
+              className="w-44 md:w-96 md:ms-0 md:me-16 md:mt-10 drop-shadow-2xl"
               alt="Left Banner Image"
               initial={{ x: -200, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
@@ -590,7 +592,7 @@ const prevBanner = () => {
             {/* Right image - Drop in from top */}
             <motion.img
               src={banners[currentBanner].image2}
-              className="h-44 w-44 md:h-96 md:w-96 md:mx-16 md:mt-10 drop-shadow-2xl"
+              className="w-44 md:w-96 me-8 md:mx-16 md:mt-10 drop-shadow-2xl"
               alt="Right Banner Image"
               initial={{ y: -200, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -1041,7 +1043,7 @@ const prevBanner = () => {
       {/*Social media section*/}
 
       <section
-        className="py-24 bg-no-repeat bg-cover relative overflow-hidden pointer-events-none z-0"
+        className="py-24 bg-no-repeat bg-cover relative overflow-hidden z-0"
         style={{
           backgroundImage: "url('/images/white-bg.jpg')",
           backgroundRepeat: "no-repeat",
@@ -1170,17 +1172,17 @@ const prevBanner = () => {
 
             {/* Action buttons */}
             <motion.div
-              className="text-center"
+              className="text-center mt-16"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
               viewport={{ once: true }}
             >
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <div className="flex flex-col sm:flex-row gap-8 justify-center items-center">
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-gray-300 hover:bg-gray-50 relative overflow-hidden group"
+                  className="bg-red-500 text-white px-6 py-2 w-44 rounded-md shadow-md border-2 border-black relative hover:bg-orange-600"
                   onClick={() =>
                     window.open(
                       "https://www.instagram.com/yummfeast.in/",
@@ -1198,18 +1200,13 @@ const prevBanner = () => {
                     </svg>
                     Follow on Instagram
                   </span>
-                  <motion.span
-                    className="absolute inset-0 bg-gradient-to-r from-pink-100 to-purple-100"
-                    initial={{ x: "-100%" }}
-                    whileHover={{ x: 0 }}
-                    transition={{ duration: 0.3 }}
-                  />
+                  <div className="absolute -bottom-1 left-0 w-44 h-full mx-auto rounded-md bg-black -z-10 translate-y-1 translate-x-1"></div>
                 </Button>
 
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-gray-300 hover:bg-gray-50 relative overflow-hidden group"
+                  className="bg-red-500 text-white px-6 py-2 w-44 rounded-md shadow-md border-2 border-black relative hover:bg-orange-600"
                   onClick={() =>
                     window.open(
                       "https://www.facebook.com/yummfeast/",
@@ -1223,18 +1220,13 @@ const prevBanner = () => {
                     </svg>
                     Follow on Facebook
                   </span>
-                  <motion.span
-                    className="absolute inset-0 bg-gradient-to-r from-pink-100 to-purple-100"
-                    initial={{ x: "-100%" }}
-                    whileHover={{ x: 0 }}
-                    transition={{ duration: 0.3 }}
-                  />
+                  <div className="absolute -bottom-1 left-0 w-44 h-full mx-auto rounded-md bg-black -z-10 translate-y-1 translate-x-1"></div>
                 </Button>
 
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-gray-300 hover:bg-gray-50 relative overflow-hidden group"
+                  className="bg-red-500 text-white px-6 py-2 w-44 rounded-md shadow-md border-2 border-black relative hover:bg-orange-600"
                   onClick={() =>
                     window.open(
                       "https://www.linkedin.com/company/yummfeast/",
@@ -1246,15 +1238,9 @@ const prevBanner = () => {
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M20.447 20.452h-3.554v-5.569c0-1.327-.025-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.354V9h3.414v1.561h.049c.476-.9 1.637-1.85 3.37-1.85 3.6 0 4.264 2.367 4.264 5.451v6.29zM5.337 7.433c-1.144 0-2.068-.928-2.068-2.07 0-1.144.924-2.07 2.068-2.07 1.144 0 2.07.926 2.07 2.07 0 1.142-.926 2.07-2.07 2.07zM6.823 20.452H3.851V9h2.972v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/>
                     </svg>
-
                     View LinkedIn
                   </span>
-                  <motion.span
-                    className="absolute inset-0 bg-gradient-to-r from-pink-100 to-purple-100"
-                    initial={{ x: "-100%" }}
-                    whileHover={{ x: 0 }}
-                    transition={{ duration: 0.3 }}
-                  />
+                  <div className="absolute -bottom-1 left-0 w-44 h-full mx-auto rounded-md bg-black -z-10 translate-y-1 translate-x-1"></div>
                 </Button>
               </div>
             </motion.div>
