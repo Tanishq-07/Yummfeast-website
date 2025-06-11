@@ -539,7 +539,7 @@ const prevBanner = () => {
       {/* Hero Section */}
       <section
         ref={heroRef}
-        className="relative min-h-[45vh] md:min-h-[67vh] flex place-items-center justify-between px-8 md:px-60 overflow-hidden bg-gradient-to-br from-red-700 via-red-600 to-orange-500"
+        className="relative min-h-[45vh] md:min-h-[67vh] flex place-items-center justify-between px-6 md:px-60 overflow-hidden bg-gradient-to-br from-red-700 via-red-600 to-orange-500"
         
       >
         <div className="absolute inset-0 overflow-hidden">
@@ -581,7 +581,7 @@ const prevBanner = () => {
             {/* Left image - Slide in from left */}
             <motion.img
               src={banners[currentBanner].image1}
-              className="w-44 ms-0 md:w-96 md:me-16 md:mt-10 drop-shadow-2xl"
+              className="w-48 ms-0 md:w-96 md:me-16 md:mt-10 drop-shadow-2xl"
               alt="Left Banner Image"
               initial={{ x: -200, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
@@ -592,7 +592,7 @@ const prevBanner = () => {
             {/* Right image - Drop in from top */}
             <motion.img
               src={banners[currentBanner].image2}
-              className="w-44 md:w-96 me-8 md:mx-16 md:mt-10 drop-shadow-2xl"
+              className="w-48 md:w-96 me-8 md:mx-16 md:mt-10 drop-shadow-2xl"
               alt="Right Banner Image"
               initial={{ y: -200, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
