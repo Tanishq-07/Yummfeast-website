@@ -611,6 +611,7 @@ const prevBanner = () => {
       preserveAspectRatio="none"
       clipPath="url(#wave-clip)"
       transform="scale(-1,1) translate(-1200, 0)"
+      className="hidden md:block"
     />
   </svg>
 </div>
