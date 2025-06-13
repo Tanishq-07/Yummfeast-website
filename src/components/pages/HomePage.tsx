@@ -575,7 +575,7 @@ const prevBanner = () => {
             {/* Right image - Drop in from top */}
             <motion.img
               src={banners[currentBanner].image2}
-              className="w-1/2 md:w-2/5 me-8 md:mx-16 md:mt-10 drop-shadow-2xl"
+              className="w-1/2 md:w-2/5 md:h-3/5 me-8 md:mx-16 md:mt-10 drop-shadow-2xl"
               alt="Right Banner Image"
               initial={{ y: -200, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
