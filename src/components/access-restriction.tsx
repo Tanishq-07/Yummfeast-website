@@ -30,7 +30,7 @@ export function AccessRestriction({
       <Card className="m-4 md:w-full max-w-md border-2 border-red-500 shadow-[0_0_15px_rgba(255,0,0,0.5)] bg-gradient-to-br from-slate-900 to-slate-800">
         <CardHeader className="border-b border-red-500/30 pb-3">
           <div className="flex items-center justify-between">
-            <CardTitle className="text-xl font-bold text-white flex items-center gap-2">
+            <CardTitle className="text-xl font-normal text-white flex items-center gap-2">
               <Lock className="h-5 w-5 text-red-500" />
               Access Restricted
             </CardTitle>
@@ -43,7 +43,7 @@ export function AccessRestriction({
           <div className="flex flex-col gap-4">
             <div className="flex items-start gap-3">
               <AlertTriangle className="h-5 w-5 text-yellow-500 mt-0.5 flex-shrink-0" />
-              <p className="text-md font-medium">{message}</p>
+              <p className="text-md font-normal">{message}</p>
             </div>
 
             {showDetails && (

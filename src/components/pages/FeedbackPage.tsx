@@ -15,7 +15,7 @@ export default function FeedbackPage() {
       <section className="bg-blue-50 py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl font-bold mb-6">Share Your Feedback</h1>
+            <h1 className="text-4xl font-normal mb-6">Share Your Feedback</h1>
             <p className="text-xl text-muted-foreground">
               We value your opinion and are constantly striving to improve our products and services.
             </p>
@@ -50,7 +50,7 @@ export default function FeedbackPage() {
                     <Label htmlFor="product">Product</Label>
                     <select
                       id="product"
-                      className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                      className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-normal placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                       required
                     >
                       <option value="">Select a product</option>
@@ -98,7 +98,7 @@ export default function FeedbackPage() {
       <section className="py-16 bg-blue-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">What Others Are Saying</h2>
+            <h2 className="text-3xl font-normal mb-4">What Others Are Saying</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">Read feedback from our valued customers.</p>
           </div>
 
@@ -135,7 +135,7 @@ export default function FeedbackPage() {
                     </div>
                     <blockquote className="text-xl italic mb-6">"{testimonial.quote}"</blockquote>
                     <div>
-                      <p className="font-semibold">{testimonial.name}</p>
+                      <p className="font-normal">{testimonial.name}</p>
                       <p className="text-sm text-muted-foreground">{testimonial.role}</p>
                     </div>
                   </div>

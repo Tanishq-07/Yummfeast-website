@@ -10,7 +10,7 @@ export default function CustomButton({ value, className }: CustomButtonProps) {
     <div className="transition-transform duration-100 hover:scale-[1.1]">
     <div
       className={clsx(
-        "text-white text-lg font-medium px-6 py-2 rounded-md shadow-md border-2 border-black relative hover:bg-red-600",
+        "text-white text-lg font-normal px-6 py-2 rounded-md shadow-md border-2 border-black relative hover:bg-red-600",
         className
       )}
     >

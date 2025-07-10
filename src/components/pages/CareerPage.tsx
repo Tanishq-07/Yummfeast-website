@@ -53,7 +53,7 @@ export default function CareerPage() {
       <section className="bg-blue-50 py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl font-bold mb-6">Career Opportunities</h1>
+            <h1 className="text-4xl font-normal mb-6">Career Opportunities</h1>
             <p className="text-xl text-muted-foreground">
               Join our team and be part of our mission to deliver exceptional snacks and services.
             </p>
@@ -71,7 +71,7 @@ export default function CareerPage() {
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-3xl font-bold mb-6">Why Join Our Sales Team?</h2>
+              <h2 className="text-3xl font-normal mb-6">Why Join Our Sales Team?</h2>
               <p className="text-muted-foreground mb-4">
                 At Yummfeast, we believe that our sales team is the backbone of our success. We're looking for
                 passionate, driven individuals who are excited about our products and eager to help customers find the
@@ -103,7 +103,7 @@ export default function CareerPage() {
       <section className="py-16 bg-blue-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Benefits & Perks</h2>
+            <h2 className="text-3xl font-normal mb-4">Benefits & Perks</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               We take care of our team so they can focus on taking care of our customers.
             </p>
@@ -144,7 +144,7 @@ export default function CareerPage() {
                 viewport={{ once: true }}
                 className="bg-white p-8 rounded-lg shadow-sm"
               >
-                <h3 className="font-semibold text-xl mb-3">{benefit.title}</h3>
+                <h3 className="font-normal text-xl mb-3">{benefit.title}</h3>
                 <p className="text-muted-foreground">{benefit.description}</p>
               </motion.div>
             ))}
@@ -156,7 +156,7 @@ export default function CareerPage() {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Current Openings</h2>
+            <h2 className="text-3xl font-normal mb-4">Current Openings</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Explore our available sales positions and find the right fit for your skills and career goals.
             </p>
@@ -175,7 +175,7 @@ export default function CareerPage() {
                   <CardContent className="p-6">
                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                       <div>
-                        <h3 className="font-semibold text-xl mb-2">{job.title}</h3>
+                        <h3 className="font-normal text-xl mb-2">{job.title}</h3>
                         <div className="flex flex-wrap gap-2 text-sm text-muted-foreground">
                           <span>{job.location}</span>
                           <span className="hidden md:inline">•</span>
@@ -203,7 +203,7 @@ export default function CareerPage() {
       <section className="py-16 bg-blue-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Our Application Process</h2>
+            <h2 className="text-3xl font-normal mb-4">Our Application Process</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Here's what to expect when you apply for a position with Yummfeast.
             </p>
@@ -239,11 +239,11 @@ export default function CareerPage() {
                   className="relative pl-10 pb-10"
                 >
                   {index < 4 && <div className="absolute left-4 top-4 bottom-0 w-px bg-muted-foreground/30" />}
-                  <div className="absolute left-0 top-1 w-8 h-8 rounded-full bg-red-600 text-white flex items-center justify-center font-bold">
+                  <div className="absolute left-0 top-1 w-8 h-8 rounded-full bg-red-600 text-white flex items-center justify-center font-normal">
                     {index + 1}
                   </div>
                   <div>
-                    <h3 className="font-semibold text-xl mb-2">{step.title}</h3>
+                    <h3 className="font-normal text-xl mb-2">{step.title}</h3>
                     <p className="text-muted-foreground">{step.description}</p>
                   </div>
                 </motion.div>

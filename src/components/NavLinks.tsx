@@ -18,6 +18,7 @@ export default function NavLinks({ navigateTo, currentPage }: NavLinksProps) {
     { name: "Home", key: "home" },
     { name: "About", key: "about" },
     { name: "Products", key: "product" },
+    { name: "Dealership", key: "query" },
     { name: "Testimonials", key: "testimonial" },
   ]
 
@@ -26,7 +27,6 @@ export default function NavLinks({ navigateTo, currentPage }: NavLinksProps) {
     { name: "Infra", key: "infra" },
     { name: "Gallery", key: "gallery" },
     { name: "Feedback", key: "feedback" },
-    { name: "Dealership", key: "query" },
     { name: "Blogs", key: "blogs" },
     { name: "Careers", key: "career" },
   ]
@@ -42,7 +42,7 @@ export default function NavLinks({ navigateTo, currentPage }: NavLinksProps) {
             navigateTo(link.key)
           }}
           className={cn(
-            "text-md font-bold transition-colors hover:text-red-600",
+            "text-md font-normal transition-colors hover:text-red-600",
             currentPage === link.key ? "text-red-600" : "text-muted-foreground",
           )}
         >
@@ -51,7 +51,7 @@ export default function NavLinks({ navigateTo, currentPage }: NavLinksProps) {
       ))}
 
       <DropdownMenu open={open} onOpenChange={setOpen}>
-        <DropdownMenuTrigger className="flex items-center text-md font-bold transition-colors hover:text-red-600 text-muted-foreground">
+        <DropdownMenuTrigger className="flex items-center text-md font-normal transition-colors hover:text-red-600 text-muted-foreground">
           More <ChevronDown className="ml-1 h-4 w-4" />
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
@@ -77,7 +77,7 @@ export default function NavLinks({ navigateTo, currentPage }: NavLinksProps) {
           navigateTo("contact")
         }}
         className={cn(
-          "text-md font-bold transition-colors hover:text-red-600",
+          "text-md font-normal transition-colors hover:text-red-600",
           currentPage === "contact" ? "text-red-600" : "text-muted-foreground",
         )}
       >

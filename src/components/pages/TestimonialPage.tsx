@@ -153,7 +153,7 @@ export default function TestimonialPage() {
                 />
               </svg>
 
-              <h1 className="text-4xl font-bold px-8 py-4">Customer Testimonials</h1>
+              <h1 className="text-4xl font-normal px-8 py-4">Customer Testimonials</h1>
             </div>
             <p className="text-xl text-muted-foreground">
               Don't just take our word for it. Here's what our customers have to say about their experiences.
@@ -302,7 +302,7 @@ export default function TestimonialPage() {
                           />
                         </div>
                         <div>
-                          <p className="font-semibold">{testimonial.name}</p>
+                          <p className="font-normal">{testimonial.name}</p>
                           <p className="text-sm text-muted-foreground">{testimonial.role}</p>
                         </div>
                       </div>
@@ -377,7 +377,7 @@ export default function TestimonialPage() {
                   opacity="0.7"
                 />
               </svg>
-              <h2 className="text-3xl font-bold mb-6 px-4">Share Your Experience</h2>
+              <h2 className="text-3xl font-normal mb-6 px-4">Share Your Experience</h2>
             </div>
             <p className="text-xl text-muted-foreground mb-8">
               We value your feedback. Let us know about your experience with our products.

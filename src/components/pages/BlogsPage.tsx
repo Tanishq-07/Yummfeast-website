@@ -69,7 +69,7 @@ export default function BlogsPage() {
       <section className="bg-blue-50 py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl font-bold mb-6">Our Blog</h1>
+            <h1 className="text-4xl font-normal mb-6">Our Blog</h1>
             <p className="text-xl text-muted-foreground">Insights, updates, and stories from our team and community.</p>
           </div>
         </div>
@@ -85,8 +85,8 @@ export default function BlogsPage() {
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
             >
-              <div className="text-sm text-red-600 font-semibold mb-2">FEATURED POST</div>
-              <h2 className="text-3xl font-bold mb-4">{blogs[0].title}</h2>
+              <div className="text-sm text-red-600 font-normal mb-2">FEATURED POST</div>
+              <h2 className="text-3xl font-normal mb-4">{blogs[0].title}</h2>
               <p className="text-muted-foreground mb-4">{blogs[0].excerpt}</p>
               <div className="flex items-center text-sm text-muted-foreground mb-6">
                 <span>{blogs[0].date}</span>
@@ -118,7 +118,7 @@ export default function BlogsPage() {
       <section className="py-16 bg-blue-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Latest Articles</h2>
+            <h2 className="text-3xl font-normal mb-4">Latest Articles</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Stay up to date with our latest news, insights, and stories.
             </p>
@@ -142,8 +142,8 @@ export default function BlogsPage() {
                     />
                   </div>
                   <CardContent className="p-6 flex-grow flex flex-col">
-                    <div className="text-xs text-red-600 font-semibold mb-2">{blog.category.toUpperCase()}</div>
-                    <h3 className="font-semibold text-xl mb-2">{blog.title}</h3>
+                    <div className="text-xs text-red-600 font-normal mb-2">{blog.category.toUpperCase()}</div>
+                    <h3 className="font-normal text-xl mb-2">{blog.title}</h3>
                     <p className="text-muted-foreground mb-4 flex-grow">{blog.excerpt}</p>
                     <div className="flex items-center text-sm text-muted-foreground mb-4">
                       <span>{blog.date}</span>
@@ -165,7 +165,7 @@ export default function BlogsPage() {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-4">Subscribe to Our Newsletter</h2>
+            <h2 className="text-3xl font-normal mb-4">Subscribe to Our Newsletter</h2>
             <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
               Stay updated with our latest articles, product announcements, and exclusive offers.
             </p>

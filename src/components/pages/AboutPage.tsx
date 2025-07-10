@@ -126,7 +126,7 @@ export default function AboutPage() {
               transition={{ duration: 0.2 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-3xl font-bold mb-6 relative inline-block">
+              <h2 className="text-3xl font-normal mb-6 relative inline-block">
                 Our Story
                 {/* Handwritten underline effect */}
                 <svg
@@ -214,7 +214,7 @@ export default function AboutPage() {
         <div className="bg-blue-50 pt-10 pb-16">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4 relative inline-block">
+              <h2 className="text-3xl font-normal mb-4 relative inline-block">
                 Our Mission & Values
                 {/* Cartoon stroke underline */}
                 <svg
@@ -332,7 +332,7 @@ export default function AboutPage() {
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4 relative inline-block">
+            <h2 className="text-3xl font-normal mb-4 relative inline-block">
               Meet Our Team
               {/* Handwritten underline */}
               <svg

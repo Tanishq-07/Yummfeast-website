@@ -68,7 +68,7 @@
 //       <section className="bg-blue-50 py-16">
 //         <div className="container mx-auto px-4">
 //           <div className="max-w-3xl mx-auto text-center">
-//             <h1 className="text-4xl font-bold mb-6">Our Products</h1>
+//             <h1 className="text-4xl font-normal mb-6">Our Products</h1>
 //             <p className="text-xl text-muted-foreground">
 //               Explore our range of delicious snacks designed to satisfy your cravings.
 //             </p>
@@ -111,10 +111,10 @@
 //                     />
 //                   </div>
 //                   <CardContent className="p-6">
-//                     <h3 className="font-semibold text-xl mb-2">{product.name}</h3>
+//                     <h3 className="font-normal text-xl mb-2">{product.name}</h3>
 //                     <p className="text-muted-foreground mb-4">{product.description}</p>
 //                     <div className="flex justify-between items-center">
-//                       <span className="font-bold text-lg">{product.price}</span>
+//                       <span className="font-normal text-lg">{product.price}</span>
 //                       <Button
 //                         variant="outline"
 //                         size="sm"
@@ -135,7 +135,7 @@
 //       {/* <section className="py-16 bg-red-600">
 //         <div className="container mx-auto px-4">
 //           <div className="max-w-3xl mx-auto text-center text-white">
-//             <h2 className="text-3xl font-bold mb-6">Can't Find What You're Looking For?</h2>
+//             <h2 className="text-3xl font-normal mb-6">Can't Find What You're Looking For?</h2>
 //             <p className="text-xl mb-8">Contact our team for bulk orders or to inquire about our full product range.</p>
 //             <Button
 //               size="lg"
@@ -365,7 +365,7 @@ export default function ProductPage() {
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 0.5 }}
       >
-        <span className="text-sm mb-2 font-medium tracking-wider">Scroll to explore</span>
+        <span className="text-sm mb-2 font-normal tracking-wider">Scroll to explore</span>
         <motion.div
           animate={{
             y: [0, 10, 0],
@@ -556,7 +556,7 @@ export default function ProductPage() {
                 />
               </svg>
 
-              <h1 className="text-4xl font-bold px-8 py-4">Our Products</h1>
+              <h1 className="text-4xl font-normal px-8 py-4">Our Products</h1>
             </div>
             <p className="text-xl text-muted-foreground">
               Explore our range of delicious snacks designed to satisfy your cravings.
@@ -723,7 +723,7 @@ export default function ProductPage() {
                               transform="translate(50 50)"
                             />
                           </svg>
-                          <span className="relative z-10 font-bold text-white px-4 py-2 block">{product.price}</span>
+                          <span className="relative z-10 font-normal text-white px-4 py-2 block">{product.price}</span>
                         </div>
                       </div>
 
@@ -754,7 +754,7 @@ export default function ProductPage() {
                       </h3>
                       <p className="text-muted-foreground mb-4">{product.description}</p>
                       <div className="flex justify-between items-center">
-                        <span className="font-bold text-lg">{product.price}</span>
+                        <span className="font-normal text-lg">{product.price}</span>
                         <Button
                           variant="outline"
                           size="sm"
@@ -842,7 +842,7 @@ export default function ProductPage() {
             <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ duration: 0.5 }}>
               <PartyPopper className="w-12 h-12 mx-auto mb-4 text-yellow-300 mt-6" />
             </motion.div>
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">Can't Find What You're Looking For?</h2>
+            <h2 className="text-3xl md:text-5xl font-normal mb-6">Can't Find What You're Looking For?</h2>
             <p className="text-xl mb-8">Contact our team for bulk orders or to inquire about our full product range.</p>
             <Button
               size="lg"

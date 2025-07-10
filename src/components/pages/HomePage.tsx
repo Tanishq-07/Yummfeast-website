@@ -168,7 +168,7 @@ const FeatureCard = ({ feature, index }: { feature: (typeof features)[0]; index:
         </motion.div>*/}
 
         {/* Title */}
-        <h3 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-gray-900 transition-colors">
+        <h3 className="text-xl font-normal text-gray-800 mb-3 group-hover:text-gray-900 transition-colors">
           {feature.title}
         </h3>
 
@@ -759,7 +759,7 @@ const prevBanner = () => {
                 <h2 className="text-4xl lg:text-5xl font-normal text-white mb-4">
                   Recent
                 </h2>
-                <p className="text-2xl lg:text-3xl text-white/90 font-medium">
+                <p className="text-2xl lg:text-3xl text-white/90 font-normal">
                   News and updates
                 </p>
                 <div className="w-16 h-1 bg-white mt-4"></div>
@@ -871,7 +871,7 @@ const prevBanner = () => {
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-3xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-red-500"
+                className="text-3xl md:text-4xl font-normal mb-6 bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-red-500"
               >
                 Why Choose Yummfeast
               </motion.h2>
@@ -1044,7 +1044,7 @@ const prevBanner = () => {
                   />
                 </Button> */}
                 <div className="transition-transform duration-100 hover:scale-[1.1]">
-                <div className="bg-red-500 text-white text-lg font-medium w-56 mx-auto px-6 py-2 rounded-md shadow-md border-2 border-black relative hover:bg-orange-600">
+                <div className="bg-red-500 text-white text-lg font-normal w-56 mx-auto px-6 py-2 rounded-md shadow-md border-2 border-black relative hover:bg-orange-600">
                   Learn Our Story
                   <div className="absolute -bottom-1 left-0 w-56 h-full mx-auto rounded-md bg-black -z-10 translate-y-1 translate-x-1"></div>
                 </div>
@@ -1129,7 +1129,7 @@ const prevBanner = () => {
                         <div className="flex items-center justify-center gap-4 mb-2">
                           <div className="flex items-center gap-1">
                             <Heart className="w-5 h-5" />
-                            <span className="text-sm font-medium">
+                            <span className="text-sm font-normal">
                               {post.likes}
                             </span>
                           </div>
@@ -1141,7 +1141,7 @@ const prevBanner = () => {
                             >
                               <path d="M8.5 12c0 1.38 1.12 2.5 2.5 2.5s2.5-1.12 2.5-2.5-1.12-2.5-2.5-2.5-2.5 1.12-2.5 2.5zm7-7h-1.59l-.55-.55c-.29-.29-.68-.45-1.09-.45H9.73c-.41 0-.8.16-1.09.45L8.09 5H6.5C5.12 5 4 6.12 4 7.5v9C4 17.88 5.12 19 6.5 19h11c1.38 0 2.5-1.12 2.5-2.5v-9C20 6.12 18.88 5 17.5 5z" />
                             </svg>
-                            <span className="text-sm font-medium">
+                            <span className="text-sm font-normal">
                               {post.comments}
                             </span>
                           </div>
@@ -1351,7 +1351,7 @@ const prevBanner = () => {
               />
             </Button> */}
             <div className="transition-transform duration-100 hover:scale-[1.03]">
-            <div className="bg-red-500 text-white text-lg font-medium w-40 mx-auto px-6 py-2 rounded-md shadow-md border-2 border-black relative hover:bg-orange-600">
+            <div className="bg-red-500 text-white text-lg font-normal w-40 mx-auto px-6 py-2 rounded-md shadow-md border-2 border-black relative hover:bg-orange-600">
               Shop Now
               <div className="absolute -bottom-1 left-0 w-40 h-full mx-auto rounded-md bg-black -z-10 translate-y-1 translate-x-1"></div>
             </div>
