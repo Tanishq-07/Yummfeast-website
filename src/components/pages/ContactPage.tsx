@@ -44,14 +44,14 @@ export default function ContactPage() {
           animate={{ rotate: [-15, 15, -15] }}
           transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY }}
         >
-          🍪
+          🥜
         </motion.div>
         <motion.div
-          className="absolute bottom-20 right-1/3 text-5xl"
+          className="absolute bottom-8 right-1/3 text-5xl"
           animate={{ scale: [1, 1.2, 1] }}
           transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
         >
-          🥜
+          🍪
         </motion.div>
 
         <div className="container mx-auto px-4 relative z-10">
@@ -73,18 +73,6 @@ export default function ContactPage() {
               Got questions about our delicious snacks? We're all ears and ready to help! Drop us a line and let's make
               your snacking experience amazing! ✨
             </motion.p>
-            <motion.div
-              className="flex justify-center gap-4 text-3xl"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              <span>🍟</span>
-              <span>🥨</span>
-              <span>🍪</span>
-              <span>🥜</span>
-              <span>🍿</span>
-            </motion.div>
           </div>
         </div>
       </section>

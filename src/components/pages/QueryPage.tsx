@@ -77,8 +77,7 @@ export default function QueryPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Partner with Yummfeast and become part of India's most exciting snack empire! Let's build something
-              delicious together! 🍿✨
+             Curious about what makes Yummfeast snacks so yummy? We'd love to hear from you! Connect with us, and let's ensure your tummy always says 'Yummy! ✨
             </motion.p>
             <motion.div
               className="flex justify-center gap-6 text-4xl mb-8"

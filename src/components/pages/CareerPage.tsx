@@ -50,16 +50,76 @@ export default function CareerPage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-blue-50 py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl font-normal mb-6">Career Opportunities</h1>
-            <p className="text-xl text-muted-foreground">
-              Join our team and be part of our mission to deliver exceptional snacks and services.
-            </p>
+      <section className="relative overflow-hidden  bg-red-600 py-16">
+        <div className="absolute inset-0 overflow-hidden">
+                  <motion.div
+                    className="w-[120%] h-[120%] bg-[url('/images/pattern.svg')] opacity-10"
+                    animate={{ x: [-20, 0], y: [-20, 0] }}
+                    transition={{
+                      duration: 60,
+                      repeat: Number.POSITIVE_INFINITY,
+                      repeatType: "reverse",
+                    }}
+                  />
+                </div>
+        <div className="absolute inset-0 bg-black/10"></div>
+        <motion.div
+          className="absolute top-10 left-10 text-6xl"
+          animate={{ rotate: 360 }}
+          transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+        >
+          🍿
+        </motion.div>
+        <motion.div
+          className="absolute top-20 right-20 text-5xl"
+          animate={{ y: [-10, 10, -10] }}
+          transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
+        >
+          🥨
+        </motion.div>
+        <motion.div
+          className="absolute bottom-10 left-1/4 text-4xl"
+          animate={{ rotate: [-15, 15, -15] }}
+          transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY }}
+        >
+          🥜
+        </motion.div>
+        <motion.div
+          className="absolute bottom-8 right-1/3 text-5xl"
+          animate={{ scale: [1, 1.2, 1] }}
+          transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
+        >
+          🍪
+        </motion.div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-4xl mx-auto text-center text-white">
+            <motion.h1
+              className="text-5xl md:text-7xl font-normal mb-6 bg-gradient-to-r from-yellow-200 to-orange-200 bg-clip-text text-transparent"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              Career Opportunities
+            </motion.h1>
+            <motion.p
+              className="text-xl md:text-2xl mb-8 text-orange-100"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              Join our team and be part of our mission to deliver exceptional snacks and services! 👬
+            </motion.p>
+            <motion.div
+              className="flex justify-center gap-4 text-3xl"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+            </motion.div>
           </div>
         </div>
-      </section>
+      </section>  
 
       {/* Why Join Us */}
       <section className="py-16">
@@ -100,11 +160,22 @@ export default function CareerPage() {
       </section>
 
       {/* Benefits */}
-      <section className="py-16 bg-blue-50">
+      <section className="relative overflow-hidden  bg-red-600 py-16">
+        <div className="absolute inset-0 overflow-hidden">
+                  <motion.div
+                    className="w-[120%] h-[120%] bg-[url('/images/pattern.svg')] opacity-10"
+                    animate={{ x: [-20, 0], y: [-20, 0] }}
+                    transition={{
+                      duration: 60,
+                      repeat: Number.POSITIVE_INFINITY,
+                      repeatType: "reverse",
+                    }}
+                  />
+                </div>
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-normal mb-4">Benefits & Perks</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+            <h2 className="text-3xl text-white font-normal mb-4">Benefits & Perks</h2>
+            <p className="text-white max-w-2xl mx-auto">
               We take care of our team so they can focus on taking care of our customers.
             </p>
           </div>
@@ -144,7 +215,7 @@ export default function CareerPage() {
                 viewport={{ once: true }}
                 className="bg-white p-8 rounded-lg shadow-sm"
               >
-                <h3 className="font-normal text-xl mb-3">{benefit.title}</h3>
+                <h3 className="font-normal text-xl mb-3 text-red-500">{benefit.title}</h3>
                 <p className="text-muted-foreground">{benefit.description}</p>
               </motion.div>
             ))}
@@ -175,7 +246,7 @@ export default function CareerPage() {
                   <CardContent className="p-6">
                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                       <div>
-                        <h3 className="font-normal text-xl mb-2">{job.title}</h3>
+                        <h3 className="font-normal text-xl mb-2 text-red-500">{job.title}</h3>
                         <div className="flex flex-wrap gap-2 text-sm text-muted-foreground">
                           <span>{job.location}</span>
                           <span className="hidden md:inline">•</span>

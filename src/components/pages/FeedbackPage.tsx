@@ -7,21 +7,82 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Star } from "lucide-react"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
+import { motion } from "framer-motion"
 
 export default function FeedbackPage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-blue-50 py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl font-normal mb-6">Share Your Feedback</h1>
-            <p className="text-xl text-muted-foreground">
-              We value your opinion and are constantly striving to improve our products and services.
-            </p>
+      <section className="relative overflow-hidden  bg-red-600 py-16">
+        <div className="absolute inset-0 overflow-hidden">
+                  <motion.div
+                    className="w-[120%] h-[120%] bg-[url('/images/pattern.svg')] opacity-10"
+                    animate={{ x: [-20, 0], y: [-20, 0] }}
+                    transition={{
+                      duration: 60,
+                      repeat: Number.POSITIVE_INFINITY,
+                      repeatType: "reverse",
+                    }}
+                  />
+                </div>
+        <div className="absolute inset-0 bg-black/10"></div>
+        <motion.div
+          className="absolute top-10 left-10 text-6xl"
+          animate={{ rotate: 360 }}
+          transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+        >
+          🍿
+        </motion.div>
+        <motion.div
+          className="absolute top-20 right-20 text-5xl"
+          animate={{ y: [-10, 10, -10] }}
+          transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
+        >
+          🥨
+        </motion.div>
+        <motion.div
+          className="absolute bottom-10 left-1/4 text-4xl"
+          animate={{ rotate: [-15, 15, -15] }}
+          transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY }}
+        >
+          🥜
+        </motion.div>
+        <motion.div
+          className="absolute bottom-8 right-1/3 text-5xl"
+          animate={{ scale: [1, 1.2, 1] }}
+          transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
+        >
+          🍪
+        </motion.div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-4xl mx-auto text-center text-white">
+            <motion.h1
+              className="text-5xl md:text-7xl font-normal mb-6 bg-gradient-to-r from-yellow-200 to-orange-200 bg-clip-text text-transparent"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              Share Your Feedback
+            </motion.h1>
+            <motion.p
+              className="text-xl md:text-2xl mb-8 text-orange-100"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              We value your opinion and are constantly striving to improve our products and services.! 📝
+            </motion.p>
+            <motion.div
+              className="flex justify-center gap-4 text-3xl"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+            </motion.div>
           </div>
         </div>
-      </section>
+      </section>  
 
       {/* Feedback Form */}
       <section className="py-16">
@@ -95,7 +156,7 @@ export default function FeedbackPage() {
       </section>
 
       {/* Testimonials Preview */}
-      <section className="py-16 bg-blue-50">
+      {/* <section className="py-16 bg-blue-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-normal mb-4">What Others Are Saying</h2>
@@ -146,7 +207,7 @@ export default function FeedbackPage() {
             <CarouselNext className="right-0" />
           </Carousel>
         </div>
-      </section>
+      </section> */}
     </div>
   )
 }
