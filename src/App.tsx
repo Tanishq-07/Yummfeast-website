@@ -27,7 +27,7 @@ export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showScrollUp, setShowScrollUp] = useState(false);
   const [showScrollDown, setShowScrollDown] = useState(true);
-  const [accessRestricted, setAccessRestricted] = useState(true);
+  const [accessRestricted, setAccessRestricted] = useState(false);
 
   // Function to handle page navigation
   const navigateTo = (page: string) => {
