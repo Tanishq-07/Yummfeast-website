@@ -1,9 +1,7 @@
 "use client"
 
 import { useState, useRef, useEffect } from "react"
-import { motion, useScroll, useTransform, AnimatePresence, useMotionValue, useSpring } from "framer-motion"
-import { Card, CardContent } from "@/components/ui/card"
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { ChevronUp, PartyPopper, Search, X } from "lucide-react"
 import CustomButton from "../ui/custom-button";
@@ -40,7 +38,7 @@ const categoryStructure = {
  const products: Product[] = [
     {
       id: 1,
-      name: "Yummfeast Rings",
+      name: "Pizza",
       description: "Crunchy rings with a burst of tangy masala flavor",
       image:
         "/images/chips1.png",
@@ -50,7 +48,7 @@ const categoryStructure = {
     },
     {
       id: 2,
-      name: "Yummfeast Pasta",
+      name: "Magic Masala",
       description: "Crispy pasta snacks with Italian herbs seasoning",
       image:
         "/images/chips2.png",
@@ -60,7 +58,7 @@ const categoryStructure = {
     },
     {
       id: 3,
-      name: "Yummfeast All-in-One",
+      name: "Katori",
       description:
         "A delightful mix of various namkeen for the perfect snack time",
       image:
@@ -71,7 +69,7 @@ const categoryStructure = {
     },
     {
       id: 4,
-      name: "Yummfeast Rings",
+      name: "Pizza",
       description: "Crunchy rings with a burst of tangy masala flavor",
       image:
         "/images/chips1.png",
@@ -100,7 +98,7 @@ const ProductCircle = ({
   index: number;
 }) => {
   return (
-    <div className="flex flex-col items-center gap-4">
+    <div className="relative flex flex-col items-center gap-4">
       <motion.img
         src="/images/patch3.png"
         alt=""
@@ -126,7 +124,7 @@ const ProductCircle = ({
       />
 
       {/* Label/Button */}
-      <CustomButton className="bg-orange-500" value={product.category}/>
+      <CustomButton className="bg-orange-500" value={product.name}/>
     </div>
   );
 };
@@ -152,9 +150,7 @@ export default function ProductPage() {
       const matchesSearch =
         searchTerm === "" ||
         product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        product.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        product.tags.some((tag) => tag.toLowerCase().includes(searchTerm.toLowerCase()))
-
+        product.description.toLowerCase().includes(searchTerm.toLowerCase())
       const matchesCategory = selectedCategory === "all" || product.category === selectedCategory
       const matchesSubcategory = selectedSubcategory === "all" || product.subcategory === selectedSubcategory
 
@@ -166,12 +162,12 @@ export default function ProductPage() {
       switch (sortBy) {
         case "name":
           return a.name.localeCompare(b.name)
-        case "price-low":
-          return a.priceValue - b.priceValue
-        case "price-high":
-          return b.priceValue - a.priceValue
-        case "rating":
-          return b.rating - a.rating
+        // case "price-low":
+        //   return a.priceValue - b.priceValue
+        // case "price-high":
+        //   return b.priceValue - a.priceValue
+        // case "rating":
+        //   return b.rating - a.rating
         default:
           return 0
       }
@@ -300,81 +296,74 @@ export default function ProductPage() {
       <ScrollToTop />
 
       {/* Hero Section */}
-      <section
-        ref={heroRef}
-        className="relative min-h-[45vh] md:min-h-[67vh] flex place-items-center justify-between px-6 md:px-60 overflow-hidden bg-[url('/images/bg.png')]"
-      >
-        <AnimatePresence mode="wait">
-          <motion.div
-            className="flex place-items-center justify-between w-full"
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-          >
+      <section className="relative overflow-hidden  bg-red-600 py-16">
+        <div className="absolute inset-0 overflow-hidden">
+                  <motion.div
+                    className="w-[120%] h-[120%] bg-[url('/images/pattern.svg')] opacity-10"
+                    animate={{ x: [-20, 0], y: [-20, 0] }}
+                    transition={{
+                      duration: 60,
+                      repeat: Number.POSITIVE_INFINITY,
+                      repeatType: "reverse",
+                    }}
+                  />
+                </div>
+        <div className="absolute inset-0 bg-black/10"></div>
+        <motion.div
+          className="absolute top-10 left-10 text-6xl"
+          animate={{ rotate: 360 }}
+          transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+        >
+          🍿
+        </motion.div>
+        <motion.div
+          className="absolute top-20 right-20 text-5xl"
+          animate={{ y: [-10, 10, -10] }}
+          transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
+        >
+          🥨
+        </motion.div>
+        <motion.div
+          className="absolute bottom-10 left-1/4 text-4xl"
+          animate={{ rotate: [-15, 15, -15] }}
+          transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY }}
+        >
+          🥔
+        </motion.div>
+        <motion.div
+          className="absolute bottom-8 right-1/3 text-5xl"
+          animate={{ scale: [1, 1.2, 1] }}
+          transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
+        >
+          🍪
+        </motion.div>
 
-            {/* Left image - Slide in from left */}
-            <motion.img
-              src="/images/b2l.png"
-              className="w-1/2 ms-0 md:w-2/5 md:me-16 md:mt-10 drop-shadow-2xl"
-              alt="Left Banner Image"
-              initial={{ x: -200, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              exit={{ x: -200, opacity: 0 }}
-              transition={{ duration: 0.8, ease: "easeInOut" }}
-            />
-
-            {/* Right image - Drop in from top */}
-            <motion.img
-              src="/images/b2r.png"
-              className="w-1/2 md:w-2/5 md:h-3/5 me-8 md:mx-16 md:mt-10 drop-shadow-2xl"
-              alt="Right Banner Image"
-              initial={{ y: -200, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: 200, opacity: 0 }}
-              transition={{ duration: 0.8, ease: "easeInOut", delay: 0.1 }}
-            />
-          </motion.div>
-        </AnimatePresence>
-        <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-0 transform rotate-180 z-10">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 1200 120"
-            preserveAspectRatio="none"
-            className="w-full h-16 hidden md:block"
-          >
-            <defs>
-              <clipPath id="wave-clip">
-                <path
-                  d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,
-                    70.36-5.37,136.33-33.31,206.8-37.5,
-                    C438.64,32.43,512.34,53.67,583,72.05,
-                    c69.27,18,138.3,24.88,209.4,13.08,
-                    36.15-6,69.85-17.84,104.45-29.34,
-                    C989.49,25,1113-14.29,1200,52.47V0Z"
-                />
-              </clipPath>
-            </defs>
-            <image
-              href="/images/white-bg1.jpg"
-              width="1200"
-              height="120"
-              preserveAspectRatio="none"
-              clipPath="url(#wave-clip)"
-              transform="scale(-1,1) translate(-1200, 0)"
-            />
-          </svg>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 1200 120"
-            preserveAspectRatio="none"
-            className="w-full h-16 md:hidden"
-          >
-            <path
-              d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
-              fill="#ffffff"
-              className="fill-white"
-            />
-          </svg>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-4xl mx-auto text-center text-white">
+            <motion.h1
+              className="text-5xl md:text-7xl font-normal mb-6 bg-gradient-to-r from-yellow-200 to-orange-200 bg-clip-text text-transparent"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              Our Products
+            </motion.h1>
+            <motion.p
+              className="text-xl md:text-2xl mb-8 text-orange-100"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              Experience the Crunch, Backed by Cutting-Edge Craft! ✨
+            </motion.p>
+            <motion.div
+              className="flex justify-center gap-4 text-3xl"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+            </motion.div>
+          </div>
         </div>
       </section>
 
