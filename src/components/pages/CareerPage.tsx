@@ -64,32 +64,32 @@ export default function CareerPage() {
                 </div>
         <div className="absolute inset-0 bg-black/10"></div>
         <motion.div
-          className="absolute top-10 left-10 text-6xl"
+          className="absolute top-8 left-6 md:top-12 md:left-28 text-5xl md:text-6xl"
           animate={{ rotate: 360 }}
           transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
         >
-          🍿
+          🤤
         </motion.div>
         <motion.div
-          className="absolute top-20 right-20 text-5xl"
+          className="absolute top-10 right-6 md:top-20 md:right-28 text-5xl"
           animate={{ y: [-10, 10, -10] }}
           transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
         >
-          🥨
+          🔥
         </motion.div>
         <motion.div
-          className="absolute bottom-10 left-1/4 text-4xl"
+          className="absolute bottom-10 left-20 md:left-1/4 text-4xl"
           animate={{ rotate: [-15, 15, -15] }}
           transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY }}
         >
-          🥜
+          🎉
         </motion.div>
         <motion.div
-          className="absolute bottom-8 right-1/3 text-5xl"
+          className="absolute bottom-8 right-20 md:right-1/3 text-5xl"
           animate={{ scale: [1, 1.2, 1] }}
           transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
         >
-          🍪
+          😋
         </motion.div>
 
         <div className="container mx-auto px-4 relative z-10">
