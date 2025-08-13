@@ -4,68 +4,86 @@ import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
+import { Badge } from "@/components/ui/badge"
+import { Clock, User, Calendar, ArrowRight, Search, X } from "lucide-react"
+import { useState } from "react"
+import blogData from "@/data/data.json"
 
 export default function BlogsPage() {
-  const blogs = [
-    {
-      id: 1,
-      title: "The Art of Snack Making: Behind the Scenes at Yummfeast",
-      excerpt: "Discover the journey of innovation and craftsmanship that goes into creating your favorite snacks.",
-      date: "April 15, 2023",
-      author: "Rajesh Kumar",
-      image: "https://scontent-bom2-2.xx.fbcdn.net/v/t39.30808-6/481055033_1045649254260705_9117953247510428793_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_ohc=pryiB5BnUQcQ7kNvwFb5dH7&_nc_oc=AdmkXdabI2L_Ksrx5ciYWqmYBzakHB5GBqV9kUkN_aIXaiGUuQds1tpQsfd-VpA2q0TAyq1QpwWXEDATfs0IFzEY&_nc_zt=23&_nc_ht=scontent-bom2-2.xx&_nc_gid=iPh2e94TX5mH55XYhZciaQ&oh=00_AfHSdSOswxRGnewZD1gutRUZtpyf4rDeIzBzcri9wIrfUQ&oe=680DAD40",
-      category: "Product",
-    },
-    {
-      id: 2,
-      title: "Sustainability in Snack Production: Our Commitment",
-      excerpt: "Learn about our initiatives to reduce environmental impact and create sustainable snacks.",
-      date: "March 22, 2023",
-      author: "Sunita Sharma",
-      image: "https://scontent-bom2-4.xx.fbcdn.net/v/t39.30808-6/480712951_1039552761537021_4915098758221941784_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_ohc=XIC2QC4NJLYQ7kNvwHNdwNy&_nc_oc=AdlGPLtux-kjKcKzXNTzuCeinrrH0aAo8Sv7EuwrdnZ4Gn_h74H-T2UEmpUa3Kv5FDYArvpsBgjJXaDl3kreYS3d&_nc_zt=23&_nc_ht=scontent-bom2-4.xx&_nc_gid=GFXBsppUHbQybU5VR_6zPw&oh=00_AfHfunKUKekDKaxEQMhMxoBYu7XP1JWjsh0QGk4r5x-NbA&oe=680DA083",
-      category: "Company",
-    },
-    {
-      id: 3,
-      title: "Customer Success Story: How Yummfeast Transformed a Local Store",
-      excerpt: "Read the inspiring story of how our products helped a small retailer grow their business.",
-      date: "February 10, 2023",
-      author: "Vikram Singh",
-      image: "https://scontent-bom2-1.xx.fbcdn.net/v/t39.30808-6/356712378_830736701766404_8592203015337844435_n.png?_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_ohc=ANmzWSTYHW8Q7kNvwHC_ERv&_nc_oc=Adk6YITZWgkJM4HszF3SlqU_uWbojC2GaH_jDNEu-kkj80vUGYa9eangCJqAG47aOTSbY08LBPnzjdcrZU5WuryQ&_nc_zt=23&_nc_ht=scontent-bom2-1.xx&_nc_gid=cJWHen5MlUxYnlENKPOLWA&oh=00_AfEPHMod-OPavk4Dyohz9HMNwP_m-4Uwtkhj3b6OMEEHgA&oe=680D7E90",
-      category: "Case Study",
-    },
-    {
-      id: 4,
-      title: "Snack Industry Trends to Watch in 2023",
-      excerpt: "Our experts analyze the emerging trends that will shape the snack industry in the coming year.",
-      date: "January 5, 2023",
-      author: "Priya Patel",
-      image: "https://scontent-bom2-2.xx.fbcdn.net/v/t39.30808-6/476346615_1178343710339033_8404242125842909397_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=833d8c&_nc_ohc=KFbEuaqe2q8Q7kNvwGYf9YD&_nc_oc=Adn4q6QiLqexCb6ikH45u84OkgtajoEvOJmAPvonPDhDBrewsWCImjjrHATEi9gW4_5rPDOoWVXyJziKXEeVhrwN&_nc_zt=23&_nc_ht=scontent-bom2-2.xx&_nc_gid=oWI6vZFRJ0ijMlVzlSoaYg&oh=00_AfGBJx6ShAIILIf8Mo38Tx9bDA6Dg4FJKMe9CiJCF-WArg&oe=680D8368",
-      category: "Industry",
-    },
-    {
-      id: 5,
-      title: "Behind the Scenes: The Making of Our New Flavor",
-      excerpt: "Get an exclusive look at the development process of our newest product innovation.",
-      date: "December 12, 2022",
-      author: "Amit Verma",
-      image: "https://scontent-bom2-4.xx.fbcdn.net/v/t39.30808-6/476153232_1178343723672365_1646294851847929293_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=833d8c&_nc_ohc=dNiavRo919oQ7kNvwHko90r&_nc_oc=AdkMMH7_NgGqO4aYDHVX2mD-nAgM3TfFzbbRCgNT3FEB0PZ6tIy5KHpYcmesvgfGLW9l_wiUwYOBjJ1S2N44og-4&_nc_zt=23&_nc_ht=scontent-bom2-4.xx&_nc_gid=w4-c_ddCy-kdOztEbsftVw&oh=00_AfFJ_mYJbz5UOM5kIhPnDbFPtM-KPNy4tkfVxbiU11_jYw&oe=680D88FF",
-      category: "Product",
-    },
-    {
-      id: 6,
-      title: "Meet the Team: Spotlight on Our Quality Control Department",
-      excerpt: "Learn about the dedicated individuals who ensure every Yummfeast product meets our high standards.",
-      date: "November 28, 2022",
-      author: "Neha Gupta",
-      image: "https://scontent-bom2-4.xx.fbcdn.net/v/t39.30808-6/476608050_1178327493673988_8025226139070768140_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_ohc=1Cv7v1DLJr8Q7kNvwEK946Y&_nc_oc=Adn91CX0Qwe1PAZTxN8a5AJxHA0WvxUyArTMWlRMrIuCtLV-Mm3Yafx5P-SrQmESfaYjpYJ74PYR83FcgoLFS6Y2&_nc_zt=23&_nc_ht=scontent-bom2-4.xx&_nc_gid=2pAN856TGKsjBXvI_7fAEg&oh=00_AfEX1_SpQ-19ZFz4xj1GW3w48pIlwjd0W3i_jjW2vnKBpg&oe=680D9215",
-      category: "Company",
-    },
-  ]
+  const [searchQuery, setSearchQuery] = useState("")
+  const [selectedCategory, setSelectedCategory] = useState("All")
+  const [selectedBlog, setSelectedBlog] = useState(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const { siteConfig, blogs } = blogData
+  const categories = siteConfig.availableCategories
+
+  const filteredBlogs = blogs.filter((blog) => {
+    const matchesSearch =
+      blog.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      blog.excerpt.toLowerCase().includes(searchQuery.toLowerCase())
+    const matchesCategory = selectedCategory === "All" || blog.category === selectedCategory
+    return matchesSearch && matchesCategory
+  })
+
+  const featuredBlog = blogs.find((blog) => blog.featured)
+  const regularBlogs = filteredBlogs.filter((blog) => !blog.featured)
+
+  const openModal = (blog) => {
+    setSelectedBlog(blog)
+    setIsModalOpen(true)
+    document.body.style.overflow = "hidden"
+  }
+
+  const closeModal = () => {
+    setIsModalOpen(false)
+    setSelectedBlog(null)
+    document.body.style.overflow = "unset"
+  }
 
   return (
-    <div>
-      {/* Hero Section */}
+    <div className="min-h-screen">
+      {/* Hero Section - reverted to blue colors */}
+      {/* <section className="bg-gradient-to-br from-blue-50 via-blue-50 to-blue-100 py-20 lg:py-28">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+              <h1 className="text-5xl lg:text-6xl font-normal mb-6 text-gray-900 leading-tight">{siteConfig.title}</h1>
+              <p className="text-xl lg:text-2xl text-gray-600 mb-8 leading-relaxed">{siteConfig.subtitle}</p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto"
+            >
+              <div className="relative flex-1">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+                <Input
+                  placeholder="Search articles..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="pl-10 h-12 text-lg"
+                />
+              </div>
+              <div className="flex gap-2 flex-wrap justify-center sm:justify-start">
+                {categories.map((category) => (
+                  <Button
+                    key={category}
+                    variant={selectedCategory === category ? "default" : "outline"}
+                    size="sm"
+                    onClick={() => setSelectedCategory(category)}
+                    className="h-12 px-4"
+                  >
+                    {category}
+                  </Button>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section> */}
+
       <section className="relative overflow-hidden  bg-red-600 py-16">
         <div className="absolute inset-0 overflow-hidden">
                   <motion.div
@@ -135,115 +153,244 @@ export default function BlogsPage() {
             </motion.div>
           </div>
         </div>
-      </section>  
+      </section>
 
-      {/* Featured Blog */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+      {/* Featured Article */}
+      {featuredBlog && selectedCategory === "All" && !searchQuery && (
+        <section className="font-sans py-20">
+          <div className="container mx-auto px-4">
             <motion.div
-              initial={{ opacity: 1, x: 0 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
+              initial={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
               viewport={{ once: true }}
+              className="max-w-4xl mx-auto"
             >
-              <div className="text-sm text-red-600 font-normal mb-2">FEATURED POST</div>
-              <h2 className="text-3xl font-normal mb-4">{blogs[0].title}</h2>
-              <p className="text-muted-foreground mb-4">{blogs[0].excerpt}</p>
-              <div className="flex items-center text-sm text-muted-foreground mb-6">
-                <span>{blogs[0].date}</span>
-                <span className="mx-2">•</span>
-                <span>By {blogs[0].author}</span>
-                <span className="mx-2">•</span>
-                <span>{blogs[0].category}</span>
+              <div className="mb-8">
+                <Badge variant="destructive" className="text-sm font-semibold px-3 py-1">
+                  FEATURED ARTICLE
+                </Badge>
               </div>
-              <Button>Read Full Article</Button>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 1, x: 0 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-              className="aspect-video bg-muted rounded-lg overflow-hidden"
-            >
-              <img
-                src={blogs[0].image || "/placeholder.svg"}
-                alt={blogs[0].title}
-                className="w-full h-full object-cover"
-              />
-            </motion.div>
-          </div>
-        </div>
-      </section>
 
-      {/* Blog Grid */}
-      <section className="py-16 bg-blue-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-normal mb-4">Latest Articles</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Stay up to date with our latest news, insights, and stories.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogs.slice(1).map((blog, index) => (
-              <motion.div
-                key={blog.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <Card className="overflow-hidden h-full flex flex-col">
-                  <div className="aspect-video bg-muted relative overflow-hidden">
-                    <img
-                      src={blog.image || "/placeholder.svg"}
-                      alt={blog.title}
-                      className="w-full h-full object-cover"
-                    />
+              <div className="space-y-6">
+                <div className="flex items-center gap-4 text-sm text-gray-600">
+                  <Badge variant="outline" className="font-medium">
+                    {featuredBlog.category}
+                  </Badge>
+                  <div className="flex items-center gap-1">
+                    <Clock className="h-4 w-4" />
+                    <span>{featuredBlog.readTime}</span>
                   </div>
-                  <CardContent className="p-6 flex-grow flex flex-col">
-                    <div className="text-xs text-red-600 font-normal mb-2">{blog.category.toUpperCase()}</div>
-                    <h3 className="font-normal text-xl mb-2">{blog.title}</h3>
-                    <p className="text-muted-foreground mb-4 flex-grow">{blog.excerpt}</p>
-                    <div className="flex items-center text-sm text-muted-foreground mb-4">
-                      <span>{blog.date}</span>
-                      <span className="mx-2">•</span>
-                      <span>By {blog.author}</span>
-                    </div>
-                    <Button variant="outline" size="sm">
-                      Read More
-                    </Button>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
+                </div>
+
+                <h2 className="text-4xl lg:text-5xl font-normal text-gray-900 leading-tight">{featuredBlog.title}</h2>
+
+                <p className="text-xl text-gray-600 leading-relaxed">{featuredBlog.excerpt}</p>
+
+                <div className="flex items-center gap-4 text-sm text-gray-500">
+                  <div className="flex items-center gap-2">
+                    <User className="h-4 w-4" />
+                    <span className="font-medium">{featuredBlog.author}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Calendar className="h-4 w-4" />
+                    <span>{featuredBlog.date}</span>
+                  </div>
+                </div>
+
+                <Button size="lg" className="group bg-red-600 hover:bg-red-700" onClick={() => openModal(featuredBlog)}>
+                  Read Full Article
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+      )}
+
+      {/* Articles Section - removed alphabetical grouping, back to regular grid layout */}
+      <section className="font-sans py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-normal text-gray-900 mb-4">
+                {searchQuery || selectedCategory !== "All" ? "Search Results" : "All Articles"}
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                {searchQuery || selectedCategory !== "All"
+                  ? `Found ${regularBlogs.length} article${regularBlogs.length !== 1 ? "s" : ""}`
+                  : "Explore our collection of expert insights and industry stories"}
+              </p>
+            </div>
+
+            {regularBlogs.length === 0 ? (
+              <div className="text-center py-16">
+                <div className="text-gray-400 mb-4">
+                  <Search className="h-16 w-16 mx-auto" />
+                </div>
+                <h3 className="text-2xl font-semibold text-gray-900 mb-2">No articles found</h3>
+                <p className="text-gray-600">Try adjusting your search or filter criteria</p>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {regularBlogs.map((blog, index) => (
+                  <motion.div
+                    key={blog.id}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="group"
+                  >
+                    <Card className="h-full flex flex-col hover:shadow-xl transition-all duration-300 border-0 shadow-md hover:border-red-200">
+                      <CardContent className="p-6 flex-grow flex flex-col">
+                        <div className="flex items-center gap-3 text-sm text-gray-500 mb-3">
+                          <Badge variant="secondary" className="bg-red-100 text-red-800 font-medium">
+                            {blog.category}
+                          </Badge>
+                          <div className="flex items-center gap-1">
+                            <Clock className="h-4 w-4" />
+                            <span>{blog.readTime}</span>
+                          </div>
+                        </div>
+
+                        <h3 className="font-bold text-xl mb-3 text-gray-900 leading-tight group-hover:text-red-600 transition-colors">
+                          {blog.title}
+                        </h3>
+
+                        <p className="text-gray-600 mb-4 flex-grow leading-relaxed">{blog.excerpt}</p>
+
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2 text-sm text-gray-500">
+                            <User className="h-4 w-4" />
+                            <span className="font-medium">{blog.author}</span>
+                          </div>
+
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            className="group/btn p-0 h-auto font-semibold text-red-600 hover:text-red-700"
+                            onClick={() => openModal(blog)}
+                          >
+                            Read More
+                            <ArrowRight className="ml-1 h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
+                          </Button>
+                        </div>
+
+                        <div className="flex items-center gap-2 text-sm text-gray-400 mt-3 pt-3 border-t border-gray-100">
+                          <Calendar className="h-4 w-4" />
+                          <span>{blog.date}</span>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </section>
 
-      {/* Newsletter Section */}
-      <section className="py-16">
+      {/* Newsletter Section - reverted to blue colors */}
+      <section className="py-20 bg-gradient-to-br from-blue-50 via-blue-50 to-blue-100">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-normal mb-4">Subscribe to Our Newsletter</h2>
-            <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Stay updated with our latest articles, product announcements, and exclusive offers.
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+            className="max-w-4xl mx-auto text-center"
+          >
+            <h2 className="text-4xl font-normal mb-4 text-gray-900">Never Miss an Update</h2>
+            <p className="text-xl mb-8 text-gray-600 leading-relaxed">
+              Get the latest articles, product announcements, and exclusive insights delivered straight to your inbox
+              every week.
             </p>
+
             <form
-              className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto"
+              className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto"
               onSubmit={(e) => {
                 e.preventDefault()
                 window.alert("Thank you for subscribing to our newsletter!")
               }}
             >
-              <Input placeholder="Enter your email" className="flex-grow" required />
-              <Button type="submit">Subscribe</Button>
+              <Input
+                placeholder="Enter your email address"
+                className="flex-grow h-12 text-gray-900 bg-white border-gray-200"
+                required
+                type="email"
+              />
+              <Button type="submit" size="lg" className="h-12 px-8 font-semibold bg-blue-600 hover:bg-blue-700">
+                Subscribe
+              </Button>
             </form>
-          </div>
+
+            <p className="text-sm text-gray-500 mt-4">
+              Join {siteConfig.newsletterSubscribers} readers. Unsubscribe anytime.
+            </p>
+          </motion.div>
         </div>
       </section>
+
+      {/* Modal for reading full articles */}
+      {isModalOpen && selectedBlog && (
+        <div className="font-sans fixed inset-0 z-50 flex items-center justify-center p-4">
+          {/* Backdrop */}
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={closeModal} />
+
+          {/* Modal Content */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+            className="relative bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden"
+          >
+            {/* Header */}
+            <div className="sticky top-0 bg-white border-b border-gray-200 p-6 flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <Badge variant="outline" className="font-medium">
+                  {selectedBlog.category}
+                </Badge>
+                <div className="flex items-center gap-3 text-sm text-gray-500">
+                  <div className="flex items-center gap-1">
+                    <Clock className="h-4 w-4" />
+                    <span>{selectedBlog.readTime}</span>
+                  </div>
+                  <span>•</span>
+                  <div className="flex items-center gap-1">
+                    <Calendar className="h-4 w-4" />
+                    <span>{selectedBlog.date}</span>
+                  </div>
+                </div>
+              </div>
+              <Button variant="ghost" size="sm" onClick={closeModal} className="h-8 w-8 p-0 hover:bg-gray-100">
+                <X className="h-4 w-4" />
+              </Button>
+            </div>
+
+            {/* Content */}
+            <div className="overflow-y-auto max-h-[calc(90vh-120px)]">
+              <div className="p-6">
+                <h1 className="text-3xl lg:text-4xl font-normal text-gray-900 mb-4 leading-tight">
+                  {selectedBlog.title}
+                </h1>
+
+                <div className="flex items-center gap-2 text-sm text-gray-500 mb-6">
+                  <User className="h-4 w-4" />
+                  <span className="font-medium">By {selectedBlog.author}</span>
+                </div>
+
+                <div className="prose prose-lg max-w-none">
+                  <div
+                    dangerouslySetInnerHTML={{ __html: selectedBlog.content }}
+                    className="text-gray-700 leading-relaxed [&>h3]:text-xl [&>h3]:font-bold [&>h3]:text-gray-900 [&>h3]:mt-8 [&>h3]:mb-4 [&>p]:mb-4 [&>p]:leading-relaxed [&>ul]:mb-4 [&>li]:mb-2"
+                  />
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      )}
     </div>
   )
 }

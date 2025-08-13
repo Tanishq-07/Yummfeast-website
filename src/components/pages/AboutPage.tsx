@@ -1,6 +1,4 @@
-"use client"
-
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 
 export default function AboutPage() {
   return (
@@ -22,7 +20,11 @@ export default function AboutPage() {
         <motion.div
           className="absolute top-8 left-6 md:top-12 md:left-28 text-5xl md:text-6xl"
           animate={{ rotate: 360 }}
-          transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+          transition={{
+            duration: 20,
+            repeat: Number.POSITIVE_INFINITY,
+            ease: "linear",
+          }}
         >
           🤤
         </motion.div>
@@ -64,18 +66,18 @@ export default function AboutPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Learn about our journey, mission, and the values that drive us to deliver delicious snacks! 👬
+              Learn about our journey, mission, and the values that drive us to
+              deliver delicious snacks! 👬
             </motion.p>
             <motion.div
               className="flex justify-center gap-4 text-3xl"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-            >
-            </motion.div>
+            ></motion.div>
           </div>
         </div>
-      </section>  
+      </section>
 
       {/* Our Story with distressed border */}
       <section className="py-16 relative">
@@ -106,16 +108,30 @@ export default function AboutPage() {
                 </svg>
               </h2>
               <p className="text-muted-foreground mb-4">
-                Founded with a simple mission: to create high-quality snacks that bring joy to people's lives. What
-                started as a small operation has grown into a trusted brand known for excellence and authentic flavors.
+                Established in 2019, <b>Ambey Food Products</b>, a unit of Micro
+                Commercials Pvt. Ltd., launched ,<b>Yummfeast</b> with a simple yet
+                powerful idea — to deliver delicious, high-quality snacks that
+                spark joy in every bite.
               </p>
               <p className="text-muted-foreground mb-4">
-                Over the years, we've expanded our product line while maintaining our commitment to quality and customer
-                satisfaction. Our team has grown, but our core values remain the same.
+                In just a few years, Yummfeast has won hearts all across India,
+                especially among kids and families, with its absolute dedication
+                to taste, freshness, quality, and consistency. From crispy chips
+                to savoury namkeen and amazing fryums, every Yummfeast snack is
+                made using handpicked ingredients at our state-of-the-art, fully
+                automated manufacturing unit in <b>Darbhanga, Bihar</b>.
               </p>
               <p className="text-muted-foreground">
-                Today, we're proud to serve customers nationwide, providing them with delicious snacks they can enjoy
-                day after day.
+                With a fast-growing distribution network across <b>Bihar,
+                Jharkhand, West Bengal, and Uttar Pradesh</b>, Yummfeast is bringing
+                smiles and flavours to more snack lovers every day.
+              </p>
+              <p className="text-muted-foreground">
+                At the heart of our journey are four visionary leaders — <b>Mr.
+                Manish Pansari, Mr. Ajay Pansari, Mr. Dipak Pansari, and Mr.
+                Lakshman Pansari</b> — whose dedication, experience, and passion for
+                quality are shaping Yummfeast into one of India’s most promising
+                and loved snack brands.
               </p>
             </motion.div>
             <motion.div
@@ -172,26 +188,22 @@ export default function AboutPage() {
                 </svg>
               </h2>
               <p className="text-white max-w-2xl mx-auto">
-                The principles that guide everything we do, from product development to customer service.
+                The principles that guide everything we do, from product
+                development to customer service.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {[
                 {
-                  title: "Quality",
+                  title: "Spreading smiles, one snack at a time. ",
                   description:
-                    "We never compromise on quality. Every product undergoes rigorous testing to ensure it meets our high standards.",
+                    "To become one of India’s most loved and trusted snack brands by delivering joyful and flavourful snacking experiences that bring people together — one delicious snack at a time.",
                 },
                 {
-                  title: "Innovation",
+                  title: "Crafted to delight. Made to munch.",
                   description:
-                    "We're constantly exploring new flavors and technologies to improve our products and processes.",
-                },
-                {
-                  title: "Customer Focus",
-                  description:
-                    "Our customers are at the heart of everything we do. Their satisfaction is our ultimate measure of success.",
+                    "We’re on a mission to create snacks that people love — using the freshest ingredients, innovative recipes, and world-class technology. Every pack is made with a promise of quality and flavour, made to reach every corner of India through our strong and expanding distribution network.",
                 },
               ].map((value, index) => (
                 <motion.div
@@ -203,7 +215,9 @@ export default function AboutPage() {
                   className="relative"
                 >
                   <div className="bg-white p-8 rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-300 relative z-10">
-                    <h3 className="font-normal text-xl mb-3 text-red-500">{value.title}</h3>
+                    <h3 className="font-normal text-xl mb-3 text-red-500">
+                      {value.title}
+                    </h3>
                     <p className="text-muted-foreground">{value.description}</p>
                   </div>
                 </motion.div>
@@ -226,11 +240,18 @@ export default function AboutPage() {
                 viewBox="0 0 100 10"
                 preserveAspectRatio="none"
               >
-                <path d="M0,5 C30,2 50,8 100,5" stroke="#FF6B6B" strokeWidth="3" fill="none" strokeLinecap="round" />
+                <path
+                  d="M0,5 C30,2 50,8 100,5"
+                  stroke="#FF6B6B"
+                  strokeWidth="3"
+                  fill="none"
+                  strokeLinecap="round"
+                />
               </svg>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              The dedicated professionals who work tirelessly to bring you the best snacks and services.
+              The dedicated professionals who work tirelessly to bring you the
+              best snacks and services.
             </p>
           </div>
 
@@ -246,7 +267,7 @@ export default function AboutPage() {
                 name: "Sunita Sharma",
                 role: "Head of Product",
                 image:
-                   "https://media.istockphoto.com/id/2149706485/photo/indian-or-latin-confident-middle-age-male-entrepreneur-businessman-holding-mobile-cell-phone.jpg?s=612x612&w=0&k=20&c=SZNcl4wlrMF9GPwyPOxI3H-pMUDYGsiJ5FCNco3MHMk=",
+                  "https://media.istockphoto.com/id/2149706485/photo/indian-or-latin-confident-middle-age-male-entrepreneur-businessman-holding-mobile-cell-phone.jpg?s=612x612&w=0&k=20&c=SZNcl4wlrMF9GPwyPOxI3H-pMUDYGsiJ5FCNco3MHMk=",
               },
               {
                 name: "Vikram Singh",
@@ -258,7 +279,7 @@ export default function AboutPage() {
                 name: "Priya Patel",
                 role: "Marketing Director",
                 image:
-                 "https://media.istockphoto.com/id/1309955330/photo/businessman-talking-on-mobile-phone.jpg?s=612x612&w=0&k=20&c=lKAuvJFF1wN8jUM2STmrnLvQzcYFUpZeHXBBQsFyq3E=",
+                  "https://media.istockphoto.com/id/1309955330/photo/businessman-talking-on-mobile-phone.jpg?s=612x612&w=0&k=20&c=lKAuvJFF1wN8jUM2STmrnLvQzcYFUpZeHXBBQsFyq3E=",
               },
             ].map((member, index) => (
               <motion.div
@@ -287,5 +308,5 @@ export default function AboutPage() {
         </div>
       </section>
     </div>
-  )
+  );
 }

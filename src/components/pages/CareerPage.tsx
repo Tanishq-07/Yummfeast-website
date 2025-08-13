@@ -1,51 +1,138 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
+import { ChevronDown, ChevronUp, MapPin, Clock, Users } from "lucide-react"
 
 export default function CareerPage() {
-  const careers = [
+  const [expandedJob, setExpandedJob] = useState<number | null>(null)
+
+  const jobOpenings = [
     {
       id: 1,
-      title: "Regional Sales Manager",
-      location: "Mumbai, Maharashtra",
-      type: "Full-time",
-      description:
-        "We're looking for an experienced sales professional to lead our regional sales team and develop new business opportunities.",
+      title: "Area Sales Manager – Gorakhpur, Uttar Pradesh",
+      location: "Gorakhpur, Uttar Pradesh (Field-based)",
+      type: "Full-Time",
+      department: "Sales",
+      shortDescription: "Lead and scale Yummfeast's sales and distribution operations in the Gorakhpur region.",
+      about:
+        "Yummfeast is a rapidly growing packaged snacks brand bringing delicious, affordable, and high-quality snacks to consumers across India. As we expand our national footprint, we are looking for dynamic professionals who thrive in fast-paced environments and are excited to grow with us.",
+      roleOverview:
+        "As the Area Sales Manager for Gorakhpur, you will be responsible for leading and scaling Yummfeast's sales and distribution operations in the region. You'll manage distributor networks, mentor sales teams, and drive strategic initiatives to enhance our market presence and boost revenue growth.",
+      responsibilities: [
+        "Drive both primary and secondary sales to achieve volume and revenue targets.",
+        "Build and manage an efficient network of distributors and retailers across urban and rural Gorakhpur.",
+        "Recruit, train, and lead a team of Sales Officers/Executives, ensuring high performance.",
+        "Analyse market trends and competitor activities to modify our business strategy.",
+        "Implement trade promotions, visibility initiatives, and in-store merchandising plans.",
+        "Ensure adequate stock levels, timely collections, and operational compliance.",
+        "Maintain strong relationships with other channel partners and key customers.",
+        "Provide regular sales reports and insights to management.",
+      ],
+      qualifications: [
+        "Graduate/Postgraduate in Business, Marketing, or any such related field.",
+        "4–6 years of FMCG sales experience, with at least 2 years in a similar regional role.",
+        "Deep understanding of the Gorakhpur/U.P. market and its retail dynamics.",
+        "Strong experience in distributor/channel management and team leadership.",
+      ],
+      skills: [
+        "Excellent negotiation, communication, and interpersonal skills.",
+        "Strong leadership and team-building ability.",
+        "Analytical thinking and working knowledge of Excel and PowerPoint.",
+        "Target-driven, self-motivated, and adaptable to a fast-moving environment.",
+        "Willingness to travel extensively within the assigned area.",
+      ],
+      benefits: [
+        "Competitive compensation with performance-based incentives.",
+        "Growth opportunities in a high-impact role at a leading FMCG startup.",
+        "Collaborative, energetic, and entrepreneurial work culture.",
+      ],
     },
     {
       id: 2,
-      title: "Territory Sales Representative",
-      location: "Delhi, NCR",
-      type: "Full-time",
-      description:
-        "Join our sales team to promote our products and build relationships with customers in an assigned territory.",
+      title: "Retail Sales Manager – Bihar",
+      location: "Bihar (Field-based, extensive intra-state travel)",
+      type: "Full-Time",
+      department: "Sales",
+      shortDescription: "Execute end-to-end retail strategy across Bihar state and lead high-performing sales teams.",
+      about:
+        "Yummfeast is an innovative and fast-scaling brand in India's packaged snacks industry, focused on combining authentic flavours with modern convenience. We're expanding rapidly and looking for leaders who can accelerate our growth across various regions.",
+      roleOverview:
+        "As the Retail Sales Manager for Bihar, you will be responsible for the end-to-end execution of Yummfeast's retail strategy across the state. From increasing product visibility to building strong retail relationships and leading sales teams, you will play a key role in shaping our market presence in Bihar.",
+      responsibilities: [
+        "Develop and execute retail sales strategies for market expansion and revenue growth.",
+        "Establish and nurture relationships with retailers across urban and rural Bihar.",
+        "Lead, train, and supervise a high-performing field sales team.",
+        "Monitor sales performance and implement corrective actions where necessary.",
+        "Coordinate with distributors and supply chain teams to ensure consistent stock availability.",
+        "Conduct regular market mapping, competitive analysis, and retail audits.",
+        "Drive visibility through in-store promotions, plans, and merchandising.",
+        "Prepare performance reports and contribute to strategic planning.",
+        "Ensure adherence to policies on credit, collections, and distributor compliance.",
+      ],
+      qualifications: [
+        "Graduate/Postgraduate in Business, Sales, or Marketing (MBA preferred).",
+        "4–7 years of experience in FMCG retail sales, with exposure to Bihar's trade landscape.",
+        "Proven expertise in retail expansion, sales team handling, and channel development.",
+      ],
+      skills: [
+        "Exceptional communication, leadership, and team management skills.",
+        "Strong negotiation and relationship-building capabilities.",
+        "Analytical, target-oriented, and capable of strategic problem-solving.",
+        "Fluent in MS Office tools, especially Excel and PowerPoint.",
+        "Open to extensive travel and on-ground execution across districts.",
+      ],
+      benefits: [
+        "Competitive salary with performance-driven incentives.",
+        "A key leadership opportunity in a high-growth FMCG brand.",
+        "Supportive and fast-paced work environment with growth potential.",
+      ],
     },
     {
       id: 3,
-      title: "Sales Coordinator",
-      location: "Bangalore, Karnataka",
-      type: "Full-time",
-      description: "Support our sales team with administrative tasks, customer communication, and order processing.",
-    },
-    {
-      id: 4,
-      title: "Key Account Manager",
-      location: "Hyderabad, Telangana",
-      type: "Full-time",
-      description:
-        "Manage relationships with our key accounts, ensuring customer satisfaction and identifying growth opportunities.",
-    },
-    {
-      id: 5,
-      title: "Inside Sales Representative",
-      location: "Remote",
-      type: "Full-time",
-      description:
-        "Generate leads and close sales through phone calls, emails, and virtual meetings with potential customers.",
+      title: "Toll-Free Customer Service Executive (Female)",
+      location: "Darbhanga, Bihar (Office-based)",
+      type: "Full-Time",
+      department: "Customer Service",
+      shortDescription: "Handle customer queries and provide exceptional service via toll-free helpline.",
+      about:
+        "Yummfeast is one of India's fastest-growing snack brands, known for quality, taste, and a strong customer focus. We are currently looking for a personable and dedicated Female Customer Service Executive to join our Darbhanga office and handle inbound calls via our toll-free helpline.",
+      roleOverview:
+        "As a Toll-Free Customer Service Executive, you'll be the first point of contact for customer queries, complaints, and feedback. Your role will be essential in building trust and ensuring a smooth, helpful, and professional communication experience for our consumers.",
+      responsibilities: [
+        "Handle incoming customer calls on the toll-free helpline.",
+        "Provide accurate product information and resolve customer inquiries.",
+        "Log and maintain detailed records of all customer interactions.",
+        "Coordinate with internal teams (sales, logistics, quality) to resolve issues.",
+        "Follow up with customers to ensure problem resolution and satisfaction.",
+        "Maintain a positive and empathetic tone in all interactions.",
+        "Adhere to all internal protocols, including privacy and compliance policies.",
+      ],
+      qualifications: [
+        "1–3 years of experience in customer service or a call center environment.",
+        "Fluent in Hindi; familiarity with Maithili or regional dialects is an advantage.",
+        "Basic computer literacy, including MS Office and CRM systems.",
+        "Must be a female candidate (as per organisational requirements).",
+      ],
+      skills: [
+        "Clear verbal communication and excellent listening skills.",
+        "Calm, patient, and professional under pressure.",
+        "Strong organizational and multitasking ability.",
+        "Customer-first mindset with attention to detail.",
+      ],
+      benefits: [
+        "Fixed salary with attractive performance incentives.",
+        "Friendly, professional, and inclusive office environment.",
+        "Career development opportunities within a rapidly growing FMCG company.",
+      ],
     },
   ]
+
+  const toggleJobExpansion = (jobId: number) => {
+    setExpandedJob(expandedJob === jobId ? null : jobId)
+  }
 
   return (
     <div>
@@ -131,17 +218,17 @@ export default function CareerPage() {
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-3xl font-normal mb-6">Why Join Our Sales Team?</h2>
-              <p className="text-muted-foreground mb-4">
-                At Yummfeast, we believe that our sales team is the backbone of our success. We're looking for
-                passionate, driven individuals who are excited about our products and eager to help customers find the
-                right solutions for their needs.
+              <h2 className="text-3xl font-normal mb-6 text-gray-900">Why Join Our Team?</h2>
+              <p className="text-muted-foreground mb-4 font-normal">
+                At Yummfeast, we believe that our team is the backbone of our success. We're looking for passionate,
+                driven individuals who are excited about our products and eager to help customers find the right
+                solutions for their needs.
               </p>
-              <p className="text-muted-foreground mb-4">
-                As a member of our sales team, you'll have the opportunity to grow professionally, earn competitive
+              <p className="text-muted-foreground mb-4 font-normal">
+                As a member of our team, you'll have the opportunity to grow professionally, earn competitive
                 compensation, and work in a supportive, collaborative environment.
               </p>
-              <p className="text-muted-foreground">
+              <p className="text-muted-foreground font-normal">
                 We invest in our team members through comprehensive training, mentorship programs, and clear paths for
                 advancement.
               </p>
@@ -153,29 +240,22 @@ export default function CareerPage() {
               viewport={{ once: true }}
               className="aspect-video bg-muted rounded-lg overflow-hidden"
             >
-              <img src="https://scontent-bom1-2.xx.fbcdn.net/v/t39.30808-6/476220994_1178332727006798_5662711533049553514_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=833d8c&_nc_ohc=o-iWFFWOtj8Q7kNvwH2fzBz&_nc_oc=AdmNTngOWUnnhk2leJgf1Qj9tcpnL3jWv0Tq7nLq6ZCgng0VTibHMm9JwRrdnY7eqmtzKC-Jgud15JGai4PJWmfj&_nc_zt=23&_nc_ht=scontent-bom1-2.xx&_nc_gid=oqptLsgmZpscRgFLTvI4vA&oh=00_AfF4Vxhksqre_aQEX9JE_DpC20OYsVr34puOfG1kq3eIhQ&oe=680D41D8" alt="Sales Team" className="w-full h-full object-cover" />
+              <img
+                src="https://scontent-bom1-2.xx.fbcdn.net/v/t39.30808-6/476220994_1178332727006798_5662711533049553514_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=833d8c&_nc_ohc=o-iWFFWOtj8Q7kNvwH2fzBz&_nc_oc=AdmNTngOWUnnhk2leJgf1Qj9tcpnL3jWv0Tq7nLq6ZCgng0VTibHMm9JwRrdnY7eqmtzKC-Jgud15JGai4PJWmfj&_nc_zt=23&_nc_ht=scontent-bom1-2.xx&_nc_gid=oqptLsgmZpscRgFLTvI4vA&oh=00_AfF4Vxhksqre_aQEX9JE_DpC20OYsVr34puOfG1kq3eIhQ&oe=680D41D8"
+                alt="Sales Team"
+                className="w-full h-full object-cover"
+              />
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* Benefits */}
-      <section className="relative overflow-hidden  bg-red-600 py-16">
-        <div className="absolute inset-0 overflow-hidden">
-                  <motion.div
-                    className="w-[120%] h-[120%] bg-[url('/images/pattern.svg')] opacity-10"
-                    animate={{ x: [-20, 0], y: [-20, 0] }}
-                    transition={{
-                      duration: 60,
-                      repeat: Number.POSITIVE_INFINITY,
-                      repeatType: "reverse",
-                    }}
-                  />
-                </div>
+      <section className="py-16 bg-blue-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl text-white font-normal mb-4">Benefits & Perks</h2>
-            <p className="text-white max-w-2xl mx-auto">
+            <h2 className="text-3xl font-normal mb-4 text-gray-900">Benefits & Perks</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto font-normal">
               We take care of our team so they can focus on taking care of our customers.
             </p>
           </div>
@@ -213,28 +293,28 @@ export default function CareerPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-white p-8 rounded-lg shadow-sm"
+                className="bg-white p-8 rounded-lg shadow-sm border-l-4 border-red-500"
               >
-                <h3 className="font-normal text-xl mb-3 text-red-500">{benefit.title}</h3>
-                <p className="text-muted-foreground">{benefit.description}</p>
+                <h3 className="font-normal text-xl mb-3 text-gray-900">{benefit.title}</h3>
+                <p className="text-muted-foreground font-normal">{benefit.description}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Open Positions */}
+      {/* Job Openings */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-normal mb-4">Current Openings</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Explore our available sales positions and find the right fit for your skills and career goals.
+            <h2 className="text-3xl font-normal mb-4 text-gray-900">Current Openings</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto font-normal">
+              Explore our available positions and find the right fit for your skills and career goals.
             </p>
           </div>
 
-          <div className="space-y-6 max-w-4xl mx-auto">
-            {careers.map((job, index) => (
+          <div className="space-y-6 max-w-5xl mx-auto">
+            {jobOpenings.map((job, index) => (
               <motion.div
                 key={job.id}
                 initial={{ opacity: 0, y: 20 }}
@@ -242,26 +322,157 @@ export default function CareerPage() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <Card>
-                  <CardContent className="p-6">
-                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                      <div>
-                        <h3 className="font-normal text-xl mb-2 text-red-500">{job.title}</h3>
-                        <div className="flex flex-wrap gap-2 text-sm text-muted-foreground">
-                          <span>{job.location}</span>
-                          <span className="hidden md:inline">•</span>
-                          <span>{job.type}</span>
+                <Card className="overflow-hidden border-l-4 border-red-500 hover:shadow-lg transition-shadow">
+                  <CardContent className="p-0">
+                    {/* Job Header - Always Visible */}
+                    <div
+                      className="p-6 cursor-pointer hover:bg-gray-50 transition-colors"
+                      onClick={() => toggleJobExpansion(job.id)}
+                    >
+                      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+                        <div className="flex-1">
+                          <div className="flex items-start justify-between gap-4">
+                            <div className="flex-1">
+                              <h3 className="font-normal text-xl mb-2 pr-4 text-gray-900">{job.title}</h3>
+                              <div className="flex flex-wrap gap-4 text-sm text-muted-foreground mb-3">
+                                <div className="flex items-center gap-1">
+                                  <MapPin className="w-4 h-4 text-blue-500" />
+                                  <span className="font-normal">{job.location}</span>
+                                </div>
+                                <div className="flex items-center gap-1">
+                                  <Clock className="w-4 h-4 text-blue-500" />
+                                  <span className="font-normal">{job.type}</span>
+                                </div>
+                                <div className="flex items-center gap-1">
+                                  <Users className="w-4 h-4 text-blue-500" />
+                                  <span className="font-normal">{job.department}</span>
+                                </div>
+                              </div>
+                              <p className="text-muted-foreground font-normal">{job.shortDescription}</p>
+                            </div>
+                            <div className="flex items-center gap-2 flex-shrink-0">
+                              {expandedJob === job.id ? (
+                                <ChevronUp className="w-5 h-5 text-red-500" />
+                              ) : (
+                                <ChevronDown className="w-5 h-5 text-red-500" />
+                              )}
+                            </div>
+                          </div>
                         </div>
-                        <p className="mt-2 text-muted-foreground hidden md:block">{job.description}</p>
                       </div>
-                      <Button
-                        className="md:self-start whitespace-nowrap"
-                        onClick={() => window.alert(`Application for ${job.title} will be available soon!`)}
-                      >
-                        Apply Now
-                      </Button>
                     </div>
-                    <p className="mt-2 text-muted-foreground md:hidden">{job.description}</p>
+
+                    {/* Expanded Job Details */}
+                    <AnimatePresence>
+                      {expandedJob === job.id && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3, ease: "easeInOut" }}
+                          className="overflow-hidden"
+                        >
+                          <div className="px-6 pb-6 border-t bg-gray-50/50">
+                            <div className="pt-6 space-y-6">
+                              {/* About Company */}
+                              <div>
+                                <h4 className="font-normal text-lg mb-3 text-gray-900 border-l-2 border-red-500 pl-3">
+                                  About Yummfeast
+                                </h4>
+                                <p className="text-muted-foreground leading-relaxed font-normal">{job.about}</p>
+                              </div>
+
+                              {/* Role Overview */}
+                              <div>
+                                <h4 className="font-normal text-lg mb-3 text-gray-900 border-l-2 border-red-500 pl-3">
+                                  Role Overview
+                                </h4>
+                                <p className="text-muted-foreground leading-relaxed font-normal">{job.roleOverview}</p>
+                              </div>
+
+                              {/* Key Responsibilities */}
+                              <div>
+                                <h4 className="font-normal text-lg mb-3 text-gray-900 border-l-2 border-red-500 pl-3">
+                                  Key Responsibilities
+                                </h4>
+                                <ul className="space-y-2">
+                                  {job.responsibilities.map((responsibility, idx) => (
+                                    <li key={idx} className="flex items-start gap-2 text-muted-foreground">
+                                      <span className="w-1.5 h-1.5 bg-red-500 rounded-full mt-2 flex-shrink-0" />
+                                      <span className="leading-relaxed font-normal">{responsibility}</span>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+
+                              {/* Qualifications */}
+                              <div>
+                                <h4 className="font-normal text-lg mb-3 text-gray-900 border-l-2 border-red-500 pl-3">
+                                  Qualifications & Experience
+                                </h4>
+                                <ul className="space-y-2">
+                                  {job.qualifications.map((qualification, idx) => (
+                                    <li key={idx} className="flex items-start gap-2 text-muted-foreground">
+                                      <span className="w-1.5 h-1.5 bg-red-500 rounded-full mt-2 flex-shrink-0" />
+                                      <span className="leading-relaxed font-normal">{qualification}</span>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+
+                              {/* Skills */}
+                              <div>
+                                <h4 className="font-normal text-lg mb-3 text-gray-900 border-l-2 border-red-500 pl-3">
+                                  Skills & Attributes
+                                </h4>
+                                <ul className="space-y-2">
+                                  {job.skills.map((skill, idx) => (
+                                    <li key={idx} className="flex items-start gap-2 text-muted-foreground">
+                                      <span className="w-1.5 h-1.5 bg-red-500 rounded-full mt-2 flex-shrink-0" />
+                                      <span className="leading-relaxed font-normal">{skill}</span>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+
+                              {/* What We Offer */}
+                              <div>
+                                <h4 className="font-normal text-lg mb-3 text-gray-900 border-l-2 border-red-500 pl-3">
+                                  What We Offer
+                                </h4>
+                                <ul className="space-y-2">
+                                  {job.benefits.map((benefit, idx) => (
+                                    <li key={idx} className="flex items-start gap-2 text-muted-foreground">
+                                      <span className="w-1.5 h-1.5 bg-red-500 rounded-full mt-2 flex-shrink-0" />
+                                      <span className="leading-relaxed font-normal">{benefit}</span>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+
+                              {/* Apply Button */}
+                              <div className="pt-4 border-t">
+                                <Button
+                                  size="lg"
+                                  className="w-full sm:w-auto bg-red-500 hover:bg-red-600 text-white font-normal"
+                                  onClick={() =>
+                                    window.open(
+                                      `mailto:careers@yummfeast.com?subject=Application for ${job.title}&body=Dear Hiring Team,%0D%0A%0D%0AI am interested in applying for the ${job.title} position. Please find my resume attached.%0D%0A%0D%0ABest regards`,
+                                      "_blank",
+                                    )
+                                  }
+                                >
+                                  Apply for this Position
+                                </Button>
+                                <p className="text-sm text-muted-foreground mt-2 font-normal">
+                                  Click to send your application via email with your resume attached.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -274,8 +485,8 @@ export default function CareerPage() {
       <section className="py-16 bg-blue-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-normal mb-4">Our Application Process</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+            <h2 className="text-3xl font-normal mb-4 text-gray-900">Our Application Process</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto font-normal">
               Here's what to expect when you apply for a position with Yummfeast.
             </p>
           </div>
@@ -309,13 +520,13 @@ export default function CareerPage() {
                   viewport={{ once: true }}
                   className="relative pl-10 pb-10"
                 >
-                  {index < 4 && <div className="absolute left-4 top-4 bottom-0 w-px bg-muted-foreground/30" />}
-                  <div className="absolute left-0 top-1 w-8 h-8 rounded-full bg-red-600 text-white flex items-center justify-center font-normal">
+                  {index < 4 && <div className="absolute left-4 top-4 bottom-0 w-px bg-blue-300" />}
+                  <div className="absolute left-0 top-1 w-8 h-8 rounded-full bg-red-500 text-white flex items-center justify-center font-normal">
                     {index + 1}
                   </div>
                   <div>
-                    <h3 className="font-normal text-xl mb-2">{step.title}</h3>
-                    <p className="text-muted-foreground">{step.description}</p>
+                    <h3 className="font-normal text-xl mb-2 text-gray-900">{step.title}</h3>
+                    <p className="text-muted-foreground font-normal">{step.description}</p>
                   </div>
                 </motion.div>
               ))}
