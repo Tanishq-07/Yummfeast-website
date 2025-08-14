@@ -4,26 +4,28 @@ import { useState, useRef, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { ChevronUp, PartyPopper, Search, X } from "lucide-react"
-import CustomButton from "../ui/custom-button";
+import CustomButton from "@/components/ui/custom-button"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import productData from "@/data/ProductData.json"
 
 const categoryStructure = {
-  chips: {
-    label: "Chips",
-    subcategories: {
-      rings: "Rings",
-      pasta: "Pasta Chips",
-      classic: "Classic Chips",
-    },
-  },
   namkeen: {
     label: "Namkeen",
     subcategories: {
       mix: "Mix Varieties",
       bhujia: "Bhujia",
       traditional: "Traditional",
+    },
+  },
+  chips: {
+    label: "Chips",
+    subcategories: {
+      rings: "Rings",
+      pasta: "Pasta Chips",
+      classic: "Classic Chips",
     },
   },
   fryums: {
@@ -35,67 +37,27 @@ const categoryStructure = {
     },
   },
 }
- const products: Product[] = [
-    {
-      id: 1,
-      name: "Pizza",
-      description: "Crunchy rings with a burst of tangy masala flavor",
-      image:
-        "/images/chips1.png",
-      price: "₹10",
-      category: "Fryums",
-      subcategory: "rings",
-    },
-    {
-      id: 2,
-      name: "Magic Masala",
-      description: "Crispy pasta snacks with Italian herbs seasoning",
-      image:
-        "/images/chips2.png",
-      price: "₹15",
-      category: "Chips",
-      subcategory: "pasta",
-    },
-    {
-      id: 3,
-      name: "Katori",
-      description:
-        "A delightful mix of various namkeen for the perfect snack time",
-      image:
-        "/images/chips3.png",
-      price: "₹20",
-      category: "Namkeen",
-      subcategory: "mix",
-    },
-    {
-      id: 4,
-      name: "Pizza",
-      description: "Crunchy rings with a burst of tangy masala flavor",
-      image:
-        "/images/chips1.png",
-      price: "₹10",
-      category: "Fryums",
-      subcategory: "rings",
-    },
-  ];
 
+const products = productData.products
 interface Product {
-  id: number;
-  name: string;
-  description: string;
-  image: string;
-  price: string;
-  category: string;
-  subcategory: string;
+  id: number
+  name: string
+  description: string
+  price: string
+  category: string
+  subcategory: string
+  image: string
+  comingSoon: boolean
 }
 
-// Product Circle Component
 const ProductCircle = ({
   product,
   index,
+  onClick,
 }: {
-  product: Product;
-  index: number;
+  product: { name: string; image: string; price: string }
+  index: number
+  onClick: () => void
 }) => {
   return (
     <div className="relative flex flex-col items-center gap-4">
@@ -105,7 +67,7 @@ const ProductCircle = ({
         className="absolute top-6 h-52 w-52"
         animate={{ rotate: 360 }}
         transition={{
-          repeat: Infinity,
+          repeat: Number.POSITIVE_INFINITY,
           duration: 2.5,
           ease: "linear",
         }}
@@ -124,29 +86,116 @@ const ProductCircle = ({
       />
 
       {/* Label/Button */}
-      <CustomButton className="bg-orange-500" value={product.name}/>
+      <div onClick={onClick}>
+        <CustomButton className="bg-orange-500 cursor-pointer" value={product.name} />
+      </div>
     </div>
-  );
-};
+  )
+}
+
+const ProductCard = ({ product, onClick }: { product: Product; onClick: () => void }) => {
+  return (
+    <motion.div
+      className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer group overflow-hidden border border-gray-100"
+      whileHover={{ y: -3, scale: 1.02 }}
+      onClick={onClick}
+    >
+      {/* Image placeholder - smaller */}
+      <div className="aspect-square bg-gradient-to-br from-orange-100 to-red-100 flex items-center justify-center relative overflow-hidden">
+        <div className="w-16 h-16 bg-gradient-to-br from-orange-200 to-red-200 rounded-full flex items-center justify-center">
+          <span className="text-lg font-normal text-orange-600">{product.name.charAt(0)}</span>
+        </div>
+        {/* Price badge */}
+        <div className="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+          {product.price}
+        </div>
+      </div>
+
+      {/* Product info - minimal */}
+      <div className="p-3">
+        <h3 className="font-semibold text-sm text-gray-800 group-hover:text-red-600 transition-colors line-clamp-2">
+          {product.name}
+        </h3>
+        <div className="mt-2 flex items-center justify-between">
+          <span className="text-xs text-gray-500 capitalize bg-gray-100 px-2 py-1 rounded">{product.category}</span>
+          <span className="text-sm font-normal text-red-600">{product.price}</span>
+        </div>
+      </div>
+    </motion.div>
+  )
+}
+
+const ComingSoonCard = ({ product }: { product: Product }) => {
+  return (
+    <motion.div
+      className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer group overflow-hidden border border-gray-200 relative"
+      whileHover={{ y: -3, scale: 1.02 }}
+    >
+      {/* Coming Soon Badge */}
+      <div className="absolute top-2 left-2 bg-orange-500 text-white px-2 py-1 rounded-full text-xs font-semibold z-10">
+        Coming Soon
+      </div>
+
+      {/* Image placeholder */}
+      <div className="aspect-square bg-gray-100 flex items-center justify-center relative overflow-hidden">
+        <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center">
+          <span className="text-lg font-normal text-gray-600">{product.name.charAt(0)}</span>
+        </div>
+        {/* Price badge */}
+        <div className="absolute top-2 right-2 bg-red-600 text-white px-2 py-1 rounded-full text-xs font-semibold">
+          {product.price}
+        </div>
+      </div>
+
+      {/* Product info */}
+      <div className="p-3">
+        <h3 className="font-semibold text-sm text-gray-700 group-hover:text-red-600 transition-colors line-clamp-2">
+          {product.name}
+        </h3>
+        <div className="mt-2 flex items-center justify-between">
+          <span className="text-xs text-gray-500 capitalize bg-gray-200 px-2 py-1 rounded">{product.category}</span>
+          <span className="text-sm font-normal text-red-600">{product.price}</span>
+        </div>
+      </div>
+    </motion.div>
+  )
+}
 
 export default function ProductPage() {
   const [searchTerm, setSearchTerm] = useState("")
   const [selectedCategory, setSelectedCategory] = useState("all")
   const [selectedSubcategory, setSelectedSubcategory] = useState("all")
   const [sortBy, setSortBy] = useState("name")
-  const [selectedProduct, setSelectedProduct] = useState(null)
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
   const heroRef = useRef<HTMLElement>(null)
   const [confetti, setConfetti] = useState(false)
 
-  // Get subcategories based on selected category
+  const categoryProducts = [
+    { name: "Namkeen", image: "/images/chips1.png", price: "₹5" },
+    { name: "Chips", image: "/images/chips2.png", price: "₹5" },
+    { name: "Fryums", image: "/images/chips3.png", price: "₹5" },
+    { name: "All Products", image: "/images/chips4.png", price: "₹5" },
+  ]
+
+  const comingSoonProducts = products.filter((product) => product.comingSoon)
+  const currentProducts = products.filter((product) => !product.comingSoon)
+
+  const handleCategoryClick = (categoryName: string) => {
+    if (categoryName === "All Products") {
+      setSelectedCategory("all")
+    } else {
+      setSelectedCategory(categoryName.toLowerCase())
+    }
+    setSelectedSubcategory("all")
+  }
+
   const getSubcategories = () => {
     if (selectedCategory === "all") return {}
     return categoryStructure[selectedCategory as keyof typeof categoryStructure]?.subcategories || {}
   }
 
-  // Filter and sort products
   const filteredAndSortedProducts = () => {
-    const filtered = products.filter((product) => {
+    const filtered = currentProducts.filter((product) => {
       const matchesSearch =
         searchTerm === "" ||
         product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -157,17 +206,14 @@ export default function ProductPage() {
       return matchesSearch && matchesCategory && matchesSubcategory
     })
 
-    // Sort products
     filtered.sort((a, b) => {
       switch (sortBy) {
         case "name":
           return a.name.localeCompare(b.name)
-        // case "price-low":
-        //   return a.priceValue - b.priceValue
-        // case "price-high":
-        //   return b.priceValue - a.priceValue
-        // case "rating":
-        //   return b.rating - a.rating
+        case "price-low":
+          return Number.parseInt(a.price.replace("₹", "")) - Number.parseInt(b.price.replace("₹", ""))
+        case "price-high":
+          return Number.parseInt(b.price.replace("₹", "")) - Number.parseInt(a.price.replace("₹", ""))
         default:
           return 0
       }
@@ -176,12 +222,10 @@ export default function ProductPage() {
     return filtered
   }
 
-  // Count active filters
   const activeFiltersCount = [selectedCategory !== "all", selectedSubcategory !== "all", searchTerm !== ""].filter(
     Boolean,
   ).length
 
-  // Clear all filters
   const clearFilters = () => {
     setSearchTerm("")
     setSelectedCategory("all")
@@ -189,13 +233,11 @@ export default function ProductPage() {
     setSortBy("name")
   }
 
-  // Confetti explosion effect
   const triggerConfetti = () => {
     setConfetti(true)
     setTimeout(() => setConfetti(false), 2000)
   }
 
-  // Confetti explosion component
   const ConfettiExplosion = ({ isExploding = false }) => {
     return (
       <AnimatePresence>
@@ -242,49 +284,6 @@ export default function ProductPage() {
     )
   }
 
-  // Scroll to top button
-  const ScrollToTop = () => {
-    const [visible, setVisible] = useState(false)
-
-    useEffect(() => {
-      const toggleVisibility = () => {
-        if (window.pageYOffset > 500) {
-          setVisible(true)
-        } else {
-          setVisible(false)
-        }
-      }
-
-      window.addEventListener("scroll", toggleVisibility)
-      return () => window.removeEventListener("scroll", toggleVisibility)
-    }, [])
-
-    const scrollToTop = () => {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      })
-    }
-
-    return (
-      <AnimatePresence>
-        {visible && (
-          <motion.button
-            onClick={scrollToTop}
-            className="fixed bottom-8 right-8 z-50 bg-gradient-to-r from-red-600 to-orange-600 text-white p-3 rounded-full shadow-lg"
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.5 }}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            <ChevronUp className="w-6 h-6" />
-          </motion.button>
-        )}
-      </AnimatePresence>
-    )
-  }
-
   return (
     <div className="relative overflow-x-hidden">
       {/* Confetti container */}
@@ -292,27 +291,28 @@ export default function ProductPage() {
         <ConfettiExplosion isExploding={confetti} />
       </div>
 
-      {/* Scroll to top button */}
-      <ScrollToTop />
-
       {/* Hero Section */}
-      <section className="relative overflow-hidden  bg-red-600 py-16">
+      <section className="relative overflow-hidden bg-red-600 py-16">
         <div className="absolute inset-0 overflow-hidden">
-                  <motion.div
-                    className="w-[120%] h-[120%] bg-[url('/images/pattern.svg')] opacity-10"
-                    animate={{ x: [-20, 0], y: [-20, 0] }}
-                    transition={{
-                      duration: 60,
-                      repeat: Number.POSITIVE_INFINITY,
-                      repeatType: "reverse",
-                    }}
-                  />
-                </div>
+          <motion.div
+            className="w-[120%] h-[120%] bg-[url('/images/pattern.svg')] opacity-10"
+            animate={{ x: [-20, 0], y: [-20, 0] }}
+            transition={{
+              duration: 60,
+              repeat: Number.POSITIVE_INFINITY,
+              repeatType: "reverse",
+            }}
+          />
+        </div>
         <div className="absolute inset-0 bg-black/10"></div>
         <motion.div
           className="absolute top-8 left-6 md:top-12 md:left-28 text-5xl md:text-6xl"
           animate={{ rotate: 360 }}
-          transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+          transition={{
+            duration: 20,
+            repeat: Number.POSITIVE_INFINITY,
+            ease: "linear",
+          }}
         >
           🤤
         </motion.div>
@@ -356,13 +356,6 @@ export default function ProductPage() {
             >
               Experience the Crunch, Backed by Cutting-Edge Craft! ✨
             </motion.p>
-            <motion.div
-              className="flex justify-center gap-4 text-3xl"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-            </motion.div>
           </div>
         </div>
       </section>
@@ -398,7 +391,7 @@ export default function ProductPage() {
                   }}
                 >
                   <SelectTrigger className="h-12 border-gray-200 focus:border-red-500 rounded-lg bg-white hover:bg-gray-50 transition-colors">
-                    <SelectValue placeholder="Select Category" />
+                    <SelectValue placeholder="All Categories" />
                   </SelectTrigger>
                   <SelectContent className="bg-white border-gray-200 shadow-lg">
                     <SelectItem value="all" className="hover:bg-red-50 focus:bg-red-50">
@@ -425,7 +418,7 @@ export default function ProductPage() {
                       selectedCategory === "all" ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-50"
                     }`}
                   >
-                    <SelectValue placeholder="Select Subcategory" />
+                    <SelectValue placeholder="All Subcategories" />
                   </SelectTrigger>
                   <SelectContent className="bg-white border-gray-200 shadow-lg">
                     <SelectItem value="all" className="hover:bg-red-50 focus:bg-red-50">
@@ -444,7 +437,7 @@ export default function ProductPage() {
               <div className="min-w-[180px]">
                 <Select value={sortBy} onValueChange={setSortBy}>
                   <SelectTrigger className="h-12 border-gray-200 focus:border-red-500 rounded-lg bg-white hover:bg-gray-50 transition-colors">
-                    <SelectValue placeholder="Sort by" />
+                    <SelectValue placeholder="Name (A-Z)" />
                   </SelectTrigger>
                   <SelectContent className="bg-white border-gray-200 shadow-lg">
                     <SelectItem value="name" className="hover:bg-red-50 focus:bg-red-50">
@@ -455,9 +448,6 @@ export default function ProductPage() {
                     </SelectItem>
                     <SelectItem value="price-high" className="hover:bg-red-50 focus:bg-red-50">
                       Price (High to Low)
-                    </SelectItem>
-                    <SelectItem value="rating" className="hover:bg-red-50 focus:bg-red-50">
-                      Highest Rated
                     </SelectItem>
                   </SelectContent>
                 </Select>
@@ -500,33 +490,173 @@ export default function ProductPage() {
         </div>
       </section>
 
-      {/* Products Grid */}
-      <section className="py-16 relative">
+      {/* Categories Section - unchanged except for click functionality */}
+      <section className="py-16 relative bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-16 justify-items-center">
-            {filteredAndSortedProducts().map((product, index) => (
+            {categoryProducts.map((product, index) => (
               <motion.div
-                key={product.id}
+                key={index}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <ProductCircle product={product} index={index} />
+                <ProductCircle product={product} index={index} onClick={() => handleCategoryClick(product.name)} />
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
+      {/* Products Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-normal text-gray-800 mb-4">Our Complete Product Range</h2>
+            <p className="text-gray-600 text-lg mb-6">
+              Showing {filteredAndSortedProducts().length} of {currentProducts.length} products
+            </p>
+            {activeFiltersCount > 0 && (
+              <Button
+                variant="outline"
+                onClick={clearFilters}
+                className="mb-6 border-red-500 text-red-500 hover:bg-red-500 hover:text-white bg-transparent"
+              >
+                <X className="h-4 w-4 mr-2" />
+                Clear All Filters
+              </Button>
+            )}
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
+            {filteredAndSortedProducts().map((product, index) => (
+              <motion.div
+                key={product.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
+                viewport={{ once: true }}
+              >
+                <ProductCard product={product} onClick={() => setSelectedProduct(product)} />
+              </motion.div>
+            ))}
+          </div>
+
+          {filteredAndSortedProducts().length === 0 && (
+            <div className="text-center py-16">
+              <p className="text-gray-500 text-xl mb-4">No products found matching your criteria</p>
+              <Button onClick={clearFilters} className="bg-red-600 hover:bg-red-700">
+                Clear Filters
+              </Button>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Coming Soon Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+          >
+            <div className="inline-flex items-center gap-2 bg-orange-500 text-white px-4 py-2 rounded-full text-sm font-semibold mb-4">
+              <span>🚀</span>
+              Coming Soon
+            </div>
+            <h2 className="text-4xl font-normal text-gray-800 mb-4">Exciting New Flavors on the Way!</h2>
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+              Get ready for our latest creations! These delicious new products are currently in development and will be
+              available soon.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
+            {comingSoonProducts.map((product, index) => (
+              <motion.div
+                key={product.id}
+                initial={{ opacity: 0, y: 30, scale: 0.9 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{
+                  duration: 0.6,
+                  delay: index * 0.1,
+                  type: "spring",
+                  stiffness: 100,
+                }}
+                viewport={{ once: true }}
+                onClick={() => setSelectedProduct(product)}
+              >
+                <ComingSoonCard product={product} />
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Call to action for coming soon products */}
+          <motion.div
+            className="text-center mt-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            <p className="text-gray-600 mb-4">Want to be the first to try these new flavors?</p>
+            <Button
+              className="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-full font-semibold transition-all duration-300"
+              onClick={() => {
+                triggerConfetti()
+                window.location.href = "mailto:info@yummfeast.in?subject=Coming Soon Products Inquiry"
+              }}
+            >
+              🔔 Get Notified
+            </Button>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Dialog for selected product */}
+      <Dialog open={!!selectedProduct} onOpenChange={() => setSelectedProduct(null)}>
+        <DialogContent className="max-w-sm mx-auto p-6">
+          <DialogHeader>
+            <DialogTitle className="text-xl font-normal text-gray-800 text-center">{selectedProduct?.name}</DialogTitle>
+          </DialogHeader>
+          {selectedProduct && (
+            <div className="space-y-4">
+              {/* Compact image placeholder */}
+              <div className="aspect-square bg-gradient-to-br from-orange-100 to-red-100 rounded-lg flex items-center justify-center">
+                <div className="w-20 h-20 bg-gradient-to-br from-orange-200 to-red-200 rounded-full flex items-center justify-center">
+                  <span className="text-2xl font-normal text-orange-600">{selectedProduct.name.charAt(0)}</span>
+                </div>
+              </div>
+
+              {/* Compact product details */}
+              <div className="space-y-3 text-center">
+                <div className="flex items-center justify-center gap-4">
+                  <span className="text-2xl font-normal text-red-600">{selectedProduct.price}</span>
+                  <span className="text-xs text-gray-500 capitalize bg-gray-100 px-2 py-1 rounded-full">
+                    {selectedProduct.category}
+                  </span>
+                </div>
+
+                <p className="text-gray-600 text-sm leading-relaxed">{selectedProduct.description}</p>
+
+                <Button
+                  className="w-full bg-red-600 hover:bg-red-700 text-white py-2"
+                  onClick={() => setSelectedProduct(null)}
+                >
+                  Close
+                </Button>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
+
       {/* CTA Section with animated background */}
       <section className="py-16 bg-gradient-to-r from-blue-600 to-blue-700 relative overflow-hidden">
-        {/* <motion.div
-          className="absolute inset-0 bg-[url('/placeholder.svg')] bg-repeat opacity-10"
-          animate={{ x: [0, -100], y: [0, 100] }}
-          transition={{ duration: 60, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse" }}
-        /> */}
-
         {/* Animated floating products */}
         <motion.div
           className="absolute w-32 h-32 left-[5%] top-[3%] md:left-[10%] top-[20%]"

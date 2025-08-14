@@ -22,8 +22,8 @@ export default function Footer({ navigateTo }: FooterProps) {
               />
             </div>
             <p className="text-blue-200 mb-4">
-              Snack with a Smile: Bringing Joy through Delicious Chips, Fryums,
-              and Flavorful Namkeens!
+              Ready to snack with us? Join thousands of happy snackers who trust
+              us for their cravings!
             </p>
             <div className="flex space-x-4">
               <Button
@@ -57,6 +57,15 @@ export default function Footer({ navigateTo }: FooterProps) {
                 </Link>
               </Button>
             </div>
+              <p className="text-blue-200 mt-4 mb-1">
+                Ambey Food Products  
+              </p>
+              <p className="text-blue-200 mt-4 mb-1">
+                A Unit of Micro Commercial Pvt. Ltd.
+              </p>
+              <p className="text-blue-200 mt-4 mb-4">
+                ZED GOLD Certified Company <br />An ISO 9001:2015 Certified Company
+              </p>
           </div>
           <div>
             <h3 className="text-md mb-4">Quick Links</h3>
@@ -115,19 +124,20 @@ export default function Footer({ navigateTo }: FooterProps) {
             <h3 className="text-md mb-4">Contact Us</h3>
             <address className="not-italic text-blue-200">
               <p className="mb-2">
-                Ambey Food Products Plot no 55, B (53) P, B(58) P Industrial
-                Area Donar
+                Work : Ambey Food Products Plot no 55, B (53) P, B(58) P
+                Industrial Area Donar
+              </p>
+              <p className="mb-2">
+                Registered Office : E/4, Ram Chandra Pally, Anjali Apartment
+                Cabin – 2, 1st Floor, Kolkata-700008 (W.B.)
               </p>
               <p className="mb-2">Darbhanga, Bihar, India 846004</p>
               <p className="mb-2">Email: info@yummfeast.in</p>
               <p>Phone: +91 93344 69490</p>
               <br />
-              <p>
-                Visit Us!  
-              </p>
+              <p>Visit Us!</p>
               <p>Mon-Sat: 10am - 6pm </p>
-              <p>Sunday: Closed (We're
-                snacking!)</p>
+              <p>Sunday: Closed (We're snacking!)</p>
             </address>
           </div>
         </div>

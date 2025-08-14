@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 
 export default function InfraPage() {
   return (
@@ -8,21 +8,25 @@ export default function InfraPage() {
       {/* Hero Section */}
       <section className="relative overflow-hidden  bg-red-600 py-16">
         <div className="absolute inset-0 overflow-hidden">
-                  <motion.div
-                    className="w-[120%] h-[120%] bg-[url('/images/pattern.svg')] opacity-10"
-                    animate={{ x: [-20, 0], y: [-20, 0] }}
-                    transition={{
-                      duration: 60,
-                      repeat: Number.POSITIVE_INFINITY,
-                      repeatType: "reverse",
-                    }}
-                  />
-                </div>
+          <motion.div
+            className="w-[120%] h-[120%] bg-[url('/images/pattern.svg')] opacity-10"
+            animate={{ x: [-20, 0], y: [-20, 0] }}
+            transition={{
+              duration: 60,
+              repeat: Number.POSITIVE_INFINITY,
+              repeatType: "reverse",
+            }}
+          />
+        </div>
         <div className="absolute inset-0 bg-black/10"></div>
         <motion.div
           className="absolute top-8 left-6 md:top-12 md:left-28 text-5xl md:text-6xl"
           animate={{ rotate: 360 }}
-          transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+          transition={{
+            duration: 20,
+            repeat: Number.POSITIVE_INFINITY,
+            ease: "linear",
+          }}
         >
           🤤
         </motion.div>
@@ -64,21 +68,21 @@ export default function InfraPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Discover the state-of-the-art facilities and technology that power our operations.! 🚛
+              Discover the state-of-the-art facilities and technology that power
+              our operations.! 🚛
             </motion.p>
             <motion.div
               className="flex justify-center gap-4 text-3xl"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-            >
-            </motion.div>
+            ></motion.div>
           </div>
         </div>
       </section>
 
       {/* Facilities Section */}
-      <section className="py-16">
+      <section className="font-sans py-16">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -87,19 +91,28 @@ export default function InfraPage() {
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-3xl font-normal text-red-600 mb-6">Modern Manufacturing Facilities</h2>
-              <p className="text-muted-foreground mb-4">
-                Our modern manufacturing facilities cover over 100,000 square feet and are equipped with the 
-                latest machinery to ensure efficient and high-volume production. This setup allows us to maintain 
-                strict quality control and deliver products that meet our high standards, every single time.
+              <h2 className="text-3xl font-normal text-red-600 mb-6">
+                Modern Manufacturing Facilities
+              </h2>
+              <p className=" mb-4">
+                Spanning over 100,000 square feet, our state-of-the-art
+                manufacturing units are built for efficiency, scale, and
+                uncompromising quality. Each facility is outfitted with
+                cutting-edge machinery that enables high-volume production
+                without sacrificing the authenticity and taste that define Ambey
+                Food Products.
               </p>
-              <p className="text-muted-foreground mb-4">
-                We combine automated systems with the expertise of skilled workers, ensuring each product is 
-                crafted with precision while retaining the authenticity and care that set our snacks apart.
+              <p className=" mb-4">
+                Our production integrates automated systems with the skill and
+                care of experienced professionals. This ensures precision in
+                every batch—each snack is crafted to perfection while preserving
+                the flavours and tradition that make our offerings truly
+                special.
               </p>
-              <p className="text-muted-foreground">
-                All our units follow strict hygiene and food safety protocols, and we’re proud to be a ZED Gold 
-                Certified facility—recognizing our commitment to zero defects, zero environmental impact, and 
+              <p className="">
+                We strictly follow hygiene and food safety protocols, and are
+                proud to be a ZED Gold Certified facility—recognizing our
+                dedication to zero defects, zero environmental impact, and
                 responsible manufacturing practices.
               </p>
             </motion.div>
@@ -125,24 +138,27 @@ export default function InfraPage() {
       </section>
 
       {/* Technology Section */}
-      <section className="relative overflow-hidden  bg-red-600 py-16">
+      <section className="font-sans relative overflow-hidden  bg-red-600 py-16">
         <div className="absolute inset-0 overflow-hidden">
-                  <motion.div
-                    className="w-[120%] h-[120%] bg-[url('/images/pattern.svg')] opacity-10"
-                    animate={{ x: [-20, 0], y: [-20, 0] }}
-                    transition={{
-                      duration: 60,
-                      repeat: Number.POSITIVE_INFINITY,
-                      repeatType: "reverse",
-                    }}
-                  />
-                </div>
+          <motion.div
+            className="w-[120%] h-[120%] bg-[url('/images/pattern.svg')] opacity-10"
+            animate={{ x: [-20, 0], y: [-20, 0] }}
+            transition={{
+              duration: 60,
+              repeat: Number.POSITIVE_INFINITY,
+              repeatType: "reverse",
+            }}
+          />
+        </div>
 
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-normal mb-4 text-white">Cutting-Edge Technology</h2>
+            <h2 className="text-3xl font-normal mb-4 text-white">
+              Cutting-Edge Technology
+            </h2>
             <p className="max-w-2xl mx-auto text-white">
-              The advanced technologies that enable us to deliver superior snacks consistently.
+              The advanced technologies that enable us to deliver superior
+              snacks consistently.
             </p>
           </div>
 
@@ -151,17 +167,17 @@ export default function InfraPage() {
               {
                 title: "Modern Production Lines",
                 description:
-                  "Our well-maintained, high-capacity machinery enables us to manufacture consistently high-quality snacks while maintaining efficiency at scale.",
+                  "Our well-maintained, high-capacity lines consistently produce snacks that meet the highest standards of taste and quality—while keeping operational efficiency at its peak. .",
               },
               {
                 title: "Semi-Automated Processes",
                 description:
-                  "We use a combination of automated equipment and human oversight to ensure the perfect balance of consistency, safety, and traditional flavor.",
+                  "Combining automation with human oversight ensures every snack maintains its traditional flavour, along with the safety and uniformity our customers expect.",
               },
               {
                 title: "ZED Gold Certified Quality Standards",
                 description:
-                  "Our processes are aligned with ZED Gold certification, ensuring we follow best practices in quality management.",
+                  "Our manufacturing systems are aligned with the ZED Gold framework, focusing on continuous improvement, sustainable practices, and the delivery of defect-free, high-quality products.",
               },
             ].map((tech, index) => (
               <motion.div
@@ -172,8 +188,10 @@ export default function InfraPage() {
                 viewport={{ once: true }}
                 className="bg-white p-8 rounded-lg shadow-sm"
               >
-                <h3 className="font-normal text-xl mb-3 text-red-500">{tech.title}</h3>
-                <p className="text-muted-foreground">{tech.description}</p>
+                <h3 className="font-normal text-xl mb-3 text-red-500">
+                  {tech.title}
+                </h3>
+                <p className="">{tech.description}</p>
               </motion.div>
             ))}
           </div>
@@ -181,7 +199,7 @@ export default function InfraPage() {
       </section>
 
       {/* Distribution Network */}
-      <section className="py-16">
+      <section className="font-sans py-16">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -191,7 +209,11 @@ export default function InfraPage() {
               viewport={{ once: true }}
               className="order-2 md:order-1 aspect-video bg-muted rounded-lg overflow-hidden"
             >
-              <img src="/images/infra2.jpeg" alt="Distribution Network" className="w-full h-full object-cover" />
+              <img
+                src="/images/infra2.jpeg"
+                alt="Distribution Network"
+                className="w-full h-full object-cover"
+              />
             </motion.div>
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -200,25 +222,49 @@ export default function InfraPage() {
               viewport={{ once: true }}
               className="order-1 md:order-2"
             >
-              <h2 className="text-3xl font-normal text-orange-600 mb-6">Robust Regional Distribution Network</h2>
-              <p className="text-muted-foreground mb-6">
-                At Ambey Food Products, our strength lies in our robust regional distribution network, primarily 
-                spanning across Bihar and strategically expanding into neighboring areas. With our strategically 
-                located distribution points, we ensure efficient and fast delivery of our fresh snacks to your shelves.
+              <h2 className="text-3xl font-normal text-orange-600 mb-6">
+                Robust Regional Distribution Network
+              </h2>
+
+              <p className=" mb-6">
+                At Ambey Food Products, we’ve built a strong regional
+                distribution network, centered in Bihar and steadily expanding
+                into the neighboring states. This enables us to deliver fresh,
+                delicious snacks quickly and consistently.
               </p>
-              <p className="text-muted-foreground mb-6">
-                This infrastructure allows us to deliver products to most super-stockist and dealers within our primary 
-                markets ensuring freshness and consistent availability.
-              </p>
-              <p className="text-muted-foreground">
-                We have our own fleet and we also partner with reliable logistics providers who understand the nuances of 
-                the regional terrain, and we've implemented tracking systems that give our partners visibility into their 
-                order status from our facility in Darbhanga directly to their stores.
+              <ul className="list-disc list-inside">
+                <li className="mb-2">
+                  Strategically located distribution points allow efficient
+                  coverage of both urban and rural markets.
+                </li>
+                <li className="mb-2">
+                  Most super-stockists and dealers receive their orders with
+                  minimal turnaround time, ensuring product freshness at every
+                  stage.
+                </li>
+                <li className="mb-2">
+                  We operate through our in-house fleet and trusted logistics
+                  partners who are well-versed in regional delivery dynamics.
+                </li>
+                <li className="mb-2">
+                  Real-time tracking systems provide our partners with
+                  end-to-end visibility—from dispatch at our Darbhanga facility
+                  to in-store delivery.
+                </li>
+                <li className="mb-2">
+                  Our logistics team continuously works to optimise delivery
+                  routes, reduce emissions, and support our eco-conscious
+                  operations.
+                </li>
+              </ul>
+              <p className="mt-2 mb-6">
+                The rich taste of our snacks is never far from our customers—no
+                matter where they are.
               </p>
             </motion.div>
           </div>
         </div>
       </section>
     </div>
-  )
+  );
 }

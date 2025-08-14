@@ -1,0 +1,250 @@
+{
+  "_documentation": {
+    "description": "Static product data for the snacks and namkeen product catalog",
+    "version": "1.0.0",
+    "lastUpdated": "2024-01-15",
+    "structure": {
+      "id": "Unique identifier for each product (number)",
+      "name": "Display name of the product (string)",
+      "description": "Detailed description shown in product modal (string)",
+      "price": "Product price with currency symbol (string)",
+      "category": "Main category for filtering (namkeen|chips|fryums)",
+      "subcategory": "Sub-category for detailed classification (string)",
+      "image": "Path to product image file (string)",
+      "comingSoon": "Boolean flag to indicate if product is coming soon (boolean)"
+    },
+    "categories": {
+      "namkeen": "Traditional Indian savory snacks",
+      "chips": "Crispy fried snacks and chips",
+      "fryums": "Puffed and fried snack items"
+    },
+    "notes": [
+      "All prices are in Indian Rupees (₹)",
+      "Image paths should be relative to the public directory",
+      "Products with comingSoon: true will appear in the Coming Soon section",
+      "Categories must match the filter options in the UI"
+    ]
+  },
+  "products": [
+    {
+      "id": 1,
+      "name": "Bhel Mudhi",
+      "description": "A delightful mix of puffed rice, sev, and spices that creates the perfect bhel experience.",
+      "price": "₹5",
+      "category": "namkeen",
+      "subcategory": "mix",
+      "image": "/images/bhel-mudhi.jpg",
+      "comingSoon": false
+    },
+    {
+      "id": 2,
+      "name": "All in One",
+      "description": "A comprehensive mixture of various namkeen ingredients for the ultimate snacking experience.",
+      "price": "₹5",
+      "category": "namkeen",
+      "subcategory": "mix",
+      "image": "/images/all-in-one.jpg",
+      "comingSoon": false
+    },
+    {
+      "id": 3,
+      "name": "Aloo Bhujia",
+      "description": "Crispy potato-based bhujia with aromatic spices that melts in your mouth.",
+      "price": "₹5",
+      "category": "namkeen",
+      "subcategory": "bhujia",
+      "image": "/images/aloo-bhujia.jpg",
+      "comingSoon": false
+    },
+    {
+      "id": 4,
+      "name": "Badam Pakoda Peanut",
+      "description": "Crunchy almond and peanut pakodas with a perfect blend of spices and nuts.",
+      "price": "₹5",
+      "category": "namkeen",
+      "subcategory": "pakoda",
+      "image": "/images/badam-pakoda.jpg",
+      "comingSoon": false
+    },
+    {
+      "id": 5,
+      "name": "Chana Jor Garam",
+      "description": "Spicy and tangy flattened chickpeas that pack a flavorful punch in every bite.",
+      "price": "₹5",
+      "category": "namkeen",
+      "subcategory": "chana",
+      "image": "/images/chana-jor-garam.jpg",
+      "comingSoon": false
+    },
+    {
+      "id": 6,
+      "name": "Moong Dal",
+      "description": "Crispy fried moong dal seasoned with traditional spices for a healthy and tasty snack.",
+      "price": "₹5",
+      "category": "namkeen",
+      "subcategory": "dal",
+      "image": "/images/moong-dal.jpg",
+      "comingSoon": false
+    },
+    {
+      "id": 7,
+      "name": "Chana Dal",
+      "description": "Golden fried chana dal with aromatic spices, perfect for tea-time snacking.",
+      "price": "₹5",
+      "category": "namkeen",
+      "subcategory": "dal",
+      "image": "/images/chana-dal.jpg",
+      "comingSoon": false
+    },
+    {
+      "id": 8,
+      "name": "Hara Matar",
+      "description": "Crispy green peas seasoned with mint and spices for a refreshing crunch.",
+      "price": "₹5",
+      "category": "namkeen",
+      "subcategory": "matar",
+      "image": "/images/hara-matar.jpg",
+      "comingSoon": false
+    },
+    {
+      "id": 9,
+      "name": "Navratan Mixture",
+      "description": "A royal blend of nine different ingredients creating a rich and diverse flavor profile.",
+      "price": "₹5",
+      "category": "namkeen",
+      "subcategory": "mix",
+      "image": "/images/navratan-mixture.jpg",
+      "comingSoon": false
+    },
+    {
+      "id": 10,
+      "name": "Punjabi Tadka",
+      "description": "A spicy Punjabi-style mix with bold flavors and authentic North Indian spices.",
+      "price": "₹5",
+      "category": "namkeen",
+      "subcategory": "mix",
+      "image": "/images/punjabi-tadka.jpg",
+      "comingSoon": false
+    },
+    {
+      "id": 11,
+      "name": "Chiwda Fry",
+      "description": "Traditional poha chiwda with nuts, raisins, and aromatic spices for a perfect balance.",
+      "price": "₹5",
+      "category": "namkeen",
+      "subcategory": "chiwda",
+      "image": "/images/chiwda-fry.jpg",
+      "comingSoon": false
+    },
+    {
+      "id": 12,
+      "name": "Gathiya",
+      "description": "Classic Gujarati gathiya with the perfect texture and traditional flavoring.",
+      "price": "₹5",
+      "category": "namkeen",
+      "subcategory": "gathiya",
+      "image": "/images/gathiya.jpg",
+      "comingSoon": false
+    },
+    {
+      "id": 13,
+      "name": "Hing Jeera Chana",
+      "description": "Roasted chickpeas infused with asafoetida and cumin for a distinctive aromatic taste.",
+      "price": "₹5",
+      "category": "namkeen",
+      "subcategory": "chana",
+      "image": "/images/hing-jeera-chana.jpg",
+      "comingSoon": false
+    },
+    {
+      "id": 14,
+      "name": "Salted Peanuts",
+      "description": "Premium quality peanuts roasted to perfection with just the right amount of salt.",
+      "price": "₹5",
+      "category": "namkeen",
+      "subcategory": "peanuts",
+      "image": "/images/salted-peanuts.jpg",
+      "comingSoon": false
+    },
+    {
+      "id": 15,
+      "name": "Ratlami Sev",
+      "description": "Famous Ratlam-style sev with authentic spices and the perfect crispy texture.",
+      "price": "₹5",
+      "category": "namkeen",
+      "subcategory": "sev",
+      "image": "/images/ratlami-sev.jpg",
+      "comingSoon": false
+    },
+    {
+      "id": 16,
+      "name": "Dalmoth",
+      "description": "A spicy and tangy mixture of lentils, nuts, and spices that's irresistibly addictive.",
+      "price": "₹10",
+      "category": "namkeen",
+      "subcategory": "mix",
+      "image": "/images/dalmoth.jpg",
+      "comingSoon": false
+    },
+    {
+      "id": 17,
+      "name": "Nimbu Bhujia",
+      "description": "Tangy lemon-flavored bhujia with a zesty twist that will awaken your taste buds.",
+      "price": "₹5",
+      "category": "namkeen",
+      "subcategory": "bhujia",
+      "image": "/images/nimbu-bhujia.jpg",
+      "comingSoon": true
+    },
+    {
+      "id": 18,
+      "name": "Papdi",
+      "description": "Crispy, flaky papdi perfect for chaat or enjoying on its own as a crunchy snack.",
+      "price": "₹5",
+      "category": "fryums",
+      "subcategory": "wheat",
+      "image": "/images/papdi.jpg",
+      "comingSoon": true
+    },
+    {
+      "id": 19,
+      "name": "Bikaneri Bhujia",
+      "description": "The famous Bikaneri-style bhujia with authentic Rajasthani flavors and spices.",
+      "price": "₹5",
+      "category": "namkeen",
+      "subcategory": "bhujia",
+      "image": "/images/bikaneri-bhujia.jpg",
+      "comingSoon": true
+    },
+    {
+      "id": 20,
+      "name": "Paneer Bhujia",
+      "description": "Rich and creamy paneer-flavored bhujia for a unique and indulgent snacking experience.",
+      "price": "₹5",
+      "category": "namkeen",
+      "subcategory": "bhujia",
+      "image": "/images/paneer-bhujia.jpg",
+      "comingSoon": true
+    },
+    {
+      "id": 21,
+      "name": "Jhal Mix",
+      "description": "A spicy Bengali-style mix that packs heat and flavor in every bite.",
+      "price": "₹5",
+      "category": "namkeen",
+      "subcategory": "mix",
+      "image": "/images/jhal-mix.jpg",
+      "comingSoon": true
+    },
+    {
+      "id": 22,
+      "name": "Indori Mixture",
+      "description": "A special mixture from Indore with unique flavors and textures that represent the city's culinary heritage.",
+      "price": "₹10",
+      "category": "namkeen",
+      "subcategory": "mix",
+      "image": "/images/indori-mixture.jpg",
+      "comingSoon": true
+    }
+  ]
+}
