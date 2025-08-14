@@ -24,7 +24,7 @@ export default function Header({ navigateTo, currentPage, isMenuOpen, setIsMenuO
             <Menu className="h-6 w-6" />
           </Button>
           <div className="flex items-center cursor-pointer" onClick={() => navigateTo("home")}>
-            <img src="/images/logo.png" alt="Yummfeast Logo" className="h-16" />
+            <img src="/images/newlogo.png" alt="Yummfeast Logo" className="h-16 m-4" />
           </div>
         </div>
 

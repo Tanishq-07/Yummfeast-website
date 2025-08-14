@@ -344,7 +344,7 @@ const { bg, ring, text, shadow } = chipColorMap[selectedChip] || chipColorMap["i
 
   const newsItems = [
     {
-      title: "Catering to Indian Taste Preferences",
+      title: "Yummfeast Takes a Flavourful Leap at Bihar Business Connect 2023",
       image:
         "https://www.yellowdiamond.in/wp-content/uploads/2024/09/Business-Standard_07.12.16_pg18.jpg",
       alt: "Indian Consumers",
@@ -352,7 +352,7 @@ const { bg, ring, text, shadow } = chipColorMap[selectedChip] || chipColorMap["i
       slug: "indian-taste-preferences",
     },
     {
-      title: "New Flavors Launch This Month",
+      title: "Yummfeast Dealers’ Meet 2025: Celebrating Partnerships, Purpose & Progress",
       image:
         "https://www.yellowdiamond.in/wp-content/uploads/2024/09/ET-Brand-Equity_1st-March2c-Pg-12c4-1.jpg",
       alt: "New Flavors",
@@ -360,34 +360,12 @@ const { bg, ring, text, shadow } = chipColorMap[selectedChip] || chipColorMap["i
       slug: "new-flavors-launch",
     },
     {
-      title: "We Crack the Taste Test",
+      title: "Yummfeast’s Dealership Meet 2022: A Grand Introduction to a Bold New Brand",
       image:
         "https://www.yellowdiamond.in/wp-content/uploads/2024/08/Business-India-Coverage-July-3-1.jpg",
       alt: "Taste Test",
       date: "5 days ago",
       slug: "taste-test-results",
-    },
-    {
-      title: "New Flavors Launch This Month",
-      image: "https://www.yellowdiamond.in/wp-content/uploads/2024/08/1.png",
-      alt: "New Flavors",
-      date: "2 weeks ago",
-      slug: "new-flavors-launch",
-    },
-    {
-      title: "Small Start, Big Success",
-      image:
-        "https://www.yellowdiamond.in/wp-content/uploads/2024/09/Screenshot_4-1.jpg",
-      alt: "Success Story",
-      date: "1 week ago",
-      slug: "small-start-big-success",
-    },
-    {
-      title: "New Flavors Launch This Month",
-      image: "https://www.yellowdiamond.in/wp-content/uploads/2024/08/1.png",
-      alt: "New Flavors",
-      date: "2 weeks ago",
-      slug: "new-flavors-launch",
     },
   ];
 
@@ -417,77 +395,60 @@ const { bg, ring, text, shadow } = chipColorMap[selectedChip] || chipColorMap["i
       name: "Yummfeast Rings",
       description: "Crunchy rings with a burst of tangy masala flavor",
       image:
-        "/images/chips1.png",
+        "/images/chips2.png",
       price: "₹10",
-      category: "Fryums"
+      category: "Chips"
     },
     {
-      name: "Yummfeast Pasta",
+      name: "Hara Matar",
       description: "Crispy pasta snacks with Italian herbs seasoning",
       image:
-        "/images/chips2.png",
-      price: "₹15",
-      category: "Chips"
+        "/images/chips5.png",
+      price: "₹5",
+      category: "Namkeen"
     },
     {
       name: "Yummfeast All-in-One",
       description:
         "A delightful mix of various namkeen for the perfect snack time",
       image:
-        "/images/chips3.png",
+        "/images/chips6.png",
       price: "₹20",
-      category: "Namkeen"
+      category: "Extruded Snacks"
     },
     {
       name: "Yummfeast Rings",
       description: "Crunchy rings with a burst of tangy masala flavor",
       image:
-        "/images/chips1.png",
+        "/images/chips7.png",
       price: "₹10",
-      category: "Fryums"
-    },
-    {
-      name: "Yummfeast Pasta",
-      description: "Crispy pasta snacks with Italian herbs seasoning",
-      image:
-        "/images/chips2.png",
-      price: "₹15",
-      category: "Chips"
-    },
-    {
-      name: "Yummfeast All-in-One",
-      description:
-        "A delightful mix of various namkeen for the perfect snack time",
-      image:
-        "/images/chips3.png",
-      price: "₹20",
-      category: "Namkeen"
+      category: "Snacks"
     },
   ];
 
   const features = [
   {
     icon: Sparkles,
-    title: "Endless Flavors",
+    title: "Flavor Fiesta",
     description:
-      "From classic to exotic, we offer an incredible variety of flavors to satisfy every craving and preference.",
-    image: "/images/flavor-variety.png",
+      "Whether you’re vibing with Cream & Onion coolness or diving into a Magic Masala flavor storm — we bring the party to your palate.",
+    image: "/images/flavor-variety1.png",
     color: "from-orange-500 to-red-500",
     bgColor: "bg-gradient-to-br from-orange-50 to-red-50",
   },
   {
     icon: Heart,
-    title: "Shared Moments",
-    description: "Our snacks bring people together, creating precious moments of joy and connection with loved ones.",
+    title: "Snack & Bond",
+    description: "Our snacks bring people together — for laughs, movie nights, road trips, or just “oops, I ate the whole pack” moments.",
     image: "/images/sharing-moments.png",
     color: "from-pink-500 to-purple-500",
     bgColor: "bg-gradient-to-br from-pink-50 to-purple-50",
   },
   {
     icon: Factory,
-    title: "Quality Production",
+    title: "Crispy Craftsmanship",
     description:
-      "State-of-the-art facilities and rigorous quality control ensure every pack meets our highest standards.",
+      "Crunch meets quality. We whip up our snacks in top-tier facilities with ninja-level quality control — so every pack is a superstar.",
     image: "/images/quality-production.png",
     color: "from-blue-500 to-indigo-500",
     bgColor: "bg-gradient-to-br from-blue-50 to-indigo-50",
@@ -658,25 +619,15 @@ const prevBanner = () => {
                 TASTY TREATS
               </Badge>
               <h2 className="text-3xl md:text-4xl font-normal mb-4 bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-red-500">
-                Our Delicious Snacks
+                Our Delicious Range Of Products
               </h2>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                 Discover our most popular snacks that customers love. Quality
                 and taste guaranteed in every bite!
               </p>
             </motion.div>
           </div>
-
-          {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-4 md:mx-16">
-            {products.map((product, index) => (
-              <ProductCircle
-                key={index}
-                product={product}
-                index={index}
-                navigateTo={navigateTo}
-              />
-            ))}
-          </div> */}
+          
           <Carousel
             className="w-full"
             opts={{ 
@@ -873,7 +824,7 @@ const prevBanner = () => {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="text-3xl md:text-4xl font-normal mb-6 bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-red-500"
               >
-                Why Choose Yummfeast
+                Why Everyone’s Feasting on Yummfeast
               </motion.h2>
 
               <motion.p
@@ -882,8 +833,8 @@ const prevBanner = () => {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed"
               >
-                We pride ourselves on delivering exceptional quality and taste in every pack of our snacks, creating
-                moments of joy and bringing people together through the universal language of delicious food.
+                Because your snack time deserves more than just crunch — it deserves personality. Here's why you’ll love munching with us:
+
               </motion.p>
             </motion.div>
           </div>

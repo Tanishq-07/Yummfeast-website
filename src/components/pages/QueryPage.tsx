@@ -33,32 +33,32 @@ export default function QueryPage() {
 
         {/* Floating Snack Animations */}
         <motion.div
-          className="absolute top-10 left-10 text-6xl"
-          animate={{ rotate: 360, y: [-10, 10, -10] }}
-          transition={{ duration: 8, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+          className="absolute top-8 left-6 md:top-12 md:left-28 text-5xl md:text-6xl"
+          animate={{ rotate: 360 }}
+          transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
         >
-          🍿
+          🤤
         </motion.div>
         <motion.div
-          className="absolute top-20 right-20 text-5xl"
-          animate={{ y: [-15, 15, -15], rotate: [-10, 10, -10] }}
+          className="absolute top-10 right-6 md:top-20 md:right-28 text-5xl"
+          animate={{ y: [-10, 10, -10] }}
+          transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
+        >
+          🔥
+        </motion.div>
+        <motion.div
+          className="absolute bottom-10 left-20 md:left-1/4 text-4xl"
+          animate={{ rotate: [-15, 15, -15] }}
           transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY }}
         >
-          🥨
+          🎉
         </motion.div>
         <motion.div
-          className="absolute bottom-10 left-1/4 text-4xl"
-          animate={{ scale: [1, 1.3, 1], rotate: [0, 180, 360] }}
-          transition={{ duration: 6, repeat: Number.POSITIVE_INFINITY }}
+          className="absolute bottom-8 right-20 md:right-1/3 text-5xl"
+          animate={{ scale: [1, 1.2, 1] }}
+          transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
         >
-          🍪
-        </motion.div>
-        <motion.div
-          className="absolute bottom-20 right-1/3 text-5xl"
-          animate={{ x: [-20, 20, -20], y: [-10, 10, -10] }}
-          transition={{ duration: 5, repeat: Number.POSITIVE_INFINITY }}
-        >
-          🥜
+          😋
         </motion.div>
 
         <div className="container mx-auto px-4 relative z-10">

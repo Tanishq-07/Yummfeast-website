@@ -108,30 +108,19 @@ export default function AboutPage() {
                 </svg>
               </h2>
               <p className="text-muted-foreground mb-4">
-                Established in 2019, <b>Ambey Food Products</b>, a unit of Micro
-                Commercials Pvt. Ltd., launched ,<b>Yummfeast</b> with a simple yet
-                powerful idea — to deliver delicious, high-quality snacks that
-                spark joy in every bite.
+                Established in 2019, Ambey Food Products, a unit of Micro Commercials Pvt. Ltd., set out with a simple
+                mission — to deliver delicious, high-quality snacks under the vibrant brand name Yummfeast.
               </p>
               <p className="text-muted-foreground mb-4">
-                In just a few years, Yummfeast has won hearts all across India,
-                especially among kids and families, with its absolute dedication
-                to taste, freshness, quality, and consistency. From crispy chips
-                to savoury namkeen and amazing fryums, every Yummfeast snack is
-                made using handpicked ingredients at our state-of-the-art, fully
-                automated manufacturing unit in <b>Darbhanga, Bihar</b>.
+                In just a short span, Yummfeast has become a favorite among children and families alike, thanks to its commitment 
+                to flavor, freshness, and consistency. Our snacks — from crispy chips to savory namkeen and fryums — are made using 
+                carefully selected ingredients in our state-of-the-art, fully automated facility located in Darbhanga, Bihar, India.
               </p>
               <p className="text-muted-foreground">
-                With a fast-growing distribution network across <b>Bihar,
-                Jharkhand, West Bengal, and Uttar Pradesh</b>, Yummfeast is bringing
-                smiles and flavours to more snack lovers every day.
-              </p>
-              <p className="text-muted-foreground">
-                At the heart of our journey are four visionary leaders — <b>Mr.
-                Manish Pansari, Mr. Ajay Pansari, Mr. Dipak Pansari, and Mr.
-                Lakshman Pansari</b> — whose dedication, experience, and passion for
-                quality are shaping Yummfeast into one of India’s most promising
-                and loved snack brands.
+                With a strong and growing distribution network across Bihar, Jharkhand, West Bengal and Uttar Pradesh, Yummfeast 
+                continues to reach more snack lovers every day. Behind the brand’s steady rise are four visionary directors — Mr. 
+                Manish Pansari, Mr. Ajay Pansari, Mr. Dipak Pansari, and Mr. Lakshman Pansari — whose leadership and passion for 
+                quality are driving Yummfeast toward becoming a household name in the world of snacks.
               </p>
             </motion.div>
             <motion.div
@@ -153,7 +142,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Mission & Values with brush stroke divider */}
+      {/* Vision with brush stroke divider */}
       <section className="relative overflow-hidden  bg-red-600 py-8">
         <div className="absolute inset-0 overflow-hidden">
           <motion.div
@@ -167,10 +156,10 @@ export default function AboutPage() {
           />
         </div>
         <div className="bg-red-600 pt-10 pb-16">
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto px-16">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-normal text-white mb-4 relative inline-block">
-                Our Mission & Values
+                Our Vision
                 {/* Cartoon stroke underline */}
                 <svg
                   className="absolute -bottom-3 left-0 w-full"
@@ -188,22 +177,16 @@ export default function AboutPage() {
                 </svg>
               </h2>
               <p className="text-white max-w-2xl mx-auto">
-                The principles that guide everything we do, from product
-                development to customer service.
+                Where we’re headed and what we stand for.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="w-88">
               {[
                 {
-                  title: "Spreading smiles, one snack at a time. ",
+                  title: "Spreading smiles, one snack at a time.",
                   description:
-                    "To become one of India’s most loved and trusted snack brands by delivering joyful and flavourful snacking experiences that bring people together — one delicious snack at a time.",
-                },
-                {
-                  title: "Crafted to delight. Made to munch.",
-                  description:
-                    "We’re on a mission to create snacks that people love — using the freshest ingredients, innovative recipes, and world-class technology. Every pack is made with a promise of quality and flavour, made to reach every corner of India through our strong and expanding distribution network.",
+                    "To become one of India’s most loved and trusted snack brands by delivering joyful, flavorful experiences that bring people together — one pack at a time.",
                 },
               ].map((value, index) => (
                 <motion.div
@@ -215,10 +198,69 @@ export default function AboutPage() {
                   className="relative"
                 >
                   <div className="bg-white p-8 rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-300 relative z-10">
-                    <h3 className="font-normal text-xl mb-3 text-red-500">
-                      {value.title}
-                    </h3>
-                    <p className="text-muted-foreground">{value.description}</p>
+                    <h3 className="font-normal text-xl mb-3 text-red-500 text-center">{value.title}</h3>
+                    <p className="text-muted-foreground text-center">{value.description}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="relative overflow-hidden py-8"
+      style={{
+          backgroundImage: "url('/images/white-bg.jpg')",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundPosition: "top",
+          opacity: 1,
+        }}>
+        <div className="pt-10 pb-16">
+          <div className="container mx-auto px-16">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-normal text-red-600 mb-4 relative inline-block">
+                Our Mission
+                {/* Cartoon stroke underline */}
+                <svg
+                  className="absolute -bottom-3 left-0 w-full"
+                  height="12"
+                  viewBox="0 0 100 12"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    d="M0,5 C10,10 30,2 50,5 S80,10 100,5"
+                    stroke="#F29C1F"
+                    strokeWidth="4"
+                    fill="none"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Where we’re headed and what we stand for.
+              </p>
+            </div>
+
+            <div className="w-88">
+              {[
+                {
+                  title: "Crafted to delight, made to munch.",
+                  description:
+                    "We are on a mission to create high-quality, exciting snacks using fresh ingredients, innovative recipes, and cutting-edge technology — reaching every corner of India through strong distribution and delightful taste.",
+                },
+              ].map((value, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="relative"
+                >
+                  <div className="bg-red-600 p-8 rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-300 relative z-10">
+                    <h3 className="font-normal text-xl mb-3 text-white text-center">{value.title}</h3>
+                    <p className="text-white text-center">{value.description}</p>
                   </div>
                 </motion.div>
               ))}
@@ -228,10 +270,21 @@ export default function AboutPage() {
       </section>
 
       {/* Team Section with ink blob frames */}
-      <section className="py-16 relative">
+      <section className="bg-red-600 py-16 relative">
+        <div className="absolute inset-0 overflow-hidden">
+          <motion.div
+            className="w-[120%] h-[120%] bg-[url('/images/pattern.svg')] opacity-10"
+            animate={{ x: [-20, 0], y: [-20, 0] }}
+            transition={{
+              duration: 60,
+              repeat: Number.POSITIVE_INFINITY,
+              repeatType: "reverse",
+            }}
+          />
+          </div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-normal text-red-600 mb-4 relative inline-block">
+            <h2 className="text-3xl text-white font-normal text-red-600 mb-4 relative inline-block">
               Meet Our Team
               {/* Handwritten underline */}
               <svg
@@ -249,9 +302,8 @@ export default function AboutPage() {
                 />
               </svg>
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              The dedicated professionals who work tirelessly to bring you the
-              best snacks and services.
+            <p className="text-white max-w-2xl mx-auto">
+              The dedicated professionals who work tirelessly to bring you the best snacks and services.
             </p>
           </div>
 
@@ -288,7 +340,7 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="text-center relative"
+                className="text-center text-white relative"
               >
                 {/* Ink blob frame for image */}
                 <div className="relative mx-auto max-w-[200px] mb-4">
@@ -300,8 +352,8 @@ export default function AboutPage() {
                     />
                   </div>
                 </div>
-                <h3 className="font-normal text-xl">{member.name}</h3>
-                <p className="text-muted-foreground">{member.role}</p>
+                <h3 className="font-normal text-white text-xl">{member.name}</h3>
+                <p className="text-white">{member.role}</p>
               </motion.div>
             ))}
           </div>
