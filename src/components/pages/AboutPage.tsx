@@ -40,14 +40,14 @@ export default function AboutPage() {
           animate={{ rotate: [-15, 15, -15] }}
           transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY }}
         >
-          🤤
+          <img src="/images/prop3.png" alt="" className="w-12 h-12"/>
         </motion.div>
         <motion.div
           className="absolute bottom-8 right-20 md:right-1/3 text-5xl"
           animate={{ scale: [1, 1.2, 1] }}
           transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
         >
-          😋
+          <img src="/images/prop4.png" alt="" className="w-12 h-12"/>
         </motion.div>
 
         <div className="container mx-auto px-4 relative z-10">
