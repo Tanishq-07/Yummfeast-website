@@ -173,7 +173,7 @@ const products = [
     id: 15,
     name: "Chinese Pasta",
     description:
-      'This snack offers "Instant Happiness" with its unique Chinese pasta shape and flavor. It\'s a crunchy, savory treat designed to bring a fun twist to snack time. Each pack also includes FREE TOMATO KETCHUP INSIDE, perfect for dipping and enhancing the taste.',
+      'This snack offers "Instant Happiness" with its unique Chinese pasta shape and flavor. It\'s a crunchy, savory treat designed to bring a fun twist to snack time. Each pack also includes FREE TOMATO KETCHUP INSIDE.',
     price: "₹5",
     category: "fryums",
     subcategory: "pasta",
@@ -219,7 +219,7 @@ const products = [
     id: 19,
     name: "Bhel Mudhi",
     description:
-      "This namkeen offers the popular taste of Bhel Mudhi with a delicious masala flavor. It's a crunchy and savory snack, perfect for those who enjoy the classic street food experience in a convenient packet. The packaging features a vibrant design with a street food vendor, emphasizing its authentic appeal.",
+      "This namkeen offers the popular taste of Bhel Mudhi with a delicious masala flavor. It's a crunchy and savory snack, perfect for those who enjoy the classic street food experience in a convenient packet. The packaging features a vibrant design.",
     price: "₹5",
     category: "namkeen",
     subcategory: "mix",
@@ -230,7 +230,7 @@ const products = [
     id: 20,
     name: "All in One",
     description:
-      'This namkeen mix is described as "Our all time favourite," offering a diverse blend of savory ingredients. It typically includes a variety of crunchy elements like fried lentils, nuts (cashews, peanuts etc.), sev, and other crispy bits, providing a rich and satisfying medley of textures and flavors in every bite.',
+      'This namkeen mix is described as "Our all time favourite," offering a diverse blend of savory ingredients. It typically includes a variety of crunchy elements like fried lentils, nuts, sev, and other crispy bits.',
     price: "₹5",
     category: "namkeen",
     subcategory: "mix",
@@ -241,7 +241,7 @@ const products = [
     id: 21,
     name: "Aloo Bhujia",
     description:
-      'This is "Our all time favourite" savory snack, consisting of crispy, noodle-like strands made from potato and gram flour, seasoned with a delicious blend of spices. It\'s a classic Indian namkeen, perfect for a crunchy treat anytime.',
+      'This is "Our all time favourite" savory snack, consisting of crispy, noodle-like strands made from potato and gram flour, seasoned with a delicious blend of spices. It\'s a classic Indian namkeen, perfect for a crunchy treat.',
     price: "₹5",
     category: "namkeen",
     subcategory: "bhujia",
@@ -263,7 +263,7 @@ const products = [
     id: 23,
     name: "Chana Jor Garam",
     description:
-      'This snack offers "Crackling Goodness in Every Bite" with its "Tasty Crunchy Chatpata Chataka" flavor. It\'s a savory and spicy treat made from flattened chickpeas, perfect for those who enjoy a zesty and crunchy snack. The packaging indicates it\'s available in a "Mild Spicy" variant.',
+      'This snack offers "Crackling Goodness in Every Bite" with its "Tasty Crunchy Chatpata Chataka" flavor. It\'s a savory and spicy treat made from flattened chickpeas, perfect for those who enjoy a zesty and crunchy snack.',
     price: "₹5",
     category: "namkeen",
     subcategory: "traditional",
@@ -438,12 +438,12 @@ const ProductCircle = ({
   index,
   onClick,
 }: {
-  product: { name: string; image: string; price: string }
+  product: { name: string; image: string; price: string; description: string }
   index: number
   onClick: () => void
 }) => {
   return (
-    <div className="relative flex flex-col items-center gap-4">
+    <div className="relative flex flex-col items-center gap-4 mb-4">
       <motion.img
         src="/images/patch3.png"
         alt=""
@@ -471,6 +471,11 @@ const ProductCircle = ({
       {/* Label/Button */}
       <div onClick={onClick}>
         <CustomButton className="bg-orange-500 cursor-pointer" value={product.name} />
+      </div>
+
+      <div>
+        <p className="text-center mb-2">Price: {product.price}</p>
+        <p className="text-justify text-muted-foreground">{product.description}</p>
       </div>
     </div>
   )
@@ -788,13 +793,13 @@ export default function ProductPage() {
             </motion.div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12 max-w-7xl mx-auto">
             {filteredAndSortedProducts().map((product, index) => (
               <motion.div
                 key={product.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.5, delay: 0.15 }}
                 viewport={{ once: true }}
               >
                 <ProductCircle product={product} index={index} onClick={() => handleProductClick(product)} />

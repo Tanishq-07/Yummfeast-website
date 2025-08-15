@@ -165,33 +165,6 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Fun Stats Section */}
-      <section className="py-16 bg-gradient-to-r from-orange-400 to-red-400">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white">
-            {[
-              { number: "10K+", label: "Happy Customers", emoji: "😊" },
-              { number: "50+", label: "Snack Varieties", emoji: "🍿" },
-              { number: "24/7", label: "Customer Support", emoji: "🎧" },
-              { number: "100%", label: "Satisfaction Rate", emoji: "⭐" },
-            ].map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.5 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="text-center"
-              >
-                <div className="text-4xl mb-2">{stat.emoji}</div>
-                <div className="text-3xl font-normal mb-2">{stat.number}</div>
-                <div className="text-orange-100">{stat.label}</div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Contact Form */}
       <section className="py-20 bg-gradient-to-br from-yellow-50 to-orange-50">
         <div className="container mx-auto px-4">
@@ -410,36 +383,10 @@ export default function ContactPage() {
             viewport={{ once: true }}
             className="max-w-2xl mx-auto"
           >
-            <h2 className="text-3xl font-normal mb-4">Ready to Snack with Us? 🍿✨</h2>
+            <h2 className="text-3xl font-normal mb-4">Ready to Snack with Us?✨</h2>
             <p className="text-xl mb-8 text-orange-100">
               Join thousands of happy snackers who trust us for their cravings!
             </p>
-            <div className="flex justify-center gap-4 text-4xl">
-              <motion.span
-                animate={{ rotate: [0, 10, -10, 0] }}
-                transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
-              >
-                🍪
-              </motion.span>
-              <motion.span
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY }}
-              >
-                🥨
-              </motion.span>
-              <motion.span
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 1.8, repeat: Number.POSITIVE_INFINITY }}
-              >
-                🍿
-              </motion.span>
-              <motion.span
-                animate={{ rotate: [0, -10, 10, 0] }}
-                transition={{ duration: 2.2, repeat: Number.POSITIVE_INFINITY }}
-              >
-                🥜
-              </motion.span>
-            </div>
           </motion.div>
         </div>
       </section>

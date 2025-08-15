@@ -79,26 +79,6 @@ export default function QueryPage() {
             >
              Curious about what makes Yummfeast snacks so yummy? We'd love to hear from you! Connect with us, and let's ensure your tummy always says 'Yummy! ✨
             </motion.p>
-            <motion.div
-              className="flex justify-center gap-6 text-4xl mb-8"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              <span>💼</span>
-              <span>🤝</span>
-              <span>📈</span>
-              <span>🎯</span>
-              <span>💰</span>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="bg-white/20 backdrop-blur-sm rounded-2xl p-6 inline-block"
-            >
-              <p className="text-lg font-normal">🌟 Over 500+ Happy Partners Already! 🌟</p>
-            </motion.div>
           </div>
         </div>
       </section>
@@ -620,32 +600,6 @@ export default function QueryPage() {
               Don't wait! The snack revolution is happening NOW, and we want YOU to be part of it! Let's build something
               amazing together! 🚀✨
             </p>
-            <div className="flex justify-center gap-4 text-5xl">
-              <motion.span
-                animate={{ rotate: [0, 10, -10, 0] }}
-                transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
-              >
-                🍿
-              </motion.span>
-              <motion.span
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY }}
-              >
-                🤝
-              </motion.span>
-              <motion.span
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 1.8, repeat: Number.POSITIVE_INFINITY }}
-              >
-                💰
-              </motion.span>
-              <motion.span
-                animate={{ rotate: [0, -10, 10, 0] }}
-                transition={{ duration: 2.2, repeat: Number.POSITIVE_INFINITY }}
-              >
-                🚀
-              </motion.span>
-            </div>
           </motion.div>
         </div>
       </section>
