@@ -141,6 +141,27 @@ const features = [
   },
 ]
 
+const funFacts = [
+  "Indians consume over 1 billion snack packets every month!",
+  "The world's largest potato chip was 25 inches long and 14 inches wide.",
+  "Aloo Bhujia is one of India's top 5 most loved namkeens.",
+  "Masala is the most preferred chip flavor in India.",
+  "India has over 200+ regional snack varieties.",
+  "Chips were invented in 1853 by accident!",
+  "An average Indian household stocks 3 types of snacks at any time.",
+  "The global snack market is worth over $400 billion.",
+  "Chana Jor Garam is over 100 years old as a street snack.",
+  "In Rajasthan, Bikaneri Bhujia holds a GI tag.",
+  "Maharashtra's favorite tea-time snack? Chiwda!",
+  "Kolkata's famous jhal muri is eaten by millions every day.",
+  "Bhelpuri, a puffed rice snack, is iconic on Mumbai's beaches.",
+  "India's packaged snack consumption per household is about 12.8 kg per year as of 2025.",
+  "People can recognize chip flavors blindfolded 75% of the time!",
+  "The word 'namkeen' comes from 'namak' meaning salt.",
+  "India is second largest consumer of snacks in the world.",
+  "The crunch sound of chips is designed to make snacks sound fresher.",
+]
+
 // Feature card with enhanced hover effects and proper typing
 const FeatureCard = ({ feature, index }: { feature: (typeof features)[0]; index: number }) => {
   return (
@@ -235,6 +256,20 @@ export default function HomePage({ navigateTo }: HomePageProps) {
   const heroRef = useRef<HTMLElement>(null);
   const [currentChipIndex, setCurrentChipIndex] = useState(0);
   const [selectedChip, setSelectedChip] = useState("images/chips1.png");
+  const [currentFactIndex, setCurrentFactIndex] = useState(0)
+  const [isVisible, setIsVisible] = useState(true)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsVisible(false)
+      setTimeout(() => {
+        setCurrentFactIndex((prev) => (prev + 1) % funFacts.length)
+        setIsVisible(true)
+      }, 300)
+    }, 4000) // Change fact every 4 seconds
+
+    return () => clearInterval(interval)
+  }, [])
 
   const chipVariants = [
     "images/chips1.png",
@@ -850,161 +885,148 @@ const prevBanner = () => {
      
       {/* Fun interactive section */}
       <section className="py-24 bg-gradient-to-r from-red-600 to-red-700 text-white relative overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden">
-          <motion.div
-            className="w-[120%] h-[120%] bg-[url('/images/pattern.svg')] opacity-10"
-            animate={{ x: [-20, 0], y: [-20, 0] }}
-            transition={{
-              duration: 60,
-              repeat: Number.POSITIVE_INFINITY,
-              repeatType: "reverse",
-            }}
+      <div className="absolute inset-0 overflow-hidden">
+        <motion.div
+          className="w-[120%] h-[120%] bg-[url('/images/pattern.svg')] opacity-10"
+          animate={{ x: [-20, 0], y: [-20, 0] }}
+          transition={{
+            duration: 60,
+            repeat: Number.POSITIVE_INFINITY,
+            repeatType: "reverse",
+          }}
+        />
+      </div>
+
+      <div className="container mx-auto mt-16 px-4 relative z-10">
+        <div className="max-w-4xl mx-auto">
+          <img
+            src="/images/rollerCoaster4.png"
+            alt="Roller Coaster Image"
+            className="hidden md:block absolute -top-32 right-16 h-80 w-80 z-20"
           />
-        </div>
-
-        <div className="container mx-auto mt-16 px-4 relative z-10">
-          <div className="max-w-4xl mx-auto">
-          <img src="/images/rollerCoaster4.png" alt="Roller Coaster Image" className="hidden md:block absolute -top-32 right-16 h-80 w-80 z-20"/>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true, margin: "-100px" }}
-              className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-white/20"
-            >
-              <div className="text-center mb-8">
-                <motion.div
-                  initial={{ y: 20, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.5 }}
-                  viewport={{ once: true }}
-                >
-                  <PartyPopper className="w-12 h-12 mx-auto mb-4 text-yellow-300" />
-                  <h2 className="text-3xl md:text-4xl font-normal mb-4 z-30">
-                    Snack Time Fun Fact
-                  </h2>
-                  <p className="text-xl z-30">
-                    Did you know? Indians consume over 1 billion packets of
-                    snacks every month!
-                  </p>
-                </motion.div>
-              </div>
-
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true, margin: "-100px" }}
+            className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-white/20"
+          >
+            <div className="text-center mb-8">
               <motion.div
-                className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
+                initial={{ y: 20, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
               >
+                <PartyPopper className="w-12 h-12 mx-auto mb-4 text-yellow-300" />
+                <h2 className="text-3xl md:text-4xl font-normal mb-4 z-30">Snack Time Fun Facts</h2>
                 <motion.div
-                  className="bg-white/10 rounded-lg p-6 backdrop-blur-sm relative overflow-hidden"
-                  whileHover={{ scale: 1.05 }}
+                  key={currentFactIndex}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -20 }}
                   transition={{ duration: 0.3 }}
+                  className="min-h-[3rem] flex items-center justify-center"
                 >
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-red-500/20 to-yellow-500/20"
-                    animate={{
-                      background: [
-                        "linear-gradient(to right, rgba(239, 68, 68, 0.2), rgba(234, 179, 8, 0.2))",
-                        "linear-gradient(to right, rgba(234, 179, 8, 0.2), rgba(239, 68, 68, 0.2))",
-                        "linear-gradient(to right, rgba(239, 68, 68, 0.2), rgba(234, 179, 8, 0.2))",
-                      ],
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Number.POSITIVE_INFINITY,
-                    }}
-                  />
-                  <div className="text-4xl font-normal mb-2 relative z-10">
-                    <AnimatedCounter value={100} />+
-                  </div>
-                  <p className="relative z-10">Flavor Combinations</p>
+                  <p className="text-xl z-30 max-w-3xl">{funFacts[currentFactIndex]}</p>
                 </motion.div>
+              </motion.div>
+            </div>
 
+            <motion.div
+              className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
+              <motion.div
+                className="bg-white/10 rounded-lg p-6 backdrop-blur-sm relative overflow-hidden"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+              >
                 <motion.div
-                  className="bg-white/10 rounded-lg p-6 backdrop-blur-sm relative overflow-hidden"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-yellow-500/20 to-red-500/20"
-                    animate={{
-                      background: [
-                        "linear-gradient(to right, rgba(234, 179, 8, 0.2), rgba(239, 68, 68, 0.2))",
-                        "linear-gradient(to right, rgba(239, 68, 68, 0.2), rgba(234, 179, 8, 0.2))",
-                        "linear-gradient(to right, rgba(234, 179, 8, 0.2), rgba(239, 68, 68, 0.2))",
-                      ],
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Number.POSITIVE_INFINITY,
-                    }}
-                  />
-                  <div className="text-4xl font-normal mb-2 relative z-10">
-                    <AnimatedCounter value={50} />
-                    K+
-                  </div>
-                  <p className="relative z-10">Happy Customers</p>
-                </motion.div>
-
-                <motion.div
-                  className="bg-white/10 rounded-lg p-6 backdrop-blur-sm relative overflow-hidden"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-red-500/20 to-yellow-500/20"
-                    animate={{
-                      background: [
-                        "linear-gradient(to right, rgba(239, 68, 68, 0.2), rgba(234, 179, 8, 0.2))",
-                        "linear-gradient(to right, rgba(234, 179, 8, 0.2), rgba(239, 68, 68, 0.2))",
-                        "linear-gradient(to right, rgba(239, 68, 68, 0.2), rgba(234, 179, 8, 0.2))",
-                      ],
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Number.POSITIVE_INFINITY,
-                    }}
-                  />
-                  <div className="text-4xl font-normal mb-2 relative z-10">
-                    <AnimatedCounter value={10} />+
-                  </div>
-                  <p className="relative z-10">Years of Excellence</p>
-                </motion.div>
+                  className="absolute inset-0 bg-gradient-to-r from-red-500/20 to-yellow-500/20"
+                  animate={{
+                    background: [
+                      "linear-gradient(to right, rgba(239, 68, 68, 0.2), rgba(234, 179, 8, 0.2))",
+                      "linear-gradient(to right, rgba(234, 179, 8, 0.2), rgba(239, 68, 68, 0.2))",
+                      "linear-gradient(to right, rgba(239, 68, 68, 0.2), rgba(234, 179, 8, 0.2))",
+                    ],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Number.POSITIVE_INFINITY,
+                  }}
+                />
+                <div className="text-4xl font-normal mb-2 relative z-10">200+</div>
+                <p className="relative z-10">Regional Snack Varieties</p>
               </motion.div>
 
               <motion.div
-                className="mt-12 text-center"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 1 }}
-                viewport={{ once: true }}
+                className="bg-white/10 rounded-lg p-6 backdrop-blur-sm relative overflow-hidden"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
               >
-                {/* <Button
-                  size="lg"
-                  className="bg-white text-red-600 hover:bg-white/90 relative overflow-hidden group"
-                  onClick={() => navigateTo("about")}
-                >
-                  <span className="relative z-10">Learn Our Story</span>
-                  <motion.span
-                    className="absolute inset-0 bg-yellow-300"
-                    initial={{ scale: 0, borderRadius: "100%" }}
-                    whileHover={{ scale: 1.5, borderRadius: "0%" }}
-                    transition={{ duration: 0.4 }}
-                  />
-                </Button> */}
-                <div className="transition-transform duration-100 hover:scale-[1.1]">
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-yellow-500/20 to-red-500/20"
+                  animate={{
+                    background: [
+                      "linear-gradient(to right, rgba(234, 179, 8, 0.2), rgba(239, 68, 68, 0.2))",
+                      "linear-gradient(to right, rgba(239, 68, 68, 0.2), rgba(234, 179, 8, 0.2))",
+                      "linear-gradient(to right, rgba(234, 179, 8, 0.2), rgba(239, 68, 68, 0.2))",
+                    ],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Number.POSITIVE_INFINITY,
+                  }}
+                />
+                <div className="text-4xl font-normal mb-2 relative z-10">1B+</div>
+                <p className="relative z-10">Snack Packets Monthly</p>
+              </motion.div>
+
+              <motion.div
+                className="bg-white/10 rounded-lg p-6 backdrop-blur-sm relative overflow-hidden"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+              >
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-red-500/20 to-yellow-500/20"
+                  animate={{
+                    background: [
+                      "linear-gradient(to right, rgba(239, 68, 68, 0.2), rgba(234, 179, 8, 0.2))",
+                      "linear-gradient(to right, rgba(234, 179, 8, 0.2), rgba(239, 68, 68, 0.2))",
+                      "linear-gradient(to right, rgba(239, 68, 68, 0.2), rgba(234, 179, 8, 0.2))",
+                    ],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Number.POSITIVE_INFINITY,
+                  }}
+                />
+                <div className="text-4xl font-normal mb-2 relative z-10">$400B</div>
+                <p className="relative z-10">Global Snack Market</p>
+              </motion.div>
+            </motion.div>
+
+            <motion.div
+              className="mt-12 text-center"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 1 }}
+              viewport={{ once: true }}
+            >
+              <div className="transition-transform duration-100 hover:scale-[1.1]">
                 <div className="bg-red-500 text-white text-lg font-normal w-56 mx-auto px-6 py-2 rounded-md shadow-md border-2 border-black relative hover:bg-orange-600">
                   Learn Our Story
                   <div className="absolute -bottom-1 left-0 w-56 h-full mx-auto rounded-md bg-black -z-10 translate-y-1 translate-x-1"></div>
                 </div>
-                </div>
-              </motion.div>
+              </div>
             </motion.div>
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </div>
+    </section>
 
       {/*Social media section*/}
 

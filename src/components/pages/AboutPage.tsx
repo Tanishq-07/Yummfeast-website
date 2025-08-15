@@ -18,7 +18,7 @@ export default function AboutPage() {
         </div>
         <div className="relative inset-0 bg-black/10"></div>
         <motion.div
-          className="absolute top-8 left-6 md:top-12 md:left-28 text-5xl md:text-6xl"
+          className="absolute top-6 left-6 md:top-12 md:left-28 text-5xl md:text-6xl"
           animate={{ rotate: 360 }}
           transition={{
             duration: 20,
@@ -26,21 +26,21 @@ export default function AboutPage() {
             ease: "linear",
           }}
         >
-          🤤
+          <img src="/images/prop1.png" alt="" className="w-20 h-20 md:w-28 md:h-28" />
         </motion.div>
         <motion.div
-          className="absolute top-10 right-6 md:top-20 md:right-28 text-5xl"
+          className="absolute top-8 right-6 md:top-20 md:right-28 text-5xl"
           animate={{ y: [-10, 10, -10] }}
           transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
         >
-          🔥
+          <img src="/images/prop2.png" alt="" className="w-20 h-20" />
         </motion.div>
         <motion.div
-          className="absolute bottom-10 left-20 md:left-1/4 text-4xl"
+          className="absolute bottom-10 left-20 md:left-1/4 text-5xl"
           animate={{ rotate: [-15, 15, -15] }}
           transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY }}
         >
-          🎉
+          🤤
         </motion.div>
         <motion.div
           className="absolute bottom-8 right-20 md:right-1/3 text-5xl"
