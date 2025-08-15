@@ -346,7 +346,7 @@ const { bg, ring, text, shadow } = chipColorMap[selectedChip] || chipColorMap["i
     {
       title: "Yummfeast Takes a Flavourful Leap at Bihar Business Connect 2023",
       image:
-        "https://www.yellowdiamond.in/wp-content/uploads/2024/09/Business-Standard_07.12.16_pg18.jpg",
+        "/images/news/news1.jpg",
       alt: "Indian Consumers",
       date: "2 days ago",
       slug: "indian-taste-preferences",
@@ -354,7 +354,7 @@ const { bg, ring, text, shadow } = chipColorMap[selectedChip] || chipColorMap["i
     {
       title: "Yummfeast Dealers’ Meet 2025: Celebrating Partnerships, Purpose & Progress",
       image:
-        "https://www.yellowdiamond.in/wp-content/uploads/2024/09/ET-Brand-Equity_1st-March2c-Pg-12c4-1.jpg",
+        "/images/news/news2.png",
       alt: "New Flavors",
       date: "2 weeks ago",
       slug: "new-flavors-launch",
@@ -362,7 +362,7 @@ const { bg, ring, text, shadow } = chipColorMap[selectedChip] || chipColorMap["i
     {
       title: "Yummfeast’s Dealership Meet 2022: A Grand Introduction to a Bold New Brand",
       image:
-        "https://www.yellowdiamond.in/wp-content/uploads/2024/08/Business-India-Coverage-July-3-1.jpg",
+        "/images/news/news3.jpg",
       alt: "Taste Test",
       date: "5 days ago",
       slug: "taste-test-results",
@@ -432,7 +432,7 @@ const { bg, ring, text, shadow } = chipColorMap[selectedChip] || chipColorMap["i
     title: "Flavor Fiesta",
     description:
       "Whether you’re vibing with Cream & Onion coolness or diving into a Magic Masala flavor storm — we bring the party to your palate.",
-    image: "/images/flavor-variety1.png",
+    image: "/images/pic2.png",
     color: "from-orange-500 to-red-500",
     bgColor: "bg-gradient-to-br from-orange-50 to-red-50",
   },
@@ -449,7 +449,7 @@ const { bg, ring, text, shadow } = chipColorMap[selectedChip] || chipColorMap["i
     title: "Crispy Craftsmanship",
     description:
       "Crunch meets quality. We whip up our snacks in top-tier facilities with ninja-level quality control — so every pack is a superstar.",
-    image: "/images/quality-production.png",
+    image: "/images/features/quality-production.png",
     color: "from-blue-500 to-indigo-500",
     bgColor: "bg-gradient-to-br from-blue-50 to-indigo-50",
   },
@@ -743,7 +743,7 @@ const prevBanner = () => {
                           <img
                             src={item.image || "/placeholder.svg"}
                             alt={item.alt}
-                            className="w-full h-full object-contain"
+                            className="w-full h-full object-fit"
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                         </div>

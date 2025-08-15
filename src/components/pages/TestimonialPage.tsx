@@ -8,10 +8,10 @@ export default function TestimonialPage() {
   const testimonials = [
     {
       id: 1,
-      name: "Rahul Sharma",
-      role: "Eshita",
+      name: "Eshita",
+      role: "Verified Customer",
       image:
-        "https://media.istockphoto.com/id/1501770003/photo/happy-handsome-young-indian-man-head-shot-front-portrait.jpg?s=612x612&w=0&k=20&c=P2toTbaknymA7vf28IQNa-3xrlUjPXLFqvN2Zra8_nw=",
+        "/images/reviews/rev1.png",
       quote:
         "The All-in-One mix is perfect for parties. Everyone loves the variety. Will definitely keep ordering! It's become a staple at all our family gatherings and everyone always asks where we got it from.",
     },
@@ -20,7 +20,7 @@ export default function TestimonialPage() {
       name: "Bidappa Bolthanda",
       role: "Verified Customer",
       image:
-        "https://media.istockphoto.com/id/2149706485/photo/indian-or-latin-confident-middle-age-male-entrepreneur-businessman-holding-mobile-cell-phone.jpg?s=612x612&w=0&k=20&c=SZNcl4wlrMF9GPwyPOxI3H-pMUDYGsiJ5FCNco3MHMk=",
+        "/images/reviews/rev2.png",
       quote:
         "YummFeast namkeen is my go-to snack! Super crunchy, full of flavor, and always fresh. Perfect for every mood — once you start, you just can’t stop kudos to the Yumm Feast team for making such brilliant snacks!",
     },
@@ -29,7 +29,7 @@ export default function TestimonialPage() {
       name: "Sohini Dutta",
       role: "Verified Customer",
       image:
-        "https://media.istockphoto.com/id/1408199912/photo/close-up-image-of-indian-man-outdoors-on-apartment-balcony-posing-in-front-of-pest-control.jpg?s=612x612&w=0&k=20&c=UDoZDF-F6V9wSljTp0ur3eQFBnXI4F7GW4xR5167N60=",
+        "/images/reviews/rev3.png",
       quote:
         "Yummfeast snacks have made a significant difference in my snacking habits. They're tasty, well-packaged, and satisfy my cravings without feeling too heavy. I've recommended them to all my friends and family.",
     },
@@ -38,7 +38,7 @@ export default function TestimonialPage() {
       name: "Priya Sinha",
       role: "Verified Customer",
       image:
-        "https://media.istockphoto.com/id/1309955330/photo/businessman-talking-on-mobile-phone.jpg?s=612x612&w=0&k=20&c=lKAuvJFF1wN8jUM2STmrnLvQzcYFUpZeHXBBQsFyq3E=",
+        "/images/reviews/rev4.png",
       quote:
         " I've tried many similar snacks from other brands, but none compare to the quality and taste I get from Yummfeast. Their Palak Paneer is the best I've ever had - perfectly spiced and always fresh.",
     },
@@ -47,7 +47,7 @@ export default function TestimonialPage() {
       name: "Saniya Verma",
       role: "Verified Customer",
       image:
-        "https://media.istockphoto.com/id/1406197730/photo/portrait-of-a-young-handsome-indian-man.jpg?s=612x612&w=0&k=20&c=CncNUTbw6mzGsbojks2Vt0kV85N_pQaI3zaSkBQJFTc=",
+        "/images/reviews/rev5.png",
       quote:
         "I’ve been buying Yummfeast products since 2020, and I can confidently say they maintain consistent taste and hygiene. It’s one of the few brands I trust for my family’s snacks.",
     },
@@ -56,7 +56,7 @@ export default function TestimonialPage() {
       name: "Vachan Chopra",
       role: "Verified Customer",
       image:
-        "https://media.istockphoto.com/id/1473470359/photo/senior-man-on-wheelchair-at-park-and-shownig-thumb-up.jpg?s=612x612&w=0&k=20&c=W6JlOuCAQE5rS2AMs7yWc3yKzUWJNx4_Rv0GWme2rn4=",
+        "/images/reviews/rev6.png",
       quote:
         "I love the Chinese Pasta snacks from Yummfeast. They're perfectly seasoned and always fresh. My go-to evening snack with chai! The packaging keeps them fresh for a long time, and the price is very reasonable.",
     },
