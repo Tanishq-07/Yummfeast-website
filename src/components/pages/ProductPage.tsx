@@ -1,15 +1,397 @@
 "use client"
 
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { ChevronUp, PartyPopper, Search, X } from "lucide-react"
-import CustomButton from "@/components/ui/custom-button"
+import { PartyPopper, Search, Filter, X } from "lucide-react"
 import { Input } from "@/components/ui/input"
+import CustomButton from "@/components/ui/custom-button"
 import { Badge } from "@/components/ui/badge"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
-import productData from "@/data/ProductData.json"
+
+const products = [
+  // Chips Category
+  {
+    id: 1,
+    name: "Classic Salted Chips",
+    description:
+      "The timeless and universally loved flavor, offering the pure, crispy taste of perfectly salted potatoes. It's simple, satisfying, and a go-to for traditional chip lovers.",
+    price: "₹5",
+    category: "chips",
+    subcategory: "classic",
+    image: "/images/products/classic.png",
+    comingSoon: false,
+  },
+  {
+    id: 2,
+    name: "Cream & Onion Chips",
+    description:
+      "A popular and creamy flavor combination that blends the mild sweetness of onion with a rich, smooth creaminess, creating a perfectly balanced and savory experience.",
+    price: "₹5",
+    category: "chips",
+    subcategory: "classic",
+    image: "/images/chips2.png",
+    comingSoon: false,
+  },
+  {
+    id: 3,
+    name: "Magic Masala Chips",
+    description:
+      "A vibrant and exciting blend of Indian spices that delivers a tangy, savory, and slightly spicy kick. This flavor is designed to ignite your taste buds with every crunchy bite.",
+    price: "₹5",
+    category: "chips",
+    subcategory: "classic",
+    image: "/images/chips3.png",
+    comingSoon: false,
+  },
+  {
+    id: 4,
+    name: "Tangy Tomato Chips",
+    description:
+      "Bursting with the zesty and sweet-sour taste of ripe tomatoes, this flavor offers a delightful tang that's both refreshing and addictive.",
+    price: "₹5",
+    category: "chips",
+    subcategory: "classic",
+    image: "/images/chips4.png",
+    comingSoon: false,
+  },
+  {
+    id: 5,
+    name: "Cream & Onion Chips (₹10)",
+    description:
+      "A popular and creamy flavor combination that blends the mild sweetness of onion with a rich, smooth creaminess, creating a perfectly balanced and savory experience.",
+    price: "₹10",
+    category: "chips",
+    subcategory: "classic",
+    image: "/images/chips5.png",
+    comingSoon: false,
+  },
+
+  // Extruded Snacks Category
+  {
+    id: 6,
+    name: "Rings",
+    description:
+      "These are fun, ring-shaped snacks with a zesty and tangy tomato flavor. They offer a delightful crunch and are designed to be an enjoyable treat for all ages. Each pack also comes with a FREE GIFT INSIDE, adding an element of surprise and excitement.",
+    price: "₹5",
+    category: "fryums",
+    subcategory: "rings",
+    image: "/images/rings.png",
+    comingSoon: false,
+  },
+
+  // Snacks Category
+  {
+    id: 7,
+    name: "Pani Puri",
+    description:
+      'This snack offers the exciting and spicy taste of "Bambaiya Style" Pani Puri in a crunchy, ready-to-eat format. It\'s designed to bring the vibrant street food experience to a convenient packet. As an added bonus, each pack includes a FREE JUMPING BALL INSIDE, making it a fun treat for kids.',
+    price: "₹5",
+    category: "namkeen",
+    subcategory: "traditional",
+    image: "/images/panipuri.png",
+    comingSoon: false,
+  },
+  {
+    id: 8,
+    name: "Katori (Tangy Tomato)",
+    description:
+      "These are delightful, crispy, katori-shaped snacks bursting with a tangy tomato flavor. They offer a unique and fun munching experience, perfect for a quick and flavorful treat.",
+    price: "₹5",
+    category: "fryums",
+    subcategory: "corn",
+    image: "/images/katori1.png",
+    comingSoon: false,
+  },
+  {
+    id: 9,
+    name: "Katori (Masala Munch)",
+    description:
+      'These are delightful, crispy, katori-shaped snacks with a savory "Masala Munch" flavor. They offer a unique and fun munching experience, perfect for a quick and flavorful treat. The vibrant green packaging makes it easily recognizable.',
+    price: "₹5",
+    category: "fryums",
+    subcategory: "corn",
+    image: "/images/katori2.png",
+    comingSoon: false,
+  },
+  {
+    id: 10,
+    name: "Timer",
+    description:
+      'This is a fun snack designed to appeal to kids, featuring a playful "Timer" theme. The snack itself appears to be a crunchy, savory bite. A key highlight is the FREE Watch Inside each pack, adding an exciting surprise element for young consumers.',
+    price: "₹5",
+    category: "fryums",
+    subcategory: "wheat",
+    image: "/images/timer.png",
+    comingSoon: false,
+  },
+  {
+    id: 11,
+    name: "Spring Roll",
+    description:
+      'This is a snack featuring a unique "Spring Roll" shape and a "Wow! Masala" flavor. It\'s designed to bring an exciting and tasty crunch to your snack time.',
+    price: "₹5",
+    category: "fryums",
+    subcategory: "wheat",
+    image: "/images/springroll.png",
+    comingSoon: false,
+  },
+  {
+    id: 12,
+    name: "Palak Paneer",
+    description:
+      'This snack offers a unique "Crunchy Taste" with the distinct flavor of Palak Paneer. It\'s a savory snack that brings a popular Indian dish into a convenient, ready-to-eat form.',
+    price: "₹5",
+    category: "fryums",
+    subcategory: "wheat",
+    image: "/images/palakpaneer.png",
+    comingSoon: false,
+  },
+  {
+    id: 13,
+    name: "Golu Molu",
+    description:
+      'This snack features a "tasty Masala" flavor and comes in a fun, cylindrical shape, appealing to those who enjoy a savory and crunchy bite. The packaging is a vibrant blue, making it easily noticeable.',
+    price: "₹5",
+    category: "fryums",
+    subcategory: "corn",
+    image: "/images/golumolu.png",
+    comingSoon: false,
+  },
+  {
+    id: 14,
+    name: "Noodles",
+    description:
+      'These noodles are there to help you "Crunch your worries away!" They offer a quick and tasty meal or snack option, likely with a savory flavor profile. The packaging features a cheerful child enjoying noodles, emphasizing their appeal to a younger audience or for a joyful meal.',
+    price: "₹5",
+    category: "fryums",
+    subcategory: "wheat",
+    image: "/images/noodles.png",
+    comingSoon: false,
+  },
+  {
+    id: 15,
+    name: "Chinese Pasta",
+    description:
+      'This snack offers "Instant Happiness" with its unique Chinese pasta shape and flavor. It\'s a crunchy, savory treat designed to bring a fun twist to snack time. Each pack also includes FREE TOMATO KETCHUP INSIDE, perfect for dipping and enhancing the taste.',
+    price: "₹5",
+    category: "fryums",
+    subcategory: "pasta",
+    image: "/images/products/chinese-pasta.png",
+    comingSoon: false,
+  },
+  {
+    id: 16,
+    name: "Finger",
+    description:
+      'These are "extra delicious" finger-shaped snacks, offering a "Real Taste" that you won\'t want to miss. They are designed for a satisfying crunch and a flavorful experience.',
+    price: "₹5",
+    category: "fryums",
+    subcategory: "corn",
+    image: "/images/finger.png",
+    comingSoon: false,
+  },
+  {
+    id: 17,
+    name: "Karare",
+    description:
+      'These are "the original Party Starter" snacks, featuring a "Magic Masala Twist" flavor. They offer a unique, crunchy texture, making them a fun and flavorful addition to any gathering or as a standalone treat.',
+    price: "₹5",
+    category: "fryums",
+    subcategory: "corn",
+    image: "/images/karare.png",
+    comingSoon: false,
+  },
+  {
+    id: 18,
+    name: "3D Twister",
+    description:
+      'These are "Pizza-Flavoured Crunchy Bites!" that come in a unique 3D shape, adding a fun twist to your snacking experience. Each pack also contains a FREE GIFT INSIDE, making it an exciting treat.',
+    price: "₹5",
+    category: "fryums",
+    subcategory: "corn",
+    image: "/images/products/twister.png",
+    comingSoon: false,
+  },
+
+  // Namkeen Category
+  {
+    id: 19,
+    name: "Bhel Mudhi",
+    description:
+      "This namkeen offers the popular taste of Bhel Mudhi with a delicious masala flavor. It's a crunchy and savory snack, perfect for those who enjoy the classic street food experience in a convenient packet. The packaging features a vibrant design with a street food vendor, emphasizing its authentic appeal.",
+    price: "₹5",
+    category: "namkeen",
+    subcategory: "mix",
+    image: "/images/products/bhel-mudhi.png",
+    comingSoon: false,
+  },
+  {
+    id: 20,
+    name: "All in One",
+    description:
+      'This namkeen mix is described as "Our all time favourite," offering a diverse blend of savory ingredients. It typically includes a variety of crunchy elements like fried lentils, nuts (cashews, peanuts etc.), sev, and other crispy bits, providing a rich and satisfying medley of textures and flavors in every bite.',
+    price: "₹5",
+    category: "namkeen",
+    subcategory: "mix",
+    image: "/images/products/all-in-one.png",
+    comingSoon: false,
+  },
+  {
+    id: 21,
+    name: "Aloo Bhujia",
+    description:
+      'This is "Our all time favourite" savory snack, consisting of crispy, noodle-like strands made from potato and gram flour, seasoned with a delicious blend of spices. It\'s a classic Indian namkeen, perfect for a crunchy treat anytime.',
+    price: "₹5",
+    category: "namkeen",
+    subcategory: "bhujia",
+    image: "/images/products/aloo-bhujia.png",
+    comingSoon: false,
+  },
+  {
+    id: 22,
+    name: "Badam Pakoda",
+    description:
+      'This namkeen is described as "Our all time Favourite," featuring crunchy peanuts coated in a savory, spiced batter. It\'s a popular and delicious snack, perfect for those who enjoy a flavorful and satisfying crunch.',
+    price: "₹5",
+    category: "namkeen",
+    subcategory: "traditional",
+    image: "/images/products/badam-pakoda.png",
+    comingSoon: false,
+  },
+  {
+    id: 23,
+    name: "Chana Jor Garam",
+    description:
+      'This snack offers "Crackling Goodness in Every Bite" with its "Tasty Crunchy Chatpata Chataka" flavor. It\'s a savory and spicy treat made from flattened chickpeas, perfect for those who enjoy a zesty and crunchy snack. The packaging indicates it\'s available in a "Mild Spicy" variant.',
+    price: "₹5",
+    category: "namkeen",
+    subcategory: "traditional",
+    image: "/images/chanajorgaram.png",
+    comingSoon: false,
+  },
+  {
+    id: 24,
+    name: "Moong Dal",
+    description:
+      'This namkeen is described as "Our all time Favourite," featuring crispy and savory fried moong dal (split green gram). It\'s a popular and classic Indian snack, known for its light texture and delicious taste, perfect for a quick munch.',
+    price: "₹5",
+    category: "namkeen",
+    subcategory: "traditional",
+    image: "/images/moongdal.png",
+    comingSoon: false,
+  },
+  {
+    id: 25,
+    name: "Chana Dal",
+    description:
+      'This namkeen is described as "Our all time Favourite," featuring crispy and savory fried chana dal (split chickpeas). It\'s a popular and classic Indian snack, known for its satisfying crunch and delicious taste, perfect for a quick munch.',
+    price: "₹5",
+    category: "namkeen",
+    subcategory: "traditional",
+    image: "/images/products/chana-dal.png",
+    comingSoon: false,
+  },
+  {
+    id: 26,
+    name: "Hara Matar",
+    description:
+      'This namkeen is described as "Our all time Favourite," featuring crispy and savory fried green peas. It\'s a popular and classic Indian snack, known for its distinct taste and satisfying crunch, perfect for a quick munch.',
+    price: "₹5",
+    category: "namkeen",
+    subcategory: "traditional",
+    image: "/images/haramatar.png",
+    comingSoon: false,
+  },
+  {
+    id: 27,
+    name: "Navratan Mixture",
+    description:
+      'This namkeen is hailed as "Our all time Favourite," offering a rich and diverse blend of nine (Navratan) different savory ingredients. It typically includes a variety of crispy elements like fried lentils, nuts, sev, and other flavorful components, providing a satisfying mix of textures and tastes in every bite.',
+    price: "₹5",
+    category: "namkeen",
+    subcategory: "mix",
+    image: "/images/navratanmixture.png",
+    comingSoon: false,
+  },
+  {
+    id: 28,
+    name: "Punjabi Tadka",
+    description:
+      'This namkeen is described as "Our all time Favourite," offering the bold and authentic flavors of Punjabi Tadka. It features crispy, savory strands, perfect for those who enjoy a zesty and flavorful snack with a distinct Indian spice profile.',
+    price: "₹5",
+    category: "namkeen",
+    subcategory: "traditional",
+    image: "/images/punjabitadka.png",
+    comingSoon: false,
+  },
+  {
+    id: 29,
+    name: "Chiwda Fry",
+    description:
+      'This namkeen is a "Crunchy Yum" mixture that will "ask you more." It\'s a savory blend of peanuts and a tangy assortment of cereals, pulses, nuts, oil, and a hint of sugar, creating a balanced and satisfying snack experience.',
+    price: "₹5",
+    category: "namkeen",
+    subcategory: "mix",
+    image: "/images/chiwdafry.png",
+    comingSoon: false,
+  },
+  {
+    id: 30,
+    name: "Gathiya",
+    description:
+      'This namkeen is described as "Our all time Favourite," featuring crispy, savory strands of Gathiya. It\'s a popular and classic Indian snack, known for its distinct texture and delicious taste, perfect for a quick munch.',
+    price: "₹5",
+    category: "namkeen",
+    subcategory: "traditional",
+    image: "/images/gathiya.png",
+    comingSoon: false,
+  },
+  {
+    id: 31,
+    name: "Hing Jeera Chana",
+    description:
+      'This namkeen is described as "Our all time Favourite," featuring roasted or fried chickpeas (chana) seasoned with the aromatic flavors of hing (asafoetida) and jeera (cumin). It\'s a savory, crunchy, and traditional Indian snack known for its distinctive taste.',
+    price: "₹5",
+    category: "namkeen",
+    subcategory: "traditional",
+    image: "/images/hingjeerachana.png",
+    comingSoon: false,
+  },
+  {
+    id: 32,
+    name: "Salted Peanut",
+    description:
+      'This namkeen is described as "Our all time Favourite," featuring perfectly roasted and salted peanuts. It\'s a classic, simple, and satisfying snack, ideal for a quick protein boost or a crunchy munch anytime.',
+    price: "₹5",
+    category: "namkeen",
+    subcategory: "traditional",
+    image: "/images/saltedpeanut.png",
+    comingSoon: false,
+  },
+  {
+    id: 33,
+    name: "Ratlami Sev",
+    description:
+      'This namkeen is described as "Our all time Favourite," offering the authentic and spicy taste of Ratlami Sev. It consists of crispy, thick strands of gram flour noodles, seasoned with a distinct blend of spices, making it a flavorful and crunchy snack.',
+    price: "₹5",
+    category: "namkeen",
+    subcategory: "bhujia",
+    image: "/images/ratlamitev.png",
+    comingSoon: false,
+  },
+  {
+    id: 34,
+    name: "Dalmoth",
+    description:
+      'This namkeen is a rich and savory mix, offering a blend of crunchy ingredients. It\'s a classic Indian snack known for its satisfying texture and flavorful profile, perfect for a hearty munch. The packaging highlights "Quality" as a key attribute.',
+    price: "₹10",
+    category: "namkeen",
+    subcategory: "mix",
+    image: "/images/dalmoth.png",
+    comingSoon: false,
+  },
+]
 
 const categoryStructure = {
   namkeen: {
@@ -34,11 +416,12 @@ const categoryStructure = {
       corn: "Corn Based",
       rice: "Rice Based",
       wheat: "Wheat Based",
+      rings: "Rings",
+      pasta: "Pasta Chips",
     },
   },
 }
 
-const products = productData.products
 interface Product {
   id: number
   name: string
@@ -93,73 +476,6 @@ const ProductCircle = ({
   )
 }
 
-const ProductCard = ({ product, onClick }: { product: Product; onClick: () => void }) => {
-  return (
-    <motion.div
-      className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer group overflow-hidden border border-gray-100"
-      whileHover={{ y: -3, scale: 1.02 }}
-      onClick={onClick}
-    >
-      {/* Image placeholder - smaller */}
-      <div className="aspect-square bg-gradient-to-br from-orange-100 to-red-100 flex items-center justify-center relative overflow-hidden">
-        <div className="w-16 h-16 bg-gradient-to-br from-orange-200 to-red-200 rounded-full flex items-center justify-center">
-          <span className="text-lg font-normal text-orange-600">{product.name.charAt(0)}</span>
-        </div>
-        {/* Price badge */}
-        <div className="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
-          {product.price}
-        </div>
-      </div>
-
-      {/* Product info - minimal */}
-      <div className="p-3">
-        <h3 className="font-semibold text-sm text-gray-800 group-hover:text-red-600 transition-colors line-clamp-2">
-          {product.name}
-        </h3>
-        <div className="mt-2 flex items-center justify-between">
-          <span className="text-xs text-gray-500 capitalize bg-gray-100 px-2 py-1 rounded">{product.category}</span>
-          <span className="text-sm font-normal text-red-600">{product.price}</span>
-        </div>
-      </div>
-    </motion.div>
-  )
-}
-
-const ComingSoonCard = ({ product }: { product: Product }) => {
-  return (
-    <motion.div
-      className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer group overflow-hidden border border-gray-200 relative"
-      whileHover={{ y: -3, scale: 1.02 }}
-    >
-      {/* Coming Soon Badge */}
-      <div className="absolute top-2 left-2 bg-orange-500 text-white px-2 py-1 rounded-full text-xs font-semibold z-10">
-        Coming Soon
-      </div>
-
-      {/* Image placeholder */}
-      <div className="aspect-square bg-gray-100 flex items-center justify-center relative overflow-hidden">
-        <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center">
-          <span className="text-lg font-normal text-gray-600">{product.name.charAt(0)}</span>
-        </div>
-        {/* Price badge */}
-        <div className="absolute top-2 right-2 bg-red-600 text-white px-2 py-1 rounded-full text-xs font-semibold">
-          {product.price}
-        </div>
-      </div>
-
-      {/* Product info */}
-      <div className="p-3">
-        <h3 className="font-semibold text-sm text-gray-700 group-hover:text-red-600 transition-colors line-clamp-2">
-          {product.name}
-        </h3>
-        <div className="mt-2 flex items-center justify-between">
-          <span className="text-xs text-gray-500 capitalize bg-gray-200 px-2 py-1 rounded">{product.category}</span>
-          <span className="text-sm font-normal text-red-600">{product.price}</span>
-        </div>
-      </div>
-    </motion.div>
-  )
-}
 
 export default function ProductPage() {
   const [searchTerm, setSearchTerm] = useState("")
@@ -170,23 +486,11 @@ export default function ProductPage() {
   const heroRef = useRef<HTMLElement>(null)
   const [confetti, setConfetti] = useState(false)
 
-  const categoryProducts = [
-    { name: "Namkeen", image: "/images/chips5.png", price: "₹5" },
-    { name: "Chips", image: "/images/chips2.png", price: "₹5" },
-    { name: "Fryums", image: "/images/chips3.png", price: "₹5" },
-    { name: "All Products", image: "/images/chips4.png", price: "₹5" },
-  ]
-
-  const comingSoonProducts = products.filter((product) => product.comingSoon)
   const currentProducts = products.filter((product) => !product.comingSoon)
 
-  const handleCategoryClick = (categoryName: string) => {
-    if (categoryName === "All Products") {
-      setSelectedCategory("all")
-    } else {
-      setSelectedCategory(categoryName.toLowerCase())
-    }
-    setSelectedSubcategory("all")
+  const handleProductClick = (product: Product) => {
+    setSelectedProduct(product)
+    triggerConfetti()
   }
 
   const getSubcategories = () => {
@@ -360,152 +664,155 @@ export default function ProductPage() {
         </div>
       </section>
 
-      {/* Filters */}
-      <section className="py-8 bg-white">
+      <section className="py-8 bg-gray-50">
         <div className="container mx-auto px-4">
-          <motion.div
-            className="bg-white rounded-2xl shadow-lg p-6 mb-8 border border-gray-100"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <div className="flex flex-col lg:flex-row gap-6">
+          <div className="max-w-4xl mx-auto">
+            <div className="flex flex-col md:flex-row gap-4 items-center justify-between mb-6">
               {/* Search */}
-              <div className="relative flex-1">
-                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+              <div className="relative flex-1 max-w-md">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
                 <Input
-                  placeholder="Search products, descriptions, or tags..."
+                  placeholder="Search products..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-12 h-12 border-gray-200 focus:border-red-500 rounded-lg focus:ring-red-500"
+                  className="pl-10"
                 />
               </div>
 
-              {/* Category Select */}
-              <div className="min-w-[200px]">
-                <Select
-                  value={selectedCategory}
-                  onValueChange={(value) => {
-                    setSelectedCategory(value)
-                    setSelectedSubcategory("all")
-                  }}
-                >
-                  <SelectTrigger className="h-12 border-gray-200 focus:border-red-500 rounded-lg bg-white hover:bg-gray-50 transition-colors">
-                    <SelectValue placeholder="All Categories" />
+              {/* Filters */}
+              <div className="flex gap-3 items-center">
+                <Select value={selectedCategory} onValueChange={setSelectedCategory}>
+                  <SelectTrigger className="w-40">
+                    <SelectValue placeholder="Category" />
                   </SelectTrigger>
-                  <SelectContent className="bg-white border-gray-200 shadow-lg">
-                    <SelectItem value="all" className="hover:bg-red-50 focus:bg-red-50">
-                      All Categories
-                    </SelectItem>
-                    {Object.entries(categoryStructure).map(([key, category]) => (
-                      <SelectItem key={key} value={key} className="hover:bg-red-50 focus:bg-red-50">
-                        {category.label}
-                      </SelectItem>
-                    ))}
+                  <SelectContent>
+                    <SelectItem value="all">All Categories</SelectItem>
+                    <SelectItem value="chips">Chips</SelectItem>
+                    <SelectItem value="namkeen">Namkeen</SelectItem>
+                    <SelectItem value="fryums">Fryums</SelectItem>
                   </SelectContent>
                 </Select>
-              </div>
 
-              {/* Subcategory Select */}
-              <div className="min-w-[200px]">
-                <Select
-                  value={selectedSubcategory}
-                  onValueChange={setSelectedSubcategory}
-                  disabled={selectedCategory === "all"}
-                >
-                  <SelectTrigger
-                    className={`h-12 border-gray-200 focus:border-red-500 rounded-lg bg-white transition-colors ${
-                      selectedCategory === "all" ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-50"
-                    }`}
-                  >
-                    <SelectValue placeholder="All Subcategories" />
-                  </SelectTrigger>
-                  <SelectContent className="bg-white border-gray-200 shadow-lg">
-                    <SelectItem value="all" className="hover:bg-red-50 focus:bg-red-50">
-                      All Subcategories
-                    </SelectItem>
-                    {Object.entries(getSubcategories()).map(([key, label]) => (
-                      <SelectItem key={key} value={key} className="hover:bg-red-50 focus:bg-red-50">
-                        {label as string}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
+                {selectedCategory !== "all" && (
+                  <Select value={selectedSubcategory} onValueChange={setSelectedSubcategory}>
+                    <SelectTrigger className="w-40">
+                      <SelectValue placeholder="Subcategory" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">All Types</SelectItem>
+                      {Object.entries(getSubcategories()).map(([key, label]) => (
+                        <SelectItem key={key} value={key}>
+                          {label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                )}
 
-              {/* Sort Select */}
-              <div className="min-w-[180px]">
                 <Select value={sortBy} onValueChange={setSortBy}>
-                  <SelectTrigger className="h-12 border-gray-200 focus:border-red-500 rounded-lg bg-white hover:bg-gray-50 transition-colors">
-                    <SelectValue placeholder="Name (A-Z)" />
+                  <SelectTrigger className="w-40">
+                    <SelectValue placeholder="Sort by" />
                   </SelectTrigger>
-                  <SelectContent className="bg-white border-gray-200 shadow-lg">
-                    <SelectItem value="name" className="hover:bg-red-50 focus:bg-red-50">
-                      Name (A-Z)
-                    </SelectItem>
-                    <SelectItem value="price-low" className="hover:bg-red-50 focus:bg-red-50">
-                      Price (Low to High)
-                    </SelectItem>
-                    <SelectItem value="price-high" className="hover:bg-red-50 focus:bg-red-50">
-                      Price (High to Low)
-                    </SelectItem>
+                  <SelectContent>
+                    <SelectItem value="name">Name</SelectItem>
+                    <SelectItem value="price-low">Price: Low to High</SelectItem>
+                    <SelectItem value="price-high">Price: High to Low</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
-
-              {/* Clear Filters */}
-              {activeFiltersCount > 0 && (
-                <Button
-                  variant="outline"
-                  onClick={clearFilters}
-                  className="h-12 px-6 border-red-500 text-red-500 hover:bg-red-500 hover:text-white rounded-lg transition-all duration-300 bg-transparent"
-                >
-                  <X className="h-4 w-4 mr-2" />
-                  Clear ({activeFiltersCount})
-                </Button>
-              )}
             </div>
 
-            {/* Active Filters Display */}
+            {/* Active Filters */}
             {activeFiltersCount > 0 && (
-              <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-gray-100">
+              <div className="flex items-center gap-2 mb-4">
+                <Filter className="w-4 h-4 text-gray-500" />
+                <span className="text-sm text-gray-600">Active filters:</span>
                 {selectedCategory !== "all" && (
-                  <Badge className="bg-red-50 text-red-600 border-red-200 hover:bg-red-100">
-                    {categoryStructure[selectedCategory as keyof typeof categoryStructure]?.label}
+                  <Badge variant="secondary" className="capitalize">
+                    {selectedCategory}
                   </Badge>
                 )}
                 {selectedSubcategory !== "all" && (
-                  <Badge className="bg-orange-50 text-orange-600 border-orange-200 hover:bg-orange-100">
-                    {getSubcategories()[selectedSubcategory] as string}
+                  <Badge variant="secondary" className="capitalize">
+                    {getSubcategories()[selectedSubcategory]}
                   </Badge>
                 )}
-                {searchTerm && (
-                  <Badge className="bg-yellow-50 text-yellow-600 border-yellow-200 hover:bg-yellow-100">
-                    Search: "{searchTerm}"
-                  </Badge>
-                )}
+                {searchTerm && <Badge variant="secondary">Search: {searchTerm}</Badge>}
+                <Button variant="ghost" size="sm" onClick={clearFilters} className="text-red-600 hover:text-red-700">
+                  <X className="w-3 h-3 mr-1" />
+                  Clear all
+                </Button>
               </div>
             )}
-          </motion.div>
+
+            <div className="text-sm text-gray-600">
+              Showing {filteredAndSortedProducts().length} of {currentProducts.length} products
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Categories Section - unchanged except for click functionality */}
-      <section className="py-16 relative bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-16 justify-items-center">
-            {categoryProducts.map((product, index) => (
+      <section
+        className="py-16 relative"
+        style={{
+          backgroundImage: "url('/images/white-bg.jpg')",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          opacity: 1,
+        }}
+      >
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center mb-16">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true, margin: "-100px" }}
+            >
+              <Badge variant="outline" className="mb-4 px-4 py-1 text-sm bg-red-50 border-red-200">
+                <motion.span
+                  animate={{ scale: [1, 1.2, 1] }}
+                  transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
+                >
+                  🔥
+                </motion.span>
+                TASTY TREATS
+              </Badge>
+              <h2 className="text-3xl md:text-4xl font-normal mb-4 bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-red-500">
+                Our Delicious Range Of Products
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Discover our most popular snacks that customers love. Quality and taste guaranteed in every bite!
+              </p>
+            </motion.div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 max-w-7xl mx-auto">
+            {filteredAndSortedProducts().map((product, index) => (
               <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 50 }}
+                key={product.id}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <ProductCircle product={product} index={index} onClick={() => handleCategoryClick(product.name)} />
+                <ProductCircle product={product} index={index} onClick={() => handleProductClick(product)} />
               </motion.div>
             ))}
           </div>
+
+          {/* No products found message */}
+          {filteredAndSortedProducts().length === 0 && (
+            <div className="text-center py-16">
+              <div className="text-6xl mb-4">🔍</div>
+              <h3 className="text-xl font-semibold text-gray-700 mb-2">No products found</h3>
+              <p className="text-gray-500 mb-4">Try adjusting your search or filter criteria</p>
+              <Button onClick={clearFilters} variant="outline">
+                Clear all filters
+              </Button>
+            </div>
+          )}
         </div>
       </section>
 
