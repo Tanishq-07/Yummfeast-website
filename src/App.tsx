@@ -12,7 +12,6 @@ import ProductPage from "./components/pages/ProductPage";
 import TestimonialPage from "./components/pages/TestimonialPage";
 import InfraPage from "./components/pages/InfraPage";
 import GalleryPage from "./components/pages/GalleryPage";
-import FeedbackPage from "./components/pages/FeedbackPage";
 import QueryPage from "./components/pages/QueryPage";
 import BlogsPage from "./components/pages/BlogsPage";
 import CareerPage from "./components/pages/CareerPage";

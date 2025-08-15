@@ -26,7 +26,6 @@ export default function NavLinks({ navigateTo, currentPage }: NavLinksProps) {
   const secondaryLinks = [
     { name: "Infra", key: "infra" },
     { name: "Gallery", key: "gallery" },
-    { name: "Feedback", key: "feedback" },
     { name: "Blogs", key: "blogs" },
     { name: "Careers", key: "career" },
   ]

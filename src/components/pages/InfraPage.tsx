@@ -6,7 +6,7 @@ export default function InfraPage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative overflow-hidden  bg-red-600 py-16">
+      <section className="text-muted-foreground relative overflow-hidden  bg-red-600 py-16">
         <div className="absolute inset-0 overflow-hidden">
           <motion.div
             className="w-[120%] h-[120%] bg-[url('/images/pattern.svg')] opacity-10"
@@ -82,7 +82,7 @@ export default function InfraPage() {
       </section>
 
       {/* Facilities Section */}
-      <section className="font-sans py-16">
+      <section className="text-muted-foreground  py-16">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -138,7 +138,7 @@ export default function InfraPage() {
       </section>
 
       {/* Technology Section */}
-      <section className="font-sans relative overflow-hidden  bg-red-600 py-16">
+      <section className="text-muted-foreground  relative overflow-hidden  bg-red-600 py-16">
         <div className="absolute inset-0 overflow-hidden">
           <motion.div
             className="w-[120%] h-[120%] bg-[url('/images/pattern.svg')] opacity-10"
@@ -186,12 +186,12 @@ export default function InfraPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-white p-8 rounded-lg shadow-sm"
+                className="bg-red-500 backdrop-blur-lg p-8 rounded-lg shadow-lg border-1 border-white z-10"
               >
-                <h3 className="font-normal text-xl mb-3 text-red-500">
+                <h3 className="font-normal text-white text-xl mb-3 text-red-500">
                   {tech.title}
                 </h3>
-                <p className="">{tech.description}</p>
+                <p className="text-white">{tech.description}</p>
               </motion.div>
             ))}
           </div>
@@ -199,7 +199,7 @@ export default function InfraPage() {
       </section>
 
       {/* Distribution Network */}
-      <section className="font-sans py-16">
+      <section className="text-muted-foreground  py-16">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <motion.div

@@ -1,13 +1,13 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { ChevronDown, ChevronUp, MapPin, Clock, Users } from "lucide-react"
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { ChevronDown, ChevronUp, MapPin, Clock, Users } from "lucide-react";
 
 export default function CareerPage() {
-  const [expandedJob, setExpandedJob] = useState<number | null>(null)
+  const [expandedJob, setExpandedJob] = useState<number | null>(null);
 
   const jobOpenings = [
     {
@@ -16,7 +16,8 @@ export default function CareerPage() {
       location: "Gorakhpur, Uttar Pradesh (Field-based)",
       type: "Full-Time",
       department: "Sales",
-      shortDescription: "Lead and scale Yummfeast's sales and distribution operations in the Gorakhpur region.",
+      shortDescription:
+        "Lead and scale Yummfeast's sales and distribution operations in the Gorakhpur region.",
       about:
         "Yummfeast is a rapidly growing packaged snacks brand bringing delicious, affordable, and high-quality snacks to consumers across India. As we expand our national footprint, we are looking for dynamic professionals who thrive in fast-paced environments and are excited to grow with us.",
       roleOverview:
@@ -56,7 +57,8 @@ export default function CareerPage() {
       location: "Bihar (Field-based, extensive intra-state travel)",
       type: "Full-Time",
       department: "Sales",
-      shortDescription: "Execute end-to-end retail strategy across Bihar state and lead high-performing sales teams.",
+      shortDescription:
+        "Execute end-to-end retail strategy across Bihar state and lead high-performing sales teams.",
       about:
         "Yummfeast is an innovative and fast-scaling brand in India's packaged snacks industry, focused on combining authentic flavours with modern convenience. We're expanding rapidly and looking for leaders who can accelerate our growth across various regions.",
       roleOverview:
@@ -96,7 +98,8 @@ export default function CareerPage() {
       location: "Darbhanga, Bihar (Office-based)",
       type: "Full-Time",
       department: "Customer Service",
-      shortDescription: "Handle customer queries and provide exceptional service via toll-free helpline.",
+      shortDescription:
+        "Handle customer queries and provide exceptional service via toll-free helpline.",
       about:
         "Yummfeast is one of India's fastest-growing snack brands, known for quality, taste, and a strong customer focus. We are currently looking for a personable and dedicated Female Customer Service Executive to join our Darbhanga office and handle inbound calls via our toll-free helpline.",
       roleOverview:
@@ -128,85 +131,90 @@ export default function CareerPage() {
         "Career development opportunities within a rapidly growing FMCG company.",
       ],
     },
-  ]
+  ];
 
   const toggleJobExpansion = (jobId: number) => {
-    setExpandedJob(expandedJob === jobId ? null : jobId)
-  }
+    setExpandedJob(expandedJob === jobId ? null : jobId);
+  };
 
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative overflow-hidden  bg-red-600 py-16">
-        <div className="absolute inset-0 overflow-hidden">
-                  <motion.div
-                    className="w-[120%] h-[120%] bg-[url('/images/pattern.svg')] opacity-10"
-                    animate={{ x: [-20, 0], y: [-20, 0] }}
-                    transition={{
-                      duration: 60,
-                      repeat: Number.POSITIVE_INFINITY,
-                      repeatType: "reverse",
-                    }}
-                  />
-                </div>
-        <div className="absolute inset-0 bg-black/10"></div>
-        <motion.div
-          className="absolute top-8 left-6 md:top-12 md:left-28 text-5xl md:text-6xl"
-          animate={{ rotate: 360 }}
-          transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-        >
-          🤤
-        </motion.div>
-        <motion.div
-          className="absolute top-10 right-6 md:top-20 md:right-28 text-5xl"
-          animate={{ y: [-10, 10, -10] }}
-          transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
-        >
-          🔥
-        </motion.div>
-        <motion.div
-          className="absolute bottom-10 left-20 md:left-1/4 text-4xl"
-          animate={{ rotate: [-15, 15, -15] }}
-          transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY }}
-        >
-          🎉
-        </motion.div>
-        <motion.div
-          className="absolute bottom-8 right-20 md:right-1/3 text-5xl"
-          animate={{ scale: [1, 1.2, 1] }}
-          transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
-        >
-          😋
-        </motion.div>
 
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center text-white">
-            <motion.h1
-              className="text-5xl md:text-7xl font-normal mb-6 bg-gradient-to-r from-yellow-200 to-orange-200 bg-clip-text text-transparent"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              Career Opportunities
-            </motion.h1>
-            <motion.p
-              className="text-xl md:text-2xl mb-8 text-orange-100"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              Join our team and be part of our mission to deliver exceptional snacks and services! 👬
-            </motion.p>
-            <motion.div
-              className="flex justify-center gap-4 text-3xl"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-            </motion.div>
-          </div>
-        </div>
-      </section>  
+      <section className="relative overflow-hidden  bg-red-600 py-16">
+              <div className="absolute inset-0 overflow-hidden">
+                <motion.div
+                  className="w-[120%] h-[120%] bg-[url('/images/pattern.svg')] opacity-10"
+                  animate={{ x: [-20, 0], y: [-20, 0] }}
+                  transition={{
+                    duration: 60,
+                    repeat: Number.POSITIVE_INFINITY,
+                    repeatType: "reverse",
+                  }}
+                />
+              </div>
+              <div className="relative inset-0 bg-black/10"></div>
+              <motion.div
+                className="absolute top-6 left-6 md:top-12 md:left-28 text-5xl md:text-6xl"
+                animate={{ rotate: 360 }}
+                transition={{
+                  duration: 20,
+                  repeat: Number.POSITIVE_INFINITY,
+                  ease: "linear",
+                }}
+              >
+                <img src="/images/prop1.png" alt="" className="w-20 h-20 md:w-28 md:h-28" />
+              </motion.div>
+              <motion.div
+                className="absolute top-8 right-6 md:top-20 md:right-28 text-5xl"
+                animate={{ y: [-10, 10, -10] }}
+                transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
+              >
+                <img src="/images/prop2.png" alt="" className="w-20 h-20" />
+              </motion.div>
+              <motion.div
+                className="absolute bottom-10 left-20 md:left-1/4 text-5xl"
+                animate={{ rotate: [-15, 15, -15] }}
+                transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY }}
+              >
+                <img src="/images/prop3.png" alt="" className="w-12 h-12"/>
+              </motion.div>
+              <motion.div
+                className="absolute bottom-8 right-20 md:right-1/3 text-5xl"
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
+              >
+                <img src="/images/prop4.png" alt="" className="w-12 h-12"/>
+              </motion.div>
+      
+              <div className="container mx-auto px-4 relative z-10">
+                <div className="max-w-4xl mx-auto text-center text-white">
+                  <motion.h1
+                    className="text-5xl md:text-7xl font-normal mb-6 bg-gradient-to-r from-yellow-200 to-orange-200 bg-clip-text text-transparent"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                  >
+                    Career Opportunities
+                  </motion.h1>
+                  <motion.p
+                    className="text-xl md:text-2xl mb-8 text-orange-100"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                  >
+                    Join our team and be part of our mission to deliver exceptional
+              snacks and services! 👬
+                  </motion.p>
+                  <motion.div
+                    className="flex justify-center gap-4 text-3xl"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.8, delay: 0.4 }}
+                  ></motion.div>
+                </div>
+              </div>
+            </section>
 
       {/* Why Join Us */}
       <section className="py-16">
@@ -218,19 +226,23 @@ export default function CareerPage() {
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-3xl font-normal mb-6 text-gray-900">Why Join Our Team?</h2>
+              <h2 className="text-3xl font-normal mb-6 text-gray-900">
+                Why Join Our Team?
+              </h2>
               <p className="text-muted-foreground mb-4 font-normal">
-                At Yummfeast, we believe that our team is the backbone of our success. We're looking for passionate,
-                driven individuals who are excited about our products and eager to help customers find the right
-                solutions for their needs.
+                At Yummfeast, we believe that our team is the backbone of our
+                success. We're looking for passionate, driven individuals who
+                are excited about our products and eager to help customers find
+                the right solutions for their needs.
               </p>
               <p className="text-muted-foreground mb-4 font-normal">
-                As a member of our team, you'll have the opportunity to grow professionally, earn competitive
-                compensation, and work in a supportive, collaborative environment.
+                As a member of our team, you'll have the opportunity to grow
+                professionally, earn competitive compensation, and work in a
+                supportive, collaborative environment.
               </p>
               <p className="text-muted-foreground font-normal">
-                We invest in our team members through comprehensive training, mentorship programs, and clear paths for
-                advancement.
+                We invest in our team members through comprehensive training,
+                mentorship programs, and clear paths for advancement.
               </p>
             </motion.div>
             <motion.div
@@ -251,12 +263,41 @@ export default function CareerPage() {
       </section>
 
       {/* Benefits */}
-      <section className="py-16 bg-blue-50">
+      <section className="py-16 bg-red-600 relative">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <motion.div
+            className="w-[120%] h-[120%] bg-[url('/images/pattern.svg')] opacity-10"
+            animate={{ x: [-20, 0], y: [-20, 0] }}
+            transition={{
+              duration: 60,
+              repeat: Number.POSITIVE_INFINITY,
+              repeatType: "reverse",
+            }}
+          />
+        </div>
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-normal mb-4 text-gray-900">Benefits & Perks</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto font-normal">
-              We take care of our team so they can focus on taking care of our customers.
+            <h2 className="text-4xl font-normal mb-6 relative text-white inline-block">
+              Benefits & Perks
+              {/* Handwritten underline effect */}
+              <svg
+                className="absolute -bottom-2 left-0 w-full"
+                height="10"
+                viewBox="0 0 100 10"
+                preserveAspectRatio="none"
+              >
+                <path
+                  d="M0,5 C20,0 40,10 60,5 S80,0 100,5"
+                  stroke="#FF6B6B"
+                  strokeWidth="3"
+                  fill="none"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </h2>
+            <p className="text-white max-w-2xl mx-auto font-normal">
+              We take care of our team so they can focus on taking care of our
+              customers.
             </p>
           </div>
 
@@ -264,27 +305,33 @@ export default function CareerPage() {
             {[
               {
                 title: "Competitive Compensation",
-                description: "Base salary plus commission structure that rewards performance and achievement.",
+                description:
+                  "Base salary plus commission structure that rewards performance and achievement.",
               },
               {
                 title: "Professional Development",
-                description: "Ongoing training, education stipends, and opportunities to attend industry conferences.",
+                description:
+                  "Ongoing training, education stipends, and opportunities to attend industry conferences.",
               },
               {
                 title: "Work-Life Balance",
-                description: "Flexible scheduling options, paid time off, and company-sponsored wellness programs.",
+                description:
+                  "Flexible scheduling options, paid time off, and company-sponsored wellness programs.",
               },
               {
                 title: "Health Benefits",
-                description: "Comprehensive health, dental, and vision insurance for you and your dependents.",
+                description:
+                  "Comprehensive health, dental, and vision insurance for you and your dependents.",
               },
               {
                 title: "Retirement Planning",
-                description: "Matching program to help you save for your future.",
+                description:
+                  "Matching program to help you save for your future.",
               },
               {
                 title: "Career Advancement",
-                description: "Clear paths for growth and promotion based on performance and dedication.",
+                description:
+                  "Clear paths for growth and promotion based on performance and dedication.",
               },
             ].map((benefit, index) => (
               <motion.div
@@ -293,10 +340,12 @@ export default function CareerPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-white p-8 rounded-lg shadow-sm border-l-4 border-red-500"
+                className="bg-red-500 backdrop-blur-lg p-8 rounded-lg shadow-lg border-1 border-white z-10"
               >
-                <h3 className="font-normal text-xl mb-3 text-gray-900">{benefit.title}</h3>
-                <p className="text-muted-foreground font-normal">{benefit.description}</p>
+                <h3 className="font-normal text-white text-xl mb-3 text-gray-900">
+                  {benefit.title}
+                </h3>
+                <p className="text-white font-normal">{benefit.description}</p>
               </motion.div>
             ))}
           </div>
@@ -307,9 +356,12 @@ export default function CareerPage() {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-normal mb-4 text-gray-900">Current Openings</h2>
+            <h2 className="text-3xl font-normal mb-4 text-gray-900">
+              Current Openings
+            </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto font-normal">
-              Explore our available positions and find the right fit for your skills and career goals.
+              Explore our available positions and find the right fit for your
+              skills and career goals.
             </p>
           </div>
 
@@ -333,22 +385,32 @@ export default function CareerPage() {
                         <div className="flex-1">
                           <div className="flex items-start justify-between gap-4">
                             <div className="flex-1">
-                              <h3 className="font-normal text-xl mb-2 pr-4 text-gray-900">{job.title}</h3>
+                              <h3 className="font-normal text-xl mb-2 pr-4 text-gray-900">
+                                {job.title}
+                              </h3>
                               <div className="flex flex-wrap gap-4 text-sm text-muted-foreground mb-3">
                                 <div className="flex items-center gap-1">
                                   <MapPin className="w-4 h-4 text-blue-500" />
-                                  <span className="font-normal">{job.location}</span>
+                                  <span className="font-normal">
+                                    {job.location}
+                                  </span>
                                 </div>
                                 <div className="flex items-center gap-1">
                                   <Clock className="w-4 h-4 text-blue-500" />
-                                  <span className="font-normal">{job.type}</span>
+                                  <span className="font-normal">
+                                    {job.type}
+                                  </span>
                                 </div>
                                 <div className="flex items-center gap-1">
                                   <Users className="w-4 h-4 text-blue-500" />
-                                  <span className="font-normal">{job.department}</span>
+                                  <span className="font-normal">
+                                    {job.department}
+                                  </span>
                                 </div>
                               </div>
-                              <p className="text-muted-foreground font-normal">{job.shortDescription}</p>
+                              <p className="text-muted-foreground font-normal">
+                                {job.shortDescription}
+                              </p>
                             </div>
                             <div className="flex items-center gap-2 flex-shrink-0">
                               {expandedJob === job.id ? (
@@ -379,7 +441,9 @@ export default function CareerPage() {
                                 <h4 className="font-normal text-lg mb-3 text-gray-900 border-l-2 border-red-500 pl-3">
                                   About Yummfeast
                                 </h4>
-                                <p className="text-muted-foreground leading-relaxed font-normal">{job.about}</p>
+                                <p className="text-muted-foreground leading-relaxed font-normal">
+                                  {job.about}
+                                </p>
                               </div>
 
                               {/* Role Overview */}
@@ -387,7 +451,9 @@ export default function CareerPage() {
                                 <h4 className="font-normal text-lg mb-3 text-gray-900 border-l-2 border-red-500 pl-3">
                                   Role Overview
                                 </h4>
-                                <p className="text-muted-foreground leading-relaxed font-normal">{job.roleOverview}</p>
+                                <p className="text-muted-foreground leading-relaxed font-normal">
+                                  {job.roleOverview}
+                                </p>
                               </div>
 
                               {/* Key Responsibilities */}
@@ -396,12 +462,19 @@ export default function CareerPage() {
                                   Key Responsibilities
                                 </h4>
                                 <ul className="space-y-2">
-                                  {job.responsibilities.map((responsibility, idx) => (
-                                    <li key={idx} className="flex items-start gap-2 text-muted-foreground">
-                                      <span className="w-1.5 h-1.5 bg-red-500 rounded-full mt-2 flex-shrink-0" />
-                                      <span className="leading-relaxed font-normal">{responsibility}</span>
-                                    </li>
-                                  ))}
+                                  {job.responsibilities.map(
+                                    (responsibility, idx) => (
+                                      <li
+                                        key={idx}
+                                        className="flex items-start gap-2 text-muted-foreground"
+                                      >
+                                        <span className="w-1.5 h-1.5 bg-red-500 rounded-full mt-2 flex-shrink-0" />
+                                        <span className="leading-relaxed font-normal">
+                                          {responsibility}
+                                        </span>
+                                      </li>
+                                    )
+                                  )}
                                 </ul>
                               </div>
 
@@ -411,12 +484,19 @@ export default function CareerPage() {
                                   Qualifications & Experience
                                 </h4>
                                 <ul className="space-y-2">
-                                  {job.qualifications.map((qualification, idx) => (
-                                    <li key={idx} className="flex items-start gap-2 text-muted-foreground">
-                                      <span className="w-1.5 h-1.5 bg-red-500 rounded-full mt-2 flex-shrink-0" />
-                                      <span className="leading-relaxed font-normal">{qualification}</span>
-                                    </li>
-                                  ))}
+                                  {job.qualifications.map(
+                                    (qualification, idx) => (
+                                      <li
+                                        key={idx}
+                                        className="flex items-start gap-2 text-muted-foreground"
+                                      >
+                                        <span className="w-1.5 h-1.5 bg-red-500 rounded-full mt-2 flex-shrink-0" />
+                                        <span className="leading-relaxed font-normal">
+                                          {qualification}
+                                        </span>
+                                      </li>
+                                    )
+                                  )}
                                 </ul>
                               </div>
 
@@ -427,9 +507,14 @@ export default function CareerPage() {
                                 </h4>
                                 <ul className="space-y-2">
                                   {job.skills.map((skill, idx) => (
-                                    <li key={idx} className="flex items-start gap-2 text-muted-foreground">
+                                    <li
+                                      key={idx}
+                                      className="flex items-start gap-2 text-muted-foreground"
+                                    >
                                       <span className="w-1.5 h-1.5 bg-red-500 rounded-full mt-2 flex-shrink-0" />
-                                      <span className="leading-relaxed font-normal">{skill}</span>
+                                      <span className="leading-relaxed font-normal">
+                                        {skill}
+                                      </span>
                                     </li>
                                   ))}
                                 </ul>
@@ -442,9 +527,14 @@ export default function CareerPage() {
                                 </h4>
                                 <ul className="space-y-2">
                                   {job.benefits.map((benefit, idx) => (
-                                    <li key={idx} className="flex items-start gap-2 text-muted-foreground">
+                                    <li
+                                      key={idx}
+                                      className="flex items-start gap-2 text-muted-foreground"
+                                    >
                                       <span className="w-1.5 h-1.5 bg-red-500 rounded-full mt-2 flex-shrink-0" />
-                                      <span className="leading-relaxed font-normal">{benefit}</span>
+                                      <span className="leading-relaxed font-normal">
+                                        {benefit}
+                                      </span>
                                     </li>
                                   ))}
                                 </ul>
@@ -458,14 +548,15 @@ export default function CareerPage() {
                                   onClick={() =>
                                     window.open(
                                       `mailto:careers@yummfeast.com?subject=Application for ${job.title}&body=Dear Hiring Team,%0D%0A%0D%0AI am interested in applying for the ${job.title} position. Please find my resume attached.%0D%0A%0D%0ABest regards`,
-                                      "_blank",
+                                      "_blank"
                                     )
                                   }
                                 >
                                   Apply for this Position
                                 </Button>
                                 <p className="text-sm text-muted-foreground mt-2 font-normal">
-                                  Click to send your application via email with your resume attached.
+                                  Click to send your application via email with
+                                  your resume attached.
                                 </p>
                               </div>
                             </div>
@@ -482,34 +573,56 @@ export default function CareerPage() {
       </section>
 
       {/* Application Process */}
-      <section className="py-16 bg-blue-50">
+      <section className="py-16 bg-red-600 relative">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <motion.div
+            className="w-[120%] h-[120%] bg-[url('/images/pattern.svg')] opacity-10"
+            animate={{ x: [-20, 0], y: [-20, 0] }}
+            transition={{
+              duration: 60,
+              repeat: Number.POSITIVE_INFINITY,
+              repeatType: "reverse",
+            }}
+          />
+        </div>
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-normal mb-4 text-gray-900">Our Application Process</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto font-normal">
-              Here's what to expect when you apply for a position with Yummfeast.
+            <h2 className="text-3xl font-normal mb-4 text-white">
+              Our Application Process
+            </h2>
+            <p className="text-white max-w-2xl mx-auto font-normal">
+              Here's what to expect when you apply for a position with
+              Yummfeast.
             </p>
           </div>
 
           <div className="max-w-3xl mx-auto">
             <div className="relative">
               {[
-                { title: "Application Review", description: "Our hiring team reviews your application and resume." },
+                {
+                  title: "Application Review",
+                  description:
+                    "Our hiring team reviews your application and resume.",
+                },
                 {
                   title: "Initial Interview",
-                  description: "A phone or video call to discuss your experience and interest in the role.",
+                  description:
+                    "A phone or video call to discuss your experience and interest in the role.",
                 },
                 {
                   title: "Skills Assessment",
-                  description: "Depending on the position, you may be asked to complete a skills assessment.",
+                  description:
+                    "Depending on the position, you may be asked to complete a skills assessment.",
                 },
                 {
                   title: "Team Interview",
-                  description: "Meet with potential team members and managers to ensure a good fit.",
+                  description:
+                    "Meet with potential team members and managers to ensure a good fit.",
                 },
                 {
                   title: "Offer & Onboarding",
-                  description: "If selected, you'll receive an offer and begin our comprehensive onboarding process.",
+                  description:
+                    "If selected, you'll receive an offer and begin our comprehensive onboarding process.",
                 },
               ].map((step, index) => (
                 <motion.div
@@ -520,13 +633,19 @@ export default function CareerPage() {
                   viewport={{ once: true }}
                   className="relative pl-10 pb-10"
                 >
-                  {index < 4 && <div className="absolute left-4 top-4 bottom-0 w-px bg-blue-300" />}
-                  <div className="absolute left-0 top-1 w-8 h-8 rounded-full bg-red-500 text-white flex items-center justify-center font-normal">
+                  {index < 4 && (
+                    <div className="absolute left-4 top-4 bottom-0 w-px bg-blue-300" />
+                  )}
+                  <div className="absolute left-0 top-1 w-8 h-8 rounded-full bg-white text-red-500 flex items-center justify-center font-normal">
                     {index + 1}
                   </div>
                   <div>
-                    <h3 className="font-normal text-xl mb-2 text-gray-900">{step.title}</h3>
-                    <p className="text-muted-foreground font-normal">{step.description}</p>
+                    <h3 className="ms-4 font-normal text-xl mb-2 text-white">
+                      {step.title}
+                    </h3>
+                    <p className="ms-4 text-white font-normal">
+                      {step.description}
+                    </p>
                   </div>
                 </motion.div>
               ))}
@@ -535,5 +654,5 @@ export default function CareerPage() {
         </div>
       </section>
     </div>
-  )
+  );
 }

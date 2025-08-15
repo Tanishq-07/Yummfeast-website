@@ -1,8 +1,13 @@
-"use client"
-
-import { motion } from "framer-motion"
-import { Star } from "lucide-react"
-import { Card, CardContent } from "@/components/ui/card"
+"use client";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Star } from "lucide-react";
+// import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
+import { motion } from "framer-motion";
 
 export default function TestimonialPage() {
   const testimonials = [
@@ -10,8 +15,7 @@ export default function TestimonialPage() {
       id: 1,
       name: "Eshita",
       role: "Verified Customer",
-      image:
-        "/images/reviews/rev1.png",
+      image: "/images/reviews/rev1.png",
       quote:
         "The All-in-One mix is perfect for parties. Everyone loves the variety. Will definitely keep ordering! It's become a staple at all our family gatherings and everyone always asks where we got it from.",
     },
@@ -19,8 +23,7 @@ export default function TestimonialPage() {
       id: 2,
       name: "Bidappa Bolthanda",
       role: "Verified Customer",
-      image:
-        "/images/reviews/rev2.png",
+      image: "/images/reviews/rev2.png",
       quote:
         "YummFeast namkeen is my go-to snack! Super crunchy, full of flavor, and always fresh. Perfect for every mood — once you start, you just can’t stop kudos to the Yumm Feast team for making such brilliant snacks!",
     },
@@ -28,8 +31,7 @@ export default function TestimonialPage() {
       id: 3,
       name: "Sohini Dutta",
       role: "Verified Customer",
-      image:
-        "/images/reviews/rev3.png",
+      image: "/images/reviews/rev3.png",
       quote:
         "Yummfeast snacks have made a significant difference in my snacking habits. They're tasty, well-packaged, and satisfy my cravings without feeling too heavy. I've recommended them to all my friends and family.",
     },
@@ -37,8 +39,7 @@ export default function TestimonialPage() {
       id: 4,
       name: "Priya Sinha",
       role: "Verified Customer",
-      image:
-        "/images/reviews/rev4.png",
+      image: "/images/reviews/rev4.png",
       quote:
         " I've tried many similar snacks from other brands, but none compare to the quality and taste I get from Yummfeast. Their Palak Paneer is the best I've ever had - perfectly spiced and always fresh.",
     },
@@ -46,8 +47,7 @@ export default function TestimonialPage() {
       id: 5,
       name: "Saniya Verma",
       role: "Verified Customer",
-      image:
-        "/images/reviews/rev5.png",
+      image: "/images/reviews/rev5.png",
       quote:
         "I’ve been buying Yummfeast products since 2020, and I can confidently say they maintain consistent taste and hygiene. It’s one of the few brands I trust for my family’s snacks.",
     },
@@ -55,12 +55,37 @@ export default function TestimonialPage() {
       id: 6,
       name: "Vachan Chopra",
       role: "Verified Customer",
-      image:
-        "/images/reviews/rev6.png",
+      image: "/images/reviews/rev6.png",
       quote:
         "I love the Chinese Pasta snacks from Yummfeast. They're perfectly seasoned and always fresh. My go-to evening snack with chai! The packaging keeps them fresh for a long time, and the price is very reasonable.",
     },
-  ]
+  ];
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [product, setProduct] = useState("");
+  const [rating, setRating] = useState(0);
+  const [feedback, setFeedback] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Simple validation example
+    if (!name || !email || !product || !rating || !feedback) {
+      alert("Please fill out all fields.");
+      return;
+    }
+
+    console.log({ name, email, product, rating, feedback });
+    alert("Thank you for your feedback! We appreciate your input.");
+
+    // Reset form
+    setName("");
+    setEmail("");
+    setProduct("");
+    setRating(0);
+    setFeedback("");
+  };
 
   return (
     <div className="relative overflow-hidden">
@@ -81,7 +106,11 @@ export default function TestimonialPage() {
         <motion.div
           className="absolute top-8 left-6 md:top-12 md:left-28 text-5xl md:text-6xl"
           animate={{ rotate: 360 }}
-          transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+          transition={{
+            duration: 20,
+            repeat: Number.POSITIVE_INFINITY,
+            ease: "linear",
+          }}
         >
           🤤
         </motion.div>
@@ -123,18 +152,18 @@ export default function TestimonialPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              The true flavor of Yummfeast lies in the smiles of our customers! 👬
+              The true flavor of Yummfeast lies in the smiles of our customers!
+              👬
             </motion.p>
             <motion.div
               className="flex justify-center gap-4 text-3xl"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-            >
-            </motion.div>
+            ></motion.div>
           </div>
         </div>
-      </section>  
+      </section>
 
       {/* Testimonials Grid with organic effects */}
       <section className="py-16 relative">
@@ -143,7 +172,11 @@ export default function TestimonialPage() {
             {testimonials.map((testimonial, index) => (
               <motion.div
                 key={testimonial.id}
-                initial={index < 3 ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+                initial={
+                  index < 3
+                    ? { opacity: 1, scale: 1 }
+                    : { opacity: 0, scale: 0.9 }
+                }
                 animate={index < 3 ? { opacity: 1, scale: 1 } : undefined}
                 whileInView={index >= 3 ? { opacity: 1, scale: 1 } : undefined}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -152,20 +185,22 @@ export default function TestimonialPage() {
                 whileHover={{ y: -10 }}
               >
                 <div className="relative">
-
-                
-
                   <Card className="h-full border-gray relative z-10">
                     <CardContent className="p-6 flex flex-col h-full">
                       <div className="flex justify-center mb-4">
                         <div className="flex">
                           {[1, 2, 3, 4, 5].map((star) => (
-                            <Star key={star} className="w-5 h-5 fill-red-500 text-red-500" />
+                            <Star
+                              key={star}
+                              className="w-5 h-5 fill-red-500 text-red-500"
+                            />
                           ))}
                         </div>
                       </div>
                       <blockquote className="text-md italic mb-6 flex-grow relative p-4">
-                        <span className="relative z-10">"{testimonial.quote}"</span>
+                        <span className="relative z-10">
+                          "{testimonial.quote}"
+                        </span>
 
                         {/* Handwritten underline effect */}
                         <svg
@@ -195,7 +230,9 @@ export default function TestimonialPage() {
                         </div>
                         <div>
                           <p className="font-normal">{testimonial.name}</p>
-                          <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                          <p className="text-sm text-muted-foreground">
+                            {testimonial.role}
+                          </p>
                         </div>
                       </div>
                     </CardContent>
@@ -208,25 +245,134 @@ export default function TestimonialPage() {
       </section>
 
       {/* CTA Section with paint brush background */}
-      <section className="py-16 bg-red-600 relative overflow-hidden">
-
+      <section className="py-8 bg-red-600 relative overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <motion.div
+            className="w-[120%] h-[120%] bg-[url('/images/pattern.svg')] opacity-10"
+            animate={{ x: [-20, 0], y: [-20, 0] }}
+            transition={{
+              duration: 60,
+              repeat: Number.POSITIVE_INFINITY,
+              repeatType: "reverse",
+            }}
+          />
+        </div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
-            <div className="relative inline-block mb-6">
-              <h2 className="text-3xl font-normal text-white mb-6 px-4">Share Your Experience</h2>
+            <div className="relative inline-block">
+              <h2 className="text-3xl font-normal text-white mb-2 px-4">
+                Share Your Experience
+              </h2>
             </div>
-            <p className="text-xl text-white mb-8">
-              We value your feedback. Let us know about your experience with our products.
+            <p className="text-xl text-white">
+              We value your feedback. Let us know about your experience with our
+              products.
             </p>
-            <div className="transition-transform duration-100 hover:scale-[1.03]">
-            <div className="bg-red-500 text-white text-lg font-normal w-56 mx-auto px-6 py-2 rounded-md shadow-md border-2 border-black relative hover:bg-orange-600">
-              Submit Testimonial
-              <div className="absolute -bottom-1 left-0 w-56 h-full mx-auto rounded-md bg-black -z-10 translate-y-1 translate-x-1"></div>
-            </div>
-            </div>
           </div>
         </div>
+
+        {/* feedback form */}
+
+          <div className="container my-12 mx-auto px-4">
+            <div className="max-w-2xl mx-auto shadow-lg">
+              <Card>
+                <CardContent className="p-6">
+                  <form className="space-y-6" onSubmit={handleSubmit}>
+                    {/* Name */}
+                    <div className="space-y-2">
+                      <Label htmlFor="name">Your Name</Label>
+                      <Input
+                        id="name"
+                        placeholder="John Doe"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                      />
+                    </div>
+
+                    {/* Email */}
+                    <div className="space-y-2">
+                      <Label htmlFor="email">Email Address</Label>
+                      <Input
+                        id="email"
+                        type="email"
+                        placeholder="john@example.com"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                      />
+                    </div>
+
+                    {/* Product */}
+                    <div className="space-y-2">
+                      <Label htmlFor="product">Product</Label>
+                      <select
+                        id="product"
+                        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm
+                               focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                        value={product}
+                        onChange={(e) => setProduct(e.target.value)}
+                      >
+                        <option value="">Select a product</option>
+                        <option value="rings">Yummfeast Rings</option>
+                        <option value="pasta">Yummfeast Pasta</option>
+                        <option value="allinone">Yummfeast All-in-One</option>
+                        <option value="chatpata">Yummfeast Chatpata Mix</option>
+                        <option value="aloobhujia">
+                          Yummfeast Aloo Bhujia
+                        </option>
+                        <option value="cornpuffs">Yummfeast Corn Puffs</option>
+                      </select>
+                    </div>
+
+                    {/* Rating */}
+                    <div className="space-y-2">
+                      <Label htmlFor="rating">Rating</Label>
+                      <div className="flex">
+                        {[1, 2, 3, 4, 5].map((starValue) => (
+                          <Button
+                            key={starValue}
+                            type="button"
+                            variant="ghost"
+                            size="sm"
+                            className="p-1"
+                            onClick={() => setRating(starValue)}
+                          >
+                            <Star
+                              className={`w-6 h-6 ${
+                                starValue <= rating
+                                  ? "fill-yellow-500 text-yellow-500"
+                                  : ""
+                              }`}
+                            />
+                          </Button>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Feedback */}
+                    <div className="space-y-2">
+                      <Label htmlFor="feedback">Your Feedback</Label>
+                      <Textarea
+                        id="feedback"
+                        placeholder="Please share your experience with our product..."
+                        rows={5}
+                        value={feedback}
+                        onChange={(e) => setFeedback(e.target.value)}
+                      />
+                    </div>
+
+                    {/* Submit */}
+                    <Button
+                      type="submit"
+                      className="relative z-30 w-full bg-red-600"
+                    >
+                      Submit Feedback
+                    </Button>
+                  </form>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
       </section>
     </div>
-  )
+  );
 }

@@ -1,45 +1,46 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Badge } from "@/components/ui/badge"
-import { Clock, User, Calendar, ArrowRight, Search, X } from "lucide-react"
-import { useState } from "react"
-import blogData from "@/data/data.json"
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Badge } from "@/components/ui/badge";
+import { Clock, User, Calendar, ArrowRight, Search, X } from "lucide-react";
+import { useState } from "react";
+import blogData from "@/data/data.json";
 
 export default function BlogsPage() {
-  const [searchQuery, setSearchQuery] = useState("")
-  const [selectedCategory, setSelectedCategory] = useState("All")
-  const [selectedBlog, setSelectedBlog] = useState(null)
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedBlog, setSelectedBlog] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const { siteConfig, blogs } = blogData
-  const categories = siteConfig.availableCategories
+  const { siteConfig, blogs } = blogData;
+  const categories = siteConfig.availableCategories;
 
   const filteredBlogs = blogs.filter((blog) => {
     const matchesSearch =
       blog.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      blog.excerpt.toLowerCase().includes(searchQuery.toLowerCase())
-    const matchesCategory = selectedCategory === "All" || blog.category === selectedCategory
-    return matchesSearch && matchesCategory
-  })
+      blog.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesCategory =
+      selectedCategory === "All" || blog.category === selectedCategory;
+    return matchesSearch && matchesCategory;
+  });
 
-  const featuredBlog = blogs.find((blog) => blog.featured)
-  const regularBlogs = filteredBlogs.filter((blog) => !blog.featured)
+  const featuredBlog = blogs.find((blog) => blog.featured);
+  const regularBlogs = filteredBlogs.filter((blog) => !blog.featured);
 
   const openModal = (blog) => {
-    setSelectedBlog(blog)
-    setIsModalOpen(true)
-    document.body.style.overflow = "hidden"
-  }
+    setSelectedBlog(blog);
+    setIsModalOpen(true);
+    document.body.style.overflow = "hidden";
+  };
 
   const closeModal = () => {
-    setIsModalOpen(false)
-    setSelectedBlog(null)
-    document.body.style.overflow = "unset"
-  }
+    setIsModalOpen(false);
+    setSelectedBlog(null);
+    document.body.style.overflow = "unset";
+  };
 
   return (
     <div className="min-h-screen">
@@ -84,23 +85,27 @@ export default function BlogsPage() {
         </div>
       </section> */}
 
-      <section className="relative overflow-hidden  bg-red-600 py-16">
+      <section className="relative overflow-hidden  bg-red-600 py-16 pointer-events-none">
         <div className="absolute inset-0 overflow-hidden">
-                  <motion.div
-                    className="w-[120%] h-[120%] bg-[url('/images/pattern.svg')] opacity-10"
-                    animate={{ x: [-20, 0], y: [-20, 0] }}
-                    transition={{
-                      duration: 60,
-                      repeat: Number.POSITIVE_INFINITY,
-                      repeatType: "reverse",
-                    }}
-                  />
-                </div>
+          <motion.div
+            className="w-[120%] h-[120%] bg-[url('/images/pattern.svg')] opacity-10"
+            animate={{ x: [-20, 0], y: [-20, 0] }}
+            transition={{
+              duration: 60,
+              repeat: Number.POSITIVE_INFINITY,
+              repeatType: "reverse",
+            }}
+          />
+        </div>
         <div className="absolute inset-0 bg-black/10"></div>
         <motion.div
           className="absolute top-8 left-6 md:top-12 md:left-28 text-5xl md:text-6xl"
           animate={{ rotate: 360 }}
-          transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+          transition={{
+            duration: 20,
+            repeat: Number.POSITIVE_INFINITY,
+            ease: "linear",
+          }}
         >
           🤤
         </motion.div>
@@ -149,8 +154,7 @@ export default function BlogsPage() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-            >
-            </motion.div>
+            ></motion.div>
           </div>
         </div>
       </section>
@@ -167,7 +171,10 @@ export default function BlogsPage() {
               className="max-w-4xl mx-auto"
             >
               <div className="mb-8">
-                <Badge variant="destructive" className="text-sm font-semibold px-3 py-1">
+                <Badge
+                  variant="destructive"
+                  className="text-sm font-semibold px-3 py-1"
+                >
                   FEATURED ARTICLE
                 </Badge>
               </div>
@@ -183,9 +190,13 @@ export default function BlogsPage() {
                   </div>
                 </div>
 
-                <h2 className="text-4xl lg:text-5xl font-normal text-gray-900 leading-tight">{featuredBlog.title}</h2>
+                <h2 className="text-4xl lg:text-5xl font-normal text-gray-900 leading-tight">
+                  {featuredBlog.title}
+                </h2>
 
-                <p className="text-xl text-gray-600 leading-relaxed">{featuredBlog.excerpt}</p>
+                <p className="text-xl text-gray-600 leading-relaxed">
+                  {featuredBlog.excerpt}
+                </p>
 
                 <div className="flex items-center gap-4 text-sm text-gray-500">
                   <div className="flex items-center gap-2">
@@ -198,7 +209,11 @@ export default function BlogsPage() {
                   </div>
                 </div>
 
-                <Button size="lg" className="group bg-red-600 hover:bg-red-700" onClick={() => openModal(featuredBlog)}>
+                <Button
+                  size="lg"
+                  className="group bg-red-600 hover:bg-red-700"
+                  onClick={() => openModal(featuredBlog)}
+                >
                   Read Full Article
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
@@ -209,16 +224,46 @@ export default function BlogsPage() {
       )}
 
       {/* Articles Section - removed alphabetical grouping, back to regular grid layout */}
-      <section className="font-sans py-20 bg-gray-50">
+      <section className="font-sans py-20 bg-red-600 relative">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <motion.div
+            className="w-[120%] h-[120%] bg-[url('/images/pattern.svg')] opacity-10"
+            animate={{ x: [-20, 0], y: [-20, 0] }}
+            transition={{
+              duration: 60,
+              repeat: Number.POSITIVE_INFINITY,
+              repeatType: "reverse",
+            }}
+          />
+        </div>
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-normal text-gray-900 mb-4">
-                {searchQuery || selectedCategory !== "All" ? "Search Results" : "All Articles"}
-              </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <h2 className="text-3xl font-normal mb-2 relative text-white inline-block">
                 {searchQuery || selectedCategory !== "All"
-                  ? `Found ${regularBlogs.length} article${regularBlogs.length !== 1 ? "s" : ""}`
+                  ? "Search Results"
+                  : "All Articles"}
+                {/* Handwritten underline effect */}
+                <svg
+                  className="absolute -bottom-2 left-0 w-full"
+                  height="10"
+                  viewBox="0 0 100 10"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    d="M0,5 C20,0 40,10 60,5 S80,0 100,5"
+                    stroke="#FF6B6B"
+                    strokeWidth="3"
+                    fill="none"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </h2>
+              <p className="text-xl text-white max-w-3xl mx-auto">
+                {searchQuery || selectedCategory !== "All"
+                  ? `Found ${regularBlogs.length} article${
+                      regularBlogs.length !== 1 ? "s" : ""
+                    }`
                   : "Explore our collection of expert insights and industry stories"}
               </p>
             </div>
@@ -228,8 +273,12 @@ export default function BlogsPage() {
                 <div className="text-gray-400 mb-4">
                   <Search className="h-16 w-16 mx-auto" />
                 </div>
-                <h3 className="text-2xl font-semibold text-gray-900 mb-2">No articles found</h3>
-                <p className="text-gray-600">Try adjusting your search or filter criteria</p>
+                <h3 className="text-2xl font-semibold text-gray-900 mb-2">
+                  No articles found
+                </h3>
+                <p className="text-gray-600">
+                  Try adjusting your search or filter criteria
+                </p>
               </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -240,12 +289,15 @@ export default function BlogsPage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: index * 0.1 }}
                     viewport={{ once: true }}
-                    className="group"
+                    className="group z-10"
                   >
-                    <Card className="h-full flex flex-col hover:shadow-xl transition-all duration-300 border-0 shadow-md hover:border-red-200">
+                    <Card className="h-full flex flex-col hover:shadow-xl transition-all duration-300 border-0 shadow-md bg-red-500 backdrop-blur-lg p-8 rounded-lg shadow-lg border-1 border-white z-10">
                       <CardContent className="p-6 flex-grow flex flex-col">
-                        <div className="flex items-center gap-3 text-sm text-gray-500 mb-3">
-                          <Badge variant="secondary" className="bg-red-100 text-red-800 font-medium">
+                        <div className="flex items-center gap-3 text-sm text-white mb-3">
+                          <Badge
+                            variant="secondary"
+                            className="bg-white text-red-500 font-medium"
+                          >
                             {blog.category}
                           </Badge>
                           <div className="flex items-center gap-1">
@@ -254,14 +306,17 @@ export default function BlogsPage() {
                           </div>
                         </div>
 
-                        <h3 className="font-bold text-xl mb-3 text-gray-900 leading-tight group-hover:text-red-600 transition-colors">
+                        <h3 className="font-bold text-xl mb-3 
+                        text-white leading-tight transition-colors">
                           {blog.title}
                         </h3>
 
-                        <p className="text-gray-600 mb-4 flex-grow leading-relaxed">{blog.excerpt}</p>
+                        <p className="text-white mb-4 flex-grow leading-relaxed">
+                          {blog.excerpt}
+                        </p>
 
                         <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-2 text-sm text-gray-500">
+                          <div className="flex items-center gap-2 text-sm text-white">
                             <User className="h-4 w-4" />
                             <span className="font-medium">{blog.author}</span>
                           </div>
@@ -269,7 +324,7 @@ export default function BlogsPage() {
                           <Button
                             variant="ghost"
                             size="sm"
-                            className="group/btn p-0 h-auto font-semibold text-red-600 hover:text-red-700"
+                            className="group/btn p-2 h-auto font-semibold bg-white text-red-500 hover:text-red-600 hover:shadow-xl transition-all duration-800 ease-in-out"
                             onClick={() => openModal(blog)}
                           >
                             Read More
@@ -277,7 +332,7 @@ export default function BlogsPage() {
                           </Button>
                         </div>
 
-                        <div className="flex items-center gap-2 text-sm text-gray-400 mt-3 pt-3 border-t border-gray-100">
+                        <div className="flex items-center gap-2 text-sm text-white mt-3 pt-3 border-t border-gray-100">
                           <Calendar className="h-4 w-4" />
                           <span>{blog.date}</span>
                         </div>
@@ -292,7 +347,7 @@ export default function BlogsPage() {
       </section>
 
       {/* Newsletter Section - reverted to blue colors */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 via-blue-50 to-blue-100">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -301,17 +356,19 @@ export default function BlogsPage() {
             viewport={{ once: true }}
             className="max-w-4xl mx-auto text-center"
           >
-            <h2 className="text-4xl font-normal mb-4 text-gray-900">Never Miss an Update</h2>
+            <h2 className="text-4xl font-normal mb-4 text-gray-900">
+              Never Miss an Update
+            </h2>
             <p className="text-xl mb-8 text-gray-600 leading-relaxed">
-              Get the latest articles, product announcements, and exclusive insights delivered straight to your inbox
-              every week.
+              Get the latest articles, product announcements, and exclusive
+              insights delivered straight to your inbox every week.
             </p>
 
             <form
               className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto"
               onSubmit={(e) => {
-                e.preventDefault()
-                window.alert("Thank you for subscribing to our newsletter!")
+                e.preventDefault();
+                window.alert("Thank you for subscribing to our newsletter!");
               }}
             >
               <Input
@@ -320,13 +377,18 @@ export default function BlogsPage() {
                 required
                 type="email"
               />
-              <Button type="submit" size="lg" className="h-12 px-8 font-semibold bg-blue-600 hover:bg-blue-700">
+              <Button
+                type="submit"
+                size="lg"
+                className="h-12 px-8 font-semibold bg-blue-600 hover:bg-blue-700"
+              >
                 Subscribe
               </Button>
             </form>
 
             <p className="text-sm text-gray-500 mt-4">
-              Join {siteConfig.newsletterSubscribers} readers. Unsubscribe anytime.
+              Join {siteConfig.newsletterSubscribers} readers. Unsubscribe
+              anytime.
             </p>
           </motion.div>
         </div>
@@ -336,7 +398,10 @@ export default function BlogsPage() {
       {isModalOpen && selectedBlog && (
         <div className="font-sans fixed inset-0 z-50 flex items-center justify-center p-4">
           {/* Backdrop */}
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={closeModal} />
+          <div
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            onClick={closeModal}
+          />
 
           {/* Modal Content */}
           <motion.div
@@ -363,7 +428,12 @@ export default function BlogsPage() {
                   </div>
                 </div>
               </div>
-              <Button variant="ghost" size="sm" onClick={closeModal} className="h-8 w-8 p-0 hover:bg-gray-100">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={closeModal}
+                className="h-8 w-8 p-0 hover:bg-gray-100"
+              >
                 <X className="h-4 w-4" />
               </Button>
             </div>
@@ -371,7 +441,7 @@ export default function BlogsPage() {
             {/* Content */}
             <div className="overflow-y-auto max-h-[calc(90vh-120px)]">
               <div className="p-6">
-                <h1 className="text-3xl lg:text-4xl font-normal text-gray-900 mb-4 leading-tight">
+                <h1 className="text-3xl lg:text-4xl font-normal text-red-600 mb-4 leading-tight">
                   {selectedBlog.title}
                 </h1>
 
@@ -392,5 +462,5 @@ export default function BlogsPage() {
         </div>
       )}
     </div>
-  )
+  );
 }
