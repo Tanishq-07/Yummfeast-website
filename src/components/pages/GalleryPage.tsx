@@ -180,12 +180,11 @@ export default function GalleryPage() {
       <section className="py-8 border-b">
         <div className="container mx-auto px-4">
           <Tabs defaultValue="all" onValueChange={setFilter}>
-            <TabsList className="grid w-full grid-cols-5 max-w-md mx-auto">
+            <TabsList className="grid w-full grid-cols-4 max-w-md mx-auto">
               <TabsTrigger value="all">All</TabsTrigger>
-              <TabsTrigger value="products">Products</TabsTrigger>
-              <TabsTrigger value="facilities">Facilities</TabsTrigger>
-              <TabsTrigger value="team">Team</TabsTrigger>
-              <TabsTrigger value="events">Events</TabsTrigger>
+              <TabsTrigger value="Trip">Trips</TabsTrigger>
+              <TabsTrigger value="Facilities">Facilities</TabsTrigger>
+              <TabsTrigger value="Event">Events</TabsTrigger>
             </TabsList>
           </Tabs>
         </div>

@@ -161,7 +161,14 @@ export default function BlogsPage() {
 
       {/* Featured Article */}
       {featuredBlog && selectedCategory === "All" && !searchQuery && (
-        <section className="font-sans py-20">
+        <section className="font-sans py-20"
+        style={{
+          backgroundImage: "url('/images/white-bg.jpg')",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundPosition: "top",
+          opacity: 1,
+        }}>
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 1, y: 0 }}
@@ -347,7 +354,14 @@ export default function BlogsPage() {
       </section>
 
       {/* Newsletter Section - reverted to blue colors */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white"
+      style={{
+          backgroundImage: "url('/images/white-bg.jpg')",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundPosition: "top",
+          opacity: 1,
+        }}>
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

@@ -82,7 +82,14 @@ export default function InfraPage() {
       </section>
 
       {/* Facilities Section */}
-      <section className="text-muted-foreground  py-16">
+      <section className="text-muted-foreground py-16"
+      style={{
+          backgroundImage: "url('/images/white-bg.jpg')",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundPosition: "top",
+          opacity: 1,
+        }}>
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -199,7 +206,14 @@ export default function InfraPage() {
       </section>
 
       {/* Distribution Network */}
-      <section className="text-muted-foreground  py-16">
+      <section className="text-muted-foreground py-16"
+      style={{
+          backgroundImage: "url('/images/white-bg.jpg')",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundPosition: "top",
+          opacity: 1,
+        }}>
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <motion.div

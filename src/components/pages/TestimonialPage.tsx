@@ -166,7 +166,15 @@ export default function TestimonialPage() {
       </section>
 
       {/* Testimonials Grid with organic effects */}
-      <section className="py-16 relative">
+      <section className="py-16 relative"
+      style={{
+          backgroundImage: "url('/images/white-bg.jpg')",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundPosition: "top",
+          minHeight: "100vh",
+          opacity: 1,
+        }}>
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (

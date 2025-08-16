@@ -140,7 +140,6 @@ export default function CareerPage() {
   return (
     <div>
       {/* Hero Section */}
-
       <section className="relative overflow-hidden  bg-red-600 py-16">
               <div className="absolute inset-0 overflow-hidden">
                 <motion.div
@@ -217,7 +216,14 @@ export default function CareerPage() {
             </section>
 
       {/* Why Join Us */}
-      <section className="py-16">
+      <section className="py-16"
+      style={{
+          backgroundImage: "url('/images/white-bg.jpg')",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundPosition: "top",
+          opacity: 1,
+        }}>
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -353,7 +359,14 @@ export default function CareerPage() {
       </section>
 
       {/* Job Openings */}
-      <section className="py-16">
+      <section className="py-16"
+      style={{
+          backgroundImage: "url('/images/white-bg.jpg')",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundPosition: "top",
+          opacity: 1,
+        }}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-normal mb-4 text-gray-900">
