@@ -19,7 +19,7 @@ const products = [
     price: "₹5",
     category: "chips",
     subcategory: "classic",
-    image: "/images/products/classic.png",
+    image: "/images/products/classic-salted.png",
     comingSoon: false,
   },
   {
@@ -30,7 +30,7 @@ const products = [
     price: "₹5",
     category: "chips",
     subcategory: "classic",
-    image: "/images/chips2.png",
+    image: "/images/products/cream-and-onion.png",
     comingSoon: false,
   },
   {
@@ -41,7 +41,7 @@ const products = [
     price: "₹5",
     category: "chips",
     subcategory: "classic",
-    image: "/images/chips3.png",
+    image: "/images/products/magic-masala.png",
     comingSoon: false,
   },
   {
@@ -52,18 +52,7 @@ const products = [
     price: "₹5",
     category: "chips",
     subcategory: "classic",
-    image: "/images/chips4.png",
-    comingSoon: false,
-  },
-  {
-    id: 5,
-    name: "Cream & Onion Chips (₹10)",
-    description:
-      "A popular and creamy flavor combination that blends the mild sweetness of onion with a rich, smooth creaminess, creating a perfectly balanced and savory experience.",
-    price: "₹10",
-    category: "chips",
-    subcategory: "classic",
-    image: "/images/chips5.png",
+    image: "/images/products/tangy-tomato.png",
     comingSoon: false,
   },
 
@@ -76,7 +65,7 @@ const products = [
     price: "₹5",
     category: "fryums",
     subcategory: "rings",
-    image: "/images/rings.png",
+    image: "/images/products/rings.png",
     comingSoon: false,
   },
 
@@ -89,18 +78,7 @@ const products = [
     price: "₹5",
     category: "namkeen",
     subcategory: "traditional",
-    image: "/images/panipuri.png",
-    comingSoon: false,
-  },
-  {
-    id: 8,
-    name: "Katori (Tangy Tomato)",
-    description:
-      "These are delightful, crispy, katori-shaped snacks bursting with a tangy tomato flavor. They offer a unique and fun munching experience, perfect for a quick and flavorful treat.",
-    price: "₹5",
-    category: "fryums",
-    subcategory: "corn",
-    image: "/images/katori1.png",
+    image: "/images/products/panipuri.png",
     comingSoon: false,
   },
   {
@@ -133,7 +111,7 @@ const products = [
     price: "₹5",
     category: "fryums",
     subcategory: "wheat",
-    image: "/images/springroll.png",
+    image: "/images/products/spring-roll.png",
     comingSoon: false,
   },
   {
@@ -144,7 +122,7 @@ const products = [
     price: "₹5",
     category: "fryums",
     subcategory: "wheat",
-    image: "/images/palakpaneer.png",
+    image: "/images/products/palak-paneer.png",
     comingSoon: false,
   },
   {
@@ -155,7 +133,7 @@ const products = [
     price: "₹5",
     category: "fryums",
     subcategory: "corn",
-    image: "/images/golumolu.png",
+    image: "/images/products/golu-molu.png",
     comingSoon: false,
   },
   {
@@ -166,7 +144,7 @@ const products = [
     price: "₹5",
     category: "fryums",
     subcategory: "wheat",
-    image: "/images/noodles.png",
+    image: "/images/products/noodles.png",
     comingSoon: false,
   },
   {
@@ -182,13 +160,13 @@ const products = [
   },
   {
     id: 16,
-    name: "Finger",
+    name: "Fingers",
     description:
       'These are "extra delicious" finger-shaped snacks, offering a "Real Taste" that you won\'t want to miss. They are designed for a satisfying crunch and a flavorful experience.',
     price: "₹5",
     category: "fryums",
     subcategory: "corn",
-    image: "/images/finger.png",
+    image: "/images/products/fingers.png",
     comingSoon: false,
   },
   {
@@ -199,7 +177,7 @@ const products = [
     price: "₹5",
     category: "fryums",
     subcategory: "corn",
-    image: "/images/karare.png",
+    image: "/images/products/karare.png",
     comingSoon: false,
   },
   {
@@ -210,7 +188,7 @@ const products = [
     price: "₹5",
     category: "fryums",
     subcategory: "corn",
-    image: "/images/products/twister.png",
+    image: "/images/products/3d-twister.png",
     comingSoon: false,
   },
 
@@ -245,7 +223,7 @@ const products = [
     price: "₹5",
     category: "namkeen",
     subcategory: "bhujia",
-    image: "/images/products/aloo-bhujia.png",
+    image: "/images/products/aloo-bhujiya.png",
     comingSoon: false,
   },
   {
@@ -267,7 +245,7 @@ const products = [
     price: "₹5",
     category: "namkeen",
     subcategory: "traditional",
-    image: "/images/chanajorgaram.png",
+    image: "/images/products/chana-jor-garam.png",
     comingSoon: false,
   },
   {
@@ -278,7 +256,7 @@ const products = [
     price: "₹5",
     category: "namkeen",
     subcategory: "traditional",
-    image: "/images/moongdal.png",
+    image: "/images/products/moong-dal.png",
     comingSoon: false,
   },
   {
@@ -300,7 +278,7 @@ const products = [
     price: "₹5",
     category: "namkeen",
     subcategory: "traditional",
-    image: "/images/haramatar.png",
+    image: "/images/products/hara-matar.png",
     comingSoon: false,
   },
   {
@@ -311,7 +289,7 @@ const products = [
     price: "₹5",
     category: "namkeen",
     subcategory: "mix",
-    image: "/images/navratanmixture.png",
+    image: "/images/products/navratan-mixture.png",
     comingSoon: false,
   },
   {
@@ -322,7 +300,7 @@ const products = [
     price: "₹5",
     category: "namkeen",
     subcategory: "traditional",
-    image: "/images/punjabitadka.png",
+    image: "/images/products/punjabi-tadka.png",
     comingSoon: false,
   },
   {
@@ -333,7 +311,7 @@ const products = [
     price: "₹5",
     category: "namkeen",
     subcategory: "mix",
-    image: "/images/chiwdafry.png",
+    image: "/images/products/chiwda-fry.png",
     comingSoon: false,
   },
   {
@@ -344,7 +322,7 @@ const products = [
     price: "₹5",
     category: "namkeen",
     subcategory: "traditional",
-    image: "/images/gathiya.png",
+    image: "/images/products/gathiya.png",
     comingSoon: false,
   },
   {
@@ -355,7 +333,7 @@ const products = [
     price: "₹5",
     category: "namkeen",
     subcategory: "traditional",
-    image: "/images/hingjeerachana.png",
+    image: "/images/products/hing-jeera-chana.png",
     comingSoon: false,
   },
   {
@@ -366,7 +344,7 @@ const products = [
     price: "₹5",
     category: "namkeen",
     subcategory: "traditional",
-    image: "/images/saltedpeanut.png",
+    image: "/images/products/salted-peanut.png",
     comingSoon: false,
   },
   {
@@ -377,7 +355,7 @@ const products = [
     price: "₹5",
     category: "namkeen",
     subcategory: "bhujia",
-    image: "/images/ratlamitev.png",
+    image: "/images/products/ratlami-sev.png",
     comingSoon: false,
   },
   {
@@ -388,7 +366,7 @@ const products = [
     price: "₹10",
     category: "namkeen",
     subcategory: "mix",
-    image: "/images/dalmoth.png",
+    image: "/images/products/dal-moth.png",
     comingSoon: false,
   },
 ]
