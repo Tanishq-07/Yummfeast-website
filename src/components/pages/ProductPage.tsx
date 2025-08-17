@@ -453,7 +453,7 @@ const ProductCircle = ({
 
       <div>
         <p className="text-center mb-2">Price: {product.price}</p>
-        <p className="text-justify text-muted-foreground">{product.description}</p>
+        <p className="text-justify text-muted-foreground px-6">{product.description}</p>
       </div>
     </div>
   )
