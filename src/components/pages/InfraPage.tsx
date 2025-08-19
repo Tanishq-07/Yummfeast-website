@@ -1,6 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Award, Factory, Cpu } from "lucide-react"
+import { Card, CardContent } from "@/components/ui/card"
+
 
 export default function InfraPage() {
   return (
@@ -174,31 +177,51 @@ export default function InfraPage() {
               {
                 title: "Modern Production Lines",
                 description:
-                  "Our well-maintained, high-capacity lines consistently produce snacks that meet the highest standards of taste and quality—while keeping operational efficiency at its peak. .",
+                  "Our well-maintained, high-capacity lines consistently produce snacks that meet the highest standards of taste and quality—while keeping operational efficiency at its peak.",
+                icon: <Factory className="w-8 h-8" />,
+                color: "from-red-400 to-pink-400",
+                bgColor: "from-red-50 to-pink-50",
               },
               {
                 title: "Semi-Automated Processes",
                 description:
                   "Combining automation with human oversight ensures every snack maintains its traditional flavour, along with the safety and uniformity our customers expect.",
+                icon: <Cpu className="w-8 h-8" />,
+                color: "from-yellow-400 to-amber-400",
+                bgColor: "from-yellow-50 to-amber-50",
               },
               {
-                title: "ZED Gold Certified Quality Standards",
+                title: "ZED Gold Certified Quality",
                 description:
                   "Our manufacturing systems are aligned with the ZED Gold framework, focusing on continuous improvement, sustainable practices, and the delivery of defect-free, high-quality products.",
+                icon: <Award className="w-8 h-8" />,
+                color: "from-green-400 to-teal-400",
+                bgColor: "from-green-50 to-teal-50",
               },
             ].map((tech, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-red-500 backdrop-blur-lg p-8 rounded-lg shadow-lg border-1 border-white z-10"
+                whileHover={{ y: -10, scale: 1.02 }}
+                className="group"
               >
-                <h3 className="font-normal text-white text-xl mb-3 text-red-500">
-                  {tech.title}
-                </h3>
-                <p className="text-white">{tech.description}</p>
+                <Card className="h-full border-0 shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden">
+                  <div className={`h-2 bg-gradient-to-r ${tech.color}`}></div>
+                  <CardContent
+                    className={`p-8 bg-gradient-to-br ${tech.bgColor} group-hover:shadow-inner transition-all duration-300`}
+                  >
+                    <div className="text-center mb-6">
+                      <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-r ${tech.color} text-white shadow-lg mb-4`}>
+                        {tech.icon}
+                      </div>
+                      <h3 className="font-normal text-2xl mb-4 text-gray-800">{tech.title}</h3>
+                      <p className="text-gray-600 leading-relaxed">{tech.description}</p>
+                    </div>
+                  </CardContent>
+                </Card>
               </motion.div>
             ))}
           </div>

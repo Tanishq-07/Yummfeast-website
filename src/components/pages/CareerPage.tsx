@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ChevronDown, ChevronUp, MapPin, Clock, Users } from "lucide-react";
+import { ChevronDown, ChevronUp, MapPin, Clock, Users, Star, Award, Heart, Shield, TrendingUp, Rocket } from "lucide-react";
 
 export default function CareerPage() {
   const [expandedJob, setExpandedJob] = useState<number | null>(null);
@@ -270,93 +270,126 @@ export default function CareerPage() {
 
       {/* Benefits */}
       <section className="py-16 bg-red-600 relative">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <motion.div
-            className="w-[120%] h-[120%] bg-[url('/images/pattern.svg')] opacity-10"
-            animate={{ x: [-20, 0], y: [-20, 0] }}
-            transition={{
-              duration: 60,
-              repeat: Number.POSITIVE_INFINITY,
-              repeatType: "reverse",
-            }}
+  <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    <motion.div
+      className="w-[120%] h-[120%] bg-[url('/images/pattern.svg')] opacity-10"
+      animate={{ x: [-20, 0], y: [-20, 0] }}
+      transition={{
+        duration: 60,
+        repeat: Number.POSITIVE_INFINITY,
+        repeatType: "reverse",
+      }}
+    />
+  </div>
+  <div className="container mx-auto px-4">
+    <div className="text-center mb-12">
+      <h2 className="text-4xl font-normal mb-6 relative text-white inline-block">
+        Benefits & Perks
+        {/* Handwritten underline effect */}
+        <svg
+          className="absolute -bottom-2 left-0 w-full"
+          height="10"
+          viewBox="0 0 100 10"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M0,5 C20,0 40,10 60,5 S80,0 100,5"
+            stroke="#FF6B6B"
+            strokeWidth="3"
+            fill="none"
+            strokeLinecap="round"
           />
-        </div>
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-normal mb-6 relative text-white inline-block">
-              Benefits & Perks
-              {/* Handwritten underline effect */}
-              <svg
-                className="absolute -bottom-2 left-0 w-full"
-                height="10"
-                viewBox="0 0 100 10"
-                preserveAspectRatio="none"
-              >
-                <path
-                  d="M0,5 C20,0 40,10 60,5 S80,0 100,5"
-                  stroke="#FF6B6B"
-                  strokeWidth="3"
-                  fill="none"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </h2>
-            <p className="text-white max-w-2xl mx-auto font-normal">
-              We take care of our team so they can focus on taking care of our
-              customers.
-            </p>
-          </div>
+        </svg>
+      </h2>
+      <p className="text-white max-w-2xl mx-auto font-normal">
+        We take care of our team so they can focus on taking care of our
+        customers.
+      </p>
+    </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Competitive Compensation",
-                description:
-                  "Base salary plus commission structure that rewards performance and achievement.",
-              },
-              {
-                title: "Professional Development",
-                description:
-                  "Ongoing training, education stipends, and opportunities to attend industry conferences.",
-              },
-              {
-                title: "Work-Life Balance",
-                description:
-                  "Flexible scheduling options, paid time off, and company-sponsored wellness programs.",
-              },
-              {
-                title: "Health Benefits",
-                description:
-                  "Comprehensive health, dental, and vision insurance for you and your dependents.",
-              },
-              {
-                title: "Retirement Planning",
-                description:
-                  "Matching program to help you save for your future.",
-              },
-              {
-                title: "Career Advancement",
-                description:
-                  "Clear paths for growth and promotion based on performance and dedication.",
-              },
-            ].map((benefit, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="bg-red-500 backdrop-blur-lg p-8 rounded-lg shadow-lg border-1 border-white z-10"
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {[
+        {
+          title: "Competitive Compensation",
+          description:
+            "Base salary plus commission structure that rewards performance and achievement.",
+          color: "from-red-400 to-red-600",
+          bgColor: "from-red-50 to-red-100",
+          icon: <Star className="w-8 h-8" />,
+        },
+        {
+          title: "Professional Development",
+          description:
+            "Ongoing training, education stipends, and opportunities to attend industry conferences.",
+          color: "from-purple-400 to-pink-400",
+          bgColor: "from-purple-50 to-pink-50",
+          icon: <Award className="w-8 h-8" />, 
+        },
+        {
+          title: "Work-Life Balance",
+          description:
+            "Flexible scheduling options, paid time off, and company-sponsored wellness programs.",
+          color: "from-yellow-400 to-amber-400",
+          bgColor: "from-yellow-50 to-amber-50",
+          icon: <Heart className="w-8 h-8" />,
+        },
+        {
+          title: "Health Benefits",
+          description:
+            "Comprehensive health, dental, and vision insurance for you and your dependents.",
+          color: "from-green-400 to-teal-400",
+          bgColor: "from-green-50 to-teal-50",
+          icon: <Shield className="w-8 h-8" />,
+        },
+        {
+          title: "Retirement Planning",
+          description: "Matching program to help you save for your future.",
+          color: "from-blue-400 to-indigo-400",
+          bgColor: "from-blue-50 to-indigo-50",
+          icon: <TrendingUp className="w-8 h-8" />,
+        },
+        {
+          title: "Career Advancement",
+          description:
+            "Clear paths for growth and promotion based on performance and dedication.",
+          color: "from-orange-400 to-red-400",
+          bgColor: "from-orange-50 to-red-50",
+          icon: <Rocket className="w-8 h-8" />,
+        },
+      ].map((benefit, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: index * 0.1 }}
+          viewport={{ once: true }}
+          whileHover={{ y: -10, scale: 1.02 }}
+          className="group"
+        >
+          <Card className="h-full border-0 shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden">
+            <div className={`h-2 bg-gradient-to-r ${benefit.color}`}></div>
+            <CardContent
+              className={`p-8 bg-gradient-to-br ${benefit.bgColor} group-hover:shadow-inner transition-all duration-300 text-center`}
+            >
+              <div
+                className={`inline-flex p-4 rounded-2xl bg-gradient-to-r ${benefit.color} text-white shadow-lg mb-4 justify-center mx-auto`}
               >
-                <h3 className="font-normal text-white text-xl mb-3 text-gray-900">
-                  {benefit.title}
-                </h3>
-                <p className="text-white font-normal">{benefit.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+                {benefit.icon}
+              </div>
+              <h3 className="font-normal text-2xl mb-4 text-gray-800">
+                {benefit.title}
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                {benefit.description}
+              </p>
+            </CardContent>
+          </Card>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
+
 
       {/* Job Openings */}
       <section className="py-16"

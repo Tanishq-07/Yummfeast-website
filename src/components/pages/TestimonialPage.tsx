@@ -281,60 +281,70 @@ export default function TestimonialPage() {
 
         {/* feedback form */}
 
-          <div className="container my-12 mx-auto px-4">
-            <div className="max-w-2xl mx-auto shadow-lg">
-              <Card>
-                <CardContent className="p-6">
+        <div className="py-12">
+          <div className="container max-w-3xl mx-auto px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <Card className="border-0 shadow-2xl overflow-hidden">
+                <div className="h-3 bg-gradient-to-r from-red-400 to-orange-400"></div>
+                <CardContent className="p-8 bg-gradient-to-br from-white to-orange-50">
                   <form className="space-y-6" onSubmit={handleSubmit}>
                     {/* Name */}
-                    <div className="space-y-2">
-                      <Label htmlFor="name">Your Name</Label>
-                      <Input
-                        id="name"
-                        placeholder="John Doe"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                      />
-                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <Label htmlFor="name" className="text-gray-700 font-normal">Your Name 👋</Label>
+                        <Input
+                          id="name"
+                          placeholder="John Doe"
+                          required
+                          value={name}
+                          onChange={(e) => setName(e.target.value)}
+                          className="border-2 border-orange-200 focus:border-orange-400 rounded-lg p-3 bg-white"
+                        />
+                      </div>
 
-                    {/* Email */}
-                    <div className="space-y-2">
-                      <Label htmlFor="email">Email Address</Label>
-                      <Input
-                        id="email"
-                        type="email"
-                        placeholder="john@example.com"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                      />
+                      <div className="space-y-2">
+                        <Label htmlFor="email" className="text-gray-700 font-normal">Email Address 📧</Label>
+                        <Input
+                          id="email"
+                          type="email"
+                          placeholder="john@example.com"
+                          required
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          className="border-2 border-orange-200 focus:border-orange-400 rounded-lg p-3 bg-white"
+                        />
+                      </div>
                     </div>
 
                     {/* Product */}
                     <div className="space-y-2">
-                      <Label htmlFor="product">Product</Label>
+                      <Label htmlFor="product" className="text-gray-700 font-normal">Product 🍟</Label>
                       <select
                         id="product"
-                        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm
-                               focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                        required
                         value={product}
                         onChange={(e) => setProduct(e.target.value)}
+                        className="flex h-12 w-full rounded-lg border-2 border-orange-200 focus:border-orange-400 bg-white px-3 py-2 text-sm"
                       >
-                        <option value="">Select a product</option>
+                        <option value="" disabled>Select a product</option>
                         <option value="rings">Yummfeast Rings</option>
                         <option value="pasta">Yummfeast Pasta</option>
                         <option value="allinone">Yummfeast All-in-One</option>
                         <option value="chatpata">Yummfeast Chatpata Mix</option>
-                        <option value="aloobhujia">
-                          Yummfeast Aloo Bhujia
-                        </option>
+                        <option value="aloobhujia">Yummfeast Aloo Bhujia</option>
                         <option value="cornpuffs">Yummfeast Corn Puffs</option>
                       </select>
                     </div>
 
                     {/* Rating */}
                     <div className="space-y-2">
-                      <Label htmlFor="rating">Rating</Label>
-                      <div className="flex">
+                      <Label htmlFor="rating" className="text-gray-700 font-normal">Rating ⭐</Label>
+                      <div className="flex gap-1">
                         {[1, 2, 3, 4, 5].map((starValue) => (
                           <Button
                             key={starValue}
@@ -345,11 +355,7 @@ export default function TestimonialPage() {
                             onClick={() => setRating(starValue)}
                           >
                             <Star
-                              className={`w-6 h-6 ${
-                                starValue <= rating
-                                  ? "fill-yellow-500 text-yellow-500"
-                                  : ""
-                              }`}
+                              className={`w-6 h-6 ${starValue <= rating ? "fill-yellow-500 text-yellow-500" : ""}`}
                             />
                           </Button>
                         ))}
@@ -358,28 +364,30 @@ export default function TestimonialPage() {
 
                     {/* Feedback */}
                     <div className="space-y-2">
-                      <Label htmlFor="feedback">Your Feedback</Label>
+                      <Label htmlFor="feedback" className="text-gray-700 font-normal">Your Feedback 📝</Label>
                       <Textarea
                         id="feedback"
                         placeholder="Please share your experience with our product..."
                         rows={5}
                         value={feedback}
                         onChange={(e) => setFeedback(e.target.value)}
+                        className="border-2 border-orange-200 focus:border-orange-400 rounded-lg p-3 bg-white"
                       />
                     </div>
 
                     {/* Submit */}
                     <Button
                       type="submit"
-                      className="relative z-30 w-full bg-red-600"
+                      className="w-full bg-gradient-to-r from-orange-400 to-red-400 hover:from-orange-500 hover:to-red-500 text-white font-normal py-4 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
                     >
                       Submit Feedback
                     </Button>
                   </form>
                 </CardContent>
               </Card>
-            </div>
+            </motion.div>
           </div>
+        </div>
       </section>
     </div>
   );

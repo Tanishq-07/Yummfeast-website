@@ -29,6 +29,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import Autoplay from "embla-carousel-autoplay";
 import CustomButton from "../ui/custom-button";
+import Link from "next/link";
 
 // Define types for our components
 interface Product {
@@ -530,7 +531,7 @@ const prevBanner = () => {
       {/* Hero Section */}
       <section
         ref={heroRef}
-        className="relative min-h-[45vh] md:min-h-[67vh] flex place-items-center justify-between px-6 md:px-60 overflow-hidden bg-[url('/images/bg.png')]"
+        className="relative min-h-[45vh] md:min-h-[85vh] flex place-items-center justify-between px-6 md:px-60 overflow-hidden bg-[url('/images/bg.png')]"
       >
 
         {/* Navigation Buttons */}
@@ -571,7 +572,7 @@ const prevBanner = () => {
             {/* Right image - Drop in from top */}
             <motion.img
               src={banners[currentBanner].image2}
-              className="w-1/2 md:w-2/5 md:h-3/5 me-8 md:mx-16 md:mt-10 drop-shadow-2xl"
+              className="w-1/2 md:w-2/5 md:h-4/5 me-8 md:mx-16 md:mt-10 drop-shadow-2xl"
               alt="Right Banner Image"
               initial={{ y: -200, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -692,7 +693,6 @@ const prevBanner = () => {
       </section>
 
       {/*Recent new and updates*/}
-
       <section className="py-24 bg-red-600 relative overflow-hidden">
         {/* Subtle background elements */}
         <div className="absolute inset-0 overflow-hidden">
