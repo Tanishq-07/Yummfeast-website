@@ -430,7 +430,7 @@ const { bg, ring, text, shadow } = chipColorMap[selectedChip] || chipColorMap["i
       name: "Yummfeast Rings",
       description: "Crunchy rings with a burst of tangy masala flavor",
       image:
-        "/images/chips2.png",
+        "/images/products/cream-and-onion.png",
       price: "₹10",
       category: "Chips"
     },
