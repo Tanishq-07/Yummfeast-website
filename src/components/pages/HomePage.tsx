@@ -433,7 +433,7 @@ const { bg, ring, text, shadow } = chipColorMap[selectedChip] || chipColorMap["i
       image:
         "/images/products/cream-and-onion.png",
       price: "₹10",
-      category: "chips"
+      category: "Chips"
     },
     {
       name: "Hara Matar",
@@ -441,7 +441,7 @@ const { bg, ring, text, shadow } = chipColorMap[selectedChip] || chipColorMap["i
       image:
         "/images/chips5.png",
       price: "₹5",
-      category: "namkeen"
+      category: "Namkeen"
     },
     {
       name: "Yummfeast All-in-One",
@@ -450,7 +450,7 @@ const { bg, ring, text, shadow } = chipColorMap[selectedChip] || chipColorMap["i
       image:
         "/images/chips6.png",
       price: "₹20",
-      category: "fryums"
+      category: "Fryums"
     },
     {
       name: "Yummfeast Rings",
@@ -458,7 +458,7 @@ const { bg, ring, text, shadow } = chipColorMap[selectedChip] || chipColorMap["i
       image:
         "/images/chips7.png",
       price: "₹10",
-      category: "fryums"
+      category: "Fryums"
     },
   ];
 

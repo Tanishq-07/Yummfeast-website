@@ -1,5 +1,8 @@
 import { motion } from "framer-motion";
 import HeroSection from "../HeroSection";
+import { Card, CardContent } from "@/components/ui/card"
+import { Heart, Eye } from "lucide-react"
+
 
 export default function AboutPage() {
 
@@ -14,7 +17,14 @@ export default function AboutPage() {
       <HeroSection banner={bannerData} />
 
       {/* Our Story with distressed border */}
-      <section className="py-16 relative">
+      <section className="py-16 relative"
+      style={{
+          backgroundImage: "url('/images/white-bg.jpg')",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          opacity: 1,
+        }}>
         <div className="container mx-auto p-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -76,8 +86,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Vision with brush stroke divider */}
-      <section className="relative overflow-hidden  bg-red-600 py-8">
+      {/* Our Mission */}
+      <section className="relative overflow-hidden py-16 bg-red-600">
         <div className="absolute inset-0 overflow-hidden">
           <motion.div
             className="w-[120%] h-[120%] bg-[url('/images/pattern.svg')] opacity-10"
@@ -89,119 +99,157 @@ export default function AboutPage() {
             }}
           />
         </div>
-        <div className="bg-red-600 pt-10 pb-16">
-          <div className="container mx-auto px-16">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-normal text-white mb-4 relative inline-block">
-                Our Vision
-                {/* Cartoon stroke underline */}
-                <svg
-                  className="absolute -bottom-3 left-0 w-full"
-                  height="12"
-                  viewBox="0 0 100 12"
-                  preserveAspectRatio="none"
-                >
-                  <path
-                    d="M0,5 C10,10 30,2 50,5 S80,10 100,5"
-                    stroke="#F29C1F"
-                    strokeWidth="4"
-                    fill="none"
-                    strokeLinecap="round"
-                  />
-                </svg>
-              </h2>
-              <p className="text-white max-w-2xl mx-auto">
-                Where we’re headed and what we stand for.
-              </p>
-            </div>
+        <motion.div
+          className="absolute top-20 right-0 w-64 h-64 rounded-full bg-white/10 opacity-30 blur-3xl"
+          animate={{
+            x: [0, 30, 0],
+            y: [0, 20, 0],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Number.POSITIVE_INFINITY,
+            repeatType: "reverse",
+          }}
+        />
+        <div className="container mx-auto px-16">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-normal text-white mb-4 relative inline-block">
+              Our Mission
+              {/* Cartoon stroke underline */}
+              <svg
+                className="absolute -bottom-3 left-0 w-full"
+                height="12"
+                viewBox="0 0 100 12"
+                preserveAspectRatio="none"
+              >
+                <path
+                  d="M0,5 C10,10 30,2 50,5 S80,10 100,5"
+                  stroke="#F29C1F"
+                  strokeWidth="4"
+                  fill="none"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </h2>
+            <p className="text-white max-w-2xl mx-auto">Where we're headed and what we stand for.</p>
+          </div>
 
-            <div className="w-88">
-              {[
-                {
-                  title: "Spreading smiles, one snack at a time.",
-                  description:
-                    "To become one of India’s most loved and trusted snack brands by delivering joyful, flavorful experiences that bring people together — one pack at a time.",
-                },
-              ].map((value, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="relative"
-                >
-                  <div className="bg-white p-8 rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-300 relative z-10">
-                    <h3 className="font-normal text-xl mb-3 text-red-500 text-center">{value.title}</h3>
-                    <p className="text-muted-foreground text-center">{value.description}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+          <div className="max-w-2xl mx-auto">
+            {[
+              {
+                title: "Crafted to delight, made to munch. ❤️",
+                description:
+                  "We are on a mission to create high-quality, exciting snacks using fresh ingredients, innovative recipes, and cutting-edge technology — reaching every corner of India through strong distribution and delightful taste.",
+                icon: <Heart className="w-8 h-8" />,
+                color: "from-red-400 to-pink-400",
+                bgColor: "from-red-50 to-pink-50",
+              },
+            ].map((mission, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -10, scale: 1.02 }}
+                className="group"
+              >
+                <Card className="h-full border-0 shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden">
+                  <div className={`h-2 bg-gradient-to-r ${mission.color}`}></div>
+                  <CardContent
+                    className={`p-8 bg-gradient-to-br ${mission.bgColor} group-hover:shadow-inner transition-all duration-300`}
+                  >
+                    <div className="text-center mb-6">
+                      <div
+                        className={`inline-flex p-4 rounded-2xl bg-gradient-to-r ${mission.color} text-white shadow-lg mb-4`}
+                      >
+                        {mission.icon}
+                      </div>
+                      <h3 className="font-normal text-2xl mb-4 text-gray-800">{mission.title}</h3>
+                      <p className="text-gray-600 leading-relaxed">{mission.description}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="relative overflow-hidden py-8"
+      {/* Our Vision */}
+      <section className="relative overflow-hidden py-16 bg-white"
       style={{
           backgroundImage: "url('/images/white-bg.jpg')",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
-          backgroundPosition: "top",
+          backgroundPosition: "center",
           opacity: 1,
         }}>
-        <div className="pt-10 pb-16">
-          <div className="container mx-auto px-16">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-normal text-red-600 mb-4 relative inline-block">
-                Our Mission
-                {/* Cartoon stroke underline */}
-                <svg
-                  className="absolute -bottom-3 left-0 w-full"
-                  height="12"
-                  viewBox="0 0 100 12"
-                  preserveAspectRatio="none"
-                >
-                  <path
-                    d="M0,5 C10,10 30,2 50,5 S80,10 100,5"
-                    stroke="#F29C1F"
-                    strokeWidth="4"
-                    fill="none"
-                    strokeLinecap="round"
-                  />
-                </svg>
-              </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Where we’re headed and what we stand for.
-              </p>
-            </div>
+        <div className="container mx-auto px-16">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-normal text-gray-800 mb-4 relative inline-block">
+              Our Vision
+              {/* Cartoon stroke underline */}
+              <svg
+                className="absolute -bottom-3 left-0 w-full"
+                height="12"
+                viewBox="0 0 100 12"
+                preserveAspectRatio="none"
+              >
+                <path
+                  d="M0,5 C10,10 30,2 50,5 S80,10 100,5"
+                  stroke="#F29C1F"
+                  strokeWidth="4"
+                  fill="none"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">Our vision for the future of snacking.</p>
+          </div>
 
-            <div className="w-88">
-              {[
-                {
-                  title: "Crafted to delight, made to munch.",
-                  description:
-                    "We are on a mission to create high-quality, exciting snacks using fresh ingredients, innovative recipes, and cutting-edge technology — reaching every corner of India through strong distribution and delightful taste.",
-                },
-              ].map((value, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="relative"
-                >
-                  <div className="bg-red-600 p-8 rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-300 relative z-10">
-                    <h3 className="font-normal text-xl mb-3 text-white text-center">{value.title}</h3>
-                    <p className="text-white text-center">{value.description}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+          <div className="max-w-2xl mx-auto">
+            {[
+              {
+                title: "Leading India's snack revolution. 👁️",
+                description:
+                  "To become India's most beloved snack brand, setting new standards for quality, taste, and innovation while building a sustainable future for snacking that brings joy to every household across the nation.",
+                icon: <Eye className="w-8 h-8" />,
+                color: "from-blue-400 to-indigo-400",
+                bgColor: "from-blue-50 to-indigo-50",
+              },
+            ].map((vision, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -10, scale: 1.02 }}
+                className="group"
+              >
+                <Card className="h-full border-0 shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden">
+                  <div className={`h-2 bg-gradient-to-r ${vision.color}`}></div>
+                  <CardContent
+                    className={`p-8 bg-gradient-to-br ${vision.bgColor} group-hover:shadow-inner transition-all duration-300`}
+                  >
+                    <div className="text-center mb-6">
+                      <div
+                        className={`inline-flex p-4 rounded-2xl bg-gradient-to-r ${vision.color} text-white shadow-lg mb-4`}
+                      >
+                        {vision.icon}
+                      </div>
+                      <h3 className="font-normal text-2xl mb-4 text-gray-800">{vision.title}</h3>
+                      <p className="text-gray-600 leading-relaxed">{vision.description}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
+
 
       {/* Team Section with ink blob frames */}
       <section className="bg-red-600 py-8 relative">

@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { Clock, User, Calendar, ArrowRight, Search, X } from "lucide-react";
+import { Clock, User, Calendar, ArrowRight, Search, X, Heart } from "lucide-react";
 import { useState } from "react";
 import blogData from "@/data/data.json";
 
@@ -276,79 +276,74 @@ export default function BlogsPage() {
             </div>
 
             {regularBlogs.length === 0 ? (
-              <div className="text-center py-16">
-                <div className="text-gray-400 mb-4">
-                  <Search className="h-16 w-16 mx-auto" />
-                </div>
-                <h3 className="text-2xl font-semibold text-gray-900 mb-2">
-                  No articles found
-                </h3>
-                <p className="text-gray-600">
-                  Try adjusting your search or filter criteria
-                </p>
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {regularBlogs.map((blog, index) => (
-                  <motion.div
-                    key={blog.id}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    className="group z-10"
-                  >
-                    <Card className="h-full flex flex-col hover:shadow-xl transition-all duration-300 border-0 shadow-md bg-red-500 backdrop-blur-lg p-8 rounded-lg shadow-lg border-1 border-white z-10">
-                      <CardContent className="p-6 flex-grow flex flex-col">
-                        <div className="flex items-center gap-3 text-sm text-white mb-3">
-                          <Badge
-                            variant="secondary"
-                            className="bg-white text-red-500 font-medium"
-                          >
-                            {blog.category}
-                          </Badge>
-                          <div className="flex items-center gap-1">
-                            <Clock className="h-4 w-4" />
-                            <span>{blog.readTime}</span>
-                          </div>
-                        </div>
+        <div className="text-center py-16">
+          <div className="text-gray-400 mb-4">
+            <Search className="h-16 w-16 mx-auto" />
+          </div>
+          <h3 className="text-2xl font-semibold text-gray-900 mb-2">No articles found</h3>
+          <p className="text-gray-600">Try adjusting your search or filter criteria</p>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {regularBlogs.map((blog, index) => (
+            <motion.div
+              key={blog.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -8, scale: 1.02 }}
+              className="group"
+            >
+              <Card className="h-full flex flex-col shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border-0">
+                <div className="h-1 bg-gradient-to-r from-red-500 to-orange-500"></div>
 
-                        <h3 className="font-bold text-xl mb-3 
-                        text-white leading-tight transition-colors">
-                          {blog.title}
-                        </h3>
+                <CardContent className="p-6 bg-gradient-to-br from-white to-gray-50 flex-grow flex flex-col">
+                  <div className="flex items-center gap-3 text-sm mb-4">
+                    <Badge variant="secondary" className="bg-red-500 hover:bg-red-600 text-white font-medium px-3 py-1">
+                      {blog.category}
+                    </Badge>
+                    <div className="flex items-center gap-1 text-gray-600">
+                      <Clock className="h-4 w-4" />
+                      <span>{blog.readTime}</span>
+                    </div>
+                  </div>
 
-                        <p className="text-white mb-4 flex-grow leading-relaxed">
-                          {blog.excerpt}
-                        </p>
+                  <h3 className="font-bold text-xl mb-3 text-gray-900 leading-tight group-hover:text-red-600 transition-colors">
+                    {blog.title}
+                  </h3>
 
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-2 text-sm text-white">
-                            <User className="h-4 w-4" />
-                            <span className="font-medium">{blog.author}</span>
-                          </div>
+                  <p className="text-gray-700 mb-6 flex-grow leading-relaxed line-clamp-3">{blog.excerpt}</p>
 
-                          <Button
-                            variant="ghost"
-                            size="sm"
-                            className="group/btn p-2 h-auto font-semibold bg-white text-red-500 hover:text-red-600 hover:shadow-xl transition-all duration-800 ease-in-out"
-                            onClick={() => openModal(blog)}
-                          >
-                            Read More
-                            <ArrowRight className="ml-1 h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
-                          </Button>
-                        </div>
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2 text-sm text-gray-600">
+                        <User className="h-4 w-4" />
+                        <span className="font-medium">{blog.author}</span>
+                      </div>
 
-                        <div className="flex items-center gap-2 text-sm text-white mt-3 pt-3 border-t border-gray-100">
-                          <Calendar className="h-4 w-4" />
-                          <span>{blog.date}</span>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                ))}
-              </div>
-            )}
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="group/btn px-4 py-2 font-semibold bg-red-500 text-white hover:text-red-500 hover:bg-white border border-red-200 hover:border-red-500 transition-all duration-300"
+                        onClick={() => openModal(blog)}
+                      >
+                        Read More
+                        <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
+                      </Button>
+                    </div>
+
+                    <div className="flex items-center gap-2 text-sm text-gray-500 pt-4 border-t border-gray-200">
+                      <Calendar className="h-4 w-4" />
+                      <span>{blog.date}</span>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+      )}
           </div>
         </div>
       </section>
