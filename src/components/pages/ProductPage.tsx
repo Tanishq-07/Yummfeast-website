@@ -89,7 +89,7 @@ const products = [
     price: "₹5",
     category: "fryums",
     subcategory: "corn",
-    image: "/images/katori2.png",
+    image: "/images/products/katori.png",
     comingSoon: false,
   },
   {
@@ -100,7 +100,7 @@ const products = [
     price: "₹5",
     category: "fryums",
     subcategory: "wheat",
-    image: "/images/timer.png",
+    image: "/images/products/timer.png",
     comingSoon: false,
   },
   {
@@ -344,7 +344,7 @@ const products = [
     price: "₹5",
     category: "namkeen",
     subcategory: "traditional",
-    image: "/images/products/salted-peanut.png",
+    image: "/images/products/salted-peanuts.png",
     comingSoon: false,
   },
   {
@@ -356,17 +356,6 @@ const products = [
     category: "namkeen",
     subcategory: "bhujia",
     image: "/images/products/ratlami-sev.png",
-    comingSoon: false,
-  },
-  {
-    id: 34,
-    name: "Dalmoth",
-    description:
-      'This namkeen is a rich and savory mix, offering a blend of crunchy ingredients. It\'s a classic Indian snack known for its satisfying texture and flavorful profile, perfect for a hearty munch. The packaging highlights "Quality" as a key attribute.',
-    price: "₹10",
-    category: "namkeen",
-    subcategory: "mix",
-    image: "/images/products/dal-moth.png",
     comingSoon: false,
   },
 ]
