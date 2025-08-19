@@ -449,9 +449,9 @@ const ProductCircle = ({
 }
 
 
-export default function ProductPage() {
+export default function ProductPage({category} : any) {
   const [searchTerm, setSearchTerm] = useState("")
-  const [selectedCategory, setSelectedCategory] = useState("all")
+  const [selectedCategory, setSelectedCategory] = useState(category)
   const [selectedSubcategory, setSelectedSubcategory] = useState("all")
   const [sortBy, setSortBy] = useState("name")
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)

@@ -78,7 +78,7 @@ const ProductCircle = ({
 }: {
   product: Product;
   index: number;
-  navigateTo: (page: string) => void;
+  navigateTo: (page: string, category ?:any) => void;
 }) => {
   return (
     <div className="flex flex-col items-center gap-4">
@@ -107,7 +107,7 @@ const ProductCircle = ({
       />
 
       {/* Label/Button */}
-      <CustomButton className="bg-orange-500" value={product.category}/>
+      <CustomButton navigateTo={navigateTo} className="bg-orange-500" value={product.category}/>
     </div>
   );
 };
@@ -248,7 +248,7 @@ const AnimatedCounter = ({
 };
 
 interface HomePageProps {
-  navigateTo: (page: string) => void;
+  navigateTo: (page: string, category?:any) => void;
 }
 
 export default function HomePage({ navigateTo }: HomePageProps) {
@@ -432,7 +432,7 @@ const { bg, ring, text, shadow } = chipColorMap[selectedChip] || chipColorMap["i
       image:
         "/images/products/cream-and-onion.png",
       price: "₹10",
-      category: "Chips"
+      category: "chips"
     },
     {
       name: "Hara Matar",
@@ -440,7 +440,7 @@ const { bg, ring, text, shadow } = chipColorMap[selectedChip] || chipColorMap["i
       image:
         "/images/chips5.png",
       price: "₹5",
-      category: "Namkeen"
+      category: "namkeen"
     },
     {
       name: "Yummfeast All-in-One",
@@ -449,7 +449,7 @@ const { bg, ring, text, shadow } = chipColorMap[selectedChip] || chipColorMap["i
       image:
         "/images/chips6.png",
       price: "₹20",
-      category: "Extruded Snacks"
+      category: "fryums"
     },
     {
       name: "Yummfeast Rings",
@@ -457,7 +457,7 @@ const { bg, ring, text, shadow } = chipColorMap[selectedChip] || chipColorMap["i
       image:
         "/images/chips7.png",
       price: "₹10",
-      category: "Snacks"
+      category: "fryums"
     },
   ];
 
@@ -677,7 +677,7 @@ const prevBanner = () => {
                   <ProductCircle
                     product={product}
                     index={index}
-                    navigateTo={navigateTo}
+                    navigateTo={()=>navigateTo("product", product.category)}
                   />
                 </CarouselItem>
               ))}

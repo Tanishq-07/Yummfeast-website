@@ -23,14 +23,20 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 // Main App Component
 export default function App() {
   const [currentPage, setCurrentPage] = useState("home");
+  const [category, setCategory] = useState("all");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showScrollUp, setShowScrollUp] = useState(false);
   const [showScrollDown, setShowScrollDown] = useState(true);
   const [accessRestricted, setAccessRestricted] = useState(false);
 
   // Function to handle page navigation
-  const navigateTo = (page: string) => {
+  const navigateTo = (page: string, category?:any) => {
     setCurrentPage(page);
+    if(category){
+      setCategory(category);
+    }else{
+      setCategory("all");
+    }
     setIsMenuOpen(false);
     window.scrollTo(0, 0);
   };
@@ -43,15 +49,13 @@ export default function App() {
       case "about":
         return <AboutPage />;
       case "product":
-        return <ProductPage />;
+        return <ProductPage category={category}/>;
       case "testimonial":
         return <TestimonialPage />;
       case "infra":
         return <InfraPage />;
       case "gallery":
         return <GalleryPage />;
-      case "feedback":
-        return <FeedbackPage />;
       case "query":
         return <QueryPage />;
       case "blogs":
