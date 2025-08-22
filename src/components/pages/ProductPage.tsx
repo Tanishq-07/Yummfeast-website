@@ -15,7 +15,7 @@ const products = [
     id: 1,
     name: "Classic Salted Chips",
     description:
-      "The timeless and universally loved flavor, offering the pure, crispy taste of perfectly salted potatoes. It's simple, satisfying, and a go-to for traditional chip lovers.",
+      "The timeless and universally loved flavor, offering the pure, crispy taste of perfectly salted potatoes.",
     price: "₹5",
     category: "Chips",
     subcategory: "classic",
@@ -26,7 +26,7 @@ const products = [
     id: 2,
     name: "Cream & Onion Chips",
     description:
-      "A popular and creamy flavor combination that blends the mild sweetness of onion with a rich, smooth creaminess, creating a perfectly balanced and savory experience.",
+      "A popular and creamy flavor combination that blends the mild sweetness of onion with a rich, smooth creaminess.",
     price: "₹5",
     category: "Chips",
     subcategory: "classic",
@@ -37,7 +37,7 @@ const products = [
     id: 3,
     name: "Magic Masala Chips",
     description:
-      "A vibrant and exciting blend of Indian spices that delivers a tangy, savory, and slightly spicy kick. This flavor is designed to ignite your taste buds with every crunchy bite.",
+      "A vibrant and exciting blend of Indian spices that delivers a tangy, savory, and slightly spicy kick.",
     price: "₹5",
     category: "Chips",
     subcategory: "classic",
@@ -48,7 +48,7 @@ const products = [
     id: 4,
     name: "Tangy Tomato Chips",
     description:
-      "Bursting with the zesty and sweet-sour taste of ripe tomatoes, this flavor offers a delightful tang that's both refreshing and addictive.",
+      "Bursting with the zesty and sweet-sour taste of ripe tomatoes, this flavor offers a delightful tang that's refreshing.",
     price: "₹5",
     category: "Chips",
     subcategory: "classic",
@@ -61,7 +61,7 @@ const products = [
     id: 6,
     name: "Rings",
     description:
-      "These are fun, ring-shaped snacks with a zesty and tangy tomato flavor. They offer a delightful crunch and are designed to be an enjoyable treat for all ages. Each pack also comes with a FREE GIFT INSIDE, adding an element of surprise and excitement.",
+      "These are fun, ring-shaped snacks with a zesty and tangy tomato flavor. They offer a delightful crunch for all ages.",
     price: "₹5",
     category: "Fryums",
     subcategory: "rings",
@@ -74,7 +74,7 @@ const products = [
     id: 7,
     name: "Pani Puri",
     description:
-      'This snack offers the exciting and spicy taste of "Bambaiya Style" Pani Puri in a crunchy, ready-to-eat format. It\'s designed to bring the vibrant street food experience to a convenient packet. As an added bonus, each pack includes a FREE JUMPING BALL INSIDE, making it a fun treat for kids.',
+      'This snack offers the exciting and spicy taste of "Bambaiya Style" Pani Puri in a crunchy, ready-to-eat format.',
     price: "₹5",
     category: "Namkeen",
     subcategory: "traditional",
@@ -85,7 +85,7 @@ const products = [
     id: 9,
     name: "Katori (Masala Munch)",
     description:
-      'These are delightful, crispy, katori-shaped snacks with a savory "Masala Munch" flavor. They offer a unique and fun munching experience, perfect for a quick and flavorful treat. The vibrant green packaging makes it easily recognizable.',
+      'These are delightful, crispy, katori-shaped snacks with a savory "Masala Munch" flavor. They offer a unique and fun munching experience.',
     price: "₹5",
     category: "Fryums",
     subcategory: "corn",
@@ -96,7 +96,7 @@ const products = [
     id: 10,
     name: "Timer",
     description:
-      'This is a fun snack designed to appeal to kids, featuring a playful "Timer" theme. The snack itself appears to be a crunchy, savory bite. A key highlight is the FREE Watch Inside each pack, adding an exciting surprise element for young consumers.',
+      'This is a fun snack designed to appeal to kids, featuring a playful "Timer" theme. The snack itself appears to be a crunchy, savory bite.',
     price: "₹5",
     category: "Fryums",
     subcategory: "wheat",
@@ -107,7 +107,7 @@ const products = [
     id: 11,
     name: "Spring Roll",
     description:
-      'This is a snack featuring a unique "Spring Roll" shape and a "Wow! Masala" flavor. It\'s designed to bring an exciting and tasty crunch to your snack time.',
+      'This is a snack featuring a unique "Spring Roll" shape and a "Wow! Masala" flavor.',
     price: "₹5",
     category: "Fryums",
     subcategory: "wheat",
@@ -118,7 +118,7 @@ const products = [
     id: 12,
     name: "Palak Paneer",
     description:
-      'This snack offers a unique "Crunchy Taste" with the distinct flavor of Palak Paneer. It\'s a savory snack that brings a popular Indian dish into a convenient, ready-to-eat form.',
+      'This snack offers a unique "Crunchy Taste" with the distinct flavor of Palak Paneer.',
     price: "₹5",
     category: "Fryums",
     subcategory: "wheat",
@@ -129,7 +129,7 @@ const products = [
     id: 13,
     name: "Golu Molu",
     description:
-      'This snack features a "tasty Masala" flavor and comes in a fun, cylindrical shape, appealing to those who enjoy a savory and crunchy bite. The packaging is a vibrant blue, making it easily noticeable.',
+      'This snack features a "tasty Masala" flavor and comes in a fun, cylindrical shape, appealing to those who enjoy crunchy bites.',
     price: "₹5",
     category: "Fryums",
     subcategory: "corn",
@@ -140,7 +140,7 @@ const products = [
     id: 14,
     name: "Noodles",
     description:
-      'These noodles are there to help you "Crunch your worries away!" They offer a quick and tasty meal or snack option, likely with a savory flavor profile. The packaging features a cheerful child enjoying noodles, emphasizing their appeal to a younger audience or for a joyful meal.',
+      'These noodles are there to help you "Crunch your worries away!" They offer a quick and tasty meal or snack option.',
     price: "₹5",
     category: "Fryums",
     subcategory: "wheat",
@@ -151,7 +151,7 @@ const products = [
     id: 15,
     name: "Chinese Pasta",
     description:
-      'This snack offers "Instant Happiness" with its unique Chinese pasta shape and flavor. It\'s a crunchy, savory treat designed to bring a fun twist to snack time. Each pack also includes FREE TOMATO KETCHUP INSIDE.',
+      'This snack offers "Instant Happiness" with its unique Chinese pasta shape and flavor. It\'s a crunchy and savory.',
     price: "₹5",
     category: "Fryums",
     subcategory: "pasta",
@@ -162,7 +162,7 @@ const products = [
     id: 16,
     name: "Fingers",
     description:
-      'These are "extra delicious" finger-shaped snacks, offering a "Real Taste" that you won\'t want to miss. They are designed for a satisfying crunch and a flavorful experience.',
+      'These are "extra delicious" finger-shaped snacks, offering a "Real Taste" that you won\'t want to miss.',
     price: "₹5",
     category: "Fryums",
     subcategory: "corn",
@@ -173,7 +173,7 @@ const products = [
     id: 17,
     name: "Karare",
     description:
-      'These are "the original Party Starter" snacks, featuring a "Magic Masala Twist" flavor. They offer a unique, crunchy texture, making them a fun and flavorful addition to any gathering or as a standalone treat.',
+      'These are "the original Party Starter" snacks, featuring a "Magic Masala Twist" flavor. They offer a unique, crunchy texture, making them fun treat.',
     price: "₹5",
     category: "Fryums",
     subcategory: "corn",
@@ -184,7 +184,7 @@ const products = [
     id: 18,
     name: "3D Twister",
     description:
-      'These are "Pizza-Flavoured Crunchy Bites!" that come in a unique 3D shape, adding a fun twist to your snacking experience. Each pack also contains a FREE GIFT INSIDE, making it an exciting treat.',
+      'These are "Pizza-Flavoured Crunchy Bites!" that come in a unique 3D shape, adding a fun twist to your snacking experience. Each pack has a FREE GIFT INSIDE.',
     price: "₹5",
     category: "Fryums",
     subcategory: "corn",
@@ -197,7 +197,7 @@ const products = [
     id: 19,
     name: "Bhel Mudhi",
     description:
-      "This namkeen offers the popular taste of Bhel Mudhi with a delicious masala flavor. It's a crunchy and savory snack, perfect for those who enjoy the classic street food experience in a convenient packet. The packaging features a vibrant design.",
+      "This namkeen offers the popular taste of Bhel Mudhi with a delicious masala flavor. It's a crunchy and savory snack.",
     price: "₹5",
     category: "Namkeen",
     subcategory: "mix",
@@ -208,7 +208,7 @@ const products = [
     id: 20,
     name: "All in One",
     description:
-      'This namkeen mix is described as "Our all time favourite," offering a diverse blend of savory ingredients. It typically includes a variety of crunchy elements like fried lentils, nuts, sev, and other crispy bits.',
+      'This namkeen mix is described as "Our all time favourite," offering a diverse blend of savory ingredients.',
     price: "₹5",
     category: "Namkeen",
     subcategory: "mix",
@@ -219,7 +219,7 @@ const products = [
     id: 21,
     name: "Aloo Bhujia",
     description:
-      'This is "Our all time favourite" savory snack, consisting of crispy, noodle-like strands made from potato and gram flour, seasoned with a delicious blend of spices. It\'s a classic Indian namkeen, perfect for a crunchy treat.',
+      'This is "Our all time favourite" savory snack, consisting of crispy, noodle-like strands made from potato and gram flour.',
     price: "₹5",
     category: "Namkeen",
     subcategory: "bhujia",
@@ -230,7 +230,7 @@ const products = [
     id: 22,
     name: "Badam Pakoda",
     description:
-      'This namkeen is described as "Our all time Favourite," featuring crunchy peanuts coated in a savory, spiced batter. It\'s a popular and delicious snack, perfect for those who enjoy a flavorful and satisfying crunch.',
+      'This namkeen is described as "Our all time Favourite," featuring crunchy peanuts coated in a savory, spiced batter.',
     price: "₹5",
     category: "Namkeen",
     subcategory: "traditional",
@@ -241,7 +241,7 @@ const products = [
     id: 23,
     name: "Chana Jor Garam",
     description:
-      'This snack offers "Crackling Goodness in Every Bite" with its "Tasty Crunchy Chatpata Chataka" flavor. It\'s a savory and spicy treat made from flattened chickpeas, perfect for those who enjoy a zesty and crunchy snack.',
+      'This snack offers "Crackling Goodness in Every Bite" with its "Tasty Crunchy Chatpata Chataka" flavor.',
     price: "₹5",
     category: "Namkeen",
     subcategory: "traditional",
@@ -252,7 +252,7 @@ const products = [
     id: 24,
     name: "Moong Dal",
     description:
-      'This namkeen is described as "Our all time Favourite," featuring crispy and savory fried moong dal (split green gram). It\'s a popular and classic Indian snack, known for its light texture and delicious taste, perfect for a quick munch.',
+      'This namkeen is described as "Our all time Favourite," featuring crispy and savory fried moong dal (split green gram).',
     price: "₹5",
     category: "Namkeen",
     subcategory: "traditional",
@@ -263,7 +263,7 @@ const products = [
     id: 25,
     name: "Chana Dal",
     description:
-      'This namkeen is described as "Our all time Favourite," featuring crispy and savory fried chana dal (split chickpeas). It\'s a popular and classic Indian snack, known for its satisfying crunch and delicious taste, perfect for a quick munch.',
+      'This namkeen is described as "Our all time Favourite," featuring crispy and savory fried chana dal (split chickpeas).',
     price: "₹5",
     category: "Namkeen",
     subcategory: "traditional",
@@ -274,7 +274,7 @@ const products = [
     id: 26,
     name: "Hara Matar",
     description:
-      'This namkeen is described as "Our all time Favourite," featuring crispy and savory fried green peas. It\'s a popular and classic Indian snack, known for its distinct taste and satisfying crunch, perfect for a quick munch.',
+      'This namkeen is described as "Our all time Favourite," featuring crispy and savory fried green peas.',
     price: "₹5",
     category: "Namkeen",
     subcategory: "traditional",
@@ -285,7 +285,7 @@ const products = [
     id: 27,
     name: "Navratan Mixture",
     description:
-      'This namkeen is hailed as "Our all time Favourite," offering a rich and diverse blend of nine (Navratan) different savory ingredients. It typically includes a variety of crispy elements like fried lentils, nuts, sev, and other flavorful components, providing a satisfying mix of textures and tastes in every bite.',
+      'This namkeen is hailed as "Our all time Favourite," offering a rich and diverse blend of nine (Navratan) different savory ingredients.',
     price: "₹5",
     category: "Namkeen",
     subcategory: "mix",
@@ -296,7 +296,7 @@ const products = [
     id: 28,
     name: "Punjabi Tadka",
     description:
-      'This namkeen is described as "Our all time Favourite," offering the bold and authentic flavors of Punjabi Tadka. It features crispy, savory strands, perfect for those who enjoy a zesty and flavorful snack with a distinct Indian spice profile.',
+      'This namkeen is described as "Our all time Favourite," offering the bold and authentic flavors of Punjabi Tadka.',
     price: "₹5",
     category: "Namkeen",
     subcategory: "traditional",
@@ -307,7 +307,7 @@ const products = [
     id: 29,
     name: "Chiwda Fry",
     description:
-      'This namkeen is a "Crunchy Yum" mixture that will "ask you more." It\'s a savory blend of peanuts and a tangy assortment of cereals, pulses, nuts, oil, and a hint of sugar, creating a balanced and satisfying snack experience.',
+      'This namkeen is a "Crunchy Yum" mixture that will "ask you more." It\'s a savory blend of peanuts and a tangy assortment of cereals, pulses and more.',
     price: "₹5",
     category: "Namkeen",
     subcategory: "mix",
@@ -318,7 +318,7 @@ const products = [
     id: 30,
     name: "Gathiya",
     description:
-      'This namkeen is described as "Our all time Favourite," featuring crispy, savory strands of Gathiya. It\'s a popular and classic Indian snack, known for its distinct texture and delicious taste, perfect for a quick munch.',
+      'This namkeen is described as "Our all time Favourite," featuring crispy, savory strands of Gathiya. It\'s a popular and classic Indian snack.',
     price: "₹5",
     category: "Namkeen",
     subcategory: "traditional",
@@ -329,7 +329,7 @@ const products = [
     id: 31,
     name: "Hing Jeera Chana",
     description:
-      'This namkeen is described as "Our all time Favourite," featuring roasted or fried chickpeas (chana) seasoned with the aromatic flavors of hing (asafoetida) and jeera (cumin). It\'s a savory, crunchy, and traditional Indian snack known for its distinctive taste.',
+      'This namkeen is described as "Our all time Favourite," featuring roasted or fried chickpeas (chana) seasoned with the aromatic flavors of hing and jeera.',
     price: "₹5",
     category: "Namkeen",
     subcategory: "traditional",
@@ -340,7 +340,7 @@ const products = [
     id: 32,
     name: "Salted Peanut",
     description:
-      'This namkeen is described as "Our all time Favourite," featuring perfectly roasted and salted peanuts. It\'s a classic, simple, and satisfying snack, ideal for a quick protein boost or a crunchy munch anytime.',
+      'This namkeen is described as "Our all time Favourite," featuring perfectly roasted and salted peanuts. It\'s a classic, simple, and satisfying snack.',
     price: "₹5",
     category: "Namkeen",
     subcategory: "traditional",
@@ -351,11 +351,88 @@ const products = [
     id: 33,
     name: "Ratlami Sev",
     description:
-      'This namkeen is described as "Our all time Favourite," offering the authentic and spicy taste of Ratlami Sev. It consists of crispy, thick strands of gram flour noodles, seasoned with a distinct blend of spices, making it a flavorful and crunchy snack.',
+      'This namkeen is described as "Our all time Favourite," offering the authentic and spicy taste of Ratlami Sev.',
     price: "₹5",
     category: "Namkeen",
     subcategory: "bhujia",
     image: "/images/products/ratlami-sev.png",
+    comingSoon: false,
+  },
+  {
+    id: 34,
+    name: "All In One Large",
+    description:
+      'This namkeen is described as "Our all time Favourite," offering the authentic and spicy taste of Ratlami Sev.',
+    price: "₹100",
+    category: "Namkeen",
+    subcategory: "bhujia",
+    image: "/images/products/all-in-one-100.png",
+    comingSoon: false,
+  },
+  {
+    id: 35,
+    name: "All In One Medium",
+    description:
+      'This namkeen is described as "Our all time Favourite," offering the authentic and spicy taste of Ratlami Sev.',
+    price: "₹30",
+    category: "Namkeen",
+    subcategory: "bhujia",
+    image: "/images/products/all-in-one-30.png",
+    comingSoon: false,
+  },
+  {
+    id: 36,
+    name: "Cream & Onion Chips Large",
+    description:
+      "A popular and creamy flavor combination that blends the mild sweetness of onion with a rich, smooth creaminess.",
+    price: "₹10",
+    category: "Chips",
+    subcategory: "classic",
+    image: "/images/products/cream-and-onion-10.png",
+    comingSoon: false,
+  },
+  {
+    id: 37,
+    name: "Nimbu Bhujia",
+    description:
+      "This namkeen is a thin, crispy sev flavored with a zesty and tangy lemon (nimbu) and bhujia seasoning.",
+    price: "₹5",
+    category: "Namkeen",
+    subcategory: "bhujia",
+    image: "/images/products/nimbu-bhujia.png",
+    comingSoon: false,
+  },
+  {
+    id: 38,
+    name: "Papdi",
+    description:
+      'This namkeen is the "SNACK TIME KA HERO," featuring crispy and savory papdi (fried dough wafers).',
+    price: "₹5",
+    category: "Namkeen",
+    subcategory: "papdi",
+    image: "/images/products/papdi.png",
+    comingSoon: false,
+  },
+  {
+    id: 39,
+    name: "Paneer Bhujia",
+    description:
+      "This namkeen brings the rich, savory flavor of paneer bhujia to a crunchy, ready-to-eat snack.",
+    price: "₹5",
+    category: "Namkeen",
+    subcategory: "bhujia",
+    image: "/images/products/paneer-bhujia.png",
+    comingSoon: false,
+  },
+  {
+    id: 40,
+    name: "Bhujia",
+    description:
+      'This bhujia is described as "A Perfect Blend of Salty, Spicy and Tangy," offering a delicious and balanced flavor profile.',
+    price: "₹5",
+    category: "Namkeen",
+    subcategory: "bhujia",
+    image: "/images/products/bhujia.png",
     comingSoon: false,
   },
 ]

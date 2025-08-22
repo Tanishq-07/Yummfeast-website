@@ -1,7 +1,8 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 type Banner = {
+  bg: string;
   image1: string;
   image2: string;
 };
@@ -16,7 +17,8 @@ export default function HeroSection({ banner }: HeroSectionProps) {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-[45vh] md:min-h-[68vh] flex place-items-center justify-between px-6 md:px-60 overflow-hidden bg-[url('/images/bg.png')]"
+      style={{ backgroundImage: `url(${banner.bg})` }}
+      className="relative min-h-[45vh] md:min-h-[60vh] flex place-items-center justify-between px-6 md:px-60 overflow-hidden bg-cover bg-center"
     >
       <AnimatePresence mode="wait">
         <motion.div

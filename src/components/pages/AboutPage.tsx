@@ -1,15 +1,17 @@
 import { motion } from "framer-motion";
-import HeroSection from "../HeroSection";
 import { Card, CardContent } from "@/components/ui/card"
 import { Heart, Eye } from "lucide-react"
+import React, { useRef } from "react";
+import HeroSection from "../HeroSection";
 
 
 export default function AboutPage() {
 
   const bannerData = {
-  image1: "/images/b2l.png",
-  image2: "/images/b2r.png",
-  };
+    bg: "/images/about/bg.png",
+    image1: "/images/about/left.png",
+    image2: "/images/about/right.png"
+  }
 
   return (
     <div className="relative overflow-hidden">

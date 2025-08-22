@@ -502,6 +502,16 @@ const banners = [
     image1: "/images/b1l.png",
     image2: "/images/b1r.png",
   },
+  {
+    id: 3,
+    image1: "/images/banners/left1.png",
+    image2: "/images/banners/right1.png",
+  },
+  {
+    id: 4,
+    image1: "/images/banners/left2.png",
+    image2: "/images/banners/right2.png",
+  },
 ];
 
 const [currentBanner, setCurrentBanner] = useState(0)
@@ -531,7 +541,7 @@ const prevBanner = () => {
       {/* Hero Section */}
       <section
         ref={heroRef}
-        className="relative min-h-[45vh] md:min-h-[85vh] flex place-items-center justify-between px-6 md:px-60 overflow-hidden bg-[url('/images/bg.png')]"
+        className="relative min-h-[45vh] md:min-h-[75vh] flex place-items-center justify-between px-6 md:px-60 overflow-hidden bg-[url('/images/bg.png')]"
       >
 
         {/* Navigation Buttons */}
