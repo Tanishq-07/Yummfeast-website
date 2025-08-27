@@ -96,14 +96,8 @@ export default function QueryPage() {
             <p className="text-xl text-gray-600">Pick the partnership that fits your business dreams!</p>
           </motion.div>
 
-          <Tabs defaultValue="distributorship" onValueChange={setQueryType}>
-            <TabsList className="grid w-full grid-cols-3 max-w-2xl mx-auto h-16 bg-gradient-to-r from-orange-100 to-red-100 rounded-2xl p-2">
-              <TabsTrigger
-                value="distributorship"
-                className="text-lg font-normal data-[state=active]:bg-gradient-to-r data-[state=active]:from-orange-400 data-[state=active]:to-red-400 data-[state=active]:text-white rounded-xl transition-all duration-300"
-              >
-                🚛 Distributorship
-              </TabsTrigger>
+          <Tabs defaultValue="dealership" onValueChange={setQueryType}>
+            <TabsList className="grid w-full grid-cols-2 max-w-2xl mx-auto h-16 bg-gradient-to-r from-orange-100 to-red-100 rounded-2xl p-2">
               <TabsTrigger
                 value="dealership"
                 className="text-lg font-normal data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-400 data-[state=active]:to-pink-400 data-[state=active]:text-white rounded-xl transition-all duration-300"
@@ -120,142 +114,6 @@ export default function QueryPage() {
           </Tabs>
         </div>
       </section>
-
-      {queryType === "distributorship" && (
-        <section className="py-20 bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50">
-          <div className="container mx-auto px-4">
-            <div className="max-w-7xl mx-auto">
-              <motion.div
-                className="text-center mb-16"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-              >
-                <h2 className="text-4xl font-normal mb-6 text-gray-800">Our Super-Powered Distribution Network! 🚛⚡</h2>
-                <p className="text-xl text-gray-600 max-w-4xl mx-auto">
-                  Join our incredible distribution family that's spreading snack happiness across Bihar and beyond!
-                  We're not just delivering snacks - we're delivering smiles! 😊🍿
-                </p>
-              </motion.div>
-
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
-                <motion.div
-                  className="space-y-8"
-                  initial={{ opacity: 0, x: -30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6 }}
-                >
-                  {[
-                    {
-                      icon: <MapPin className="h-8 w-8" />,
-                      title: "Strategic Snack Hubs 📍",
-                      description:
-                        "Our distribution points are like snack command centers - strategically placed to get fresh goodies to you lightning fast!",
-                      color: "from-orange-400 to-red-400",
-                      bgColor: "from-orange-50 to-red-50",
-                    },
-                    {
-                      icon: <Truck className="h-8 w-8" />,
-                      title: "Fleet of Flavor 🚛",
-                      description:
-                        "Our own trucks + trusted partners = a snack delivery dream team that knows every shortcut to happiness!",
-                      color: "from-blue-400 to-purple-400",
-                      bgColor: "from-blue-50 to-purple-50",
-                    },
-                    {
-                      icon: <Clock className="h-8 w-8" />,
-                      title: "Real-Time Snack Tracking 📱",
-                      description:
-                        "Watch your orders zoom from our Darbhanga facility straight to your store - it's like GPS for snacks!",
-                      color: "from-green-400 to-teal-400",
-                      bgColor: "from-green-50 to-teal-50",
-                    },
-                    {
-                      icon: <Shield className="h-8 w-8" />,
-                      title: "Quality Guardian Angels 👼",
-                      description:
-                        "Our logistics ninjas optimize every route while keeping our planet happy - fresh snacks, green delivery!",
-                      color: "from-purple-400 to-pink-400",
-                      bgColor: "from-purple-50 to-pink-50",
-                    },
-                  ].map((feature, index) => (
-                    <motion.div
-                      key={index}
-                      className={`bg-gradient-to-br ${feature.bgColor} p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105`}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                    >
-                      <div className="flex items-start space-x-4">
-                        <div className={`bg-gradient-to-r ${feature.color} p-4 rounded-xl text-white shadow-lg`}>
-                          {feature.icon}
-                        </div>
-                        <div>
-                          <h3 className="text-xl font-normal mb-3 text-gray-800">{feature.title}</h3>
-                          <p className="text-gray-600 leading-relaxed">{feature.description}</p>
-                        </div>
-                      </div>
-                    </motion.div>
-                  ))}
-                </motion.div>
-
-                <motion.div
-                  className="relative"
-                  initial={{ opacity: 0, x: 30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6 }}
-                >
-                  <div className="relative overflow-hidden rounded-3xl shadow-2xl">
-                    <div className="aspect-video bg-gradient-to-br from-orange-200 to-red-200 flex items-center justify-center">
-                      <div className="text-center text-gray-600">
-                        <div className="relative">
-                  <div className="relative overflow-hidden rounded-2xl shadow-2xl">
-                    <Image
-                      src="/images/distributionship-truck.jpeg"
-                      alt="Yummfeast distribution truck on highway"
-                      width={600}
-                      height={400}
-                      className="w-full h-auto object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-                  </div>
-                </div>
-                      </div>
-                    </div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-                  </div>
-                  <div className="absolute -top-6 -right-6 text-5xl animate-bounce">🚛</div>
-                  <div className="absolute -bottom-4 -left-4 text-4xl animate-pulse">📦</div>
-                </motion.div>
-              </div>
-
-              <motion.div
-                className="bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 rounded-3xl p-8 shadow-2xl text-white text-center"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-              >
-                <h3 className="text-3xl font-normal mb-6">🌟 Complete Coverage Magic! 🌟</h3>
-                <p className="text-xl leading-relaxed max-w-4xl mx-auto">
-                  Our super-network delivers to most super-stockists and dealers faster than you can say "snack attack"!
-                  We ensure that the delightful taste of Yummfeast is always within arm's reach for every hungry
-                  customer! Fresh, fast, and absolutely fantastic! 🎯✨
-                </p>
-                <div className="flex justify-center gap-4 mt-6 text-3xl">
-                  <span>🎯</span>
-                  <span>⚡</span>
-                  <span>🍿</span>
-                  <span>😋</span>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* Query Form */}
       <section className="py-20 bg-white">
@@ -588,7 +446,7 @@ export default function QueryPage() {
 
       {/* Final CTA */}
       <section className="py-16 bg-red-600 bg-[url('/images/bg.png')] text-white text-center">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -597,9 +455,14 @@ export default function QueryPage() {
           >
             <h2 className="text-4xl font-normal mb-6">Ready to Start Your Snack Empire? 👑</h2>
             <p className="text-xl mb-8 text-orange-100">
-              Don't wait! The snack revolution is happening NOW, and we want YOU to be part of it! Let's build something
-              amazing together! 🚀✨
+              The snack revolution is underway—why just watch, when you can lead? Partner with Yummfeast and turn bold ideas into mouthwatering success! 🚀✨
             </p>
+            <div className="transition-transform duration-100 hover:scale-[1.03]">
+            <div className="bg-red-500 text-white text-lg font-normal w-56 mx-auto px-6 py-2 rounded-md shadow-md border-2 border-black relative hover:bg-orange-600">
+               Become a Partner
+              <div className="absolute -bottom-1 left-0 w-56 h-full mx-auto rounded-md bg-black -z-10 translate-y-1 translate-x-1"></div>
+            </div>
+            </div>
           </motion.div>
         </div>
       </section>

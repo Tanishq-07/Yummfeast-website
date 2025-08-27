@@ -297,7 +297,7 @@ export default function AboutPage() {
                 name: "Mr. Manish Pansari",
                 role: "CEO & Managing Director",
                 image:
-                  "https://media.istockphoto.com/id/1501770003/photo/happy-handsome-young-indian-man-head-shot-front-portrait.jpg?s=612x612&w=0&k=20&c=P2toTbaknymA7vf28IQNa-3xrlUjPXLFqvN2Zra8_nw=",
+                  "/images/team/team1.jpeg",
               }
             ].map((member, index) => (
               <motion.div

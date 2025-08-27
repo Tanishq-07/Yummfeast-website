@@ -1309,11 +1309,10 @@ const prevBanner = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl md:text-4xl font-normal mb-8">
-              Ready to Experience the Yummfeast Difference?
+              Discover the Yummfeast Brochure
             </h2>
             <p className="text-xl mb-8">
-              Join thousands of satisfied customers who have made Yummfeast
-              their favorite snack brand.
+              Get a complete look at our delicious range of snacks, crafted to satisfy every craving.
             </p>
             {/* <Button
               size="lg"
@@ -1334,9 +1333,9 @@ const prevBanner = () => {
               />
             </Button> */}
             <div className="transition-transform duration-100 hover:scale-[1.03]">
-            <div className="bg-red-500 text-white text-lg font-normal w-40 mx-auto px-6 py-2 rounded-md shadow-md border-2 border-black relative hover:bg-orange-600">
-              Shop Now
-              <div className="absolute -bottom-1 left-0 w-40 h-full mx-auto rounded-md bg-black -z-10 translate-y-1 translate-x-1"></div>
+            <div className="bg-red-500 text-white text-lg font-normal w-56 mx-auto px-6 py-2 rounded-md shadow-md border-2 border-black relative hover:bg-orange-600">
+               Download Brochure
+              <div className="absolute -bottom-1 left-0 w-56 h-full mx-auto rounded-md bg-black -z-10 translate-y-1 translate-x-1"></div>
             </div>
             </div>
           </motion.div>

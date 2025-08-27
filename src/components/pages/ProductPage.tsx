@@ -206,7 +206,7 @@ const products = [
   },
   {
     id: 20,
-    name: "All in One",
+    name: "All In One",
     description:
       'This namkeen mix is described as "Our all time favourite," offering a diverse blend of savory ingredients.',
     price: "₹5",
@@ -360,17 +360,6 @@ const products = [
   },
   {
     id: 34,
-    name: "All In One Large",
-    description:
-      'This namkeen is described as "Our all time Favourite," offering the authentic and spicy taste of Ratlami Sev.',
-    price: "₹100",
-    category: "Namkeen",
-    subcategory: "bhujia",
-    image: "/images/products/all-in-one-100.png",
-    comingSoon: false,
-  },
-  {
-    id: 35,
     name: "All In One Medium",
     description:
       'This namkeen is described as "Our all time Favourite," offering the authentic and spicy taste of Ratlami Sev.',
@@ -378,6 +367,17 @@ const products = [
     category: "Namkeen",
     subcategory: "bhujia",
     image: "/images/products/all-in-one-30.png",
+    comingSoon: false,
+  },
+    {
+    id: 35,
+    name: "All In One Large",
+    description:
+      'This namkeen is described as "Our all time Favourite," offering the authentic and spicy taste of Ratlami Sev.',
+    price: "₹100",
+    category: "Namkeen",
+    subcategory: "bhujia",
+    image: "/images/products/all-in-one-100.png",
     comingSoon: false,
   },
   {
