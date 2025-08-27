@@ -15,7 +15,7 @@ export default function Footer({ navigateTo }: FooterProps) {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <div className="flex items-center mb-4">
-              <img src="/images/logo.png" alt="Yummfeast Logo" className="h-16 mr-2" />
+              <img src="/images/logo.png" alt="Yummfeast Logo" className="h-16 md:h-20 mr-2" />
             </div>
             <p className="text-blue-200 mb-4">
               Ready to snack with us? Join thousands of happy snackers who trust us for their cravings!
