@@ -20,7 +20,7 @@ const products = [
     price: "₹5",
     category: "Chips",
     subcategory: "classic",
-    image: "/images/products/classic-salted.png",
+    image: "/images/products/demo.png",
     comingSoon: false,
   },
   {
