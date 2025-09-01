@@ -8,9 +8,9 @@ import HeroSection from "../HeroSection";
 export default function AboutPage() {
 
   const bannerData = {
-    bg: "/images/about/bg.png",
-    image1: "/images/about/left.png",
-    image2: "/images/about/right.png"
+    bg: "/images/bg.png",
+    image1: "/images/banners/about/left.png",
+    image2: "/images/banners/about/right.png"
   }
 
   return (
