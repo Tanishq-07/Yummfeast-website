@@ -14,9 +14,9 @@ const products = [
   // Chips Category
   {
     id: 1,
-    name: "Classic Salted Chips",
+    name: "Classic Salted Chips Large",
     description:
-      "The timeless and universally loved flavor, offering the pure, crispy taste of perfectly salted potatoes.",
+      "Demo for Apoorv.",
     price: "₹5",
     category: "Chips",
     subcategory: "classic",
