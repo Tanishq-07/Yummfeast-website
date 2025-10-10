@@ -371,7 +371,7 @@ export default function QueryPage() {
               </div>
               <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-6">
                 <div className="text-3xl mb-2">⭐</div>
-                <div className="text-2xl font-normal">Priya Sharma</div>
+                <div className="text-2xl font-normal">Anuj Sharma</div>
                 <div className="text-purple-200">Super Stockist</div>
                 <div className="text-sm mt-2">"Best decision for my business!"</div>
               </div>

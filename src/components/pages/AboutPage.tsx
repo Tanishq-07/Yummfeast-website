@@ -78,9 +78,9 @@ export default function AboutPage() {
             >
               <div className="aspect-video bg-muted rounded-lg overflow-hidden relative z-10">
                 <img
-                  src="images/about1.png"
+                  src="images/about/about.png"
                   alt="Our Story"
-                  className="w-full h-full object-cover"
+                  className="h-full object-cover"
                 />
               </div>
             </motion.div>
@@ -371,10 +371,6 @@ export default function AboutPage() {
                         viewport={{ once: true }}
                         className="absolute -bottom-4 left-1/2 transform -translate-x-1/2"
                       >
-                        <div className="bg-gradient-to-r from-green-500 to-emerald-500 text-white px-6 py-2 rounded-full shadow-lg text-sm font-medium">
-                          <CheckCircle className="w-4 h-4 inline mr-2" />
-                          Certified Excellence
-                        </div>
                       </motion.div>
                     </motion.div>
                   </div>

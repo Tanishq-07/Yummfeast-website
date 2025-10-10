@@ -493,6 +493,10 @@ const { bg, ring, text, shadow } = chipColorMap[selectedChip] || chipColorMap["i
 
 const banners = [
   {
+    id: 0,
+    image1: "/images/banners/main.png"
+  },
+  {
     id: 1,
     image1: "/images/b2l.png",
     image2: "/images/b2r.png",
@@ -560,37 +564,58 @@ const prevBanner = () => {
         </button>
 
         <AnimatePresence mode="wait">
-          <motion.div
-            key={currentBanner}
-            className="flex place-items-center justify-between w-full"
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-          >
-
-            {/* Left image - Slide in from left */}
-            <motion.img
-              src={banners[currentBanner].image1}
-              className="w-1/2 ms-0 md:w-2/5 md:me-16 md:mt-10 drop-shadow-2xl"
-              alt="Left Banner Image"
-              initial={{ x: -200, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              exit={{ x: -200, opacity: 0 }}
-              transition={{ duration: 0.8, ease: "easeInOut" }}
-            />
-
-            {/* Right image - Drop in from top */}
-            <motion.img
-              src={banners[currentBanner].image2}
-              className="w-1/2 md:w-2/5 md:h-4/5 me-8 md:mx-16 md:mt-10 drop-shadow-2xl"
-              alt="Right Banner Image"
-              initial={{ y: -200, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: 200, opacity: 0 }}
-              transition={{ duration: 0.8, ease: "easeInOut", delay: 0.1 }}
-            />
-          </motion.div>
+          {currentBanner === 0 ? (
+            // First banner: single fullscreen image
+            <motion.div
+              key={currentBanner}
+              className="flex absolute left-0 top-0 h-full flex items-center justify-center z-10"
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+            >
+              <motion.img
+                src={banners[currentBanner].image1}
+                className="w-full h-full object-cover"
+                alt="Banner Image"
+                initial={{ scale: 0.98, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.98, opacity: 0 }}
+                transition={{ duration: 0.8, ease: "easeInOut" }}
+              />
+            </motion.div>
+          ) : (
+            // 2nd/3rd banners: two side-by-side images
+            <motion.div
+              key={currentBanner}
+              className="flex place-items-center justify-between w-full"
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+            >
+              {/* Left image - Slide in from left */}
+              <motion.img
+                src={banners[currentBanner].image1}
+                className="w-1/2 ms-0 md:w-2/5 md:me-16 md:mt-10 drop-shadow-2xl"
+                alt="Left Banner Image"
+                initial={{ x: -200, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: -200, opacity: 0 }}
+                transition={{ duration: 0.8, ease: "easeInOut" }}
+              />
+              {/* Right image - Drop in from top */}
+              <motion.img
+                src={banners[currentBanner].image2}
+                className="w-1/2 md:w-2/5 md:h-4/5 me-8 md:mx-16 md:mt-10 drop-shadow-2xl"
+                alt="Right Banner Image"
+                initial={{ y: -200, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: 200, opacity: 0 }}
+                transition={{ duration: 0.8, ease: "easeInOut", delay: 0.1 }}
+              />
+            </motion.div>
+          )}
         </AnimatePresence>
+
         <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-0 transform rotate-180 z-10">
           <svg
             xmlns="http://www.w3.org/2000/svg"

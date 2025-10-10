@@ -584,7 +584,7 @@ export default function ProductPage({category} : any) {
     setSearchTerm("")
     setSelectedCategory("all")
     setSelectedSubcategory("all")
-    setSortBy("name")
+    setSortBy("price-low")
   }
 
   const triggerConfetti = () => {

@@ -16,7 +16,7 @@ export default function NavLinks({ navigateTo, currentPage }: NavLinksProps) {
   // Primary navigation items to show directly in the navbar
   const primaryLinks = [
     { name: "Home", key: "home" },
-    { name: "About", key: "about" },
+    { name: "About Us", key: "about" },
     { name: "Products", key: "product" },
     { name: "Dealership", key: "query" },
     { name: "Testimonials", key: "testimonial" },
@@ -80,7 +80,7 @@ export default function NavLinks({ navigateTo, currentPage }: NavLinksProps) {
           currentPage === "contact" ? "text-red-600" : "text-muted-foreground",
         )}
       >
-        Contact
+        Contact Us
       </a>
     </>
   )
