@@ -193,7 +193,7 @@ export default function CareerPage() {
               className="aspect-video bg-muted rounded-lg overflow-hidden"
             >
               <img
-                src="/images/gallery/pic7.jpg"
+                src="/images/carrers/team.png"
                 alt="Sales Team"
                 className="w-full h-full object-cover"
               />

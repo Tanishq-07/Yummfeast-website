@@ -259,6 +259,14 @@ export default function HomePage({ navigateTo }: HomePageProps) {
   const [selectedChip, setSelectedChip] = useState("images/chips1.png");
   const [currentFactIndex, setCurrentFactIndex] = useState(0)
   const [isVisible, setIsVisible] = useState(true)
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -494,7 +502,8 @@ const { bg, ring, text, shadow } = chipColorMap[selectedChip] || chipColorMap["i
 const banners = [
   {
     id: 0,
-    image1: "/images/banners/main.png"
+    image1: "/images/banners/main.jpg",
+    image2: "/images/banners/mob-main.jpg",
   },
   {
     id: 1,
@@ -574,7 +583,7 @@ const prevBanner = () => {
               exit="exit"
             >
               <motion.img
-                src={banners[currentBanner].image1}
+                src={isMobile ? banners[currentBanner].image2 : banners[currentBanner].image1}
                 className="w-full h-full object-cover"
                 alt="Banner Image"
                 initial={{ scale: 0.98, opacity: 0 }}
@@ -932,7 +941,7 @@ const prevBanner = () => {
         />
       </div>
 
-      <div className="container mx-auto mt-16 px-4 relative z-10">
+      <div className="container mx-auto my-16 px-4 relative z-10">
         <div className="max-w-4xl mx-auto">
           <img
             src="/images/rollerCoaster4.png"
@@ -1059,6 +1068,11 @@ const prevBanner = () => {
               </div>
             </motion.div>
           </motion.div>
+          <img
+            src="/images/packet.png"
+            alt="Chips Packet"
+            className="hidden md:block absolute -bottom-32 left-16 h-64 w-64 z-20"
+          />
         </div>
       </div>
     </section>
@@ -1299,14 +1313,14 @@ const prevBanner = () => {
           }}
         >
           <img
-            src="/images/chip3 (1).png"
+            src="/images/twister.png"
             alt="Floating chip"
             className="w-full h-full object-contain drop-shadow-lg"
           />
         </motion.div>
 
         <motion.div
-          className="absolute w-24 h-24 right-[5%] bottom-[10%] md:right-[15%] bottom-[20%]"
+          className="absolute w-32 h-32 right-[5%] bottom-[10%] md:right-[15%] bottom-[20%]"
           animate={{
             y: [5, -5, 5],
             rotate: [0, -15, 15, 0],
@@ -1319,7 +1333,7 @@ const prevBanner = () => {
           }}
         >
           <img
-            src="/images/chip4 (1).png"
+            src="/images/kurkure.png"
             alt="Floating chip"
             className="w-full h-full object-contain drop-shadow-lg"
           />
