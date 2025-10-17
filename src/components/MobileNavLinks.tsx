@@ -88,7 +88,7 @@ export default function MobileNavLinks({ navigateTo, currentPage }: MobileNavLin
           currentPage === "contact" ? "text-red-600" : "text-muted-foreground",
         )}
       >
-        Contact
+        Contact Us
         <ArrowRight className={cn("h-4 w-4", currentPage === "contact" ? "opacity-100" : "opacity-0")} />
       </a>
     </>

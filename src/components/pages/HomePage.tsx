@@ -466,7 +466,7 @@ const { bg, ring, text, shadow } = chipColorMap[selectedChip] || chipColorMap["i
       image:
         "/images/chips7.png",
       price: "₹10",
-      category: "Fryums"
+      category: "Extruded"
     },
   ];
 
@@ -532,7 +532,7 @@ const [currentBanner, setCurrentBanner] = useState(0)
 useEffect(() => {
   const interval = setInterval(() => {
     setCurrentBanner((prev) => (prev + 1) % banners.length)
-  }, 4500)
+  }, 7000)
 
   return () => clearInterval(interval)
 }, [])
@@ -604,7 +604,7 @@ const prevBanner = () => {
               {/* Left image - Slide in from left */}
               <motion.img
                 src={banners[currentBanner].image1}
-                className="w-1/2 ms-0 md:w-2/5 md:me-16 md:mt-10 drop-shadow-2xl"
+                className="w-1/2 ms-0 md:me-16 md:mt-10 drop-shadow-2xl"
                 alt="Left Banner Image"
                 initial={{ x: -200, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
@@ -614,7 +614,7 @@ const prevBanner = () => {
               {/* Right image - Drop in from top */}
               <motion.img
                 src={banners[currentBanner].image2}
-                className="w-1/2 md:w-2/5 md:h-4/5 me-8 md:mx-16 md:mt-10 drop-shadow-2xl"
+                className="w-1/2 md:h-4/5 me-8 md:mx-16 md:mt-10 drop-shadow-2xl"
                 alt="Right Banner Image"
                 initial={{ y: -200, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
@@ -968,7 +968,7 @@ const prevBanner = () => {
                   key={currentFactIndex}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -20 }}
-                  transition={{ duration: 0.3 }}
+                  transition={{ duration: 0.6 }}
                   className="min-h-[3rem] flex items-center justify-center"
                 >
                   <p className="text-xl z-30 max-w-3xl">{funFacts[currentFactIndex]}</p>

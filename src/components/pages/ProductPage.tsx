@@ -14,13 +14,13 @@ const products = [
   // Chips Category
   {
     id: 1,
-    name: "Classic Salted Chips Large",
+    name: "Classic Salted Chips",
     description:
-      "Demo for Apoorv.",
+      "The timeless and universally loved flavor, offering the pure, crispy taste of perfectly salted potatoes.",
     price: "₹5",
     category: "Chips",
     subcategory: "classic",
-    image: "/images/products/demo.png",
+    image: "/images/products/classic-salted.png",
     comingSoon: false,
   },
   {
@@ -870,7 +870,7 @@ export default function ProductPage({category} : any) {
               className="bg-white text-blue-600 hover:bg-white/90 group relative overflow-hidden"
               onClick={() => {
                 triggerConfetti()
-                window.location.href = "mailto:info@yummfeast.in"
+                window.location.href = "mailto:customercare@yummfeast.in"
               }}
             >
               <span className="relative z-10 group-hover:text-blue-600">Contact Us</span>

@@ -69,7 +69,7 @@ export default function Footer({ navigateTo }: FooterProps) {
                     }}
                     className="text-blue-200 hover:text-white transition-colors"
                   >
-                    About
+                    About Us
                   </a>
                 </li>
                 <li>
@@ -167,7 +167,7 @@ export default function Footer({ navigateTo }: FooterProps) {
                     }}
                     className="text-blue-200 hover:text-white transition-colors"
                   >
-                    Contact
+                    Contact Us
                   </a>
                 </li>
               </ul>
@@ -176,12 +176,12 @@ export default function Footer({ navigateTo }: FooterProps) {
           <div>
             <h3 className="text-md mb-4">Contact Us</h3>
             <address className="not-italic text-blue-200">
-              <p className="mb-2">Work : Ambey Food Products Plot no 55, B (53) P, B(58) P Industrial Area Donar</p>
+              <p className="mb-2">Work : Ambey Food Products Plot no 55, B (53) P, B(58) P Industrial Area Donar Darbhanga Bihar 846004</p>
               <p className="mb-2">
                 Registered Office : E/4, Ram Chandra Pally, Anjali Apartment Cabin – 2, 1st Floor, Kolkata-700008 (W.B.)
               </p>
               <p className="mb-2">Darbhanga, Bihar, India 846004</p>
-              <p className="mb-2">Email: info@yummfeast.in</p>
+              <p className="mb-2">Email: customercare@yummfeast.in</p>
               <p>Phone: 18001020602</p>
               <br />
               <p>Visit Us!</p>
