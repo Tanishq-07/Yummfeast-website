@@ -54,7 +54,7 @@ export default function AboutPage() {
                 </svg>
               </h2>
               <p className="text-muted-foreground mb-4">
-                Established in 2019, Ambey Food Products, a unit of Micro Commercials Pvt. Ltd., set out with a simple
+                Established in 2019, Ambey Food Products, a unit of Micro Commercial Pvt. Ltd., set out with a simple
                 mission — to deliver delicious, high-quality snacks under the vibrant brand name Yummfeast.
               </p>
               <p className="text-muted-foreground mb-4">

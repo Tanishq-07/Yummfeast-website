@@ -178,9 +178,8 @@ export default function Footer({ navigateTo }: FooterProps) {
             <address className="not-italic text-blue-200">
               <p className="mb-2">Work : Ambey Food Products Plot no 55, B (53) P, B(58) P Industrial Area Donar Darbhanga Bihar 846004</p>
               <p className="mb-2">
-                Registered Office : E/4, Ram Chandra Pally, Anjali Apartment Cabin – 2, 1st Floor, Kolkata-700008 (W.B.)
+                Registered Office : Cabin-1, Unit No 2C, 2nd Floor, 36A, Bentick Street, Esplanade, Kolkata, Kolkata, West Bengal, India, 700069
               </p>
-              <p className="mb-2">Darbhanga, Bihar, India 846004</p>
               <p className="mb-2">Email: customercare@yummfeast.in</p>
               <p>Phone: 18001020602</p>
               <br />

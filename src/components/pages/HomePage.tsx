@@ -7,6 +7,7 @@ import {
   AnimatePresence,
   useMotionValue,
   useSpring,
+  useTransform, animate
 } from "framer-motion";
 import {
   ChevronLeft,
@@ -29,7 +30,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import Autoplay from "embla-carousel-autoplay";
 import CustomButton from "../ui/custom-button";
-import Link from "next/link";
+import { Counter } from "../counter";
 
 // Define types for our components
 interface Product {
@@ -458,7 +459,7 @@ const { bg, ring, text, shadow } = chipColorMap[selectedChip] || chipColorMap["i
       image:
         "/images/chips6.png",
       price: "₹20",
-      category: "Fryums"
+      category: "Extruded"
     },
     {
       name: "Yummfeast Rings",
@@ -466,7 +467,7 @@ const { bg, ring, text, shadow } = chipColorMap[selectedChip] || chipColorMap["i
       image:
         "/images/chips7.png",
       price: "₹10",
-      category: "Extruded"
+      category: "Fryums"
     },
   ];
 
@@ -507,13 +508,13 @@ const banners = [
   },
   {
     id: 1,
-    image1: "/images/b2l.png",
-    image2: "/images/b2r.png",
+    image1: "/images/b1l.png",
+    image2: "/images/b1r.png",
   },
   {
     id: 2,
-    image1: "/images/b1l.png",
-    image2: "/images/b1r.png",
+    image1: "/images/banners/right2.png",
+    image2: "/images/banners/left2.png",
   },
   {
     id: 3,
@@ -522,8 +523,8 @@ const banners = [
   },
   {
     id: 4,
-    image1: "/images/banners/left2.png",
-    image2: "/images/banners/right2.png",
+    image1: "/images/b2r.png",
+    image2: "/images/b2l.png",
   },
 ];
 
@@ -604,7 +605,7 @@ const prevBanner = () => {
               {/* Left image - Slide in from left */}
               <motion.img
                 src={banners[currentBanner].image1}
-                className="w-1/2 ms-0 md:me-16 md:mt-10 drop-shadow-2xl"
+                className="w-1/2 ms-0 md:w-2/5 md:me-16 md:mt-10 drop-shadow-2xl"
                 alt="Left Banner Image"
                 initial={{ x: -200, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
@@ -614,7 +615,7 @@ const prevBanner = () => {
               {/* Right image - Drop in from top */}
               <motion.img
                 src={banners[currentBanner].image2}
-                className="w-1/2 md:h-4/5 me-8 md:mx-16 md:mt-10 drop-shadow-2xl"
+                className="w-1/2 md:w-2/5 md:h-4/5 me-8 md:mx-16 md:mt-10 drop-shadow-2xl"
                 alt="Right Banner Image"
                 initial={{ y: -200, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
@@ -977,81 +978,90 @@ const prevBanner = () => {
             </div>
 
             <motion.div
-              className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              viewport={{ once: true }}
-            >
-              <motion.div
-                className="bg-white/10 rounded-lg p-6 backdrop-blur-sm relative overflow-hidden"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.3 }}
-              >
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-red-500/20 to-yellow-500/20"
-                  animate={{
-                    background: [
-                      "linear-gradient(to right, rgba(239, 68, 68, 0.2), rgba(234, 179, 8, 0.2))",
-                      "linear-gradient(to right, rgba(234, 179, 8, 0.2), rgba(239, 68, 68, 0.2))",
-                      "linear-gradient(to right, rgba(239, 68, 68, 0.2), rgba(234, 179, 8, 0.2))",
-                    ],
-                  }}
-                  transition={{
-                    duration: 3,
-                    repeat: Number.POSITIVE_INFINITY,
-                  }}
-                />
-                <div className="text-4xl font-normal mb-2 relative z-10">200+</div>
-                <p className="relative z-10">Regional Snack Varieties</p>
-              </motion.div>
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          viewport={{ once: true }}
+        >
+          {/* Stat 1: 200+ */}
+          <motion.div
+            className="bg-white/10 rounded-lg p-6 backdrop-blur-sm relative overflow-hidden"
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.3 }}
+          >
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-r from-red-500/20 to-yellow-500/20"
+              animate={{
+                background: [
+                  "linear-gradient(to right, rgba(239, 68, 68, 0.2), rgba(234, 179, 8, 0.2))",
+                  "linear-gradient(to right, rgba(234, 179, 8, 0.2), rgba(239, 68, 68, 0.2))",
+                  "linear-gradient(to right, rgba(239, 68, 68, 0.2), rgba(234, 179, 8, 0.2))",
+                ],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Number.POSITIVE_INFINITY,
+              }}
+            />
+            <div className="text-4xl font-normal mb-2 relative z-10">
+              <Counter target={200} duration={2.5} suffix="+" />
+            </div>
+            <p className="relative z-10">Regional Snack Varieties</p>
+          </motion.div>
 
-              <motion.div
-                className="bg-white/10 rounded-lg p-6 backdrop-blur-sm relative overflow-hidden"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.3 }}
-              >
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-yellow-500/20 to-red-500/20"
-                  animate={{
-                    background: [
-                      "linear-gradient(to right, rgba(234, 179, 8, 0.2), rgba(239, 68, 68, 0.2))",
-                      "linear-gradient(to right, rgba(239, 68, 68, 0.2), rgba(234, 179, 8, 0.2))",
-                      "linear-gradient(to right, rgba(234, 179, 8, 0.2), rgba(239, 68, 68, 0.2))",
-                    ],
-                  }}
-                  transition={{
-                    duration: 3,
-                    repeat: Number.POSITIVE_INFINITY,
-                  }}
-                />
-                <div className="text-4xl font-normal mb-2 relative z-10">1B+</div>
-                <p className="relative z-10">Snack Packets Monthly</p>
-              </motion.div>
+          {/* Stat 2: 1B+ */}
+          <motion.div
+            className="bg-white/10 rounded-lg p-6 backdrop-blur-sm relative overflow-hidden"
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.3 }}
+          >
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-r from-yellow-500/20 to-red-500/20"
+              animate={{
+                background: [
+                  "linear-gradient(to right, rgba(234, 179, 8, 0.2), rgba(239, 68, 68, 0.2))",
+                  "linear-gradient(to right, rgba(239, 68, 68, 0.2), rgba(234, 179, 8, 0.2))",
+                  "linear-gradient(to right, rgba(234, 179, 8, 0.2), rgba(239, 68, 68, 0.2))",
+                ],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Number.POSITIVE_INFINITY,
+              }}
+            />
+            <div className="text-4xl font-normal mb-2 relative z-10">
+              <Counter target={1000000000} duration={2.5} suffix="+B" />
+            </div>
+            <p className="relative z-10">Snack Packets Monthly</p>
+          </motion.div>
 
-              <motion.div
-                className="bg-white/10 rounded-lg p-6 backdrop-blur-sm relative overflow-hidden"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.3 }}
-              >
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-red-500/20 to-yellow-500/20"
-                  animate={{
-                    background: [
-                      "linear-gradient(to right, rgba(239, 68, 68, 0.2), rgba(234, 179, 8, 0.2))",
-                      "linear-gradient(to right, rgba(234, 179, 8, 0.2), rgba(239, 68, 68, 0.2))",
-                      "linear-gradient(to right, rgba(239, 68, 68, 0.2), rgba(234, 179, 8, 0.2))",
-                    ],
-                  }}
-                  transition={{
-                    duration: 3,
-                    repeat: Number.POSITIVE_INFINITY,
-                  }}
-                />
-                <div className="text-4xl font-normal mb-2 relative z-10">$400B</div>
-                <p className="relative z-10">Global Snack Market</p>
-              </motion.div>
-            </motion.div>
+          {/* Stat 3: $400B */}
+          <motion.div
+            className="bg-white/10 rounded-lg p-6 backdrop-blur-sm relative overflow-hidden"
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.3 }}
+          >
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-r from-red-500/20 to-yellow-500/20"
+              animate={{
+                background: [
+                  "linear-gradient(to right, rgba(239, 68, 68, 0.2), rgba(234, 179, 8, 0.2))",
+                  "linear-gradient(to right, rgba(234, 179, 8, 0.2), rgba(239, 68, 68, 0.2))",
+                  "linear-gradient(to right, rgba(239, 68, 68, 0.2), rgba(234, 179, 8, 0.2))",
+                ],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Number.POSITIVE_INFINITY,
+              }}
+            />
+            <div className="text-4xl font-normal mb-2 relative z-10">
+              $<Counter target={400000000000} duration={2.5} suffix="+B" />
+            </div>
+            <p className="relative z-10">Global Snack Market</p>
+          </motion.div>
+        </motion.div>
 
             <motion.div
               className="mt-12 text-center"
@@ -1278,6 +1288,23 @@ const prevBanner = () => {
                     View LinkedIn
                   </span>
                   <div className="absolute -bottom-1 left-0 w-44 h-full mx-auto rounded-md bg-black -z-10 translate-y-1 translate-x-1"></div>
+                </Button>
+
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="bg-red-500 text-white px-6 py-2 w-48 rounded-md shadow-md border-2 border-black relative hover:bg-orange-600"
+                  onClick={() =>
+                    window.open("https://www.youtube.com/@yummfeast", "_blank")
+                  }
+                >
+                  <span className="relative z-10 flex items-center gap-2 transition-transform duration-100 hover:scale-[1.1]">
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M19.615 3.184C18.474 2.9 12 2.9 12 2.9s-6.474 0-7.615.284C2.23 3.45 1.5 4.187 1.5 6.241v11.518c0 2.054.73 2.791 2.885 3.057C5.526 20.9 12 20.9 12 20.9s6.474 0 7.615-.284C21.77 20.55 22.5 19.813 22.5 17.759V6.241c0-2.054-.73-2.791-2.885-3.057zM9.75 15.568V8.432L15.818 12 9.75 15.568z" />
+                    </svg>
+                    Subscribe on YouTube
+                  </span>
+                  <div className="absolute -bottom-1 left-0 w-48 h-full mx-auto rounded-md bg-black -z-10 translate-y-1 translate-x-1"></div>
                 </Button>
               </div>
             </motion.div>

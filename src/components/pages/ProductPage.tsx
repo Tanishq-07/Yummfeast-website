@@ -597,12 +597,12 @@ export default function ProductPage({category} : any) {
       <AnimatePresence>
         {isExploding && (
           <>
-            {Array.from({ length: 50 }).map((_, i) => {
-              const randomX = (Math.random() - 0.5) * 500
-              const randomY = (Math.random() - 0.5) * 500
+            {Array.from({ length: 100 }).map((_, i) => {
+              const randomX = (Math.random() - 0.5) * 700
+              const randomY = (Math.random() - 0.5) * 700
               const randomRotation = Math.random() * 360
               const randomScale = Math.random() * 0.6 + 0.4
-              const randomColor = ["bg-red-500", "bg-yellow-500", "bg-blue-500", "bg-green-500", "bg-purple-500"][
+              const randomColor = ["bg-red-700", "bg-yellow-800", "bg-blue-800", "bg-green-800", "bg-purple-800"][
                 Math.floor(Math.random() * 5)
               ]
 
@@ -626,7 +626,7 @@ export default function ProductPage({category} : any) {
                   }}
                   exit={{ opacity: 0 }}
                   transition={{
-                    duration: 1.5,
+                    duration: 2,
                     ease: [0.23, 1, 0.32, 1],
                   }}
                 />
