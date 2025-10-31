@@ -723,7 +723,7 @@ This meet was the foundation for Yummfeast's rapid expansion and success in the 
             // First banner: single fullscreen image
             <motion.div
               key={currentBanner}
-              className="flex absolute left-0 top-0 h-full flex items-center justify-center z-10"
+              className="flex absolute w-full h-full flex items-center justify-center z-10"
               initial="hidden"
               animate="visible"
               exit="exit"
