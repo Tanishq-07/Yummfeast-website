@@ -16,17 +16,16 @@ export default function MobileNavLinks({ navigateTo, currentPage }: MobileNavLin
   // Primary navigation items
   const primaryLinks = [
     { name: "Home", key: "home" },
-    { name: "About", key: "about" },
+    { name: "About Us", key: "about" },
     { name: "Products", key: "product" },
-    { name: "Testimonials", key: "testimonial" },
+    { name: "Dealership", key: "query" },
   ]
 
   // Secondary navigation items for the collapsible section
   const secondaryLinks = [
+    { name: "Testimonials", key: "testimonial" },
     { name: "Infra", key: "infra" },
     { name: "Gallery", key: "gallery" },
-    { name: "Feedback", key: "feedback" },
-    { name: "Dealership", key: "query" },
     { name: "Blogs", key: "blogs" },
     { name: "Careers", key: "career" },
   ]
