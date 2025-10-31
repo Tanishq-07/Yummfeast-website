@@ -71,7 +71,7 @@ const NewsModal = ({
 
           {/* Modal */}
           <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 mt-8"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
@@ -79,20 +79,12 @@ const NewsModal = ({
             onClick={onClose}
           >
             <motion.div
-              className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+              className="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[85vh] overflow-y-auto"
               initial={{ y: 20 }}
               animate={{ y: 0 }}
               exit={{ y: 20 }}
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Close Button */}
-              <button
-                onClick={onClose}
-                className="absolute top-4 right-4 p-2 hover:bg-gray-100 rounded-full transition-colors z-10"
-              >
-                <X className="w-6 h-6 text-gray-600" />
-              </button>
-
               {/* Image Section */}
               <div className="relative w-full h-64 md:h-80 overflow-hidden rounded-t-2xl bg-gray-200">
                 <img
