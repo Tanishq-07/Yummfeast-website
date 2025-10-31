@@ -176,8 +176,8 @@ const FeatureCard = ({ feature, index }: { feature: (typeof features)[0]; index:
       className={`relative overflow-hidden rounded-2xl ${feature.bgColor} p-6 shadow-lg hover:shadow-2xl transition-all duration-300 group`}
     >
       {/* Background Image */}
-      <div className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity duration-300">
-        <img src={feature.image || "/placeholder.svg"} alt={feature.title} className="w-full h-full object-cover" />
+      <div className="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity duration-300">
+        <img src="/images/featureBg.png" alt={feature.title} className="w-full h-full object-cover" />
       </div>
 
       {/* Content */}

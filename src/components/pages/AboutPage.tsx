@@ -76,7 +76,7 @@ export default function AboutPage() {
               viewport={{ once: true }}
               className="relative"
             >
-              <div className="aspect-video bg-muted rounded-lg overflow-hidden relative z-10">
+              <div className="aspect-video mt-4 rounded-lg overflow-hidden relative z-10">
                 <img
                   src="images/about/about.png"
                   alt="Our Story"
