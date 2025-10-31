@@ -7,7 +7,8 @@ import {
   AnimatePresence,
   useMotionValue,
   useSpring,
-  useTransform, animate
+  useTransform,
+  animate,
 } from "framer-motion";
 import {
   ChevronLeft,
@@ -17,7 +18,7 @@ import {
   Award,
   Flame,
   PartyPopper,
-  Factory
+  Factory,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -31,7 +32,122 @@ import { Badge } from "@/components/ui/badge";
 import Autoplay from "embla-carousel-autoplay";
 import CustomButton from "../ui/custom-button";
 import { Counter } from "../counter";
+import CursorGlow from "@/components/ui/cursor-glow";
+import { X } from "lucide-react";
 
+interface NewsItem {
+  title: string;
+  image: string;
+  alt: string;
+  date: string;
+  slug: string;
+  description: string;
+  content: string;
+}
+
+const NewsModal = ({
+  news,
+  isOpen,
+  onClose,
+}: {
+  news: NewsItem | null;
+  isOpen: boolean;
+  onClose: () => void;
+}) => {
+  if (!news) return null;
+
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <>
+          {/* Backdrop */}
+          <motion.div
+            className="fixed inset-0 bg-black/50 z-40"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={onClose}
+          />
+
+          {/* Modal */}
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center p-4"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.3 }}
+            onClick={onClose}
+          >
+            <motion.div
+              className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+              initial={{ y: 20 }}
+              animate={{ y: 0 }}
+              exit={{ y: 20 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close Button */}
+              <button
+                onClick={onClose}
+                className="absolute top-4 right-4 p-2 hover:bg-gray-100 rounded-full transition-colors z-10"
+              >
+                <X className="w-6 h-6 text-gray-600" />
+              </button>
+
+              {/* Image Section */}
+              <div className="relative w-full h-64 md:h-80 overflow-hidden rounded-t-2xl bg-gray-200">
+                <img
+                  src={news.image || "/placeholder.svg"}
+                  alt={news.alt}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+              </div>
+
+              {/* Content Section */}
+              <div className="p-6 md:p-8">
+                {/* Date and Title */}
+                <div className="mb-6">
+                  <p className="text-sm text-red-600 font-medium mb-2 uppercase tracking-wide">
+                    {news.date}
+                  </p>
+                  <h2 className="text-2xl md:text-3xl font-normal text-gray-900 mb-4 leading-tight">
+                    {news.title}
+                  </h2>
+                  <div className="w-12 h-1 bg-red-600 rounded-full"></div>
+                </div>
+
+                {/* Description */}
+                <div className="mb-6">
+                  <p className="text-gray-700 text-lg leading-relaxed">
+                    {news.description}
+                  </p>
+                </div>
+
+                {/* Content/Markup Area */}
+                <div className="mb-8 p-4 bg-gray-50 rounded-lg border border-gray-200">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                    News Details
+                  </h3>
+                  <div className="prose prose-sm max-w-none text-gray-700 whitespace-pre-wrap">
+                    {news.content}
+                  </div>
+                </div>
+
+                {/* Action Button */}
+                <Button
+                  className="w-full md:w-auto bg-red-600 hover:bg-red-700 text-white py-2 px-6 rounded-lg transition-colors"
+                  onClick={onClose}
+                >
+                  Close
+                </Button>
+              </div>
+            </motion.div>
+          </motion.div>
+        </>
+      )}
+    </AnimatePresence>
+  );
+};
 // Define types for our components
 interface Product {
   name: string;
@@ -41,38 +157,6 @@ interface Product {
   category: string;
 }
 
-// Animated cursor glow effect
-const CursorGlow = () => {
-  const cursorX = useMotionValue(0);
-  const cursorY = useMotionValue(0);
-
-  const springConfig = { damping: 25, stiffness: 700 };
-  const cursorXSpring = useSpring(cursorX, springConfig);
-  const cursorYSpring = useSpring(cursorY, springConfig);
-
-  useEffect(() => {
-    const moveCursor = (e: MouseEvent) => {
-      cursorX.set(e.clientX);
-      cursorY.set(e.clientY);
-    };
-
-    window.addEventListener("mousemove", moveCursor);
-    return () => window.removeEventListener("mousemove", moveCursor);
-  }, [cursorX, cursorY]);
-
-  return (
-    <motion.div
-      className="fixed w-[300px] h-[300px] rounded-full bg-gradient-to-r from-red-500/20 to-yellow-500/20 pointer-events-none blur-[80px] z-0"
-      style={{
-        x: cursorXSpring,
-        y: cursorYSpring,
-        translateX: "-50%",
-        translateY: "-50%",
-      }}
-    />
-  );
-};
-
 const ProductCircle = ({
   product,
   index,
@@ -80,7 +164,7 @@ const ProductCircle = ({
 }: {
   product: Product;
   index: number;
-  navigateTo: (page: string, category ?:any) => void;
+  navigateTo: (page: string, category?: any) => void;
 }) => {
   return (
     <div className="flex flex-col items-center gap-4">
@@ -109,7 +193,11 @@ const ProductCircle = ({
       />
 
       {/* Label/Button */}
-      <CustomButton navigateTo={navigateTo} className="bg-orange-500" value={product.category}/>
+      <CustomButton
+        navigateTo={navigateTo}
+        className="bg-orange-500"
+        value={product.category}
+      />
     </div>
   );
 };
@@ -127,7 +215,8 @@ const features = [
   {
     icon: Heart,
     title: "Shared Moments",
-    description: "Our snacks bring people together, creating precious moments of joy and connection with loved ones.",
+    description:
+      "Our snacks bring people together, creating precious moments of joy and connection with loved ones.",
     image: "/sharing-moments.png",
     color: "from-pink-500 to-purple-500",
     bgColor: "bg-gradient-to-br from-pink-50 to-purple-50",
@@ -141,7 +230,7 @@ const features = [
     color: "from-blue-500 to-indigo-500",
     bgColor: "bg-gradient-to-br from-blue-50 to-indigo-50",
   },
-]
+];
 
 const funFacts = [
   "Indians consume over 1 billion snack packets every month!",
@@ -162,10 +251,16 @@ const funFacts = [
   "The word 'namkeen' comes from 'namak' meaning salt.",
   "India is second largest consumer of snacks in the world.",
   "The crunch sound of chips is designed to make snacks sound fresher.",
-]
+];
 
 // Feature card with enhanced hover effects and proper typing
-const FeatureCard = ({ feature, index }: { feature: (typeof features)[0]; index: number }) => {
+const FeatureCard = ({
+  feature,
+  index,
+}: {
+  feature: (typeof features)[0];
+  index: number;
+}) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
@@ -177,7 +272,11 @@ const FeatureCard = ({ feature, index }: { feature: (typeof features)[0]; index:
     >
       {/* Background Image */}
       <div className="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity duration-300">
-        <img src="/images/featureBg.png" alt={feature.title} className="w-full h-full object-cover" />
+        <img
+          src="/images/featureBg.png"
+          alt={feature.title}
+          className="w-full h-full object-cover"
+        />
       </div>
 
       {/* Content */}
@@ -201,7 +300,10 @@ const FeatureCard = ({ feature, index }: { feature: (typeof features)[0]; index:
         </p>
 
         {/* Feature Image */}
-        <motion.div whileHover={{ scale: 1.05 }} className="relative overflow-hidden rounded-xl shadow-md">
+        <motion.div
+          whileHover={{ scale: 1.05 }}
+          className="relative overflow-hidden rounded-xl shadow-md"
+        >
           <img
             src={feature.image || "/placeholder.svg"}
             alt={feature.title}
@@ -211,8 +313,8 @@ const FeatureCard = ({ feature, index }: { feature: (typeof features)[0]; index:
         </motion.div>
       </div>
     </motion.div>
-  )
-}
+  );
+};
 
 // Animated counter component
 const AnimatedCounter = ({
@@ -250,7 +352,7 @@ const AnimatedCounter = ({
 };
 
 interface HomePageProps {
-  navigateTo: (page: string, category?:any) => void;
+  navigateTo: (page: string, category?: any) => void;
 }
 
 export default function HomePage({ navigateTo }: HomePageProps) {
@@ -258,9 +360,11 @@ export default function HomePage({ navigateTo }: HomePageProps) {
   const heroRef = useRef<HTMLElement>(null);
   const [currentChipIndex, setCurrentChipIndex] = useState(0);
   const [selectedChip, setSelectedChip] = useState("images/chips1.png");
-  const [currentFactIndex, setCurrentFactIndex] = useState(0)
-  const [isVisible, setIsVisible] = useState(true)
+  const [currentFactIndex, setCurrentFactIndex] = useState(0);
+  const [isVisible, setIsVisible] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
+  const [selectedNews, setSelectedNews] = useState<NewsItem | null>(null);
+  const [isNewsModalOpen, setIsNewsModalOpen] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -271,15 +375,15 @@ export default function HomePage({ navigateTo }: HomePageProps) {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setIsVisible(false)
+      setIsVisible(false);
       setTimeout(() => {
-        setCurrentFactIndex((prev) => (prev + 1) % funFacts.length)
-        setIsVisible(true)
-      }, 300)
-    }, 4000) // Change fact every 4 seconds
+        setCurrentFactIndex((prev) => (prev + 1) % funFacts.length);
+        setIsVisible(true);
+      }, 300);
+    }, 4000); // Change fact every 4 seconds
 
-    return () => clearInterval(interval)
-  }, [])
+    return () => clearInterval(interval);
+  }, []);
 
   const chipVariants = [
     "images/chips1.png",
@@ -288,15 +392,35 @@ export default function HomePage({ navigateTo }: HomePageProps) {
     "images/chips4.png",
   ];
 
-
   const chipColorMap = {
-  "images/chips1.png": { bg: "bg-red-600", ring: "border-red-400", text: "text-red-600", shadow: "red" },
-  "images/chips2.png": { bg: "bg-blue-600", ring: "border-blue-400", text: "text-blue-600", shadow: "blue" },
-  "images/chips3.png": { bg: "bg-green-600", ring: "border-green-400", text: "text-green-600", shadow: "green" },
-  "images/chips4.png": { bg: "bg-purple-600", ring: "border-purple-400", text: "text-purple-600", shadow: "purple" },
-};
+    "images/chips1.png": {
+      bg: "bg-red-600",
+      ring: "border-red-400",
+      text: "text-red-600",
+      shadow: "red",
+    },
+    "images/chips2.png": {
+      bg: "bg-blue-600",
+      ring: "border-blue-400",
+      text: "text-blue-600",
+      shadow: "blue",
+    },
+    "images/chips3.png": {
+      bg: "bg-green-600",
+      ring: "border-green-400",
+      text: "text-green-600",
+      shadow: "green",
+    },
+    "images/chips4.png": {
+      bg: "bg-purple-600",
+      ring: "border-purple-400",
+      text: "text-purple-600",
+      shadow: "purple",
+    },
+  };
 
-const { bg, ring, text, shadow } = chipColorMap[selectedChip] || chipColorMap["images/chips1.png"];
+  const { bg, ring, text, shadow } =
+    chipColorMap[selectedChip] || chipColorMap["images/chips1.png"];
 
   const instagramPosts = [
     {
@@ -387,30 +511,64 @@ const { bg, ring, text, shadow } = chipColorMap[selectedChip] || chipColorMap["i
     },
   ];
 
-  const newsItems = [
+  const newsItems: NewsItem[] = [
     {
       title: "Yummfeast Takes a Flavourful Leap at Bihar Business Connect 2023",
-      image:
-        "/images/news/news1.jpg",
+      image: "/images/news/news1.jpg",
       alt: "Indian Consumers",
       date: "2 days ago",
       slug: "indian-taste-preferences",
+      description:
+        "Yummfeast showcased its innovative snacking solutions at the Bihar Business Connect 2023, connecting with retailers and distributors across the region.",
+      content: `Yummfeast made a significant impact at Bihar Business Connect 2023, presenting its latest product innovations and distribution strategies to business leaders and entrepreneurs.
+
+Key highlights from the event:
+• Unveiled new snack flavors tailored for regional preferences
+• Established partnerships with 50+ retailers across Bihar
+• Demonstrated commitment to supporting local businesses
+• Showcased quality manufacturing and packaging standards
+
+The event was a tremendous success, reflecting Yummfeast's dedication to expanding its presence in eastern India while maintaining the highest standards of quality and taste.`,
     },
     {
-      title: "Yummfeast Dealers’ Meet 2025: Celebrating Partnerships, Purpose & Progress",
-      image:
-        "/images/news/news2.png",
+      title:
+        "Yummfeast Dealers' Meet 2025: Celebrating Partnerships, Purpose & Progress",
+      image: "/images/news/news2.png",
       alt: "New Flavors",
       date: "2 weeks ago",
       slug: "new-flavors-launch",
+      description:
+        "Our annual Dealers' Meet 2025 brought together our entire distribution network to celebrate achievements and plan for exciting growth ahead.",
+      content: `The Yummfeast Dealers' Meet 2025 was a grand celebration of partnership and progress, bringing together dealers, distributors, and business partners from across the country.
+
+Meeting highlights:
+• Recognition of top-performing dealers and distributors
+• Launch of three new snack varieties for 2025
+• Introduction of improved packaging and supply chain processes
+• Special incentive programs for retail partners
+• Interactive workshops on market trends and consumer preferences
+
+This gathering reinforced our commitment to supporting our dealers and creating a thriving ecosystem where everyone grows together.`,
     },
     {
-      title: "Yummfeast’s Dealership Meet 2022: A Grand Introduction to a Bold New Brand",
-      image:
-        "/images/news/news3.jpg",
+      title:
+        "Yummfeast's Dealership Meet 2022: A Grand Introduction to a Bold New Brand",
+      image: "/images/news/news3.jpg",
       alt: "Taste Test",
       date: "5 days ago",
       slug: "taste-test-results",
+      description:
+        "The 2022 Dealership Meet marked Yummfeast's bold entry into the market with an impressive showcase of product quality and brand vision.",
+      content: `Yummfeast's 2022 Dealership Meet was a groundbreaking event that introduced our brand vision to dealers and partners nationwide.
+
+Event overview:
+• More than 200 dealers attended from across India
+• Comprehensive product tasting sessions conducted
+• Brand story and mission shared with all partners
+• Distribution network established in 15 states
+• Long-term growth strategy outlined
+
+This meet was the foundation for Yummfeast's rapid expansion and success in the competitive snacking market.`,
     },
   ];
 
@@ -439,116 +597,112 @@ const { bg, ring, text, shadow } = chipColorMap[selectedChip] || chipColorMap["i
     {
       name: "Yummfeast Rings",
       description: "Crunchy rings with a burst of tangy masala flavor",
-      image:
-        "/images/products/cream-and-onion.png",
+      image: "/images/products/cream-and-onion.png",
       price: "₹10",
-      category: "Chips"
+      category: "Chips",
     },
     {
       name: "Hara Matar",
       description: "Crispy pasta snacks with Italian herbs seasoning",
-      image:
-        "/images/chips5.png",
+      image: "/images/chips5.png",
       price: "₹5",
-      category: "Namkeen"
+      category: "Namkeen",
     },
     {
       name: "Yummfeast All-in-One",
       description:
         "A delightful mix of various namkeen for the perfect snack time",
-      image:
-        "/images/chips6.png",
+      image: "/images/chips6.png",
       price: "₹20",
-      category: "Extruded"
+      category: "Extruded",
     },
     {
       name: "Yummfeast Rings",
       description: "Crunchy rings with a burst of tangy masala flavor",
-      image:
-        "/images/chips7.png",
+      image: "/images/chips7.png",
       price: "₹10",
-      category: "Fryums"
+      category: "Fryums",
     },
   ];
 
   const features = [
-  {
-    icon: Sparkles,
-    title: "Flavor Fiesta",
-    description:
-      "Whether you’re vibing with Cream & Onion coolness or diving into a Magic Masala flavor storm — we bring the party to your palate.",
-    image: "/images/pic2.png",
-    color: "from-orange-500 to-red-500",
-    bgColor: "bg-gradient-to-br from-orange-50 to-red-50",
-  },
-  {
-    icon: Heart,
-    title: "Snack & Bond",
-    description: "Our snacks bring people together — for laughs, movie nights, road trips, or just “oops, I ate the whole pack” moments.",
-    image: "/images/sharing-moments.png",
-    color: "from-pink-500 to-purple-500",
-    bgColor: "bg-gradient-to-br from-pink-50 to-purple-50",
-  },
-  {
-    icon: Factory,
-    title: "Crispy Craftsmanship",
-    description:
-      "Crunch meets quality. We whip up our snacks in top-tier facilities with ninja-level quality control — so every pack is a superstar.",
-    image: "/images/features/quality-production.png",
-    color: "from-blue-500 to-indigo-500",
-    bgColor: "bg-gradient-to-br from-blue-50 to-indigo-50",
-  },
-]
+    {
+      icon: Sparkles,
+      title: "Flavor Fiesta",
+      description:
+        "Whether you’re vibing with Cream & Onion coolness or diving into a Magic Masala flavor storm — we bring the party to your palate.",
+      image: "/images/pic2.png",
+      color: "from-orange-500 to-red-500",
+      bgColor: "bg-gradient-to-br from-orange-50 to-red-50",
+    },
+    {
+      icon: Heart,
+      title: "Snack & Bond",
+      description:
+        "Our snacks bring people together — for laughs, movie nights, road trips, or just “oops, I ate the whole pack” moments.",
+      image: "/images/sharing-moments.png",
+      color: "from-pink-500 to-purple-500",
+      bgColor: "bg-gradient-to-br from-pink-50 to-purple-50",
+    },
+    {
+      icon: Factory,
+      title: "Crispy Craftsmanship",
+      description:
+        "Crunch meets quality. We whip up our snacks in top-tier facilities with ninja-level quality control — so every pack is a superstar.",
+      image: "/images/features/quality-production.png",
+      color: "from-blue-500 to-indigo-500",
+      bgColor: "bg-gradient-to-br from-blue-50 to-indigo-50",
+    },
+  ];
 
-const banners = [
-  {
-    id: 0,
-    image1: "/images/banners/main.jpg",
-    image2: "/images/banners/mob-main.jpg",
-  },
-  {
-    id: 1,
-    image1: "/images/b1l.png",
-    image2: "/images/b1r.png",
-  },
-  {
-    id: 2,
-    image1: "/images/banners/right2.png",
-    image2: "/images/banners/left2.png",
-  },
-  {
-    id: 3,
-    image1: "/images/banners/left1.png",
-    image2: "/images/banners/right1.png",
-  },
-  {
-    id: 4,
-    image1: "/images/b2r.png",
-    image2: "/images/b2l.png",
-  },
-];
+  const banners = [
+    {
+      id: 0,
+      image1: "/images/banners/main.jpg",
+      image2: "/images/banners/mob-main.jpg",
+    },
+    {
+      id: 1,
+      image1: "/images/b1l.png",
+      image2: "/images/b1r.png",
+    },
+    {
+      id: 2,
+      image1: "/images/banners/right2.png",
+      image2: "/images/banners/left2.png",
+    },
+    {
+      id: 3,
+      image1: "/images/banners/left1.png",
+      image2: "/images/banners/right1.png",
+    },
+    {
+      id: 4,
+      image1: "/images/b2r.png",
+      image2: "/images/b2l.png",
+    },
+  ];
 
-const [currentBanner, setCurrentBanner] = useState(0)
+  const [currentBanner, setCurrentBanner] = useState(0);
 
-useEffect(() => {
-  const interval = setInterval(() => {
-    setCurrentBanner((prev) => (prev + 1) % banners.length)
-  }, 7000)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentBanner((prev) => (prev + 1) % banners.length);
+    }, 7000);
 
-  return () => clearInterval(interval)
-}, [])
+    return () => clearInterval(interval);
+  }, []);
 
-const nextBanner = () => {
-  setCurrentBanner((prev) => (prev + 1) % banners.length)
-}
+  const nextBanner = () => {
+    setCurrentBanner((prev) => (prev + 1) % banners.length);
+  };
 
-const prevBanner = () => {
-  setCurrentBanner((prev) => (prev - 1 + banners.length) % banners.length)
-}
+  const prevBanner = () => {
+    setCurrentBanner((prev) => (prev - 1 + banners.length) % banners.length);
+  };
 
   return (
     <div className="overflow-x-hidden">
-
       {/* Cursor glow effect */}
       <CursorGlow />
 
@@ -557,7 +711,6 @@ const prevBanner = () => {
         ref={heroRef}
         className="relative min-h-[45vh] md:min-h-[75vh] flex place-items-center justify-between px-6 md:px-60 overflow-hidden bg-[url('/images/bg.png')]"
       >
-
         {/* Navigation Buttons */}
         <button
           onClick={prevBanner}
@@ -584,7 +737,11 @@ const prevBanner = () => {
               exit="exit"
             >
               <motion.img
-                src={isMobile ? banners[currentBanner].image2 : banners[currentBanner].image1}
+                src={
+                  isMobile
+                    ? banners[currentBanner].image2
+                    : banners[currentBanner].image1
+                }
                 className="w-full h-full object-cover"
                 alt="Banner Image"
                 initial={{ scale: 0.98, opacity: 0 }}
@@ -669,16 +826,17 @@ const prevBanner = () => {
         </div>
       </section>
 
-
       {/* Featured Products */}
-      <section className="py-16 relative" style={{
+      <section
+        className="py-16 relative"
+        style={{
           backgroundImage: "url('/images/white-bg.jpg')",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           backgroundPosition: "center",
           opacity: 1,
-        }}>
-
+        }}
+      >
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
             <motion.div
@@ -708,22 +866,22 @@ const prevBanner = () => {
               </p>
             </motion.div>
           </div>
-          
+
           <Carousel
             className="w-full"
-            opts={{ 
+            opts={{
               loop: true,
-              dragFree: true
+              dragFree: true,
             }}
             plugins={[Autoplay({ delay: 2500 })]}
           >
             <CarouselContent className="mt-2 mb-2 px-4 md:px-16">
               {products.map((product, index) => (
-                <CarouselItem key= {index} className="md:basis-1/3 lg:basis-1/4">
+                <CarouselItem key={index} className="md:basis-1/3 lg:basis-1/4">
                   <ProductCircle
                     product={product}
                     index={index}
-                    navigateTo={()=>navigateTo("product", product.category)}
+                    navigateTo={() => navigateTo("product", product.category)}
                   />
                 </CarouselItem>
               ))}
@@ -734,139 +892,142 @@ const prevBanner = () => {
             <CarouselNext className="me-16" />
           </Carousel>
         </div>
-        
       </section>
 
       {/*Recent new and updates*/}
-      <section className="py-24 bg-red-600 relative overflow-hidden">
-        {/* Subtle background elements */}
-        <div className="absolute inset-0 overflow-hidden">
+      <div className="overflow-x-hidden">
+        {/* Cursor glow effect */}
+        <CursorGlow />
+
+        <section className="py-24 bg-red-600 relative overflow-hidden">
+          {/* Subtle background elements */}
+          <div className="absolute inset-0 overflow-hidden">
+            <motion.div
+              className="w-[120%] h-[120%] bg-[url('/images/pattern.svg')] opacity-10"
+              animate={{ x: [-20, 0], y: [-20, 0] }}
+              transition={{
+                duration: 60,
+                repeat: Number.POSITIVE_INFINITY,
+                repeatType: "reverse",
+              }}
+            />
+          </div>
           <motion.div
-            className="w-[120%] h-[120%] bg-[url('/images/pattern.svg')] opacity-10"
-            animate={{ x: [-20, 0], y: [-20, 0] }}
+            className="absolute top-20 right-0 w-64 h-64 rounded-full bg-white/10 opacity-30 blur-3xl"
+            animate={{
+              x: [0, 30, 0],
+              y: [0, 20, 0],
+            }}
             transition={{
-              duration: 60,
+              duration: 20,
               repeat: Number.POSITIVE_INFINITY,
               repeatType: "reverse",
             }}
           />
-        </div>
-        <motion.div
-          className="absolute top-20 right-0 w-64 h-64 rounded-full bg-white/10 opacity-30 blur-3xl"
-          animate={{
-            x: [0, 30, 0],
-            y: [0, 20, 0],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Number.POSITIVE_INFINITY,
-            repeatType: "reverse",
-          }}
-        />
 
-        <motion.div
-          className="absolute bottom-20 left-0 w-80 h-80 rounded-full bg-white/10 opacity-30 blur-3xl"
-          animate={{
-            x: [0, -20, 0],
-            y: [0, 30, 0],
-          }}
-          transition={{
-            duration: 25,
-            repeat: Number.POSITIVE_INFINITY,
-            repeatType: "reverse",
-          }}
-        />
+          <motion.div
+            className="absolute bottom-20 left-0 w-80 h-80 rounded-full bg-white/10 opacity-30 blur-3xl"
+            animate={{
+              x: [0, -20, 0],
+              y: [0, 30, 0],
+            }}
+            transition={{
+              duration: 25,
+              repeat: Number.POSITIVE_INFINITY,
+              repeatType: "reverse",
+            }}
+          />
 
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="flex flex-col lg:flex-row items-start gap-8">
-            {/* Left side - Title */}
-            <div className="lg:w-1/4 mb-8 lg:mb-0">
-              <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-              >
-                <h2 className="text-4xl lg:text-5xl font-normal text-white mb-4">
-                  Recent
-                </h2>
-                <p className="text-2xl lg:text-3xl text-white/90 font-normal">
-                  News and updates
-                </p>
-                <div className="w-16 h-1 bg-white mt-4"></div>
-              </motion.div>
-            </div>
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="flex flex-col lg:flex-row items-start gap-8">
+              {/* Left side - Title */}
+              <div className="lg:w-1/4 mb-8 lg:mb-0">
+                <motion.div
+                  initial={{ opacity: 0, x: -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6 }}
+                  viewport={{ once: true }}
+                >
+                  <h2 className="text-4xl lg:text-5xl font-normal text-white mb-4">
+                    Recent
+                  </h2>
+                  <p className="text-2xl lg:text-3xl text-white/90 font-normal">
+                    News and updates
+                  </p>
+                  <div className="w-16 h-1 bg-white mt-4"></div>
+                </motion.div>
+              </div>
 
-            {/* Right side - News Cards Carousel */}
-            <div className="w-full relative">
-              <Carousel
-                isOverflow={true}
-                className="w-full"
-                opts={{ loop: true }}
-                plugins={[Autoplay({ delay: 4000 })]}
-              >
-                <CarouselContent className="-ml-4 mt-2 mb-2">
-                  {newsItems.map((item, index) => (
-                    <CarouselItem
-                      key={index}
-                      className="pl-4 md:basis-1/2 lg:basis-1/3 mt-4 md:mt-0"
-                    >
-                      <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: index * 0.1 }}
-                        viewport={{ once: true }}
-                        whileHover={{ y: -5 }}
-                        className="bg-white rounded-xl overflow-hidden shadow-lg h-full"
+              {/* Right side - News Cards Carousel */}
+              <div className="w-full relative">
+                <Carousel
+                  isOverflow={true}
+                  className="w-full"
+                  opts={{ loop: true }}
+                  plugins={[Autoplay({ delay: 4000 })]}
+                >
+                  <CarouselContent className="-ml-4 mt-2 mb-2">
+                    {newsItems.map((item, index) => (
+                      <CarouselItem
+                        key={index}
+                        className="pl-4 md:basis-1/2 lg:basis-1/3 mt-4 md:mt-0"
                       >
-                        <div className="h-48  bg-white relative overflow-hidden flex items-center justify-center">
-                          <img
-                            src={item.image || "/placeholder.svg"}
-                            alt={item.alt}
-                            className="w-full h-full object-fit"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-                        </div>
-                        <div className="p-4 bg-red-600 opacity-90">
-                          <p className=" font-normal text-md line-clamp-2 text-white">
-                            {item.title}
-                          </p>
-                          {/* <div className="flex items-center justify-between">
-                            <span className="text-xs text-gray-500">
-                              {item.date}
-                            </span>
-                            <Button
-                              variant="ghost"
-                              size="sm"
-                              className="text-red-600 hover:text-red-700 p-0"
-                              onClick={() => navigateTo(`news/${item.slug}`)}
-                            >
-                              Read More
-                            </Button>
-                          </div> */}
-                        </div>
-                      </motion.div>
-                    </CarouselItem>
-                  ))}
-                </CarouselContent>
-                {/* Mobile arrows */}
-                <CarouselPrevious className="left-2 sm:hidden" />
-                <CarouselNext className="right-2 sm:hidden" />
+                        <motion.div
+                          initial={{ opacity: 0, y: 30 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.5, delay: index * 0.1 }}
+                          viewport={{ once: true }}
+                          whileHover={{ y: -5 }}
+                          onClick={() => {
+                            setSelectedNews(item);
+                            setIsNewsModalOpen(true);
+                          }}
+                          className="bg-white rounded-xl overflow-hidden shadow-lg h-full cursor-pointer transition-all"
+                        >
+                          <div className="h-48  bg-white relative overflow-hidden flex items-center justify-center">
+                            <img
+                              src={item.image || "/placeholder.svg"}
+                              alt={item.alt}
+                              className="w-full h-full object-fit"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                          </div>
+                          <div className="p-4 bg-red-600 opacity-90">
+                            <p className=" font-normal text-md line-clamp-2 text-white">
+                              {item.title}
+                            </p>
+                          </div>
+                        </motion.div>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  {/* Mobile arrows */}
+                  <CarouselPrevious className="left-2 sm:hidden" />
+                  <CarouselNext className="right-2 sm:hidden" />
 
-                {/* Desktop arrows */}
-                <CarouselPrevious className="-left-12" />
-                <CarouselNext className="-right-12" />
-              </Carousel>
+                  {/* Desktop arrows */}
+                  <CarouselPrevious className="-left-12" />
+                  <CarouselNext className="-right-12" />
+                </Carousel>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
+        <NewsModal
+          news={selectedNews}
+          isOpen={isNewsModalOpen}
+          onClose={() => {
+            setIsNewsModalOpen(false);
+            setSelectedNews(null);
+          }}
+        />
+      </div>
 
-      
       {/* Fun Facts Section */}
-      <section className="py-12 bg-gradient-to-b from-blue-50 via-white to-orange-50 relative overflow-hidden"
-      style={{
+      <section
+        className="py-12 bg-gradient-to-b from-blue-50 via-white to-orange-50 relative overflow-hidden"
+        style={{
           backgroundImage: "url('/images/white-bg.jpg')",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
@@ -875,7 +1036,6 @@ const prevBanner = () => {
           opacity: 1,
         }}
       >
-
         <div className="container mx-auto px-4 relative z-10">
           {/* Header Section */}
           <div className="text-center mb-20">
@@ -913,8 +1073,8 @@ const prevBanner = () => {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed"
               >
-                Because your snack time deserves more than just crunch — it deserves personality. Here's why you’ll love munching with us:
-
+                Because your snack time deserves more than just crunch — it
+                deserves personality. Here's why you’ll love munching with us:
               </motion.p>
             </motion.div>
           </div>
@@ -927,165 +1087,173 @@ const prevBanner = () => {
           </div>
         </div>
       </section>
-     
+
       {/* Fun interactive section */}
       <section className="py-24 bg-gradient-to-r from-red-600 to-red-700 text-white relative overflow-hidden">
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          className="w-[120%] h-[120%] bg-[url('/images/pattern.svg')] opacity-10"
-          animate={{ x: [-20, 0], y: [-20, 0] }}
-          transition={{
-            duration: 60,
-            repeat: Number.POSITIVE_INFINITY,
-            repeatType: "reverse",
-          }}
-        />
-      </div>
-
-      <div className="container mx-auto my-16 px-4 relative z-10">
-        <div className="max-w-4xl mx-auto">
-          <img
-            src="/images/rollerCoaster4.png"
-            alt="Roller Coaster Image"
-            className="hidden md:block absolute -top-32 right-16 h-80 w-80 z-20"
-          />
+        <div className="absolute inset-0 overflow-hidden">
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-white/20"
-          >
-            <div className="text-center mb-8">
-              <motion.div
-                initial={{ y: 20, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: true }}
-              >
-                <PartyPopper className="w-12 h-12 mx-auto mb-4 text-yellow-300" />
-                <h2 className="text-3xl md:text-4xl font-normal mb-4 z-30">Snack Time Fun Facts</h2>
-                <motion.div
-                  key={currentFactIndex}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -20 }}
-                  transition={{ duration: 0.6 }}
-                  className="min-h-[3rem] flex items-center justify-center"
-                >
-                  <p className="text-xl z-30 max-w-3xl">{funFacts[currentFactIndex]}</p>
-                </motion.div>
-              </motion.div>
-            </div>
-
-            <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          viewport={{ once: true }}
-        >
-          {/* Stat 1: 200+ */}
-          <motion.div
-            className="bg-white/10 rounded-lg p-6 backdrop-blur-sm relative overflow-hidden"
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.3 }}
-          >
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-red-500/20 to-yellow-500/20"
-              animate={{
-                background: [
-                  "linear-gradient(to right, rgba(239, 68, 68, 0.2), rgba(234, 179, 8, 0.2))",
-                  "linear-gradient(to right, rgba(234, 179, 8, 0.2), rgba(239, 68, 68, 0.2))",
-                  "linear-gradient(to right, rgba(239, 68, 68, 0.2), rgba(234, 179, 8, 0.2))",
-                ],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Number.POSITIVE_INFINITY,
-              }}
-            />
-            <div className="text-4xl font-normal mb-2 relative z-10">
-              <Counter target={200} duration={2.5} suffix="+" />
-            </div>
-            <p className="relative z-10">Regional Snack Varieties</p>
-          </motion.div>
-
-          {/* Stat 2: 1B+ */}
-          <motion.div
-            className="bg-white/10 rounded-lg p-6 backdrop-blur-sm relative overflow-hidden"
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.3 }}
-          >
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-yellow-500/20 to-red-500/20"
-              animate={{
-                background: [
-                  "linear-gradient(to right, rgba(234, 179, 8, 0.2), rgba(239, 68, 68, 0.2))",
-                  "linear-gradient(to right, rgba(239, 68, 68, 0.2), rgba(234, 179, 8, 0.2))",
-                  "linear-gradient(to right, rgba(234, 179, 8, 0.2), rgba(239, 68, 68, 0.2))",
-                ],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Number.POSITIVE_INFINITY,
-              }}
-            />
-            <div className="text-4xl font-normal mb-2 relative z-10">
-              <Counter target={1000000000} duration={2.5} suffix="+B" />
-            </div>
-            <p className="relative z-10">Snack Packets Monthly</p>
-          </motion.div>
-
-          {/* Stat 3: $400B */}
-          <motion.div
-            className="bg-white/10 rounded-lg p-6 backdrop-blur-sm relative overflow-hidden"
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.3 }}
-          >
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-red-500/20 to-yellow-500/20"
-              animate={{
-                background: [
-                  "linear-gradient(to right, rgba(239, 68, 68, 0.2), rgba(234, 179, 8, 0.2))",
-                  "linear-gradient(to right, rgba(234, 179, 8, 0.2), rgba(239, 68, 68, 0.2))",
-                  "linear-gradient(to right, rgba(239, 68, 68, 0.2), rgba(234, 179, 8, 0.2))",
-                ],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Number.POSITIVE_INFINITY,
-              }}
-            />
-            <div className="text-4xl font-normal mb-2 relative z-10">
-              $<Counter target={400000000000} duration={2.5} suffix="+B" />
-            </div>
-            <p className="relative z-10">Global Snack Market</p>
-          </motion.div>
-        </motion.div>
-
-            <motion.div
-              className="mt-12 text-center"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 1 }}
-              viewport={{ once: true }}
-            >
-              <div className="transition-transform duration-100 hover:scale-[1.1]">
-                <div className="bg-red-500 text-white text-lg font-normal w-56 mx-auto px-6 py-2 rounded-md shadow-md border-2 border-black relative hover:bg-orange-600">
-                  Learn Our Story
-                  <div className="absolute -bottom-1 left-0 w-56 h-full mx-auto rounded-md bg-black -z-10 translate-y-1 translate-x-1"></div>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-          <img
-            src="/images/packet.png"
-            alt="Chips Packet"
-            className="hidden md:block absolute -bottom-32 left-16 h-64 w-64 z-20"
+            className="w-[120%] h-[120%] bg-[url('/images/pattern.svg')] opacity-10"
+            animate={{ x: [-20, 0], y: [-20, 0] }}
+            transition={{
+              duration: 60,
+              repeat: Number.POSITIVE_INFINITY,
+              repeatType: "reverse",
+            }}
           />
         </div>
-      </div>
-    </section>
+
+        <div className="container mx-auto my-16 px-4 relative z-10">
+          <div className="max-w-4xl mx-auto">
+            <img
+              src="/images/rollerCoaster4.png"
+              alt="Roller Coaster Image"
+              className="hidden md:block absolute -top-32 right-16 h-80 w-80 z-20"
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true, margin: "-100px" }}
+              className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-white/20"
+            >
+              <div className="text-center mb-8">
+                <motion.div
+                  initial={{ y: 20, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.5 }}
+                  viewport={{ once: true }}
+                >
+                  <PartyPopper className="w-12 h-12 mx-auto mb-4 text-yellow-300" />
+                  <h2 className="text-3xl md:text-4xl font-normal mb-4 z-30">
+                    Snack Time Fun Facts
+                  </h2>
+                  <motion.div
+                    key={currentFactIndex}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{
+                      opacity: isVisible ? 1 : 0,
+                      y: isVisible ? 0 : -20,
+                    }}
+                    transition={{ duration: 0.6 }}
+                    className="min-h-[3rem] flex items-center justify-center"
+                  >
+                    <p className="text-xl z-30 max-w-3xl">
+                      {funFacts[currentFactIndex]}
+                    </p>
+                  </motion.div>
+                </motion.div>
+              </div>
+
+              <motion.div
+                className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                viewport={{ once: true }}
+              >
+                {/* Stat 1: 200+ */}
+                <motion.div
+                  className="bg-white/10 rounded-lg p-6 backdrop-blur-sm relative overflow-hidden"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-red-500/20 to-yellow-500/20"
+                    animate={{
+                      background: [
+                        "linear-gradient(to right, rgba(239, 68, 68, 0.2), rgba(234, 179, 8, 0.2))",
+                        "linear-gradient(to right, rgba(234, 179, 8, 0.2), rgba(239, 68, 68, 0.2))",
+                        "linear-gradient(to right, rgba(239, 68, 68, 0.2), rgba(234, 179, 8, 0.2))",
+                      ],
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Number.POSITIVE_INFINITY,
+                    }}
+                  />
+                  <div className="text-4xl font-normal mb-2 relative z-10">
+                    <Counter target={200} duration={2.5} suffix="+" />
+                  </div>
+                  <p className="relative z-10">Regional Snack Varieties</p>
+                </motion.div>
+
+                {/* Stat 2: 1B+ */}
+                <motion.div
+                  className="bg-white/10 rounded-lg p-6 backdrop-blur-sm relative overflow-hidden"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-yellow-500/20 to-red-500/20"
+                    animate={{
+                      background: [
+                        "linear-gradient(to right, rgba(234, 179, 8, 0.2), rgba(239, 68, 68, 0.2))",
+                        "linear-gradient(to right, rgba(239, 68, 68, 0.2), rgba(234, 179, 8, 0.2))",
+                        "linear-gradient(to right, rgba(234, 179, 8, 0.2), rgba(239, 68, 68, 0.2))",
+                      ],
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Number.POSITIVE_INFINITY,
+                    }}
+                  />
+                  <div className="text-4xl font-normal mb-2 relative z-10">
+                    <Counter target={1000000000} duration={2.5} suffix="+B" />
+                  </div>
+                  <p className="relative z-10">Snack Packets Monthly</p>
+                </motion.div>
+
+                {/* Stat 3: $400B */}
+                <motion.div
+                  className="bg-white/10 rounded-lg p-6 backdrop-blur-sm relative overflow-hidden"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-red-500/20 to-yellow-500/20"
+                    animate={{
+                      background: [
+                        "linear-gradient(to right, rgba(239, 68, 68, 0.2), rgba(234, 179, 8, 0.2))",
+                        "linear-gradient(to right, rgba(234, 179, 8, 0.2), rgba(239, 68, 68, 0.2))",
+                        "linear-gradient(to right, rgba(239, 68, 68, 0.2), rgba(234, 179, 8, 0.2))",
+                      ],
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Number.POSITIVE_INFINITY,
+                    }}
+                  />
+                  <div className="text-4xl font-normal mb-2 relative z-10">
+                    $
+                    <Counter target={400000000000} duration={2.5} suffix="+B" />
+                  </div>
+                  <p className="relative z-10">Global Snack Market</p>
+                </motion.div>
+              </motion.div>
+
+              <motion.div
+                className="mt-12 text-center"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 1 }}
+                viewport={{ once: true }}
+              >
+                <div className="transition-transform duration-100 hover:scale-[1.1]">
+                  <div className="bg-red-500 text-white text-lg font-normal w-56 mx-auto px-6 py-2 rounded-md shadow-md border-2 border-black relative hover:bg-orange-600">
+                    Learn Our Story
+                    <div className="absolute -bottom-1 left-0 w-56 h-full mx-auto rounded-md bg-black -z-10 translate-y-1 translate-x-1"></div>
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
+            <img
+              src="/images/packet.png"
+              alt="Chips Packet"
+              className="hidden md:block absolute -bottom-32 left-16 h-64 w-64 z-20"
+            />
+          </div>
+        </div>
+      </section>
 
       {/*Social media section*/}
 
@@ -1255,14 +1423,15 @@ const prevBanner = () => {
                   variant="outline"
                   className="bg-red-500 text-white px-6 py-2 w-44 rounded-md shadow-md border-2 border-black relative hover:bg-orange-600"
                   onClick={() =>
-                    window.open(
-                      "https://www.facebook.com/yummfeast/",
-                      "_blank"
-                    )
+                    window.open("https://www.facebook.com/yummfeast/", "_blank")
                   }
                 >
                   <span className="relative z-10 flex items-center gap-2 transition-transform duration-100 hover:scale-[1.1]">
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <svg
+                      className="w-5 h-5"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
                       <path d="M22.675 0h-21.35C.595 0 0 .592 0 1.324v21.352C0 23.408.595 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.796.715-1.796 1.763v2.31h3.59l-.467 3.622h-3.123V24h6.116c.73 0 1.325-.592 1.325-1.324V1.324C24 .592 23.405 0 22.675 0z" />
                     </svg>
                     Follow on Facebook
@@ -1282,8 +1451,12 @@ const prevBanner = () => {
                   }
                 >
                   <span className="relative z-10 flex items-center gap-2 transition-transform duration-100 hover:scale-[1.1]">
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M20.447 20.452h-3.554v-5.569c0-1.327-.025-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.354V9h3.414v1.561h.049c.476-.9 1.637-1.85 3.37-1.85 3.6 0 4.264 2.367 4.264 5.451v6.29zM5.337 7.433c-1.144 0-2.068-.928-2.068-2.07 0-1.144.924-2.07 2.068-2.07 1.144 0 2.07.926 2.07 2.07 0 1.142-.926 2.07-2.07 2.07zM6.823 20.452H3.851V9h2.972v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/>
+                    <svg
+                      className="w-5 h-5"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.327-.025-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.354V9h3.414v1.561h.049c.476-.9 1.637-1.85 3.37-1.85 3.6 0 4.264 2.367 4.264 5.451v6.29zM5.337 7.433c-1.144 0-2.068-.928-2.068-2.07 0-1.144.924-2.07 2.068-2.07 1.144 0 2.07.926 2.07 2.07 0 1.142-.926 2.07-2.07 2.07zM6.823 20.452H3.851V9h2.972v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z" />
                     </svg>
                     View LinkedIn
                   </span>
@@ -1299,7 +1472,11 @@ const prevBanner = () => {
                   }
                 >
                   <span className="relative z-10 flex items-center gap-2 transition-transform duration-100 hover:scale-[1.1]">
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <svg
+                      className="w-5 h-5"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
                       <path d="M19.615 3.184C18.474 2.9 12 2.9 12 2.9s-6.474 0-7.615.284C2.23 3.45 1.5 4.187 1.5 6.241v11.518c0 2.054.73 2.791 2.885 3.057C5.526 20.9 12 20.9 12 20.9s6.474 0 7.615-.284C21.77 20.55 22.5 19.813 22.5 17.759V6.241c0-2.054-.73-2.791-2.885-3.057zM9.75 15.568V8.432L15.818 12 9.75 15.568z" />
                     </svg>
                     Subscribe on YouTube
@@ -1314,7 +1491,7 @@ const prevBanner = () => {
 
       {/* CTA Section with animated background */}
       <section className="py-24 bg-gradient-to-r from-red-600 to-red-700 relative overflow-hidden">
-       <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden">
           <motion.div
             className="w-[120%] h-[120%] bg-[url('/images/pattern.svg')] opacity-10"
             animate={{ x: [-20, 0], y: [-20, 0] }}
@@ -1378,7 +1555,8 @@ const prevBanner = () => {
               Discover the Yummfeast Brochure
             </h2>
             <p className="text-xl mb-8">
-              Get a complete look at our delicious range of snacks, crafted to satisfy every craving.
+              Get a complete look at our delicious range of snacks, crafted to
+              satisfy every craving.
             </p>
             {/* <Button
               size="lg"
@@ -1399,10 +1577,10 @@ const prevBanner = () => {
               />
             </Button> */}
             <div className="transition-transform duration-100 hover:scale-[1.03]">
-            <div className="bg-red-500 text-white text-lg font-normal w-56 mx-auto px-6 py-2 rounded-md shadow-md border-2 border-black relative hover:bg-orange-600">
-               Download Brochure
-              <div className="absolute -bottom-1 left-0 w-56 h-full mx-auto rounded-md bg-black -z-10 translate-y-1 translate-x-1"></div>
-            </div>
+              <div className="bg-red-500 text-white text-lg font-normal w-56 mx-auto px-6 py-2 rounded-md shadow-md border-2 border-black relative hover:bg-orange-600">
+                Download Brochure
+                <div className="absolute -bottom-1 left-0 w-56 h-full mx-auto rounded-md bg-black -z-10 translate-y-1 translate-x-1"></div>
+              </div>
             </div>
           </motion.div>
         </div>
