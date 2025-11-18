@@ -68,19 +68,53 @@ export default function TestimonialPage() {
   const [rating, setRating] = useState(0);
   const [feedback, setFeedback] = useState("");
 
-  const handleSubmit = (e) => {
+  const bannerData = {
+    bg: "/images/bg.png",
+    image1: "/images/banners/testimonial/left.png",
+    image2: "/images/banners/testimonial/right.png",
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // Simple validation example
     if (!name || !email || !product || !rating || !feedback) {
       alert("Please fill out all fields.");
       return;
     }
 
-    console.log({ name, email, product, rating, feedback });
-    alert("Thank you for your feedback! We appreciate your input.");
+    const form = e.currentTarget;
 
-    // Reset form
+    const Name = (form.elements.namedItem("name") as HTMLInputElement).value;
+    const Email = (form.elements.namedItem("email") as HTMLInputElement).value;
+    const Product = (form.elements.namedItem("product") as HTMLSelectElement)
+      .value;
+    const Rating = rating > 0 ? rating : "Not provided"
+    const Feedback = (
+      form.elements.namedItem("feedback") as HTMLTextAreaElement
+    ).value;
+
+    const whatsappNumber = "9334469489";
+
+    const whatsappMessage = `
+    A flavor-filled review straight from our customer
+
+    Name: ${Name}
+
+    Email: ${Email}
+
+    Product: ${Product}
+
+    Rating: ${Rating}
+
+    Your message: ${Feedback}`;
+
+    const url =
+      "https://wa.me/" +
+      whatsappNumber +
+      "?text=" +
+      encodeURIComponent(whatsappMessage);
+
+    window.open(url, "_blank");
     setName("");
     setEmail("");
     setProduct("");
@@ -88,27 +122,23 @@ export default function TestimonialPage() {
     setFeedback("");
   };
 
-  const bannerData = {
-    bg: "/images/bg.png",
-    image1: "/images/banners/testimonial/left.png",
-    image2: "/images/banners/testimonial/right.png"
-  }
-
   return (
     <div className="relative overflow-hidden">
       {/* Hero Section with brush stroke background */}
       <HeroSection banner={bannerData} />
 
       {/* Testimonials Grid with organic effects */}
-      <section className="py-16 relative"
-      style={{
+      <section
+        className="py-16 relative"
+        style={{
           backgroundImage: "url('/images/white-bg.jpg')",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           backgroundPosition: "top",
           minHeight: "100vh",
           opacity: 1,
-        }}>
+        }}
+      >
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
@@ -230,7 +260,12 @@ export default function TestimonialPage() {
                     {/* Name */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
-                        <Label htmlFor="name" className="text-gray-700 font-normal">Your Name 👋</Label>
+                        <Label
+                          htmlFor="name"
+                          className="text-gray-700 font-normal"
+                        >
+                          Your Name 👋
+                        </Label>
                         <Input
                           id="name"
                           placeholder="John Doe"
@@ -242,7 +277,12 @@ export default function TestimonialPage() {
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="email" className="text-gray-700 font-normal">Email Address 📧</Label>
+                        <Label
+                          htmlFor="email"
+                          className="text-gray-700 font-normal"
+                        >
+                          Email Address 📧
+                        </Label>
                         <Input
                           id="email"
                           type="email"
@@ -257,7 +297,12 @@ export default function TestimonialPage() {
 
                     {/* Product */}
                     <div className="space-y-2">
-                      <Label htmlFor="product" className="text-gray-700 font-normal">Product 🍟</Label>
+                      <Label
+                        htmlFor="product"
+                        className="text-gray-700 font-normal"
+                      >
+                        Product 🍟
+                      </Label>
                       <select
                         id="product"
                         required
@@ -265,19 +310,28 @@ export default function TestimonialPage() {
                         onChange={(e) => setProduct(e.target.value)}
                         className="flex h-12 w-full rounded-lg border-2 border-orange-200 focus:border-orange-400 bg-white px-3 py-2 text-sm"
                       >
-                        <option value="" disabled>Select a product</option>
+                        <option value="" disabled>
+                          Select a product
+                        </option>
                         <option value="rings">Yummfeast Rings</option>
                         <option value="pasta">Yummfeast Pasta</option>
                         <option value="allinone">Yummfeast All-in-One</option>
                         <option value="chatpata">Yummfeast Chatpata Mix</option>
-                        <option value="aloobhujia">Yummfeast Aloo Bhujia</option>
+                        <option value="aloobhujia">
+                          Yummfeast Aloo Bhujia
+                        </option>
                         <option value="cornpuffs">Yummfeast Corn Puffs</option>
                       </select>
                     </div>
 
                     {/* Rating */}
                     <div className="space-y-2">
-                      <Label htmlFor="rating" className="text-gray-700 font-normal">Rating ⭐</Label>
+                      <Label
+                        htmlFor="rating"
+                        className="text-gray-700 font-normal"
+                      >
+                        Rating ⭐
+                      </Label>
                       <div className="flex gap-1">
                         {[1, 2, 3, 4, 5].map((starValue) => (
                           <Button
@@ -289,7 +343,11 @@ export default function TestimonialPage() {
                             onClick={() => setRating(starValue)}
                           >
                             <Star
-                              className={`w-6 h-6 ${starValue <= rating ? "fill-yellow-500 text-yellow-500" : ""}`}
+                              className={`w-6 h-6 ${
+                                starValue <= rating
+                                  ? "fill-yellow-500 text-yellow-500"
+                                  : ""
+                              }`}
                             />
                           </Button>
                         ))}
@@ -298,7 +356,12 @@ export default function TestimonialPage() {
 
                     {/* Feedback */}
                     <div className="space-y-2">
-                      <Label htmlFor="feedback" className="text-gray-700 font-normal">Your Feedback 📝</Label>
+                      <Label
+                        htmlFor="feedback"
+                        className="text-gray-700 font-normal"
+                      >
+                        Your Feedback 📝
+                      </Label>
                       <Textarea
                         id="feedback"
                         placeholder="Please share your experience with our product..."
