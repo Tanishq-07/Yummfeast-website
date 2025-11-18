@@ -1,5 +1,6 @@
 "use client"
-
+import { useState } from "react"
+import { FormEvent } from "react";
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -15,6 +16,44 @@ export default function ContactPage() {
     image1: "/images/banners/contact/left.png",
     image2: "/images/banners/contact/right.png"
   }
+
+
+const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+
+  const form = e.currentTarget;
+
+  const firstName = (form.elements.namedItem("firstName") as HTMLInputElement).value;
+  const lastName = (form.elements.namedItem("lastName") as HTMLInputElement).value;
+  const email = (form.elements.namedItem("email") as HTMLInputElement).value;
+  const phone = (form.elements.namedItem("phone") as HTMLInputElement).value;
+  const subject = (form.elements.namedItem("subject") as HTMLInputElement).value;
+  const message = (form.elements.namedItem("message") as HTMLTextAreaElement).value;
+
+  const whatsappNumber = "9334469489"; 
+
+  const whatsappMessage = `
+
+  A thoughtful note shared via our contact form
+
+  Name: ${firstName} ${lastName}
+
+  Email: ${email}
+
+  Phone: ${phone || "Not provided"}
+
+  Subject: ${subject}
+
+  Your message: ${message}`;
+
+  const url =
+    "https://wa.me/" +
+    whatsappNumber +
+    "?text=" +
+    encodeURIComponent(whatsappMessage);
+
+  window.open(url, "_blank");
+};
 
   return (
 
@@ -135,15 +174,7 @@ export default function ContactPage() {
               <Card className="border-0 shadow-2xl overflow-hidden">
                 <div className="h-2 bg-gradient-to-r from-orange-400 via-red-400 to-pink-400"></div>
                 <CardContent className="p-8 bg-white">
-                  <form
-                    className="space-y-6"
-                    onSubmit={(e) => {
-                      e.preventDefault()
-                      window.alert(
-                        "🎉 Thank you for your message! We'll get back to you faster than you can finish a bag of chips! 🍟",
-                      )
-                    }}
-                  >
+                   <form className="space-y-6" onSubmit={handleSubmit}>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
                         <Label htmlFor="firstName" className="text-gray-700 font-normal">
@@ -151,17 +182,20 @@ export default function ContactPage() {
                         </Label>
                         <Input
                           id="firstName"
+                          name="firstName"
                           placeholder="John"
                           required
                           className="border-2 border-orange-200 focus:border-orange-400 rounded-lg p-3"
                         />
                       </div>
+
                       <div className="space-y-2">
                         <Label htmlFor="lastName" className="text-gray-700 font-normal">
                           Last Name
                         </Label>
                         <Input
                           id="lastName"
+                          name="lastName"
                           placeholder="Doe"
                           required
                           className="border-2 border-orange-200 focus:border-orange-400 rounded-lg p-3"
@@ -175,6 +209,7 @@ export default function ContactPage() {
                       </Label>
                       <Input
                         id="email"
+                        name="email"
                         type="email"
                         placeholder="john@example.com"
                         required
@@ -188,6 +223,7 @@ export default function ContactPage() {
                       </Label>
                       <Input
                         id="phone"
+                        name="phone"
                         placeholder="+91 98765 43210"
                         className="border-2 border-orange-200 focus:border-orange-400 rounded-lg p-3"
                       />
@@ -199,6 +235,7 @@ export default function ContactPage() {
                       </Label>
                       <Input
                         id="subject"
+                        name="subject"
                         placeholder="I love your snacks and want to know more!"
                         required
                         className="border-2 border-orange-200 focus:border-orange-400 rounded-lg p-3"
@@ -211,6 +248,7 @@ export default function ContactPage() {
                       </Label>
                       <Textarea
                         id="message"
+                        name="message"
                         placeholder="Share your thoughts, feedback, or questions about our delicious snacks..."
                         rows={5}
                         required
