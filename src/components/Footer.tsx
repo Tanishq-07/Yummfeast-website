@@ -1,6 +1,6 @@
 "use client"
 
-import { Instagram, Facebook, Twitter } from "lucide-react"
+import { Instagram, Facebook, Linkedin } from "lucide-react"
 import { Button } from "./ui/button"
 import Link from "./Link"
 
@@ -31,9 +31,14 @@ export default function Footer({ navigateTo }: FooterProps) {
                   <Facebook className="h-5 w-5" />
                 </Link>
               </Button>
-              <Button variant="ghost" size="icon" className="text-white hover:text-white hover:bg-blue-800" asChild>
-                <Link href="https://twitter.com/yummfeast" external>
-                  <Twitter className="h-5 w-5" />
+              <Button
+                variant="ghost"
+                size="icon"
+                className="text-white hover:text-white hover:bg-blue-800"
+                asChild
+              >
+                <Link href="https://linkedin.com/company/yummfeast" external>
+                  <Linkedin className="h-5 w-5" />
                 </Link>
               </Button>
             </div>
@@ -178,7 +183,7 @@ export default function Footer({ navigateTo }: FooterProps) {
             <address className="not-italic text-blue-200">
               <p className="mb-2">Work : Ambey Food Products Plot no 55, B (53) P, B(58) P Industrial Area Donar Darbhanga Bihar 846004</p>
               <p className="mb-2">
-                Registered Office : Cabin-1, Unit No 2C, 2nd Floor, 36A, Bentick Street, Esplanade, Kolkata, Kolkata, West Bengal, India, 700069
+                Registered Office : Cabin-1, Unit No 2C, 2nd Floor, 36A, Bentick Street, Esplanade, Kolkata, West Bengal, India, 700069
               </p>
               <p className="mb-2">Email: customercare@yummfeast.in</p>
               <p>Phone: 18001020602</p>

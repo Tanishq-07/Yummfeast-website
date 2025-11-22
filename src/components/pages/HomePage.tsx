@@ -117,9 +117,6 @@ const NewsModal = ({
 
                 {/* Content/Markup Area */}
                 <div className="mb-8 p-4 bg-gray-50 rounded-lg border border-gray-200">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                    News Details
-                  </h3>
                   <div className="prose prose-sm max-w-none text-gray-700 whitespace-pre-wrap">
                     {news.content}
                   </div>
@@ -507,62 +504,65 @@ export default function HomePage({ navigateTo }: HomePageProps) {
     {
       title: "Yummfeast Takes a Flavourful Leap at Bihar Business Connect 2023",
       image: "/images/news/news1.jpg",
-      alt: "Indian Consumers",
-      date: "2 days ago",
-      slug: "indian-taste-preferences",
+      alt: "Bihar Business Connect Exhibition",
+      date: "Recently",
+      slug: "bihar-business-connect-2023",
       description:
-        "Yummfeast showcased its innovative snacking solutions at the Bihar Business Connect 2023, connecting with retailers and distributors across the region.",
-      content: `Yummfeast made a significant impact at Bihar Business Connect 2023, presenting its latest product innovations and distribution strategies to business leaders and entrepreneurs.
+        "Yummfeast earned major attention at Bihar Business Connect 2023 with live sampling, high visitor engagement, and powerful business networking.",
+      content: `Yummfeast made a distinguished presence at Bihar Business Connect 2023, held at Gyan Bhawan, Patna with 100+ brands and more than 1000 visitors. The stall attracted continuous footfall through live sampling, engaging conversations, and authentic interactions around Bihar’s evolving snacking culture.
 
-Key highlights from the event:
-• Unveiled new snack flavors tailored for regional preferences
-• Established partnerships with 50+ retailers across Bihar
-• Demonstrated commitment to supporting local businesses
-• Showcased quality manufacturing and packaging standards
+Highlights of the exhibition:
+• Live tasting that drew nonstop queues
+• Valuable feedback from consumers and professionals
+• Discussions on Yummfeast’s mission of flavourful indulgence
+• High visibility among investors, retailers and entrepreneurs
 
-The event was a tremendous success, reflecting Yummfeast's dedication to expanding its presence in eastern India while maintaining the highest standards of quality and taste.`,
+The event received special recognition with the visit of Bihar’s CM, Shri Nitish Kumar — marking a proud moment for entrepreneurs across the state.
+
+The Yummfeast team walked out with new partnerships, powerful insights, and fresh motivation to innovate, expand and bring Bihar’s homegrown flavours to more people in India.`,
     },
     {
-      title:
-        "Yummfeast Dealers' Meet 2025: Celebrating Partnerships, Purpose & Progress",
+      title: "Yummfeast Dealers’ Meet 2025: Celebrating Partnerships, Purpose & Progress",
       image: "/images/news/news2.png",
-      alt: "New Flavors",
-      date: "2 weeks ago",
-      slug: "new-flavors-launch",
+      alt: "Dealers Meet 2025 Celebration",
+      date: "July 2025",
+      slug: "dealers-meet-2025",
       description:
-        "Our annual Dealers' Meet 2025 brought together our entire distribution network to celebrate achievements and plan for exciting growth ahead.",
-      content: `The Yummfeast Dealers' Meet 2025 was a grand celebration of partnership and progress, bringing together dealers, distributors, and business partners from across the country.
+        "A grand four-day gathering in West Bengal celebrating the strength of the Yummfeast dealer network with recognition, discussions and new product reveals.",
+      content: `The Dealers’ Meet 2025 brought together 400+ dealers, super stockists and sales leaders at Resort Trimurti, West Bengal. The event focused on strengthening relationships, aligning business objectives and celebrating the people powering Yummfeast’s growth.
 
-Meeting highlights:
-• Recognition of top-performing dealers and distributors
-• Launch of three new snack varieties for 2025
-• Introduction of improved packaging and supply chain processes
-• Special incentive programs for retail partners
-• Interactive workshops on market trends and consumer preferences
+Key highlights from the meet:
+• Inspirational address by Managing Director Mr. Manish Pansari and Manager Mr. Rajeev Mishra
+• Unveiling of upcoming snack lines and packaging innovations
+• Open forums to address challenges and drive collaborative growth
+• Roadmap to establish Yummfeast as India’s most trusted snacking brand
 
-This gathering reinforced our commitment to supporting our dealers and creating a thriving ecosystem where everyone grows together.`,
+Recognition was a major highlight — partners achieving ₹60 lakh+ monthly sales, 5+ years of service, and top districts were honoured with shawls and silver coin sets.
+
+Interactive games, poetry competitions and a surprise premium suitcase gift added fun and warmth to the retreat — proving that at Yummfeast, business and bonding go hand in hand.`,
     },
     {
-      title:
-        "Yummfeast's Dealership Meet 2022: A Grand Introduction to a Bold New Brand",
+      title: "Yummfeast Dealership Meet 2022: A Grand Introduction to a Bold New Brand",
       image: "/images/news/news3.jpg",
-      alt: "Taste Test",
-      date: "5 days ago",
-      slug: "taste-test-results",
+      alt: "Dealership Meet 2022",
+      date: "2022",
+      slug: "dealership-meet-2022",
       description:
-        "The 2022 Dealership Meet marked Yummfeast's bold entry into the market with an impressive showcase of product quality and brand vision.",
-      content: `Yummfeast's 2022 Dealership Meet was a groundbreaking event that introduced our brand vision to dealers and partners nationwide.
+        "Yummfeast officially introduced its brand vision and product lineup to dealers nationwide, marking the launch of its distribution network.",
+      content: `Hosted at Courtyard by Marriott, Siliguri, the Dealership Meet 2022 welcomed more than 300 dealers, super stockists and business partners. It served as the first major brand introduction and laid the foundation for Yummfeast’s rapid expansion.
 
 Event overview:
-• More than 200 dealers attended from across India
-• Comprehensive product tasting sessions conducted
-• Brand story and mission shared with all partners
-• Distribution network established in 15 states
-• Long-term growth strategy outlined
+• Presentation of the brand story and mission
+• Comprehensive product tasting and feedback sessions
+• One-on-one networking with leadership and partners
+• Launch of the multi-state distribution strategy
 
-This meet was the foundation for Yummfeast's rapid expansion and success in the competitive snacking market.`,
-    },
+A special awards ceremony celebrated early believers with Best Dealer, Best Super Stockist and District-Wise recognitions. All dealers were presented certificates, marking their place in the Yummfeast legacy.
+
+The takeaway was clear — Yummfeast entered the market not to participate, but to lead, innovate and redefine India’s snacking culture.`,
+    }
   ];
+
 
   useEffect(() => {
     const handleScroll = () => {
