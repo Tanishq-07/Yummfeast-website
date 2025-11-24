@@ -245,6 +245,15 @@
       "subcategory": "mix",
       "image": "/images/indori-mixture.jpg",
       "comingSoon": true
-    }
+    },
+    {
+     "id": 23,
+      "name": "Dalmoth",
+      "description": "A savory, crunchy mix of fried lentil noodles (sev), roasted nuts (peanuts), whole lentils, and spiced green peas, offering a rich, traditional Indian namkeen flavor.",
+      "price": "₹10",
+      "category": "namkeen",
+      "subcategory": "mix",
+      "image": "/images/dalmoth.png",
+      "comingSoon": false 
   ]
 }
