@@ -9,7 +9,7 @@ import CustomButton from "@/components/ui/custom-button"
 import { Badge } from "@/components/ui/badge"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import HeroSection from "../HeroSection"
-import productData from "@/data/productData.json";
+import productData from "../../../src/data/ProductData.json";
 
 const products = productData.products;
 
