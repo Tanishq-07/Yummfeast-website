@@ -379,16 +379,6 @@
       "subcategory": "bhujia",
       "image": "/images/products/bhujia.png",
       "comingSoon": false
-    },
-    {
-      "id": 41,
-      "name": "Dalmoth",
-      "description": "A savory, crunchy mix of fried lentil noodles (sev), roasted nuts (peanuts), whole lentils, and spiced green peas, offering a rich, traditional Indian namkeen flavor.",
-      "price": "₹10",
-      "category": "Namkeen",
-      "subcategory": "mix",
-      "image": "/images/products/Dalmoth.png",
-      "comingSoon": false
     }
   ]
 }
