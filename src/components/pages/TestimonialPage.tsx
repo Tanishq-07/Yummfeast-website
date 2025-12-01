@@ -321,14 +321,12 @@ export default function TestimonialPage() {
                         <option value="" disabled>
                           Select a product
                         </option>
-                        <option value="rings">Yummfeast Rings</option>
-                        <option value="pasta">Yummfeast Pasta</option>
-                        <option value="allinone">Yummfeast All-in-One</option>
-                        <option value="chatpata">Yummfeast Chatpata Mix</option>
-                        <option value="aloobhujia">
-                          Yummfeast Aloo Bhujia
-                        </option>
-                        <option value="cornpuffs">Yummfeast Corn Puffs</option>
+                        <option value="3dtwister">3D Twister</option>
+                        <option value="aloobhujia">Aloo Bhujia</option>
+                        <option value="badampakoda">Badam Pakoda</option>
+                        <option value="bhelmudhi">Bhel Mudhi</option>
+                        <option value="bhujia">Bhujia</option>
+                        <option value="chanadal">Chana Dal</option>
                       </select>
                     </div>
 
