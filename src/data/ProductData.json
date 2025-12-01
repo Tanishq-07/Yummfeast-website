@@ -402,12 +402,12 @@
       },
     {
       "id": 43,
-      "name": "Dalmoth",
-      "description": "A classic, satisfyingly crunchy Indian savory mix (Namkeen) featuring a blend of fried lentils, nuts, and spices.",
-      "price": "₹10",
-      "category": "Namkeen",
-      "subcategory": "bhujia",
-      "image": "/images/products/dalmoth.png",
+      "name": "Katori Red",
+      "description": "Fun, crunchy, bowl-shaped snacks bursting with a zesty and irresistible tangy tomato flavor.",
+      "price": "₹5",
+      "category": "Fryums",
+      "subcategory": "corn",
+      "image": "/images/products/katorired.png",
       "comingSoon": false
       },
   ]
