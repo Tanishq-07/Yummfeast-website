@@ -400,5 +400,15 @@
       "image": "/images/products/katorired.png",
       "comingSoon": false
       },
+    {
+      "id": 43,
+      "name": "Dalmoth",
+      "description": "A classic, satisfyingly crunchy Indian savory mix (Namkeen) featuring a blend of fried lentils, nuts, and spices.",
+      "price": "₹10",
+      "category": "Namkeen",
+      "subcategory": "mix",
+      "image": "/images/products/dalmoth.png",
+      "comingSoon": false
+      },
   ]
 }
