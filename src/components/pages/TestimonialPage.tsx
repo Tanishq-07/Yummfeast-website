@@ -322,11 +322,48 @@ export default function TestimonialPage() {
                           Select a product
                         </option>
                         <option value="3dtwister">3D Twister</option>
+                        <option value="allinone">All In One</option>
+                        <option value="allinonemedium">All In One Medium</option>
+                        <option value="allinonelarge">All In One Large</option>
                         <option value="aloobhujia">Aloo Bhujia</option>
                         <option value="badampakoda">Badam Pakoda</option>
                         <option value="bhelmudhi">Bhel Mudhi</option>
                         <option value="bhujia">Bhujia</option>
                         <option value="chanadal">Chana Dal</option>
+                        <option value="chanajorgaram">Chana Jor Garam</option>
+                        <option value="chinesepasta">Chinese Pasta</option>
+                        <option value="chiwdafry">Chiwda Fry</option>
+                        <option value="classicsaltedchips">Classic Salted Chips</option>
+                         <option value="cream&onionchips">Cream & Onion Chips</option>
+                        <option value="cream&onionchipslarge">Cream & Onion Chips Large</option>
+                        <option value="cripsynoodles">Crispy Noodles</option>
+                        <option value="dalmoth">Dalmoth</option>
+                        <option value="fingers">Fingers</option>
+                        <option value="gathiya">Gathiya</option>
+                        <option value="golumolu">Golu Molu</option>
+                        <option value="haramatar">Hara Matar</option>
+                        <option value="hingjeerachana">Hing Jeera Chana</option>
+                        <option value="karare">Karare</option>
+                        <option value="katorimasalamunch">Katori (Masala Munch)</option>
+                        <option value="katoritangytomato">Katori (Tangy Tomato)</option>
+                        <option value="krunchmunncch">Krunch Munncch</option>
+                        <option value="magicmasalachips">Magic Masala Chips</option>
+                        <option value="moongdal">Moong Dal</option>
+                        <option value="navratanmixture">Navratan Mixture</option>
+                        <option value="nimbubhujia">Nimbu Bhujia</option>
+                         <option value="noodles">Noodles</option>
+                        <option value="palakpaneer">Palak Paneer</option>
+                        <option value="paneerbhujia">Paneer Bhujia</option>
+                        <option value="panipuri">Pani Puri</option>
+                         <option value="papdi">Papdi</option>
+                        <option value="punjabitadka">Punjabi Tadka</option>
+                        <option value="ratlami sev">Ratlami Sev</option>
+                        <option value="rings">Rings</option>
+                         <option value="saltedpeanut">Salted Peanut</option>
+                        <option value="springroll">Spring Roll</option>
+                        <option value="tangytomatochips">Tangy Tomato Chips</option>
+                        <option value="timer">Timer</option>
+          
                       </select>
                     </div>
 
