@@ -379,6 +379,16 @@
       "subcategory": "bhujia",
       "image": "/images/products/bhujia.png",
       "comingSoon": false
-    }
+    },
+     {
+      "id": 41,
+      "name": "Crispy Noodles",
+      "description": "Crunchy, flavorful, and delightfully spiced Korean-style noodle snack for a yummy tummy treat!.",
+      "price": "₹5",
+      "category": "Fryums",
+      "subcategory": "corn",
+      "image": "/images/products/crispynoodles.png",
+      "comingSoon": false
+      } 
   ]
 }
