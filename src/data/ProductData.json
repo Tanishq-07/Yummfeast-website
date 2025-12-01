@@ -127,7 +127,7 @@
       "price": "₹5",
       "category": "Fryums",
       "subcategory": "pasta",
-      "image": "/images/products/chinese-pasta.png",
+      "image": "/images/products/chinese.png",
       "comingSoon": false
     },
     {
@@ -392,6 +392,16 @@
       },
     {
       "id": 42,
+      "name": "Dalmoth",
+      "description": "A classic, satisfyingly crunchy Indian savory mix (Namkeen) featuring a blend of fried lentils, nuts, and spices.",
+      "price": "₹10",
+      "category": "Namkeen",
+      "subcategory": "bhujia",
+      "image": "/images/products/dalmoth.png",
+      "comingSoon": false
+      },
+    {
+      "id": 43,
       "name": "Dalmoth",
       "description": "A classic, satisfyingly crunchy Indian savory mix (Namkeen) featuring a blend of fried lentils, nuts, and spices.",
       "price": "₹10",
