@@ -68,6 +68,13 @@ export default function TestimonialPage() {
       quote:
         "I recently tried Yummfeast snacks, and honestly, I’m so impressed! 💛 Each bite is full of flavor, freshness, and that perfect crunch that instantly lifts your mood. Whether it’s their chips, fryums, or namkeens — everything tastes authentic and made with so much care. You can actually feel the quality and love that goes into every packet! 💫.",
     },
+    {
+      id: 8,
+      name: "Harshit Chhalani",
+      role: "Verified Customer",
+      image: "/images/reviews/rev8.png",
+      quote:"YummFeast truly lives up to its name! Their delicious range of snacks—from crispy spring rolls to flavorful bhel mudhi—never disappoints. Fresh, hygienic, and absolutely tasty. A perfect go-to for quick bites!.",
+    },
   ];
 
   const [name, setName] = useState("");
