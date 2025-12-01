@@ -60,6 +60,14 @@ export default function TestimonialPage() {
       quote:
         "I love the Chinese Pasta snacks from Yummfeast. They're perfectly seasoned and always fresh. My go-to evening snack with chai! The packaging keeps them fresh for a long time, and the price is very reasonable.",
     },
+    {
+      id: 7,
+      name: "Swakshi Jha",
+      role: "Verified Customer",
+      image: "/images/reviews/rev7.png",
+      quote:
+        "I recently tried Yummfeast snacks, and honestly, I’m so impressed! 💛 Each bite is full of flavor, freshness, and that perfect crunch that instantly lifts your mood. Whether it’s their chips, fryums, or namkeens — everything tastes authentic and made with so much care. You can actually feel the quality and love that goes into every packet! 💫.",
+    },
   ];
 
   const [name, setName] = useState("");
