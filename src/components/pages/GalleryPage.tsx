@@ -30,19 +30,19 @@ export default function GalleryPage() {
     },
     {
       id: 4,
-      title: "Manali Trip",
+      title: "Kashmir Trip",
       image: "/images/gallery/pic4.png",
       category: "Trip",
     },
     {
       id: 5,
-      title: "Manali Trip",
+      title: "Kashmir Trip",
       image: "/images/gallery/pic5.png",
       category: "Trip",
     },
     {
       id: 6,
-      title: "Manali Trip",
+      title: "Kashmir Trip",
       image: "/images/gallery/pic6.png",
       category: "Trip",
     },
@@ -99,6 +99,18 @@ export default function GalleryPage() {
       title: "Laboratory",
       image: "/images/gallery/pic15.jpg",
       category: "Facilities",
+    },
+    {
+      id: 16,
+      title: "Manali Trip",
+      image: "/images/gallery/pic16.jpg",
+      category: "Trip",
+    },
+    {
+      id: 17,
+      title: "Manali Trip",
+      image: "/images/gallery/pic17.jpg",
+      category: "Trip",
     },
   ]
 
