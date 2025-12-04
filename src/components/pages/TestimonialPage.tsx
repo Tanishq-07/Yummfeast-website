@@ -60,6 +60,29 @@ export default function TestimonialPage() {
       quote:
         "I love the Chinese Pasta snacks from Yummfeast. They're perfectly seasoned and always fresh. My go-to evening snack with chai! The packaging keeps them fresh for a long time, and the price is very reasonable.",
     },
+    {
+      id: 7,
+      name: "Swakshi Jha",
+      role: "Verified Customer",
+      image: "/images/reviews/rev7.png",
+      quote:
+        "I recently tried Yummfeast snacks, and honestly, I’m so impressed! 💛 Each bite is full of flavor, freshness, and that perfect crunch that instantly lifts your mood. Whether it’s their chips, fryums, or namkeens — everything tastes authentic and made with so much care. You can actually feel the quality and love that goes into every packet! 💫.",
+    },
+    {
+      id: 8,
+      name: "Harshit Chhalani",
+      role: "Verified Customer",
+      image: "/images/reviews/rev8.png",
+      quote:"Yummfeast truly lives up to its name! Their delicious range of snacks—from crispy spring rolls to flavorful bhel mudhi—never disappoints. Fresh, hygienic, and absolutely tasty. A perfect go-to for quick bites!.",
+    },
+     {
+      id: 9,
+      name: "Sahaana",
+      role: "Verified Customer",
+      image: "/images/reviews/rev9.png",
+      quote:"Yummfeast truly lives up to its name — every bite of their chips, namkeen or fryums bursts with flavour, crispiness and that irresistibly fun crunch. Their snacks didn’t just satisfy my hunger — they turned ordinary tea-time into a joyride of taste. Whether it was a movie night, a road-trip or a simple break, YummFeast made it special.",
+    },
+    
   ];
 
   const [name, setName] = useState("");
@@ -313,14 +336,49 @@ export default function TestimonialPage() {
                         <option value="" disabled>
                           Select a product
                         </option>
-                        <option value="rings">Yummfeast Rings</option>
-                        <option value="pasta">Yummfeast Pasta</option>
-                        <option value="allinone">Yummfeast All-in-One</option>
-                        <option value="chatpata">Yummfeast Chatpata Mix</option>
-                        <option value="aloobhujia">
-                          Yummfeast Aloo Bhujia
-                        </option>
-                        <option value="cornpuffs">Yummfeast Corn Puffs</option>
+                        <option value="3dtwister">3D Twister</option>
+                        <option value="allinone">All In One</option>
+                        <option value="allinonemedium">All In One Medium</option>
+                        <option value="allinonelarge">All In One Large</option>
+                        <option value="aloobhujia">Aloo Bhujia</option>
+                        <option value="badampakoda">Badam Pakoda</option>
+                        <option value="bhelmudhi">Bhel Mudhi</option>
+                        <option value="bhujia">Bhujia</option>
+                        <option value="chanadal">Chana Dal</option>
+                        <option value="chanajorgaram">Chana Jor Garam</option>
+                        <option value="chinesepasta">Chinese Pasta</option>
+                        <option value="chiwdafry">Chiwda Fry</option>
+                        <option value="classicsaltedchips">Classic Salted Chips</option>
+                         <option value="cream&onionchips">Cream & Onion Chips</option>
+                        <option value="cream&onionchipslarge">Cream & Onion Chips Large</option>
+                        <option value="cripsynoodles">Crispy Noodles</option>
+                        <option value="dalmoth">Dalmoth</option>
+                        <option value="fingers">Fingers</option>
+                        <option value="gathiya">Gathiya</option>
+                        <option value="golumolu">Golu Molu</option>
+                        <option value="haramatar">Hara Matar</option>
+                        <option value="hingjeerachana">Hing Jeera Chana</option>
+                        <option value="karare">Karare</option>
+                        <option value="katorimasalamunch">Katori (Masala Munch)</option>
+                        <option value="katoritangytomato">Katori (Tangy Tomato)</option>
+                        <option value="krunchmunncch">Krunch Munncch</option>
+                        <option value="magicmasalachips">Magic Masala Chips</option>
+                        <option value="moongdal">Moong Dal</option>
+                        <option value="navratanmixture">Navratan Mixture</option>
+                        <option value="nimbubhujia">Nimbu Bhujia</option>
+                         <option value="noodles">Noodles</option>
+                        <option value="palakpaneer">Palak Paneer</option>
+                        <option value="paneerbhujia">Paneer Bhujia</option>
+                        <option value="panipuri">Pani Puri</option>
+                         <option value="papdi">Papdi</option>
+                        <option value="punjabitadka">Punjabi Tadka</option>
+                        <option value="ratlami sev">Ratlami Sev</option>
+                        <option value="rings">Rings</option>
+                         <option value="saltedpeanut">Salted Peanut</option>
+                        <option value="springroll">Spring Roll</option>
+                        <option value="tangytomatochips">Tangy Tomato Chips</option>
+                        <option value="timer">Timer</option>
+          
                       </select>
                     </div>
 

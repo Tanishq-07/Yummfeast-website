@@ -127,7 +127,7 @@
       "price": "₹5",
       "category": "Fryums",
       "subcategory": "pasta",
-      "image": "/images/products/chinese-pasta.png",
+      "image": "/images/products/demo.png",
       "comingSoon": false
     },
     {
@@ -380,15 +380,45 @@
       "image": "/images/products/bhujia.png",
       "comingSoon": false
     },
-    {
+     {
       "id": 41,
+      "name": "Crispy Noodles",
+      "description": "Crunchy, flavorful, and delightfully spiced Korean-style noodle snack for a yummy tummy treat!.",
+      "price": "₹5",
+      "category": "Fryums",
+      "subcategory": "corn",
+      "image": "/images/products/crispynoodles.png",
+      "comingSoon": false
+      },
+    {
+      "id": 42,
+      "name": "Katori (Tangy Tomato)",
+      "description": "Fun, crunchy, bowl-shaped snacks bursting with a zesty and irresistible tangy tomato flavor.",
+      "price": "₹5",
+      "category": "Fryums",
+      "subcategory": "corn",
+      "image": "/images/products/katorired.png",
+      "comingSoon": false
+      },
+    {
+      "id": 43,
       "name": "Dalmoth",
-      "description": "A savory, crunchy mix of fried lentil noodles (sev), roasted nuts (peanuts), whole lentils, and spiced green peas, offering a rich, traditional Indian namkeen flavor.",
+      "description": "A classic, satisfyingly crunchy Indian savory mix (Namkeen) featuring a blend of fried lentils, nuts, and spices.",
       "price": "₹10",
       "category": "Namkeen",
       "subcategory": "mix",
-      "image": "/images/products/Dalmoth.png",
+      "image": "/images/products/dalmoth.png",
       "comingSoon": false
-    }
+      },
+    {
+      "id": 44,
+      "name": "Krunch Munncch",
+      "description": "The ultimate crunchy snack with a spicy kick, perfect for satisfying those intense craving moments!.",
+      "price": "₹5",
+      "category": "Fryums",
+      "subcategory": "corn",
+      "image": "/images/products/krunchmunch.png",
+      "comingSoon": false
+      }
   ]
 }
