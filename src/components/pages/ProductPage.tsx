@@ -9,38 +9,10 @@ import CustomButton from "@/components/ui/custom-button"
 import { Badge } from "@/components/ui/badge"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import HeroSection from "../HeroSection"
-import productData from "../../../src/data/ProductData.json";
+import productData from "../../../src/data/products.json";
+import categoryStructure from "../../../src/data/categories.json"
 
 const products = productData.products;
-
-const categoryStructure = {
-  Namkeen: {
-    label: "Namkeen",
-    subcategories: {
-      mix: "Mix Varieties",
-      bhujia: "Bhujia",
-      traditional: "Traditional",
-    },
-  },
-  Chips: {
-    label: "Chips",
-    subcategories: {
-      rings: "Rings",
-      pasta: "Pasta Chips",
-      classic: "Classic Chips",
-    },
-  },
-  Fryums: {
-    label: "Fryums",
-    subcategories: {
-      corn: "Corn Based",
-      rice: "Rice Based",
-      wheat: "Wheat Based",
-      rings: "Rings",
-      pasta: "Pasta Chips",
-    },
-  },
-}
 
 interface Product {
   id: number

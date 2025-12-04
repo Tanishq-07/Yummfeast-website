@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Clock, User, Calendar, ArrowRight, Search, X, Heart } from "lucide-react";
 import { useState } from "react";
-import blogData from "@/data/data.json";
+import blogData from "../../../src/data/blogs.json";
 import HeroSection from "../HeroSection";
 
 export default function BlogsPage() {
