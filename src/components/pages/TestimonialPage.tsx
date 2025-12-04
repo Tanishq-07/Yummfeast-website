@@ -73,14 +73,14 @@ export default function TestimonialPage() {
       name: "Harshit Chhalani",
       role: "Verified Customer",
       image: "/images/reviews/rev8.png",
-      quote:"YummFeast truly lives up to its name! Their delicious range of snacks—from crispy spring rolls to flavorful bhel mudhi—never disappoints. Fresh, hygienic, and absolutely tasty. A perfect go-to for quick bites!.",
+      quote:"Yummfeast truly lives up to its name! Their delicious range of snacks—from crispy spring rolls to flavorful bhel mudhi—never disappoints. Fresh, hygienic, and absolutely tasty. A perfect go-to for quick bites!.",
     },
      {
       id: 9,
       name: "Sahaana",
       role: "Verified Customer",
       image: "/images/reviews/rev9.png",
-      quote:"YummFeast truly lives up to its name — every bite of their chips, namkeen or fryums bursts with flavour, crispiness and that irresistibly fun crunch. Their snacks didn’t just satisfy my hunger — they turned ordinary tea-time into a joyride of taste. Whether it was a movie night, a road-trip or a simple break, YummFeast made it special.",
+      quote:"Yummfeast truly lives up to its name — every bite of their chips, namkeen or fryums bursts with flavour, crispiness and that irresistibly fun crunch. Their snacks didn’t just satisfy my hunger — they turned ordinary tea-time into a joyride of taste. Whether it was a movie night, a road-trip or a simple break, YummFeast made it special.",
     },
     
   ];
