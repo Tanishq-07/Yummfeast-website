@@ -1,0 +1,45 @@
+{
+    "_instructions": [
+      "⚠️ READ BEFORE UPDATING ⚠️",
+    
+      "➤ Every week, remove the SAME NUMBER of posts from the BOTTOM.",
+      "➤ Then add that SAME NUMBER of new posts at the TOP.",
+      "➤ Do NOT repeat any image file name.",
+      "➤ Do NOT change the order of existing posts.",
+    
+      "Example update:",
+      "  - Remove last 3 posts from bottom",
+      "  - Add 3 new entries at TOP like:",
+      "      { \"img\": \"images/instagram/new1.png\" },",
+      "      { \"img\": \"images/instagram/new2.png\" },",
+      "      { \"img\": \"images/instagram/new3.png\" },",
+    
+      "❗ The first item in the list always appears first on the website."
+    ],
+  "posts": [
+    {
+      "img" : "images/instagram/insta1.png"
+    },
+    {
+      "img" : "images/instagram/insta2.png"
+    },
+    {
+      "img" : "images/instagram/insta3.png"
+    },
+    {
+      "img" : "images/instagram/insta4.png"
+    },
+    {
+      "img" : "images/instagram/insta5.png"
+    },
+    {
+      "img" : "images/instagram/insta6.png"
+    },
+    {
+      "img" : "images/instagram/insta7.png"
+    },
+    {
+      "img" : "images/instagram/insta8.png"
+    }
+  ]
+}
