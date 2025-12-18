@@ -1,0 +1,129 @@
+{
+  "heroSection": {
+    "bg": "/images/bg.png",
+    "image1": "/images/banners/gallery/left.png",
+    "image2": "/images/banners/gallery/right.png"
+  },
+  "filters": [
+    {
+      "value": "all",
+      "label": "All"
+    },
+    {
+      "value": "Trip",
+      "label": "Trips"
+    },
+    {
+      "value": "Facilities",
+      "label": "Facilities"
+    },
+    {
+      "value": "Event",
+      "label": "Events"
+    }
+  ],
+  "galleryItems": [
+    {
+      "id": 1,
+      "title": "Goa Trip",
+      "image": "/images/gallery/pic1.png",
+      "category": "Trip"
+    },
+    {
+      "id": 2,
+      "title": "Goa Trip",
+      "image": "/images/gallery/pic2.png",
+      "category": "Trip"
+    },
+    {
+      "id": 3,
+      "title": "Goa Trip",
+      "image": "/images/gallery/pic3.png",
+      "category": "Trip"
+    },
+    {
+      "id": 4,
+      "title": "Kashmir Trip",
+      "image": "/images/gallery/pic4.png",
+      "category": "Trip"
+    },
+    {
+      "id": 5,
+      "title": "Kashmir Trip",
+      "image": "/images/gallery/pic5.png",
+      "category": "Trip"
+    },
+    {
+      "id": 6,
+      "title": "Kashmir Trip",
+      "image": "/images/gallery/pic6.png",
+      "category": "Trip"
+    },
+    {
+      "id": 7,
+      "title": "Siliguri Event",
+      "image": "/images/gallery/pic7.jpg",
+      "category": "Event"
+    },
+    {
+      "id": 8,
+      "title": "Siliguri Event",
+      "image": "/images/gallery/pic8.jpg",
+      "category": "Event"
+    },
+    {
+      "id": 9,
+      "title": "Warehouse",
+      "image": "/images/gallery/pic9.jpg",
+      "category": "Facilities"
+    },
+    {
+      "id": 10,
+      "title": "Cordelia Cruise",
+      "image": "/images/gallery/pic10.jpg",
+      "category": "Event"
+    },
+    {
+      "id": 11,
+      "title": "Cordelia Cruise",
+      "image": "/images/gallery/pic11.jpg",
+      "category": "Event"
+    },
+    {
+      "id": 12,
+      "title": "Cordelia Cruise",
+      "image": "/images/gallery/pic12.jpg",
+      "category": "Event"
+    },
+    {
+      "id": 13,
+      "title": "Laboratory",
+      "image": "/images/gallery/pic13.jpg",
+      "category": "Facilities"
+    },
+    {
+      "id": 14,
+      "title": "Laboratory",
+      "image": "/images/gallery/pic14.jpg",
+      "category": "Facilities"
+    },
+    {
+      "id": 15,
+      "title": "Laboratory",
+      "image": "/images/gallery/pic15.jpg",
+      "category": "Facilities"
+    },
+    {
+      "id": 16,
+      "title": "Manali Trip",
+      "image": "/images/gallery/pic16.jpg",
+      "category": "Trip"
+    },
+    {
+      "id": 17,
+      "title": "Manali Trip",
+      "image": "/images/gallery/pic17.jpg",
+      "category": "Trip"
+    }
+  ]
+}
