@@ -6,96 +6,19 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Star } from "lucide-react";
-// import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 import { motion } from "framer-motion";
 import HeroSection from "../HeroSection";
+import testimonialData from "@/data/testimonials.json";
+import productsData from "@/data/products.json";
 
 export default function TestimonialPage() {
-  const testimonials = [
-    {
-      id: 1,
-      name: "Eshita",
-      role: "Verified Customer",
-      image: "/images/reviews/rev1.png",
-      quote:
-        "The All-in-One mix is perfect for parties. Everyone loves the variety. Will definitely keep ordering! It's become a staple at all our family gatherings and everyone always asks where we got it from.",
-    },
-    {
-      id: 2,
-      name: "Bidappa Bolthanda",
-      role: "Verified Customer",
-      image: "/images/reviews/rev2.png",
-      quote:
-        "YummFeast namkeen is my go-to snack! Super crunchy, full of flavor, and always fresh. Perfect for every mood — once you start, you just can’t stop kudos to the Yumm Feast team for making such brilliant snacks!",
-    },
-    {
-      id: 3,
-      name: "Sohini Dutta",
-      role: "Verified Customer",
-      image: "/images/reviews/rev3.png",
-      quote:
-        "Yummfeast snacks have made a significant difference in my snacking habits. They're tasty, well-packaged, and satisfy my cravings without feeling too heavy. I've recommended them to all my friends and family.",
-    },
-    {
-      id: 4,
-      name: "Priya Sinha",
-      role: "Verified Customer",
-      image: "/images/reviews/rev4.png",
-      quote:
-        " I've tried many similar snacks from other brands, but none compare to the quality and taste I get from Yummfeast. Their Palak Paneer is the best I've ever had - perfectly spiced and always fresh.",
-    },
-    {
-      id: 5,
-      name: "Saniya Verma",
-      role: "Verified Customer",
-      image: "/images/reviews/rev5.png",
-      quote:
-        "I’ve been buying Yummfeast products since 2020, and I can confidently say they maintain consistent taste and hygiene. It’s one of the few brands I trust for my family’s snacks.",
-    },
-    {
-      id: 6,
-      name: "Vachan Chopra",
-      role: "Verified Customer",
-      image: "/images/reviews/rev6.png",
-      quote:
-        "I love the Chinese Pasta snacks from Yummfeast. They're perfectly seasoned and always fresh. My go-to evening snack with chai! The packaging keeps them fresh for a long time, and the price is very reasonable.",
-    },
-    {
-      id: 7,
-      name: "Swakshi Jha",
-      role: "Verified Customer",
-      image: "/images/reviews/rev7.png",
-      quote:
-        "I recently tried Yummfeast snacks, and honestly, I’m so impressed! 💛 Each bite is full of flavor, freshness, and that perfect crunch that instantly lifts your mood. Whether it’s their chips, fryums, or namkeens — everything tastes authentic and made with so much care. You can actually feel the quality and love that goes into every packet! 💫.",
-    },
-    {
-      id: 8,
-      name: "Harshit Chhalani",
-      role: "Verified Customer",
-      image: "/images/reviews/rev8.png",
-      quote:"Yummfeast truly lives up to its name! Their delicious range of snacks—from crispy spring rolls to flavorful bhel mudhi—never disappoints. Fresh, hygienic, and absolutely tasty. A perfect go-to for quick bites!.",
-    },
-     {
-      id: 9,
-      name: "Sahaana",
-      role: "Verified Customer",
-      image: "/images/reviews/rev9.png",
-      quote:"Yummfeast truly lives up to its name — every bite of their chips, namkeen or fryums bursts with flavour, crispiness and that irresistibly fun crunch. Their snacks didn’t just satisfy my hunger — they turned ordinary tea-time into a joyride of taste. Whether it was a movie night, a road-trip or a simple break, YummFeast made it special.",
-    },
-    
-  ];
+  const { testimonials, heroSection, ctaSection, form } = testimonialData;
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [product, setProduct] = useState("");
   const [rating, setRating] = useState(0);
   const [feedback, setFeedback] = useState("");
-
-  const bannerData = {
-    bg: "/images/bg.png",
-    image1: "/images/banners/testimonial/left.png",
-    image2: "/images/banners/testimonial/right.png",
-  };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -105,18 +28,13 @@ export default function TestimonialPage() {
       return;
     }
 
-    const form = e.currentTarget;
+    const formElement = e.currentTarget;
 
-    const Name = (form.elements.namedItem("name") as HTMLInputElement).value;
-    const Email = (form.elements.namedItem("email") as HTMLInputElement).value;
-    const Product = (form.elements.namedItem("product") as HTMLSelectElement)
-      .value;
-    const Rating = rating > 0 ? rating : "Not provided"
-    const Feedback = (
-      form.elements.namedItem("feedback") as HTMLTextAreaElement
-    ).value;
-
-    const whatsappNumber = "9334469489";
+    const Name = (formElement.elements.namedItem("name") as HTMLInputElement).value;
+    const Email = (formElement.elements.namedItem("email") as HTMLInputElement).value;
+    const Product = (formElement.elements.namedItem("product") as HTMLSelectElement).value;
+    const Rating = rating > 0 ? rating : "Not provided";
+    const Feedback = (formElement.elements.namedItem("feedback") as HTMLTextAreaElement).value;
 
     const whatsappMessage = `
     A flavor-filled review straight from our customer
@@ -133,7 +51,7 @@ export default function TestimonialPage() {
 
     const url =
       "https://wa.me/" +
-      whatsappNumber +
+      form.whatsappNumber +
       "?text=" +
       encodeURIComponent(whatsappMessage);
 
@@ -148,7 +66,7 @@ export default function TestimonialPage() {
   return (
     <div className="relative overflow-hidden">
       {/* Hero Section with brush stroke background */}
-      <HeroSection banner={bannerData} />
+      <HeroSection banner={heroSection} />
 
       {/* Testimonials Grid with organic effects */}
       <section
@@ -256,18 +174,16 @@ export default function TestimonialPage() {
           <div className="max-w-3xl mx-auto text-center">
             <div className="relative inline-block">
               <h2 className="text-3xl font-normal text-white mb-2 px-4">
-                Share Your Experience
+                {ctaSection.title}
               </h2>
             </div>
             <p className="text-xl text-white">
-              We value your feedback. Let us know about your experience with our
-              products.
+              {ctaSection.subtitle}
             </p>
           </div>
         </div>
 
         {/* feedback form */}
-
         <div className="py-12">
           <div className="container max-w-3xl mx-auto px-4">
             <motion.div
@@ -287,11 +203,11 @@ export default function TestimonialPage() {
                           htmlFor="name"
                           className="text-gray-700 font-normal"
                         >
-                          Your Name 👋
+                          {form.labels.name}
                         </Label>
                         <Input
                           id="name"
-                          placeholder="John Doe"
+                          placeholder={form.placeholders.name}
                           required
                           value={name}
                           onChange={(e) => setName(e.target.value)}
@@ -304,12 +220,12 @@ export default function TestimonialPage() {
                           htmlFor="email"
                           className="text-gray-700 font-normal"
                         >
-                          Email Address 📧
+                          {form.labels.email}
                         </Label>
                         <Input
                           id="email"
                           type="email"
-                          placeholder="john@example.com"
+                          placeholder={form.placeholders.email}
                           required
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
@@ -324,7 +240,7 @@ export default function TestimonialPage() {
                         htmlFor="product"
                         className="text-gray-700 font-normal"
                       >
-                        Product 🍟
+                        {form.labels.product}
                       </Label>
                       <select
                         id="product"
@@ -334,51 +250,13 @@ export default function TestimonialPage() {
                         className="flex h-12 w-full rounded-lg border-2 border-orange-200 focus:border-orange-400 bg-white px-3 py-2 text-sm"
                       >
                         <option value="" disabled>
-                          Select a product
+                          {form.placeholders.product}
                         </option>
-                        <option value="3dtwister">3D Twister</option>
-                        <option value="allinone">All In One</option>
-                        <option value="allinonemedium">All In One Medium</option>
-                        <option value="allinonelarge">All In One Large</option>
-                        <option value="aloobhujia">Aloo Bhujia</option>
-                        <option value="badampakoda">Badam Pakoda</option>
-                        <option value="bhelmudhi">Bhel Mudhi</option>
-                        <option value="bhujia">Bhujia</option>
-                        <option value="chanadal">Chana Dal</option>
-                        <option value="chanajorgaram">Chana Jor Garam</option>
-                        <option value="chinesepasta">Chinese Pasta</option>
-                        <option value="chiwdafry">Chiwda Fry</option>
-                        <option value="classicsaltedchips">Classic Salted Chips</option>
-                         <option value="cream&onionchips">Cream & Onion Chips</option>
-                        <option value="cream&onionchipslarge">Cream & Onion Chips Large</option>
-                        <option value="cripsynoodles">Crispy Noodles</option>
-                        <option value="dalmoth">Dalmoth</option>
-                        <option value="fingers">Fingers</option>
-                        <option value="gathiya">Gathiya</option>
-                        <option value="golumolu">Golu Molu</option>
-                        <option value="haramatar">Hara Matar</option>
-                        <option value="hingjeerachana">Hing Jeera Chana</option>
-                        <option value="karare">Karare</option>
-                        <option value="katorimasalamunch">Katori (Masala Munch)</option>
-                        <option value="katoritangytomato">Katori (Tangy Tomato)</option>
-                        <option value="krunchmunncch">Krunch Munncch</option>
-                        <option value="magicmasalachips">Magic Masala Chips</option>
-                        <option value="moongdal">Moong Dal</option>
-                        <option value="navratanmixture">Navratan Mixture</option>
-                        <option value="nimbubhujia">Nimbu Bhujia</option>
-                         <option value="noodles">Noodles</option>
-                        <option value="palakpaneer">Palak Paneer</option>
-                        <option value="paneerbhujia">Paneer Bhujia</option>
-                        <option value="panipuri">Pani Puri</option>
-                         <option value="papdi">Papdi</option>
-                        <option value="punjabitadka">Punjabi Tadka</option>
-                        <option value="ratlami sev">Ratlami Sev</option>
-                        <option value="rings">Rings</option>
-                         <option value="saltedpeanut">Salted Peanut</option>
-                        <option value="springroll">Spring Roll</option>
-                        <option value="tangytomatochips">Tangy Tomato Chips</option>
-                        <option value="timer">Timer</option>
-          
+                        {productsData.products.map((prod) => (
+                          <option key={prod.id} value={prod.name}>
+                            {prod.name}
+                          </option>
+                        ))}
                       </select>
                     </div>
 
@@ -388,7 +266,7 @@ export default function TestimonialPage() {
                         htmlFor="rating"
                         className="text-gray-700 font-normal"
                       >
-                        Rating ⭐
+                        {form.labels.rating}
                       </Label>
                       <div className="flex gap-1">
                         {[1, 2, 3, 4, 5].map((starValue) => (
@@ -418,11 +296,11 @@ export default function TestimonialPage() {
                         htmlFor="feedback"
                         className="text-gray-700 font-normal"
                       >
-                        Your Feedback 📝
+                        {form.labels.feedback}
                       </Label>
                       <Textarea
                         id="feedback"
-                        placeholder="Please share your experience with our product..."
+                        placeholder={form.placeholders.feedback}
                         rows={5}
                         value={feedback}
                         onChange={(e) => setFeedback(e.target.value)}
@@ -435,7 +313,7 @@ export default function TestimonialPage() {
                       type="submit"
                       className="w-full bg-gradient-to-r from-orange-400 to-red-400 hover:from-orange-500 hover:to-red-500 text-white font-normal py-4 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
                     >
-                      Submit Feedback
+                      {form.submitButton}
                     </Button>
                   </form>
                 </CardContent>

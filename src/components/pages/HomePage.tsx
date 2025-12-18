@@ -35,6 +35,7 @@ import { Counter } from "../counter";
 import CursorGlow from "@/components/ui/cursor-glow";
 import newsItems from "../../data/news.json";
 import instagramData from "@/data/instagram-posts.json";
+import products from "@/data/ourDeliciousRange.json";
 
 interface NewsItem {
   title: string;
@@ -600,37 +601,6 @@ The takeaway was clear — Yummfeast entered the market not to participate, but 
     return () => clearInterval(interval); // Cleanup
   }, [currentChipIndex, chipVariants]);
 
-  const products: Product[] = [
-    {
-      name: "Yummfeast Rings",
-      description: "Crunchy rings with a burst of tangy masala flavor",
-      image: "/images/products/cream-and-onion.png",
-      price: "₹10",
-      category: "Chips",
-    },
-    {
-      name: "Hara Matar",
-      description: "Crispy pasta snacks with Italian herbs seasoning",
-      image: "/images/chips5.png",
-      price: "₹5",
-      category: "Namkeen",
-    },
-    {
-      name: "Yummfeast All-in-One",
-      description:
-        "A delightful mix of various namkeen for the perfect snack time",
-      image: "/images/chips6.png",
-      price: "₹20",
-      category: "Extruded",
-    },
-    {
-      name: "Yummfeast Rings",
-      description: "Crunchy rings with a burst of tangy masala flavor",
-      image: "/images/chips7.png",
-      price: "₹10",
-      category: "Fryums",
-    },
-  ];
 
   const features = [
     {
