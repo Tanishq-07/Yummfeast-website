@@ -34,6 +34,7 @@ import CustomButton from "../ui/custom-button";
 import { Counter } from "../counter";
 import CursorGlow from "@/components/ui/cursor-glow";
 import { X } from "lucide-react";
+import instagramData from "@/data/instagram-posts.json";
 
 interface NewsItem {
   title: string;
@@ -374,6 +375,19 @@ export default function HomePage({ navigateTo }: HomePageProps) {
     return () => clearInterval(interval);
   }, []);
 
+  // const instagramPosts = useMemo(() => {
+  //   return [...instagramData.posts]
+  //     .sort((a, b) => {
+  //       const dateDiff =
+  //         new Date(b.dateAdded).getTime() - new Date(a.dateAdded).getTime();
+
+  //       if (dateDiff !== 0) return dateDiff;
+
+  //       return Number(b.id) - Number(a.id);
+  //     })
+  //     .slice(0, 8);
+  // }, []);
+
   const chipVariants = [
     "images/chips1.png",
     "images/chips2.png",
@@ -411,94 +425,94 @@ export default function HomePage({ navigateTo }: HomePageProps) {
   const { bg, ring, text, shadow } =
     chipColorMap[selectedChip] || chipColorMap["images/chips1.png"];
 
-  const instagramPosts = [
-    {
-      id: "1",
-      image: "images/insta1.png",
-      caption:
-        "The victory that made it all worth it in the end!🏆We wholeheartedly congratulate @royalchallengers.bengaluru for bringing home the most amazing and smashing victory!🥳",
-      likes: "13",
-      comments: "0",
-      type: "image",
-      timestamp: "1 days ago",
-      link: "",
-    },
-    {
-      id: "2",
-      image: "images/insta2.png",
-      caption:
-        "Jeet ki taiyyari bhi puri, aur snacking ki bhi!😍Stock up on our mouth-watering snacks before tonight’s epic match begins and cheer for your favourite team louder than ever!🥳🏏",
-      likes: "2.1k",
-      comments: "78",
-      type: "image",
-      timestamp: "3 days ago",
-      link: "https://www.instagram.com/p/DKbtZdSpsoh/",
-    },
-    {
-      id: "3",
-      image: "images/insta3.png",
-      caption:
-        "Drive safe into the weekend and munch happy with our Tangy Rings!🧡🍅🚗.",
-      likes: "3.5k",
-      comments: "156",
-      type: "carousel",
-      timestamp: "5 days ago",
-      link: "https://www.instagram.com/p/DKUeIDFpYNm/",
-    },
-    {
-      id: "4",
-      image: "images/insta4.png",
-      caption:
-        "Craving something chatpata? Yummfeast snacks are loaded with bold desi flavors that hit just right!",
-      likes: "1.8k",
-      comments: "92",
-      type: "video",
-      timestamp: "1 week ago",
-      link: "https://www.instagram.com/p/DKUBsryPHMz/",
-    },
-    {
-      id: "5",
-      image: "images/insta5.png",
-      caption: "he humble potato—making our lives better everyday!😋🥔",
-      likes: "2.7k",
-      comments: "134",
-      type: "image",
-      timestamp: "1 week ago",
-      link: "https://www.instagram.com/p/DKR5c_3JQsg/",
-    },
-    {
-      id: "6",
-      image: "images/insta6.png",
-      caption:
-        "We really experience unmatched happiness when it’s time for some Yummfeast Snacks!😋😍",
-      likes: "1.9k",
-      comments: "67",
-      type: "video",
-      timestamp: "2 weeks ago",
-      link: "https://www.instagram.com/p/DKPW2H3p8tA/",
-    },
-    {
-      id: "7",
-      image: "images/insta7.png",
-      caption:
-        "Treat your taste buds with the most amazing snack-fix while you cheer for your favourite team tonight!🏏😋",
-      likes: "1.4k",
-      comments: "38",
-      type: "image",
-      timestamp: "2 weeks ago",
-      link: "https://www.instagram.com/p/DKJ4S1CtlCm/",
-    },
-    {
-      id: "8",
-      image: "images/insta8.png",
-      caption: "Cravings cured. Hearts full. Taste buds happy!😍💊💚",
-      likes: "2.3k",
-      comments: "89",
-      type: "image",
-      timestamp: "3 weeks ago",
-      link: "https://www.instagram.com/p/DKHwdifN-76/",
-    },
-  ];
+  // const instagramPosts = [
+  //   {
+  //     id: "1",
+  //     image: "images/insta1.png",
+  //     caption:
+  //       "The victory that made it all worth it in the end!🏆We wholeheartedly congratulate @royalchallengers.bengaluru for bringing home the most amazing and smashing victory!🥳",
+  //     likes: "13",
+  //     comments: "0",
+  //     type: "image",
+  //     timestamp: "1 days ago",
+  //     link: "",
+  //   },
+  //   {
+  //     id: "2",
+  //     image: "images/insta2.png",
+  //     caption:
+  //       "Jeet ki taiyyari bhi puri, aur snacking ki bhi!😍Stock up on our mouth-watering snacks before tonight’s epic match begins and cheer for your favourite team louder than ever!🥳🏏",
+  //     likes: "2.1k",
+  //     comments: "78",
+  //     type: "image",
+  //     timestamp: "3 days ago",
+  //     link: "https://www.instagram.com/p/DKbtZdSpsoh/",
+  //   },
+  //   {
+  //     id: "3",
+  //     image: "images/insta3.png",
+  //     caption:
+  //       "Drive safe into the weekend and munch happy with our Tangy Rings!🧡🍅🚗.",
+  //     likes: "3.5k",
+  //     comments: "156",
+  //     type: "carousel",
+  //     timestamp: "5 days ago",
+  //     link: "https://www.instagram.com/p/DKUeIDFpYNm/",
+  //   },
+  //   {
+  //     id: "4",
+  //     image: "images/insta4.png",
+  //     caption:
+  //       "Craving something chatpata? Yummfeast snacks are loaded with bold desi flavors that hit just right!",
+  //     likes: "1.8k",
+  //     comments: "92",
+  //     type: "video",
+  //     timestamp: "1 week ago",
+  //     link: "https://www.instagram.com/p/DKUBsryPHMz/",
+  //   },
+  //   {
+  //     id: "5",
+  //     image: "images/insta5.png",
+  //     caption: "he humble potato—making our lives better everyday!😋🥔",
+  //     likes: "2.7k",
+  //     comments: "134",
+  //     type: "image",
+  //     timestamp: "1 week ago",
+  //     link: "https://www.instagram.com/p/DKR5c_3JQsg/",
+  //   },
+  //   {
+  //     id: "6",
+  //     image: "images/insta6.png",
+  //     caption:
+  //       "We really experience unmatched happiness when it’s time for some Yummfeast Snacks!😋😍",
+  //     likes: "1.9k",
+  //     comments: "67",
+  //     type: "video",
+  //     timestamp: "2 weeks ago",
+  //     link: "https://www.instagram.com/p/DKPW2H3p8tA/",
+  //   },
+  //   {
+  //     id: "7",
+  //     image: "images/insta7.png",
+  //     caption:
+  //       "Treat your taste buds with the most amazing snack-fix while you cheer for your favourite team tonight!🏏😋",
+  //     likes: "1.4k",
+  //     comments: "38",
+  //     type: "image",
+  //     timestamp: "2 weeks ago",
+  //     link: "https://www.instagram.com/p/DKJ4S1CtlCm/",
+  //   },
+  //   {
+  //     id: "8",
+  //     image: "images/insta8.png",
+  //     caption: "Cravings cured. Hearts full. Taste buds happy!😍💊💚",
+  //     likes: "2.3k",
+  //     comments: "89",
+  //     type: "image",
+  //     timestamp: "3 weeks ago",
+  //     link: "https://www.instagram.com/p/DKHwdifN-76/",
+  //   },
+  // ];
 
   const newsItems: NewsItem[] = [
     {
@@ -522,7 +536,8 @@ The event received special recognition with the visit of Bihar’s CM, Shri Niti
 The Yummfeast team walked out with new partnerships, powerful insights, and fresh motivation to innovate, expand and bring Bihar’s homegrown flavours to more people in India.`,
     },
     {
-      title: "Yummfeast Dealers’ Meet 2025: Celebrating Partnerships, Purpose & Progress",
+      title:
+        "Yummfeast Dealers’ Meet 2025: Celebrating Partnerships, Purpose & Progress",
       image: "/images/news/news2.png",
       alt: "Dealers Meet 2025 Celebration",
       date: "July 2025",
@@ -542,7 +557,8 @@ Recognition was a major highlight — partners achieving ₹60 lakh+ monthly sal
 Interactive games, poetry competitions and a surprise premium suitcase gift added fun and warmth to the retreat — proving that at Yummfeast, business and bonding go hand in hand.`,
     },
     {
-      title: "Yummfeast Dealership Meet 2022: A Grand Introduction to a Bold New Brand",
+      title:
+        "Yummfeast Dealership Meet 2022: A Grand Introduction to a Bold New Brand",
       image: "/images/news/news3.jpg",
       alt: "Dealership Meet 2022",
       date: "2022",
@@ -560,9 +576,8 @@ Event overview:
 A special awards ceremony celebrated early believers with Best Dealer, Best Super Stockist and District-Wise recognitions. All dealers were presented certificates, marking their place in the Yummfeast legacy.
 
 The takeaway was clear — Yummfeast entered the market not to participate, but to lead, innovate and redefine India’s snacking culture.`,
-    }
+    },
   ];
-
 
   useEffect(() => {
     const handleScroll = () => {
@@ -1293,21 +1308,20 @@ The takeaway was clear — Yummfeast entered the market not to participate, but 
           {/* Instagram Feed Grid */}
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-              {instagramPosts.map((post, index) => (
+              {instagramData.posts.map((post, index) => (
                 <motion.div
-                  key={post.id}
+                  key={post.img}
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
                   whileHover={{ scale: 1.05, y: -5 }}
                   className="relative group cursor-pointer overflow-hidden rounded-lg shadow-lg"
-                  onClick={() => window.open(post.link, "_blank")}
+                  onClick={() => window.open("https://www.instagram.com/yummfeast.in/", "_blank")}
                 >
                   <div className="aspect-square bg-gradient-to-br from-pink-100 to-purple-100 relative overflow-hidden">
                     <img
-                      src={post.image || "/placeholder.svg"}
-                      alt={post.caption}
+                      src={post.img || "/placeholder.svg"}
                       className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                     />
 
@@ -1317,12 +1331,12 @@ The takeaway was clear — Yummfeast entered the market not to participate, but 
                       initial={{ opacity: 0 }}
                       whileHover={{ opacity: 1 }}
                     >
-                      <div className="text-white text-center">
+                      {/* <div className="text-white text-center">
                         <div className="flex items-center justify-center gap-4 mb-2">
                           <div className="flex items-center gap-1">
                             <Heart className="w-5 h-5" />
                             <span className="text-sm font-normal">
-                              {post.likes}
+                              24
                             </span>
                           </div>
                           <div className="flex items-center gap-1">
@@ -1334,18 +1348,18 @@ The takeaway was clear — Yummfeast entered the market not to participate, but 
                               <path d="M8.5 12c0 1.38 1.12 2.5 2.5 2.5s2.5-1.12 2.5-2.5-1.12-2.5-2.5-2.5-2.5 1.12-2.5 2.5zm7-7h-1.59l-.55-.55c-.29-.29-.68-.45-1.09-.45H9.73c-.41 0-.8.16-1.09.45L8.09 5H6.5C5.12 5 4 6.12 4 7.5v9C4 17.88 5.12 19 6.5 19h11c1.38 0 2.5-1.12 2.5-2.5v-9C20 6.12 18.88 5 17.5 5z" />
                             </svg>
                             <span className="text-sm font-normal">
-                              {post.comments}
+                              2
                             </span>
                           </div>
                         </div>
                         <p className="text-xs line-clamp-2 px-2">
-                          {post.caption}
+                          hi
                         </p>
-                      </div>
+                      </div> */}
                     </motion.div>
 
                     {/* Post type indicator */}
-                    {post.type === "video" && (
+                    {/* {post.type === "video" && (
                       <div className="absolute top-2 right-2">
                         <div className="bg-black/70 rounded-full p-1">
                           <svg
@@ -1371,7 +1385,7 @@ The takeaway was clear — Yummfeast entered the market not to participate, but 
                           </svg>
                         </div>
                       </div>
-                    )}
+                    )} */}
                   </div>
                 </motion.div>
               ))}
@@ -1579,4 +1593,14 @@ The takeaway was clear — Yummfeast entered the market not to participate, but 
       </section>
     </div>
   );
+}
+
+declare global {
+  interface Window {
+    instgrm?: {
+      Embeds: {
+        process: () => void;
+      };
+    };
+  }
 }
