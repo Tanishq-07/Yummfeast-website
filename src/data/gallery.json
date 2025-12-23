@@ -130,6 +130,24 @@
       "title": "Manali Trip",
       "image": "/images/gallery/pic18.jpg",
       "category": "Trip"
+    },
+    {
+      "id": 19,
+      "title": "Dealer Meet",
+      "image": "/images/gallery/pic19.jpg",
+      "category": "Event"
+    },
+    {
+      "id": 20,
+      "title": "Dealer Meet",
+      "image": "/images/gallery/pic20.jpg",
+      "category": "Event"
+    },
+    {
+      "id": 21,
+      "title": "Dealer Meet",
+      "image": "/images/gallery/pic21.jpg",
+      "category": "Event"
     }
   ]
 }
