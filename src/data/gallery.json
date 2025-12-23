@@ -125,5 +125,11 @@
       "image": "/images/gallery/pic17.jpg",
       "category": "Trip"
     }
+    {
+      "id": 18,
+      "title": "Manali Trip",
+      "image": "/images/gallery/pic18.jpg",
+      "category": "Trip"
+    }
   ]
 }
