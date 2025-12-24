@@ -166,6 +166,24 @@
       "title": "Thailand Trip",
       "image": "/images/gallery/pic24.png",
       "category": "Trip"
+    },
+    {
+      "id": 25,
+      "title": "Bihar Business Connect",
+      "image": "/images/gallery/pic25.png",
+      "category": "Event"
+    },
+     {
+      "id": 26,
+      "title": "Bihar Business Connect",
+      "image": "/images/gallery/pic26.png",
+      "category": "Event"
+    },
+     {
+      "id": 27,
+      "title": "Bihar Business Connect",
+      "image": "/images/gallery/pic27.png",
+      "category": "Event"
     }
   ]
 }
