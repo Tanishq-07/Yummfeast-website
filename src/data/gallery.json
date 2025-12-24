@@ -79,96 +79,90 @@
     },
     {
       "id": 10,
-      "title": "Warehouse",
-      "image": "/images/gallery/pic9.jpg",
-      "category": "Facilities"
-    },
-    {
-      "id": 11,
       "title": "Cordelia Cruise",
       "image": "/images/gallery/pic10.jpg",
       "category": "Trip"
     },
     {
-      "id": 12,
+      "id": 11,
       "title": "Cordelia Cruise",
       "image": "/images/gallery/pic11.jpg",
       "category": "Trip"
     },
     {
-      "id": 13,
+      "id": 12,
       "title": "Cordelia Cruise",
       "image": "/images/gallery/pic12.jpg",
       "category": "Trip"
     },
     {
-      "id": 14,
+      "id": 13,
       "title": "Laboratory",
       "image": "/images/gallery/pic13.jpg",
       "category": "Facilities"
     },
     {
-      "id": 15,
+      "id": 14,
       "title": "Laboratory",
       "image": "/images/gallery/pic14.jpg",
       "category": "Facilities"
     },
     {
-      "id": 16,
+      "id": 15,
       "title": "Laboratory",
       "image": "/images/gallery/pic15.jpg",
       "category": "Facilities"
     },
     {
-      "id": 17,
+      "id": 16,
       "title": "Manali Trip",
       "image": "/images/gallery/pic16.jpg",
       "category": "Trip"
     },
     {
-      "id": 18,
+      "id": 17,
       "title": "Manali Trip",
       "image": "/images/gallery/pic17.jpg",
       "category": "Trip"
     },
     {
-      "id": 19,
+      "id": 18,
       "title": "Manali Trip",
       "image": "/images/gallery/pic18.jpg",
       "category": "Trip"
     },
     {
-      "id": 20,
+      "id": 19,
       "title": "Dealer Meet",
       "image": "/images/gallery/pic19.jpg",
       "category": "Event"
     },
     {
-      "id": 21,
+      "id": 20,
       "title": "Dealer Meet",
       "image": "/images/gallery/pic20.jpg",
       "category": "Event"
     },
     {
-      "id": 22,
+      "id": 21,
       "title": "Dealer Meet",
       "image": "/images/gallery/pic21.jpg",
       "category": "Event"
     },
     {
-      "id": 23,
+      "id": 22,
       "title": "Thailand Trip",
       "image": "/images/gallery/pic22.png",
       "category": "Trip"
     },
     {
-      "id": 24,
+      "id": 23,
       "title": "Thailand Trip",
       "image": "/images/gallery/pic23.png",
       "category": "Trip"
     },
     {
-      "id": 25,
+      "id": 24,
       "title": "Thailand Trip",
       "image": "/images/gallery/pic24.png",
       "category": "Trip"
