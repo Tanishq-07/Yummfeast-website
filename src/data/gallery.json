@@ -149,5 +149,23 @@
       "image": "/images/gallery/pic21.jpg",
       "category": "Event"
     }
+    {
+      "id": 22,
+      "title": "Thailand Trip",
+      "image": "/images/gallery/pic22.png",
+      "category": "Trip"
+    },
+    {
+      "id": 23,
+      "title": "Thailand Trip",
+      "image": "/images/gallery/pic23.png",
+      "category": "Trip"
+    },
+    {
+      "id": 24,
+      "title": "Thailand Trip",
+      "image": "/images/gallery/pic24.png",
+      "category": "Trip"
+    }
   ]
 }
