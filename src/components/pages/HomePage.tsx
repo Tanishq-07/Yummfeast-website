@@ -19,6 +19,7 @@ import {
   Flame,
   PartyPopper,
   Factory,
+  ExternalLink
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -1287,7 +1288,7 @@ The takeaway was clear — Yummfeast entered the market not to participate, but 
                   viewport={{ once: true }}
                   whileHover={{ scale: 1.05, y: -5 }}
                   className="relative group cursor-pointer overflow-hidden rounded-lg shadow-lg"
-                  onClick={() => window.open("https://www.instagram.com/yummfeast.in/", "_blank")}
+                  onClick={() => window.open(post.link, "_blank")}
                 >
                   <div className="aspect-square bg-gradient-to-br from-pink-100 to-purple-100 relative overflow-hidden">
                     <img
@@ -1301,35 +1302,16 @@ The takeaway was clear — Yummfeast entered the market not to participate, but 
                       initial={{ opacity: 0 }}
                       whileHover={{ opacity: 1 }}
                     >
-                      {/* <div className="text-white text-center">
-                        <div className="flex items-center justify-center gap-4 mb-2">
-                          <div className="flex items-center gap-1">
-                            <Heart className="w-5 h-5" />
-                            <span className="text-sm font-normal">
-                              24
-                            </span>
-                          </div>
-                          <div className="flex items-center gap-1">
-                            <svg
-                              className="w-5 h-5"
-                              fill="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path d="M8.5 12c0 1.38 1.12 2.5 2.5 2.5s2.5-1.12 2.5-2.5-1.12-2.5-2.5-2.5-2.5 1.12-2.5 2.5zm7-7h-1.59l-.55-.55c-.29-.29-.68-.45-1.09-.45H9.73c-.41 0-.8.16-1.09.45L8.09 5H6.5C5.12 5 4 6.12 4 7.5v9C4 17.88 5.12 19 6.5 19h11c1.38 0 2.5-1.12 2.5-2.5v-9C20 6.12 18.88 5 17.5 5z" />
-                            </svg>
-                            <span className="text-sm font-normal">
-                              2
-                            </span>
-                          </div>
-                        </div>
-                        <p className="text-xs line-clamp-2 px-2">
-                          hi
+                      <div className="text-white text-center">
+                        <p className="text-md line-clamp-2 px-2 flex gap-2">
+                          Go to post
+                          <ExternalLink />
                         </p>
-                      </div> */}
+                      </div>
                     </motion.div>
 
                     {/* Post type indicator */}
-                    {/* {post.type === "video" && (
+                    {post.type === "video" && (
                       <div className="absolute top-2 right-2">
                         <div className="bg-black/70 rounded-full p-1">
                           <svg
@@ -1355,7 +1337,7 @@ The takeaway was clear — Yummfeast entered the market not to participate, but 
                           </svg>
                         </div>
                       </div>
-                    )} */}
+                    )}
                   </div>
                 </motion.div>
               ))}
