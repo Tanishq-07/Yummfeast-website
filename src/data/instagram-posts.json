@@ -27,6 +27,11 @@
 
   "posts": [
     {
+      "img": "images/instagram/insta8.png",
+      "link": "https://www.instagram.com/reel/DSsPiZLie6G/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      "type": "video"
+    },
+    {
       "img": "images/instagram/insta1.png",
       "link": "https://www.instagram.com/reel/DSrCSOBibXA/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
       "type": "video"
@@ -60,11 +65,6 @@
       "img": "images/instagram/insta7.png",
       "link": "https://www.instagram.com/reel/DSWs1gciYk5/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
       "type": "video"
-    },
-    {
-      "img": "images/instagram/insta8.png",
-      "link": "https://www.instagram.com/p/DSUO3uLCa0P/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-      "type": "image"
     }
   ]
 }
