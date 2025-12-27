@@ -1,173 +1,71 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { X, ChevronLeft, ChevronRight } from "lucide-react"
-import HeroSection from "../HeroSection"
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import HeroSection from "../HeroSection";
+import galleryData from "@/data/gallery.json";
 
 export default function GalleryPage() {
-  const galleryItems = [
-    {
-      id: 1,
-      title: "Goa Trip",
-      image: "/images/gallery/pic1.png",
-      category: "Trip",
-    },
-    {
-      id: 2,
-      title: "Goa Trip",
-      image: "/images/gallery/pic2.png",
-      category: "Trip",
-    },
-    {
-      id: 3,
-      title: "Goa Trip",
-      image: "/images/gallery/pic3.png",
-      category: "Trip",
-    },
-    {
-      id: 4,
-      title: "Kashmir Trip",
-      image: "/images/gallery/pic4.png",
-      category: "Trip",
-    },
-    {
-      id: 5,
-      title: "Kashmir Trip",
-      image: "/images/gallery/pic5.png",
-      category: "Trip",
-    },
-    {
-      id: 6,
-      title: "Kashmir Trip",
-      image: "/images/gallery/pic6.png",
-      category: "Trip",
-    },
-    {
-      id: 7,
-      title: "Siliguri Event",
-      image: "/images/gallery/pic7.jpg",
-      category: "Event",
-    },
-    {
-      id: 8,
-      title: "Siliguri Event",
-      image: "/images/gallery/pic8.jpg",
-      category: "Event",
-    },
-    {
-      id: 9,
-      title: "Warehouse",
-      image: "/images/gallery/pic9.jpg",
-      category: "Facilities",
-    },
-    {
-      id: 10,
-      title: "Cordelia Cruise",
-      image: "/images/gallery/pic10.jpg",
-      category: "Event",
-    },
-    {
-      id: 11,
-      title: "Cordelia Cruise",
-      image: "/images/gallery/pic11.jpg",
-      category: "Event",
-    },
-    {
-      id: 12,
-      title: "Cordelia Cruise",
-      image: "/images/gallery/pic12.jpg",
-      category: "Event",
-    },
-    {
-      id: 13,
-      title: "Laboratory",
-      image: "/images/gallery/pic13.jpg",
-      category: "Facilities",
-    },
-    {
-      id: 14,
-      title: "Laboratory",
-      image: "/images/gallery/pic14.jpg",
-      category: "Facilities",
-    },
-    {
-      id: 15,
-      title: "Laboratory",
-      image: "/images/gallery/pic15.jpg",
-      category: "Facilities",
-    },
-    {
-      id: 16,
-      title: "Manali Trip",
-      image: "/images/gallery/pic16.jpg",
-      category: "Trip",
-    },
-    {
-      id: 17,
-      title: "Manali Trip",
-      image: "/images/gallery/pic17.jpg",
-      category: "Trip",
-    },
-  ]
+  const { heroSection, filters, galleryItems } = galleryData;
 
-  const [filter, setFilter] = useState("all")
-  const [selectedImage, setSelectedImage] = useState<number | null>(null)
+  const [filter, setFilter] = useState("all");
+  const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
-  const filteredGallery = filter === "all" ? galleryItems : galleryItems.filter((item) => item.category === filter)
+  const filteredGallery =
+    filter === "all"
+      ? galleryItems
+      : galleryItems.filter((item) => item.category === filter);
 
   const openModal = (index: number) => {
-    setSelectedImage(index)
-  }
+    setSelectedImage(index);
+  };
 
   const closeModal = () => {
-    setSelectedImage(null)
-  }
+    setSelectedImage(null);
+  };
 
   const navigateImage = (direction: "prev" | "next") => {
-    if (selectedImage === null) return
+    if (selectedImage === null) return;
 
-    const currentIndex = selectedImage
-    let newIndex
+    const currentIndex = selectedImage;
+    let newIndex;
 
     if (direction === "prev") {
-      newIndex = currentIndex > 0 ? currentIndex - 1 : filteredGallery.length - 1
+      newIndex =
+        currentIndex > 0 ? currentIndex - 1 : filteredGallery.length - 1;
     } else {
-      newIndex = currentIndex < filteredGallery.length - 1 ? currentIndex + 1 : 0
+      newIndex =
+        currentIndex < filteredGallery.length - 1 ? currentIndex + 1 : 0;
     }
 
-    setSelectedImage(newIndex)
-  }
+    setSelectedImage(newIndex);
+  };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "Escape") closeModal()
-    if (e.key === "ArrowLeft") navigateImage("prev")
-    if (e.key === "ArrowRight") navigateImage("next")
-  }
-
-  const bannerData = {
-    bg: "/images/bg.png",
-    image1: "/images/banners/gallery/left.png",
-    image2: "/images/banners/gallery/right.png"
-  }
+    if (e.key === "Escape") closeModal();
+    if (e.key === "ArrowLeft") navigateImage("prev");
+    if (e.key === "ArrowRight") navigateImage("next");
+  };
 
   return (
     <div>
       {/* Hero Section */}
-      <HeroSection banner={bannerData} />
+      <HeroSection banner={heroSection} />
 
       {/* Gallery Filters */}
       <section className="py-8 border-b">
         <div className="container mx-auto px-4">
           <Tabs defaultValue="all" onValueChange={setFilter}>
             <TabsList className="grid w-full grid-cols-4 max-w-md mx-auto">
-              <TabsTrigger value="all">All</TabsTrigger>
-              <TabsTrigger value="Trip">Trips</TabsTrigger>
-              <TabsTrigger value="Facilities">Facilities</TabsTrigger>
-              <TabsTrigger value="Event">Events</TabsTrigger>
+              {filters.map((filterItem) => (
+                <TabsTrigger key={filterItem.value} value={filterItem.value}>
+                  {filterItem.label}
+                </TabsTrigger>
+              ))}
             </TabsList>
           </Tabs>
         </div>
@@ -260,5 +158,5 @@ export default function GalleryPage() {
         )}
       </AnimatePresence>
     </div>
-  )
+  );
 }
