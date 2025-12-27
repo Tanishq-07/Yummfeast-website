@@ -21,6 +21,7 @@ import HeroSection from "../HeroSection";
 
 export default function QueryPage() {
   const [queryType, setQueryType] = useState("distributionship");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const bannerData = {
     bg: "/images/bg.png",
@@ -28,54 +29,61 @@ export default function QueryPage() {
     image2: "/images/banners/dealership/right.png",
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (isSubmitting) return; // extra safety
+
+    setIsSubmitting(true);
 
     const form = e.currentTarget;
 
-    const firstName = (form.elements.namedItem("firstName") as HTMLInputElement)
-      .value;
-    const lastName = (form.elements.namedItem("lastName") as HTMLInputElement)
-      .value;
-    const email = (form.elements.namedItem("email") as HTMLInputElement).value;
-    const phone = (form.elements.namedItem("phone") as HTMLInputElement).value;
-    const company = (form.elements.namedItem("company") as HTMLInputElement)
-      .value;
-    const location = (form.elements.namedItem("location") as HTMLInputElement)
-      .value;
-    const experience = (
-      form.elements.namedItem("experience") as HTMLSelectElement
-    ).value;
-    const message = (form.elements.namedItem("message") as HTMLTextAreaElement)
-      .value;
+    try {
+      const firstName = (form.elements.namedItem("firstName") as HTMLInputElement).value;
+      const lastName = (form.elements.namedItem("lastName") as HTMLInputElement).value;
+      const email = (form.elements.namedItem("email") as HTMLInputElement).value;
+      const phone = (form.elements.namedItem("phone") as HTMLInputElement).value;
+      const company = (form.elements.namedItem("company") as HTMLInputElement).value;
+      const location = (form.elements.namedItem("location") as HTMLInputElement).value;
+      const experience = (form.elements.namedItem("experience") as HTMLSelectElement).value;
+      const message = (form.elements.namedItem("message") as HTMLTextAreaElement).value;
 
-    const whatsappNumber = "9334469489";
+      const res = await fetch("/api/sendMail", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: `${firstName} ${lastName}`,
+          email,
+          message: `
+Phone: ${phone || "Not provided"}
+Company: ${company || "Not provided"}
+Location: ${location}
+Experience: ${experience}
 
-    const whatsappMessage = `
-    A potential partner reaching out to explore opportunities with us
+Message:
+${message}
+        `,
+          type:
+            queryType === "dealership"
+              ? "Dealership Application"
+              : queryType === "super"
+                ? "Super Stockist Application"
+                : "Distributorship Application",
+        }),
+      });
 
-    Name: ${firstName} ${lastName}
+      if (!res.ok) throw new Error("Mail failed");
 
-    Email: ${email}
-
-    Phone: ${phone || "Not provided"}
-
-    Company: ${company || "Not provided"}
-
-    Location: ${location}
-
-    Experience: ${experience}
-
-    Your message: ${message}`;
-
-    const url =
-      "https://wa.me/" +
-      whatsappNumber +
-      "?text=" +
-      encodeURIComponent(whatsappMessage);
-
-    window.open(url, "_blank");
+      alert("✅ Your application has been sent successfully!");
+      form.reset();
+    } catch (err) {
+      console.error(err);
+      alert("❌ Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false); // always reset
+    }
   };
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 via-yellow-50 to-red-50">
@@ -191,6 +199,7 @@ export default function QueryPage() {
                         </Label>
                         <Input
                           id="firstName"
+                          name="firstName"
                           placeholder="John"
                           required
                           className="border-2 border-orange-200 focus:border-orange-400 rounded-lg p-3 bg-white"
@@ -205,6 +214,7 @@ export default function QueryPage() {
                         </Label>
                         <Input
                           id="lastName"
+                          name="lastName"
                           placeholder="Doe"
                           required
                           className="border-2 border-orange-200 focus:border-orange-400 rounded-lg p-3 bg-white"
@@ -221,6 +231,7 @@ export default function QueryPage() {
                       </Label>
                       <Input
                         id="email"
+                        name="email"
                         type="email"
                         placeholder="john@example.com"
                         required
@@ -237,6 +248,7 @@ export default function QueryPage() {
                       </Label>
                       <Input
                         id="phone"
+                        name="phone"
                         placeholder="+91 98765 43210"
                         required
                         className="border-2 border-orange-200 focus:border-orange-400 rounded-lg p-3 bg-white"
@@ -252,6 +264,7 @@ export default function QueryPage() {
                       </Label>
                       <Input
                         id="company"
+                        name="company"
                         placeholder="Your Amazing Business"
                         className="border-2 border-orange-200 focus:border-orange-400 rounded-lg p-3 bg-white"
                       />
@@ -266,6 +279,7 @@ export default function QueryPage() {
                       </Label>
                       <Input
                         id="location"
+                        name="location"
                         placeholder="City, State, Country"
                         required
                         className="border-2 border-orange-200 focus:border-orange-400 rounded-lg p-3 bg-white"
@@ -281,6 +295,7 @@ export default function QueryPage() {
                       </Label>
                       <select
                         id="experience"
+                        name="experience"
                         className="flex h-12 w-full rounded-lg border-2 border-orange-200 focus:border-orange-400 bg-white px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-normal placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                         required
                       >
@@ -306,6 +321,7 @@ export default function QueryPage() {
                       </Label>
                       <Textarea
                         id="message"
+                        name="message"
                         placeholder="Share your business dreams, why you want to partner with Yummfeast, and what makes you awesome! We love hearing success stories in the making! ✨"
                         rows={5}
                         className="border-2 border-orange-200 focus:border-orange-400 rounded-lg p-3 bg-white"
@@ -314,15 +330,25 @@ export default function QueryPage() {
 
                     <Button
                       type="submit"
-                      className={`w-full bg-gradient-to-r ${
-                        queryType === "dealership"
-                          ? "from-orange-400 to-red-400 hover:from-orange-500 hover:to-red-500"
-                          : queryType === "distributorship"
-                          ? "from-purple-400 to-pink-400 hover:from-purple-500 hover:to-pink-500"
-                          : "from-green-400 to-blue-400 hover:from-green-500 hover:to-blue-500"
-                      } text-white font-normal py-4 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 shadow-lg`}
+                      disabled={isSubmitting}
+                      className={`w-full py-4 rounded-lg text-lg font-normal transition-all duration-300 shadow-lg
+    ${isSubmitting
+                          ? "bg-gray-400 cursor-not-allowed"
+                          : queryType === "dealership"
+                            ? "bg-gradient-to-r from-orange-400 to-red-400 hover:from-orange-500 hover:to-red-500"
+                            : queryType === "distributorship"
+                              ? "bg-gradient-to-r from-purple-400 to-pink-400 hover:from-purple-500 hover:to-pink-500"
+                              : "bg-gradient-to-r from-green-400 to-blue-400 hover:from-green-500 hover:to-blue-500"
+                        }`}
                     >
-                      🚀 Submit My Application! 🚀
+                      {isSubmitting ? (
+                        <span className="flex items-center justify-center gap-2">
+                          <span className="h-5 w-5 rounded-full border-2 border-white border-t-transparent animate-spin" />
+                          Submitting...
+                        </span>
+                      ) : (
+                        "🚀 Submit My Application!"
+                      )}
                     </Button>
                   </form>
                 </CardContent>

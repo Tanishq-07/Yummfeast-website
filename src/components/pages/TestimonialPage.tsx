@@ -90,6 +90,7 @@ export default function TestimonialPage() {
   const [product, setProduct] = useState("");
   const [rating, setRating] = useState(0);
   const [feedback, setFeedback] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const bannerData = {
     bg: "/images/bg.png",
@@ -97,53 +98,54 @@ export default function TestimonialPage() {
     image2: "/images/banners/testimonial/right.png",
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (isSubmitting) return;
 
     if (!name || !email || !product || !rating || !feedback) {
       alert("Please fill out all fields.");
       return;
     }
 
-    const form = e.currentTarget;
+    setIsSubmitting(true);
 
-    const Name = (form.elements.namedItem("name") as HTMLInputElement).value;
-    const Email = (form.elements.namedItem("email") as HTMLInputElement).value;
-    const Product = (form.elements.namedItem("product") as HTMLSelectElement)
-      .value;
-    const Rating = rating > 0 ? rating : "Not provided"
-    const Feedback = (
-      form.elements.namedItem("feedback") as HTMLTextAreaElement
-    ).value;
+    try {
+      const res = await fetch("/api/sendMail", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          email,
+          type: "Customer Feedback",
+          message: `
+Product: ${product}
+Rating: ${rating}/5
 
-    const whatsappNumber = "9334469489";
+Feedback:
+${feedback}
+        `,
+        }),
+      });
 
-    const whatsappMessage = `
-    A flavor-filled review straight from our customer
+      if (!res.ok) throw new Error("Mail failed");
 
-    Name: ${Name}
+      alert("✅ Thank you! Your feedback has been submitted.");
 
-    Email: ${Email}
-
-    Product: ${Product}
-
-    Rating: ${Rating}
-
-    Your message: ${Feedback}`;
-
-    const url =
-      "https://wa.me/" +
-      whatsappNumber +
-      "?text=" +
-      encodeURIComponent(whatsappMessage);
-
-    window.open(url, "_blank");
-    setName("");
-    setEmail("");
-    setProduct("");
-    setRating(0);
-    setFeedback("");
+      // Reset form
+      setName("");
+      setEmail("");
+      setProduct("");
+      setRating(0);
+      setFeedback("");
+    } catch (error) {
+      console.error(error);
+      alert("❌ Something went wrong. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
+
 
   return (
     <div className="relative overflow-hidden">
@@ -433,9 +435,21 @@ export default function TestimonialPage() {
                     {/* Submit */}
                     <Button
                       type="submit"
-                      className="w-full bg-gradient-to-r from-orange-400 to-red-400 hover:from-orange-500 hover:to-red-500 text-white font-normal py-4 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
+                      disabled={isSubmitting}
+                      className={`w-full py-4 rounded-lg text-lg font-normal transition-all duration-300 shadow-lg
+    ${isSubmitting
+                          ? "bg-gray-400 cursor-not-allowed"
+                          : "bg-gradient-to-r from-orange-400 to-red-400 hover:from-orange-500 hover:to-red-500 transform hover:scale-105"
+                        }`}
                     >
-                      Submit Feedback
+                      {isSubmitting ? (
+                        <span className="flex items-center justify-center gap-2">
+                          <span className="h-5 w-5 rounded-full border-2 border-white border-t-transparent animate-spin" />
+                          Submitting...
+                        </span>
+                      ) : (
+                        "Submit Feedback"
+                      )}
                     </Button>
                   </form>
                 </CardContent>

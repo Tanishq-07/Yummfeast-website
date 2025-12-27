@@ -11,49 +11,60 @@ import { Phone, Mail, MapPin, Clock, Heart, Star, Zap } from "lucide-react"
 import HeroSection from "../HeroSection"
 
 export default function ContactPage() {
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const bannerData = {
     bg: "/images/bg.png",
     image1: "/images/banners/contact/left.png",
     image2: "/images/banners/contact/right.png"
   }
 
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
 
-const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
+    if (isSubmitting) return
 
-  const form = e.currentTarget;
+    setIsSubmitting(true)
 
-  const firstName = (form.elements.namedItem("firstName") as HTMLInputElement).value;
-  const lastName = (form.elements.namedItem("lastName") as HTMLInputElement).value;
-  const email = (form.elements.namedItem("email") as HTMLInputElement).value;
-  const phone = (form.elements.namedItem("phone") as HTMLInputElement).value;
-  const subject = (form.elements.namedItem("subject") as HTMLInputElement).value;
-  const message = (form.elements.namedItem("message") as HTMLTextAreaElement).value;
+    const form = e.currentTarget
 
-  const whatsappNumber = "9334469489"; 
+    const firstName = (form.elements.namedItem("firstName") as HTMLInputElement).value
+    const lastName = (form.elements.namedItem("lastName") as HTMLInputElement).value
+    const email = (form.elements.namedItem("email") as HTMLInputElement).value
+    const phone = (form.elements.namedItem("phone") as HTMLInputElement).value
+    const subject = (form.elements.namedItem("subject") as HTMLInputElement).value
+    const message = (form.elements.namedItem("message") as HTMLTextAreaElement).value
 
-  const whatsappMessage = `
+    const whatsappNumber = "9334469489"
 
-  A thoughtful note shared via our contact form
+    const whatsappMessage = `
+A thoughtful note shared via our contact form
 
-  Name: ${firstName} ${lastName}
+Name: ${firstName} ${lastName}
 
-  Email: ${email}
+Email: ${email}
 
-  Phone: ${phone || "Not provided"}
+Phone: ${phone || "Not provided"}
 
-  Subject: ${subject}
+Subject: ${subject}
 
-  Your message: ${message}`;
+Your message: ${message}
+  `
 
-  const url =
-    "https://wa.me/" +
-    whatsappNumber +
-    "?text=" +
-    encodeURIComponent(whatsappMessage);
+    const url =
+      "https://wa.me/" +
+      whatsappNumber +
+      "?text=" +
+      encodeURIComponent(whatsappMessage)
 
-  window.open(url, "_blank");
-};
+    window.open(url, "_blank")
+
+    form.reset()
+
+    // Small delay so UI feels responsive
+    setTimeout(() => {
+      setIsSubmitting(false)
+    }, 1000)
+  }
 
   return (
 
@@ -258,9 +269,14 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 
                     <Button
                       type="submit"
-                      className="w-full bg-gradient-to-r from-orange-400 to-red-400 hover:from-orange-500 hover:to-red-500 text-white font-normal py-4 rounded-lg text-lg transition-all duration-300 transform hover:scale-105"
+                      disabled={isSubmitting}
+                      className={`w-full bg-gradient-to-r from-orange-400 to-red-400 
+    hover:from-orange-500 hover:to-red-500 
+    text-white font-normal py-4 rounded-lg text-lg 
+    transition-all duration-300 transform
+    ${isSubmitting ? "opacity-70 cursor-not-allowed scale-100" : "hover:scale-105"}`}
                     >
-                      Send My Message! 🚀
+                      {isSubmitting ? "Sending..." : "Send My Message! 🚀"}
                     </Button>
                   </form>
                 </CardContent>
