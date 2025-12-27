@@ -19,52 +19,53 @@ export default function ContactPage() {
   }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    if (isSubmitting) return
+    if (isSubmitting) return;
 
-    setIsSubmitting(true)
+    const form = e.currentTarget;
 
-    const form = e.currentTarget
+    const firstName = (form.elements.namedItem("firstName") as HTMLInputElement)?.value.trim();
+    const lastName = (form.elements.namedItem("lastName") as HTMLInputElement)?.value.trim();
+    const email = (form.elements.namedItem("email") as HTMLInputElement)?.value.trim();
+    const subject = (form.elements.namedItem("subject") as HTMLInputElement)?.value.trim();
+    const message = (form.elements.namedItem("message") as HTMLTextAreaElement)?.value.trim();
 
-    const firstName = (form.elements.namedItem("firstName") as HTMLInputElement).value
-    const lastName = (form.elements.namedItem("lastName") as HTMLInputElement).value
-    const email = (form.elements.namedItem("email") as HTMLInputElement).value
-    const phone = (form.elements.namedItem("phone") as HTMLInputElement).value
-    const subject = (form.elements.namedItem("subject") as HTMLInputElement).value
-    const message = (form.elements.namedItem("message") as HTMLTextAreaElement).value
+    if (!firstName || !email || !subject || !message) {
+      alert("Please fill out all required fields.");
+      return;
+    }
 
-    const whatsappNumber = "9334469489"
+    setIsSubmitting(true);
 
-    const whatsappMessage = `
-A thoughtful note shared via our contact form
-
-Name: ${firstName} ${lastName}
-
-Email: ${email}
-
-Phone: ${phone || "Not provided"}
-
+    try {
+      const res = await fetch("/api/sendMail", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: `${firstName} ${lastName}`,
+          email,
+          type: "Contact Form",
+          message: `
 Subject: ${subject}
 
-Your message: ${message}
-  `
+Message:
+${message}
+        `.trim(),
+        }),
+      });
 
-    const url =
-      "https://wa.me/" +
-      whatsappNumber +
-      "?text=" +
-      encodeURIComponent(whatsappMessage)
+      if (!res.ok) throw new Error("Mail failed");
 
-    window.open(url, "_blank")
-
-    form.reset()
-
-    // Small delay so UI feels responsive
-    setTimeout(() => {
-      setIsSubmitting(false)
-    }, 1000)
-  }
+      alert("✅ Thank you! Your message has been sent.");
+      form.reset();
+    } catch (error) {
+      console.error(error);
+      alert("❌ Something went wrong. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
 
