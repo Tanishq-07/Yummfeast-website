@@ -72,7 +72,7 @@ const occasionColorMap: Record<OccasionType, OccasionColors> = {
   },
 }
 
-export default function NewYearCelebrationOverlay({ show, onClose, enableFireworks = true, occasion = "newyear", enableConfetti = false }: NewYearCelebrationOverlayProps) {
+export default function NewYearCelebrationOverlay({ show, onClose, enableFireworks = true, occasion = "newyear", enableConfetti = true }: NewYearCelebrationOverlayProps) {
   const [mounted, setMounted] = useState(false)
   const [showFireworks, setShowFireworks] = useState(enableFireworks)
   const colors = occasionColorMap[occasion]
