@@ -148,10 +148,18 @@ export default function NewYearCelebrationOverlay({ show, onClose, enableFirewor
         )}
 
         {mounted && (
-          <div className="mt-4 px-8 py-3 bg-gradient-to-r from-red-500 to-orange-500 text-white rounded-full font-semibold text-sm shadow-md md:text-base shadow-lg hover:shadow-xl transition-shadow duration-200 cursor-pointer animate-fadeInDelayed">
-            Celebrate With Us
-          </div>
-        )}
+        <a
+          href="https://www.instagram.com/p/DS8CO3Cje4Y/?igsh=cDYxenRyMnRxeTlh"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-4 px-8 py-3 bg-gradient-to-r from-red-500 to-orange-500
+                    text-white rounded-full font-semibold text-sm md:text-base
+                    shadow-md hover:shadow-xl transition-shadow duration-200
+                    cursor-pointer animate-fadeInDelayed inline-block"
+        >
+          Celebrate With Us
+        </a>
+      )}
       </div>
 
       <style>{`
