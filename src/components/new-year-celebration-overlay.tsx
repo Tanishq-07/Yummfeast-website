@@ -149,7 +149,7 @@ export default function NewYearCelebrationOverlay({ show, onClose, enableFirewor
 
         {mounted && (
         <a
-          href="https://www.instagram.com/p/DS8CO3Cje4Y/?igsh=cDYxenRyMnRxeTlh"
+          href="https://www.instagram.com/p/DS8CO3Cje4Y/"
           target="_blank"
           rel="noopener noreferrer"
           className="mt-4 px-8 py-3 bg-gradient-to-r from-red-500 to-orange-500
