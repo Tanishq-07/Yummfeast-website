@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 // Import components
@@ -19,6 +19,7 @@ import ContactPage from "./components/pages/ContactPage";
 import { AccessRestriction } from "./components/access-restriction";
 import { useScroll, useMotionValueEvent } from "framer-motion";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import NewYearCelebrationOverlay from '@/components/new-year-celebration-overlay';
 
 // Main App Component
 export default function App() {
@@ -28,6 +29,13 @@ export default function App() {
   const [showScrollUp, setShowScrollUp] = useState(false);
   const [showScrollDown, setShowScrollDown] = useState(true);
   const [accessRestricted, setAccessRestricted] = useState(false);
+  const [showOverlay, setShowOverlay] = useState(false);
+
+  // Auto-show overlay on first visit (optional)
+  useEffect(() => {
+    // Uncomment to auto-show on page load
+    setShowOverlay(true);
+  }, []);
 
   // Function to handle page navigation
   const navigateTo = (page: string, category?:any) => {
@@ -207,6 +215,8 @@ export default function App() {
         <ChevronDown style={{ width: "22px", height: "22px" }} />
       </motion.button>
       )}
+
+      <NewYearCelebrationOverlay show={showOverlay} onClose={() => setShowOverlay(false)} />
 
       {accessRestricted && (
         <AccessRestriction 
