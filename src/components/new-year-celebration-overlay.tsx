@@ -3,8 +3,10 @@
 import { useEffect, useState } from "react"
 import ReactConfetti from "react-confetti"
 import { FireworksBackground } from "./firework-background"
+import celebrationConfig from "../data/config.json"
 
-type OccasionType = "newyear" | "birthday" | "celebration" | "launch" | "wedding" | "custom" | "diwali" | "holi"
+
+type OccasionType = "redOrange" | "warmGlow" | "multicolor" | "pinkPurple" | "blueCyan" | "amberSunset" | "luxuryGold"  | "classicWarm"
 
 interface OccasionColors {
   primary: string
@@ -22,49 +24,49 @@ interface NewYearCelebrationOverlayProps {
 }
 
 const occasionColorMap: Record<OccasionType, OccasionColors> = {
-  newyear: {
+  redOrange: {
     primary: "#E53935",
     secondary: "#97856eff",
     accent: "#FFB300",
     splash: ["#E53935", "#FB8C00", "#FFB300", "#FFFFFF"],
   },
-  diwali: {
+  warmGlow: {
     primary: "#FF6B35",
     secondary: "#FFA500",
     accent: "#FFD700",
     splash: ["#FF6B35", "#FFA500", "#FFD700", "#FF1493", "#00CED1"],
   },
-  holi: {
+  multicolor: {
     primary: "#FF69B4",
     secondary: "#00FF00",
     accent: "#FFD700",
     splash: ["#FF69B4", "#00FF00", "#FFD700", "#FF00FF", "#00CED1"],
   },
-  birthday: {
+  pinkPurple: {
     primary: "#E91E63",
     secondary: "#9C27B0",
     accent: "#FF69B4",
     splash: ["#E91E63", "#9C27B0", "#FF69B4", "#FFFFFF"],
   },
-  celebration: {
+  blueCyan: {
     primary: "#1976D2",
     secondary: "#00BCD4",
     accent: "#00D4FF",
     splash: ["#1976D2", "#00BCD4", "#00D4FF", "#FFFFFF"],
   },
-  launch: {
+  amberSunset: {
     primary: "#FF6F00",
     secondary: "#FF9100",
     accent: "#FFB300",
     splash: ["#FF6F00", "#FF9100", "#FFB300", "#FFFFFF"],
   },
-  wedding: {
+  luxuryGold: {
     primary: "#D4AF37",
     secondary: "#F5E6D3",
     accent: "#C0C0C0",
     splash: ["#D4AF37", "#F5E6D3", "#C0C0C0", "#FFFFFF"],
   },
-  custom: {
+  classicWarm: {
     primary: "#E53935",
     secondary: "#FB8C00",
     accent: "#FFB300",
@@ -72,11 +74,15 @@ const occasionColorMap: Record<OccasionType, OccasionColors> = {
   },
 }
 
-export default function NewYearCelebrationOverlay({ show, onClose, enableFireworks = true, occasion = "newyear", enableConfetti = true }: NewYearCelebrationOverlayProps) {
+export default function NewYearCelebrationOverlay({ show, onClose, enableFireworks = celebrationConfig.enableFireworks, occasion = celebrationConfig.occasion as OccasionType, enableConfetti = celebrationConfig.enableConfetti }: NewYearCelebrationOverlayProps) {
   const [mounted, setMounted] = useState(false)
   const [showFireworks, setShowFireworks] = useState(enableFireworks)
   const colors = occasionColorMap[occasion]
   const [showConfetti, setShowConfetti] = useState(enableConfetti)
+  const heading = celebrationConfig.heading
+  const subheading = celebrationConfig.subheading
+  const buttonLabel = celebrationConfig.buttonLabel
+  const buttonLink = celebrationConfig.buttonLink
 
   useEffect(() => {
     if (!show) return
@@ -133,7 +139,7 @@ export default function NewYearCelebrationOverlay({ show, onClose, enableFirewor
 
         {mounted && (
             <h1 className="text-5xl md:text-6xl font-medium text-center text-white drop-shadow-lg animate-fadeInScale">
-            YummFeast Wishes You a Happy New Year!
+            {heading}
           </h1>
         )}
 
@@ -143,13 +149,13 @@ export default function NewYearCelebrationOverlay({ show, onClose, enableFirewor
 
         {mounted && (
           <p className="text-lg md:text-xl text-gray-100 text-center font-light drop-shadow-md animate-fadeInDelayed">
-            New flavors. Same crunch. Bigger celebrations.
+            {subheading}
           </p>
         )}
 
         {mounted && (
         <a
-          href="https://www.instagram.com/p/DS8CO3Cje4Y/"
+          href={buttonLink}
           target="_blank"
           rel="noopener noreferrer"
           className="mt-4 px-8 py-3 bg-gradient-to-r from-red-500 to-orange-500
@@ -157,7 +163,7 @@ export default function NewYearCelebrationOverlay({ show, onClose, enableFirewor
                     shadow-md hover:shadow-xl transition-shadow duration-200
                     cursor-pointer animate-fadeInDelayed inline-block"
         >
-          Celebrate With Us
+          {buttonLabel}
         </a>
       )}
       </div>
