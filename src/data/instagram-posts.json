@@ -27,43 +27,43 @@
 
   "posts": [
     {
-      "img": "images/instagram/insta7.png",
-      "link": "https://www.instagram.com/reel/DTE9_BECTTC/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-      "type": "video"
-    },
-    {
-      "img": "images/instagram/insta8.png",
-      "link": "https://www.instagram.com/reel/DS_hnS1gaHD/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-      "type": "video"
-    },
-    {
       "img": "images/instagram/insta1.png",
-      "link": "https://www.instagram.com/reel/DS9KnvRiCeg/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      "link": "https://www.instagram.com/reel/DTex635jeHo/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
       "type": "video"
     },
     {
       "img": "images/instagram/insta2.png",
-      "link": "https://www.instagram.com/p/DS8CO3Cje4Y/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-      "type": "image"
+      "link": "https://www.instagram.com/reel/DTc-WyYj6bL/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      "type": "video"
     },
     {
       "img": "images/instagram/insta3.png",
-      "link": "https://www.instagram.com/p/DS4dG8SDGye/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      "link": "https://www.instagram.com/p/DTcOVfxjZ3S/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
       "type": "image"
     },
     {
       "img": "images/instagram/insta4.png",
-      "link": "https://www.instagram.com/p/DS2LYvPjV6k/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      "link": "https://www.instagram.com/p/DTZrCSHDQjf/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
       "type": "image"
     },
     {
       "img": "images/instagram/insta5.png",
-      "link": "https://www.instagram.com/reel/DSxVga9Cfvm/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-      "type": "video"
+      "link": "https://www.instagram.com/p/DTU-aBtjb4V/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      "type": "image"
     },
     {
       "img": "images/instagram/insta6.png",
-      "link": "https://www.instagram.com/reel/DSsPiZLie6G/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      "link": "https://www.instagram.com/reel/DTUvXOQDEdU/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      "type": "video"
+    },
+    {
+      "img": "images/instagram/insta7.png",
+      "link": "https://www.instagram.com/reel/DTSW8R8jZRF/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      "type": "video"
+    },
+    {
+      "img": "images/instagram/insta8.png",
+      "link": "https://www.instagram.com/reel/DTP5CpGAg71/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
       "type": "video"
     }
   ]
