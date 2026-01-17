@@ -27,6 +27,16 @@
 
   "posts": [
     {
+      "img": "images/instagram/insta7.png",
+      "link": "https://www.instagram.com/reel/DTSW8R8jZRF/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      "type": "video"
+    },
+    {
+      "img": "images/instagram/insta8.png",
+      "link": "https://www.instagram.com/reel/DTP5CpGAg71/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      "type": "video"
+    }
+    {
       "img": "images/instagram/insta1.png",
       "link": "https://www.instagram.com/reel/DTex635jeHo/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
       "type": "video"
@@ -56,15 +66,5 @@
       "link": "https://www.instagram.com/reel/DTUvXOQDEdU/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
       "type": "video"
     },
-    {
-      "img": "images/instagram/insta7.png",
-      "link": "https://www.instagram.com/reel/DTSW8R8jZRF/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-      "type": "video"
-    },
-    {
-      "img": "images/instagram/insta8.png",
-      "link": "https://www.instagram.com/reel/DTP5CpGAg71/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-      "type": "video"
-    }
   ]
 }
