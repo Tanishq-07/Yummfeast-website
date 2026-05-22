@@ -45,7 +45,7 @@
       "name": "Rings",
       "description": "These are fun, ring-shaped snacks with a zesty and tangy tomato flavor. They offer a delightful crunch for all ages.",
       "price": "₹5",
-      "category": "Fryums",
+      "category": "Extruded",
       "subcategory": "rings",
       "image": "/images/products/rings.png",
       "comingSoon": false
