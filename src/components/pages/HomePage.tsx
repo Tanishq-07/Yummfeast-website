@@ -1381,10 +1381,15 @@ export default function HomePage({ navigateTo }: HomePageProps) {
               />
             </Button> */}
             <div className="transition-transform duration-100 hover:scale-[1.03]">
-              <div className="bg-red-500 text-white text-lg font-normal w-56 mx-auto px-6 py-2 rounded-md shadow-md border-2 border-black relative hover:bg-orange-600">
+              <a
+                href="https://drive.google.com/uc?export=download&id=16aC48pcIz_hk99m8BXcBY9xRSoYEAtea"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-red-500 text-white text-lg font-normal w-56 mx-auto px-6 py-2 rounded-md shadow-md border-2 border-black relative hover:bg-orange-600 inline-flex items-center justify-center"
+              >
                 Download Brochure
                 <div className="absolute -bottom-1 left-0 w-56 h-full mx-auto rounded-md bg-black -z-10 translate-y-1 translate-x-1"></div>
-              </div>
+              </a>
             </div>
           </motion.div>
         </div>
